@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-
+import ThreeTest2 from "../components/three-test2";
+import ThreeTest3 from "../components/three-test3";
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +15,11 @@ const Home: NextPage = () => {
       <div className="text-5xl">Catalina Andonie</div>
       <div className="text-5xl font-bold">Catalina Andonie</div>
       <div className="text-5xl font-black">Catalina Andonie</div>
-      
+
+      <ThreeTest2 />
+      <div className="w-1/4">
+        <ThreeTest3 />
+      </div>
     </div>
   );
 };
