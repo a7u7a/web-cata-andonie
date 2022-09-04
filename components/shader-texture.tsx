@@ -1,7 +1,7 @@
 import { ScreenQuad } from "@react-three/drei";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
-import { ShaderMaterial, TextureLoader } from "three";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ShaderMaterial, TextureLoader, Vector2 } from "three";
 
 const vert = `
 varying vec2 vUv;
@@ -13,25 +13,30 @@ void main() {
 
 const frag = `
 varying vec2 vUv;
+uniform vec2 u_resolution;
 uniform float u_time;
 uniform sampler2D u_texture;
 void main() {
-  vec4 color = texture2D(u_texture, vUv);
+  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+  vec4 color = texture2D(u_texture, uv);
   gl_FragColor = color;
 }
 `;
 
 const QuadTest = () => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, ["/imgs/disp.jpeg"]);
+  const [textureA] = useLoader(TextureLoader, ["/imgs/img3.png"]);
+  const size = useThree((state) => state.size);
+
   const uniforms = useMemo(
     () => ({
-      u_texture: { type: "t", value: textureA },
+      u_texture: { value: textureA },
+      u_resolution: { value: new Vector2(size.width * 2, size.height * 2) },
       u_time: {
         value: 0.0,
       },
     }),
-    [textureA]
+    [textureA, size]
   );
 
   useFrame((state) => {
