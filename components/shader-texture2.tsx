@@ -3,7 +3,7 @@ import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ShaderMaterial, TextureLoader, Vector2 } from "three";
 
-// Basic example showing a texture in a screenquad
+// following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
 
 const vert = `
 varying vec2 vUv;
@@ -20,10 +20,9 @@ uniform float u_time;
 uniform sampler2D u_texture;
 void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-  vec4 color = texture2D(u_texture, uv);
+  vec4 color = texture2D(u_texture, uv + vec2(sin(u_time + uv.x * 15.0) * 0.2, sin(u_time + uv.y * 15.0) * 0.02 ));
   gl_FragColor = color;
-}
-`;
+}`;
 
 const QuadTest = () => {
   const matRef = useRef<ShaderMaterial>(null!);
@@ -59,11 +58,11 @@ const QuadTest = () => {
   );
 };
 
-const ShaderTexture = () => {
+const ShaderPostProcessing = () => {
   return (
     <Canvas>
       <QuadTest />
     </Canvas>
   );
 };
-export default ShaderTexture;
+export default ShaderPostProcessing;

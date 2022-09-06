@@ -3,6 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { ShaderMaterial } from "three";
 
+// Basic example showing a simple time based shader
+
 const vert = `
 void main() {
   gl_Position = vec4(position, 1.0);
@@ -53,11 +55,11 @@ const QuadTest = () => {
   );
 };
 
-const ThreeTest3 = () => {
+const ShaderBasicSample = () => {
   return (
     <Canvas>
       <QuadTest />
     </Canvas>
   );
 };
-export default ThreeTest3;
+export default ShaderBasicSample;

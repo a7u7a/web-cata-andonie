@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import ThreeTest2 from "../components/three-test2";
-import ShadeSample from "../components/shader-sample";
+import ShaderBasicSample from "../components/shader-sample";
 import ShaderTexture from "../components/shader-texture";
-
+import ShaderPostProcessing from "../components/shader-texture2";
 const Home: NextPage = () => {
   return (
     <div>
@@ -17,12 +16,14 @@ const Home: NextPage = () => {
       <div className="text-5xl font-bold">Catalina Andonie</div>
       <div className="text-5xl font-black">Catalina Andonie</div>
 
-      {/* <ThreeTest2 /> */}
-      <div className="w-1/4">
-        <ShadeSample />
+      {/* <div className="w-1/4">
+        <ShaderBasicSample />
       </div>
       <div className="w-full h-[50vh]">
         <ShaderTexture />
+      </div> */}
+      <div className="w-full h-[50vh]">
+        <ShaderPostProcessing />
       </div>
     </div>
   );
