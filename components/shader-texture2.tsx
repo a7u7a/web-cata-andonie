@@ -26,7 +26,7 @@ void main() {
 
 const QuadTest = () => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, ["/imgs/img3.png"]);
+  const [textureA] = useLoader(TextureLoader, ["/imgs/cat_small.jpg"]);
   const size = useThree((state) => state.size);
 
   const uniforms = useMemo(
