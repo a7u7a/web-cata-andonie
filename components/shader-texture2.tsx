@@ -43,7 +43,7 @@ const QuadTest = () => {
   useFrame((state) => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_time.value = state.clock.elapsedTime;
-      matRef.current.needsUpdate = true;
+      matRef.current.uniformsNeedUpdate = true;
     }
   });
 
