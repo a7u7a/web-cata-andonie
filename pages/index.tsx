@@ -16,15 +16,15 @@ const Home: NextPage = () => {
       <div className="text-5xl font-bold">Catalina Andonie</div>
       <div className="text-5xl font-black">Catalina Andonie</div> */}
 
-      {/* <div className="w-1/4">
+      <div className="w-1/4">
         <ShaderBasicSample />
       </div>
-      <div className="w-full h-[50vh]">
+      {/* <div className="w-full h-[50vh]">
         <ShaderTexture />
       </div> */}
-      <div className="w-1/2 h-[20rem]">
+      {/* <div className="w-1/2 h-[20rem]">
         <ShaderPostProcessing />
-      </div>
+      </div> */}
     </div>
   );
 };
