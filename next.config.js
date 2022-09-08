@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.(glsl|vs|fs)$/,
+      test: /\.(glsl|vert|frag)$/,
       loader: "ts-shader-loader",
     });
     return config;

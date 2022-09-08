@@ -22,9 +22,9 @@ const Home: NextPage = () => {
       {/* <div className="w-full h-[50vh]">
         <ShaderTexture />
       </div> */}
-      {/* <div className="w-1/2 h-[20rem]">
+      <div className="w-1/2 h-[20rem]">
         <ShaderPostProcessing />
-      </div> */}
+      </div>
     </div>
   );
 };

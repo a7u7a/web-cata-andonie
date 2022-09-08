@@ -2,27 +2,9 @@ import { ScreenQuad } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ShaderMaterial, TextureLoader, Vector2 } from "three";
-
+import clipSpaceVert from "../shaders/clip-space.vert";
+import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
 // following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
-
-const vert = `
-varying vec2 vUv;
-void main() {
-  vUv = uv;
-  gl_Position = vec4(position, 1.0);
-}
-`;
-
-const frag = `
-varying vec2 vUv;
-uniform vec2 u_resolution;
-uniform float u_time;
-uniform sampler2D u_texture;
-void main() {
-  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-  vec4 color = texture2D(u_texture, uv + vec2(sin(u_time + uv.x * 15.0) * 0.2, sin(u_time + uv.y * 15.0) * 0.02 ));
-  gl_FragColor = color;
-}`;
 
 const QuadTest = () => {
   const matRef = useRef<ShaderMaterial>(null!);
@@ -32,12 +14,12 @@ const QuadTest = () => {
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
-      u_resolution: { value: new Vector2(size.width * 2, size.height * 2) },
+      u_resolution: { value: new Vector2(400, 400) },
       u_time: {
         value: 0.0,
       },
     }),
-    [textureA, size]
+    [textureA]
   );
 
   useFrame((state) => {
@@ -52,8 +34,8 @@ const QuadTest = () => {
       <shaderMaterial
         ref={matRef}
         uniforms={uniforms}
-        fragmentShader={frag}
-        vertexShader={vert}
+        fragmentShader={textureDistorsionFrag}
+        vertexShader={clipSpaceVert}
       />
     </ScreenQuad>
   );
