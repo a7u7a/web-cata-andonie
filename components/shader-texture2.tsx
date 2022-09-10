@@ -12,7 +12,7 @@ import UniformsControl from "./controls/uniform-controls";
 
 const QuadTest = () => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, ["/imgs/img3_small.png"]);
+  const [textureA] = useLoader(TextureLoader, ["/imgs/faro.jpg"]);
 
   UniformsControl(matRef);
 
@@ -22,11 +22,11 @@ const QuadTest = () => {
     return {
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_progress: { value: 5 },
-      u_scale: { value: 0.5 },
+      u_progress: { value: 0.49 },
+      u_scale: { value: 3.07 },
       u_time: { value: 0.0 },
-      u_speed: { value: 0.1 },
-      u_size: { value: 0.5 },
+      u_speed: { value: 0.38738 },
+      u_direction: { value: 2.0 },
     };
   }, [textureA]);
 
@@ -37,8 +37,8 @@ const QuadTest = () => {
   });
   useEffect(() => {
     if (matRef.current.uniforms) {
-      matRef.current.uniforms.u_resolution.value.x = size.width*2
-      matRef.current.uniforms.u_resolution.value.y = size.height*2;
+      matRef.current.uniforms.u_resolution.value.x = size.width * 2;
+      matRef.current.uniforms.u_resolution.value.y = size.height * 2;
     }
   }, [size]);
   return (
@@ -53,11 +53,11 @@ const QuadTest = () => {
   );
 };
 
-const ShaderPostProcessing = () => {
+const ShaderTextureQuad = () => {
   return (
     <Canvas>
       <QuadTest />
     </Canvas>
   );
 };
-export default ShaderPostProcessing;
+export default ShaderTextureQuad;

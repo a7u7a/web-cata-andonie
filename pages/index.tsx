@@ -2,7 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import ShaderBasicSample from "../components/shader-sample";
 import ShaderTexture from "../components/shader-texture";
-import ShaderPostProcessing from "../components/shader-texture2";
+import ShaderTextureQuad from "../components/shader-texture2";
+import VideoTextureQuad from "../components/shader-video-texture";
 const Home: NextPage = () => {
   return (
     <div>
@@ -22,8 +23,13 @@ const Home: NextPage = () => {
       {/* <div className="w-full h-[50vh]">
         <ShaderTexture />
       </div> */}
+
+      {/* <div className="w-1/3 h-[35rem]">
+        <ShaderTextureQuad />
+      </div> */}
+
       <div className="w-full h-[35rem]">
-        <ShaderPostProcessing />
+        <VideoTextureQuad />
       </div>
     </div>
   );

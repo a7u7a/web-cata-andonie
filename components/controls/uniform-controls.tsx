@@ -4,9 +4,9 @@ import { ShaderMaterial, TextureLoader, Vector2 } from "three";
 
 const UniformsControl = (matRef: MutableRefObject<ShaderMaterial>) => {
   const { progress, scale, speed } = useControls("Uniforms", {
-    size: {
-      label: "Size",
-      value: 0.5,
+    direction: {
+      label: "Direction",
+      value: 2,
       min: 0,
       max: 10,
       step: 0.00001,
@@ -20,7 +20,7 @@ const UniformsControl = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     speed: {
       label: "Speed",
-      value: 0.5,
+      value: 0.38738,
       min: 0,
       max: 5,
       step: 0.00001,
@@ -34,7 +34,7 @@ const UniformsControl = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     progress: {
       label: "Progress",
-      value: 0.5,
+      value: 0.49,
       min: 0,
       max: 1,
       step: 0.00001,
@@ -48,7 +48,7 @@ const UniformsControl = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     scale: {
       label: "Scale",
-      value: 0.5,
+      value: 3.07,
       min: 0,
       max: 5,
       step: 0.00001,
