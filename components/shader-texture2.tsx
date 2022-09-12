@@ -1,18 +1,24 @@
-import { meshBounds, ScreenQuad } from "@react-three/drei";
+import { meshBounds, ScreenQuad, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { ShaderMaterial, TextureLoader, Vector2 } from "three";
+import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import { ShaderMaterial, TextureLoader, Vector2, Mesh, Vector3 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
 import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
 import wobbleDistorsion from "../shaders/wobble-distorsion.frag";
 import { useControls } from "leva";
 import UniformsControl from "./controls/uniform-controls";
+import { MutableRefObject } from "react";
 
 // following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
 
-const QuadTest = () => {
+interface QuadTestProps {
+  imgPath: string;
+}
+
+const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, ["/imgs/faro.jpg"]);
+  const quadRef = useRef<Mesh>(null!);
+  const [textureA] = useLoader(TextureLoader, [imgPath]);
 
   UniformsControl(matRef);
 
@@ -31,6 +37,7 @@ const QuadTest = () => {
   }, [textureA]);
 
   useFrame((state) => {
+    // console.log("state.camera", state.camera);
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_time.value = state.clock.elapsedTime;
     }
@@ -41,8 +48,9 @@ const QuadTest = () => {
       matRef.current.uniforms.u_resolution.value.y = size.height * 2;
     }
   }, [size]);
+
   return (
-    <ScreenQuad>
+    <ScreenQuad ref={quadRef}>
       <shaderMaterial
         ref={matRef}
         uniforms={uniforms}
@@ -56,7 +64,8 @@ const QuadTest = () => {
 const ShaderTextureQuad = () => {
   return (
     <Canvas>
-      <QuadTest />
+        <OrbitControls makeDefault />
+      <ScreenQuadWithCustomShader imgPath="/imgs/nebula.jpg" />
     </Canvas>
   );
 };

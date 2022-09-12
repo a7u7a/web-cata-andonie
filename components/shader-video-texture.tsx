@@ -1,18 +1,34 @@
-import { meshBounds, ScreenQuad, Plane } from "@react-three/drei";
+import {
+  meshBounds,
+  ScreenQuad,
+  Plane,
+  OrbitControls,
+} from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ShaderMaterial, TextureLoader, Vector2, sRGBEncoding } from "three";
-// import clipSpaceVert from "../shaders/clip-space.vert";
-// import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
-// import wobbleDistorsion from "../shaders/wobble-distorsion.frag";
-// import { useControls } from "leva";
+import {
+  ShaderMaterial,
+  TextureLoader,
+  Vector2,
+  sRGBEncoding,
+  Vector3,
+} from "three";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
 
-// following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
+interface VideoPlaneProps {
+  imgPath: string;
+}
 
-const QuadTest = () => {
+const VideoPlane = ({ imgPath }: VideoPlaneProps) => {
   const [video] = useState(() =>
     Object.assign(document.createElement("video"), {
-      src: "/videos/AT_1.mp4",
+      src: imgPath,
       crossOrigin: "Anonymous",
       loop: true,
       muted: true,
@@ -22,7 +38,7 @@ const QuadTest = () => {
   console.log(video);
   useEffect(() => void video.play(), []);
   return (
-    <Plane args={[16/1.5, 9/1.5]}>
+    <Plane args={[16, 9]}>
       <meshBasicMaterial toneMapped={false}>
         <videoTexture attach="map" args={[video]} encoding={sRGBEncoding} />
       </meshBasicMaterial>
@@ -32,8 +48,24 @@ const QuadTest = () => {
 
 const VideoTextureQuad = () => {
   return (
-    <Canvas>
-      <QuadTest />
+    <Canvas
+      style={{ background: "#000000" }}
+      gl={{
+        powerPreference: "high-performance",
+        alpha: false,
+        antialias: false,
+        stencil: false,
+        depth: false,
+      }}
+    >
+      <OrbitControls makeDefault />
+      <group position={new Vector3(0, 0, 0)}>
+        <VideoPlane imgPath="/videos/pulsos.mp4" />
+      </group>
+      <group position={new Vector3(0, 0, 3)}>
+        <VideoPlane imgPath="/videos/vidrio.mp4" />
+      </group>
+      
     </Canvas>
   );
 };

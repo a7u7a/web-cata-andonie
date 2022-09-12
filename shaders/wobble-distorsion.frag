@@ -35,5 +35,7 @@ void main() {
   vec4 color = texture2D(u_texture, newUV);
   // gl_FragColor = vec4(length(p)-1.,length(p)-1.,length(p)-1.,1.0);
   // gl_FragColor = vec4(newUV.y,newUV.x,newUV.y,1.0);
+  float a = abs((length(p)/2.0)-1.0);
+  color = vec4(color.x, color.y, color.z, a);
   gl_FragColor = color;   
 }

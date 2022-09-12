@@ -4,6 +4,7 @@ import ShaderBasicSample from "../components/shader-sample";
 import ShaderTexture from "../components/shader-texture";
 import ShaderTextureQuad from "../components/shader-texture2";
 import VideoTextureQuad from "../components/shader-video-texture";
+import WobbleVideo from "../components/wobble-video";
 const Home: NextPage = () => {
   return (
     <div>
@@ -24,12 +25,15 @@ const Home: NextPage = () => {
         <ShaderTexture />
       </div> */}
 
-      {/* <div className="w-1/3 h-[35rem]">
+      {/* <div className="w-full h-screen">
         <ShaderTextureQuad />
       </div> */}
 
-      <div className="w-full h-[35rem]">
+      {/* <div className="w-full h-[25rem]">
         <VideoTextureQuad />
+      </div> */}
+      <div className="w-full h-[25rem]">
+        <WobbleVideo />
       </div>
     </div>
   );
