@@ -1,5 +1,4 @@
 import {
-  meshBounds,
   ScreenQuad,
   Plane,
   OrbitControls,
@@ -59,10 +58,10 @@ const VideoTextureQuad = () => {
       }}
     >
       <OrbitControls makeDefault />
-      <group position={new Vector3(0, 0, 0)}>
+      <group position={[0,0,0]}>
         <VideoPlane imgPath="/videos/pulsos.mp4" />
       </group>
-      <group position={new Vector3(0, 0, 3)}>
+      <group position={[0,0,3]}>
         <VideoPlane imgPath="/videos/vidrio.mp4" />
       </group>
       

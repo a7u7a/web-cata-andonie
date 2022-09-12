@@ -1,38 +1,41 @@
 import {
-  meshBounds,
   ScreenQuad,
   OrbitControls,
   useVideoTexture,
+  Plane,
 } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import { ShaderMaterial, TextureLoader, Vector2, Mesh, Vector3 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
+import baseVert from "../shaders/base.vert";
 import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
 import wobbleDistorsion from "../shaders/wobble-distorsion.frag";
+import wobbleDistorsionL0 from "../shaders/wobble-distorsion-L0.frag";
+import wobbleDistorsionL1 from "../shaders/wobble-distorsion-L1.frag";
 import { useControls } from "leva";
 import UniformsControl from "./controls/uniform-controls";
 import { MutableRefObject } from "react";
 
-// following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
-
-interface QuadTestProps {
-  imgPath: string;
-}
-
 // here we try to pass the video as a texture to the shader
 
-const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
+interface QuadTestProps {
+  videoPath: string;
+  fragShader: string
+}
+
+const VideoLayer = ({ videoPath,fragShader }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const quadRef = useRef<Mesh>(null!);
-  const [textureA] = useLoader(TextureLoader, [imgPath]);
-  const texture = useVideoTexture("/videos/vidrio.mp4", {
+
+  const texture = useVideoTexture(videoPath, {
     unsuspend: "canplaythrough",
     muted: true,
     loop: true,
     start: true,
     crossOrigin: "Anonymous",
   });
+
   UniformsControl(matRef);
 
   const size = useThree((state) => state.size);
@@ -46,6 +49,8 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
       u_direction: { value: 2.0 },
+      u_alpha0:{value:0.5},
+      u_alpha1:{value:0.5}
     };
   }, [texture]);
 
@@ -65,9 +70,10 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
   return (
     <ScreenQuad ref={quadRef}>
       <shaderMaterial
+        transparent
         ref={matRef}
         uniforms={uniforms}
-        fragmentShader={wobbleDistorsion}
+        fragmentShader={fragShader}
         vertexShader={clipSpaceVert}
       />
     </ScreenQuad>
@@ -76,9 +82,23 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
 
 const WobbleVideo = () => {
   return (
-    <Canvas>
+    <Canvas
+      style={{ background: "#000000" }}
+      gl={{
+        powerPreference: "high-performance",
+        alpha: false,
+        antialias: false,
+        stencil: false,
+        depth: false,
+      }}
+    >
       <OrbitControls makeDefault />
-      <ScreenQuadWithCustomShader imgPath="/imgs/nebula.jpg" />
+      <group position={[0,0,0]}>
+        <VideoLayer fragShader={wobbleDistorsionL0} videoPath="/videos/vidrio.mp4" />
+      </group>
+      <group position={[0,0,3]}>
+        <VideoLayer fragShader={wobbleDistorsionL1} videoPath="/videos/pulsos.mp4" />
+      </group>
     </Canvas>
   );
 };

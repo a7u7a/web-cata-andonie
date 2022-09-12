@@ -60,6 +60,34 @@ const UniformsControl = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       transient: false,
     },
+    alpha0: {
+      label: "alpha0",
+      value: 0.5,
+      min: 0,
+      max: 1,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_alpha0.value = v;
+          // matRef.current.needsUpdate = true;
+        }
+      },
+      transient: false,
+    },
+    alpha1: {
+        label: "alpha1",
+        value: 0.5,
+        min: 0,
+        max: 1,
+        step: 0.00001,
+        onChange: (v) => {
+          if (matRef.current.uniforms) {
+            matRef.current.uniforms.u_alpha1.value = v;
+            // matRef.current.needsUpdate = true;
+          }
+        },
+        transient: false,
+      },
   });
 };
 
