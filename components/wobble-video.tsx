@@ -13,6 +13,7 @@ import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
 import wobbleDistorsion from "../shaders/wobble-distorsion.frag";
 import wobbleDistorsionL0 from "../shaders/wobble-distorsion-L0.frag";
 import wobbleDistorsionL1 from "../shaders/wobble-distorsion-L1.frag";
+import patternDistorsion from "../shaders/pattern-distorsion.frag";
 import { useControls } from "leva";
 import UniformsControl from "./controls/uniform-controls";
 import { MutableRefObject } from "react";
@@ -21,10 +22,10 @@ import { MutableRefObject } from "react";
 
 interface QuadTestProps {
   videoPath: string;
-  fragShader: string
+  fragShader: string;
 }
 
-const VideoLayer = ({ videoPath,fragShader }: QuadTestProps) => {
+const VideoLayer = ({ videoPath, fragShader }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const quadRef = useRef<Mesh>(null!);
 
@@ -48,9 +49,11 @@ const VideoLayer = ({ videoPath,fragShader }: QuadTestProps) => {
       u_scale: { value: 3.07 },
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
-      u_direction: { value: 2.0 },
-      u_alpha0:{value:0.5},
-      u_alpha1:{value:0.5}
+      u_direction: { value: 0.5 },
+      u_alpha0: { value: 0.5 },
+      u_alpha1: { value: 0.5 },
+      u_tyles_y: { value: 6 },
+      u_tyles_x: { value: 8 },
     };
   }, [texture]);
 
@@ -66,6 +69,10 @@ const VideoLayer = ({ videoPath,fragShader }: QuadTestProps) => {
       matRef.current.uniforms.u_resolution.value.y = size.height * 2;
     }
   }, [size]);
+
+  useEffect(() => {
+    console.log("tex", texture);
+  }, [texture]);
 
   return (
     <ScreenQuad ref={quadRef}>
@@ -92,12 +99,19 @@ const WobbleVideo = () => {
         depth: false,
       }}
     >
-      <OrbitControls makeDefault />
-      <group position={[0,0,0]}>
-        <VideoLayer fragShader={wobbleDistorsionL0} videoPath="/videos/vidrio.mp4" />
+      {/* layer0 */}
+      <group position={[0, 0, 0]}>
+        <VideoLayer
+          fragShader={wobbleDistorsionL0}
+          videoPath="/videos/pulsos.mp4"
+        />
       </group>
-      <group position={[0,0,3]}>
-        <VideoLayer fragShader={wobbleDistorsionL1} videoPath="/videos/pulsos.mp4" />
+      {/* layer1 */}
+      <group position={[0, 0, 3]}>
+        <VideoLayer
+          fragShader={patternDistorsion}
+          videoPath="/videos/vidrio.mp4"
+        />
       </group>
     </Canvas>
   );
