@@ -20,7 +20,7 @@ void main() {
   
   //vec3 color = vec3(0.0);
 
-  vec2 origin = st-vec2(u_direction);
+  vec2 origin = st;
   
   st.x *= u_tyles_x;
   st.y *= u_tyles_y;
