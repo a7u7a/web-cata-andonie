@@ -13,22 +13,25 @@ uniform float u_alpha1;
 varying vec2 vUv;
 uniform float u_tyles_y;
 uniform float u_tyles_x;
+uniform float u_posX;
+uniform float u_posY;
 
 
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
   
   //vec3 color = vec3(0.0);
-
+  vec2 offset = vec2(u_posX, u_posY);
   vec2 origin = st;
-  
+  //origin = ((origin/u_progress)/vec2(u_scale));
+
+
   st.x *= u_tyles_x;
   st.y *= u_tyles_y;
   st = fract(st);
 
-
   //color = vec3(st,0.0);
-  vec4 color = texture2D(u_texture, origin*st);
+  vec4 color = texture2D(u_texture, (st + (offset+(origin*u_progress)))*(vec2(u_scale)));
   gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
 
 

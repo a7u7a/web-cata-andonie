@@ -34,10 +34,11 @@ const Home: NextPage = () => {
       </div> */}
 
 
-      <div className="w-full h-screen">
+      <div className="relative w-full h-screen">
         <WobbleVideo />
       </div>
-        <div className="text-5xl font-black">Catalina Andonie</div>
+        <div className="fixed left-0 top-0 pt-3 pl-4 text-7xl font-black text-white">Catalina Andonie</div>
+      
         <div className="text-5xl">→</div>
         
         
