@@ -27,7 +27,7 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
   const quadRef = useRef<Mesh>(null!);
 
   const videoTexture = useVideoTexture(videoPath, {
-    unsuspend: "canplay",
+    unsuspend: "canplaythrough",
     muted: true,
     loop: true,
     start: true,
@@ -113,19 +113,19 @@ const WobbleVideo = ({ isPlay }: WobbleVideoProps) => {
       }}
     >
       {/* layer0 */}
-      <group position={[0, 0, 0]}>
+      {/* <group position={[0, 0, 0]}>
         <VideoLayer
           isPlay={isPlay}
           fragShader={wobbleDistorsionL0}
           videoPath="/videos/pulsos.mp4"
         />
-      </group>
+      </group> */}
       {/* layer1 */}
       <group position={[0, 0, 3]}>
         <VideoLayer
           isPlay={isPlay}
           fragShader={patternDistorsion}
-          videoPath="/videos/vidrio.mp4"
+          videoPath="/videos/vidrio_noaudio.mp4"
         />
       </group>
     </Canvas>
