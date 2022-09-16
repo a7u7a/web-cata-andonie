@@ -26,6 +26,7 @@ export function useVideoTexture(
   const texture = suspend<[url: string], () => Promise<THREE.VideoTexture>>(
     () =>
       new Promise((res, rej) => {
+        console.log("playsinline", playsinline);
         const video = Object.assign(document.createElement("video"), {
           src,
           crossOrigin,
@@ -36,10 +37,46 @@ export function useVideoTexture(
         });
         const texture = new THREE.VideoTexture(video);
         texture.encoding = gl.outputEncoding;
-        video.addEventListener(unsuspend, () => res(texture));
+        video.addEventListener("loadstart", (e) => {
+          //   console.log("canplaytype", video);
+          //   video.playsinline = true;
+          //   console.log("texture", texture);
+          //   console.log("video", video);
+          //   console.log("event", e.type);
+          console.log("canplay", video.canPlayType("video/mp4"));
+          console.log("readyState at loadstart", video.readyState);
+        });
+
+        video.addEventListener("progress", (e) => {
+          //   console.log("canplaytype", video);
+          //   video.playsinline = true;
+          //   console.log("texture", texture);
+          //   console.log("video", video);
+          //   console.log("event", e.type);
+          console.log("readyState at progress", video.readyState);
+        });
+        video.addEventListener(unsuspend, (e) => {
+          console.log("event", unsuspend, e.type);
+
+          return res(texture);
+        });
       }),
     [src]
   );
   useEffect(() => void (start && texture.image.play()), [texture]);
   return texture;
 }
+
+/*
+tested mp4, webm, ogv video file
+
+events tested on iOS Safari:
+loadstart (fires)
+progress (fires)
+abort (not fired)
+stalled (not fired)
+error (not fired)
+waiting (not fired)
+canplay (not fired)
+canplaythrough (not fired)
+*/

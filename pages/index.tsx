@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           }}
           className="absolute left-0 bottom-0 text-white text-2xl"
         >
-          play
+          {isPlay?"pause":"play"}
         </button>
       </div>
       <div className="fixed left-0 top-0 pt-3 pl-4 text-7xl font-black text-white">
