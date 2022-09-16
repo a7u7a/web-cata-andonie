@@ -30,7 +30,7 @@ const VideoLayer = ({ videoPath, fragShader }: QuadTestProps) => {
   const quadRef = useRef<Mesh>(null!);
 
   const texture = useVideoTexture(videoPath, {
-    unsuspend: "canplaythrough",
+    unsuspend: "canplay",
     muted: true,
     loop: true,
     start: true,

@@ -6,7 +6,7 @@ import clipSpaceVert from "../shaders/clip-space.vert";
 import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
 import wobbleDistorsion from "../shaders/wobble-distorsion.frag";
 import { useControls } from "leva";
-import UniformsControl from "./controls/uniform-controls";
+// import UniformsControl from "./controls/pattern-controls";
 import { MutableRefObject } from "react";
 
 // following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
@@ -20,7 +20,7 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
   const quadRef = useRef<Mesh>(null!);
   const [textureA] = useLoader(TextureLoader, [imgPath]);
 
-  UniformsControl(matRef);
+  // UniformsControl(matRef);
 
   const size = useThree((state) => state.size);
 
