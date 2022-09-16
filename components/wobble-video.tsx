@@ -35,7 +35,7 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
     playsinline: true,
   });
 
-  PatternControls(matRef);
+  // PatternControls(matRef);
 
   const size = useThree((state) => state.size);
 
@@ -43,14 +43,14 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
     return {
       u_texture: { value: videoTexture },
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_originScale: { value: 1 },
-      u_posX: { value: 0.0 },
-      u_posY: { value: 0.0 },
-      u_progress: { value: 0.608 },
+      u_originScale: { value: 0.5 },
+      u_posX: { value: 0.10 },
+      u_posY: { value: 0.22 },
+      u_progress: { value: 0.5 },
       u_scale: { value: 0.62 },
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
-      u_stScale: { value: 2.96 },
+      u_stScale: { value: 0.25 },
       u_alpha0: { value: 1 },
       u_alpha1: { value: 1 },
       u_tyles_y: { value: 6 },
