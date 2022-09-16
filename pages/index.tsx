@@ -32,9 +32,16 @@ const Home: NextPage = () => {
       {/* <div className="w-full h-[25rem]">
         <VideoTextureQuad />
       </div> */}
-      <div className="w-full h-[25rem]">
+
+
+      <div className="relative w-full h-screen">
         <WobbleVideo />
       </div>
+        <div className="fixed left-0 top-0 pt-3 pl-4 text-7xl font-black text-white">Catalina Andonie</div>
+      
+        <div className="text-5xl">→</div>
+        
+        
     </div>
   );
 };

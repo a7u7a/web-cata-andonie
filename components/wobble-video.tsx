@@ -1,39 +1,43 @@
 import {
-  meshBounds,
   ScreenQuad,
   OrbitControls,
   useVideoTexture,
+  Plane,
 } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import { ShaderMaterial, TextureLoader, Vector2, Mesh, Vector3 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
+import baseVert from "../shaders/base.vert";
 import textureDistorsionFrag from "../shaders/texture-distorsion.frag";
 import wobbleDistorsion from "../shaders/wobble-distorsion.frag";
+import wobbleDistorsionL0 from "../shaders/wobble-distorsion-L0.frag";
+import wobbleDistorsionL1 from "../shaders/wobble-distorsion-L1.frag";
+import patternDistorsion from "../shaders/pattern-distorsion.frag";
 import { useControls } from "leva";
-import UniformsControl from "./controls/uniform-controls";
+import PatternControls from "./controls/pattern-controls";
 import { MutableRefObject } from "react";
-
-// following https://dev.to/eriksachse/create-your-own-post-processing-shader-with-react-three-fiber-usefbo-and-dreis-shadermaterial-with-ease-1i6d
-
-interface QuadTestProps {
-  imgPath: string;
-}
 
 // here we try to pass the video as a texture to the shader
 
-const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
+interface QuadTestProps {
+  videoPath: string;
+  fragShader: string;
+}
+
+const VideoLayer = ({ videoPath, fragShader }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const quadRef = useRef<Mesh>(null!);
-  const [textureA] = useLoader(TextureLoader, [imgPath]);
-  const texture = useVideoTexture("/videos/vidrio.mp4", {
+
+  const texture = useVideoTexture(videoPath, {
     unsuspend: "canplaythrough",
     muted: true,
     loop: true,
     start: true,
     crossOrigin: "Anonymous",
   });
-  UniformsControl(matRef);
+
+  PatternControls(matRef);
 
   const size = useThree((state) => state.size);
 
@@ -41,11 +45,18 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
     return {
       u_texture: { value: texture },
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_progress: { value: 0.49 },
-      u_scale: { value: 3.07 },
+      u_originScale: { value: 1 },
+      u_posX: { value: 0.0 },
+      u_posY: { value: 0.0 },
+      u_progress: { value: 0.608 },
+      u_scale: { value: 0.62 },
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
-      u_direction: { value: 2.0 },
+      u_stScale: { value: 2.96 },
+      u_alpha0: { value: 1 },
+      u_alpha1: { value: 1 },
+      u_tyles_y: { value: 6 },
+      u_tyles_x: { value: 8 },
     };
   }, [texture]);
 
@@ -62,12 +73,17 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
     }
   }, [size]);
 
+  useEffect(() => {
+    console.log("tex", texture);
+  }, [texture]);
+
   return (
     <ScreenQuad ref={quadRef}>
       <shaderMaterial
+        transparent
         ref={matRef}
         uniforms={uniforms}
-        fragmentShader={wobbleDistorsion}
+        fragmentShader={fragShader}
         vertexShader={clipSpaceVert}
       />
     </ScreenQuad>
@@ -76,9 +92,30 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
 
 const WobbleVideo = () => {
   return (
-    <Canvas>
-      <OrbitControls makeDefault />
-      <ScreenQuadWithCustomShader imgPath="/imgs/nebula.jpg" />
+    <Canvas
+      style={{ background: "#000000" }}
+      gl={{
+        powerPreference: "high-performance",
+        alpha: false,
+        antialias: false,
+        stencil: false,
+        depth: false,
+      }}
+    >
+      {/* layer0 */}
+      <group position={[0, 0, 0]}>
+        <VideoLayer
+          fragShader={wobbleDistorsionL0}
+          videoPath="/videos/pulsos.mp4"
+        />
+      </group>
+      {/* layer1 */}
+      <group position={[0, 0, 3]}>
+        <VideoLayer
+          fragShader={patternDistorsion}
+          videoPath="/videos/vidrio.mp4"
+        />
+      </group>
     </Canvas>
   );
 };
