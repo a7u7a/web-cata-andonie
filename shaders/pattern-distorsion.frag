@@ -4,10 +4,11 @@ precision mediump float;
 #endif
 uniform vec2 u_resolution;
 uniform float u_progress;
+uniform float u_originScale;
 uniform float u_time;
 uniform float u_scale;
 uniform float u_speed;
-uniform float u_direction;
+uniform float u_stScale;
 uniform sampler2D u_texture;
 uniform float u_alpha1; 
 varying vec2 vUv;
@@ -16,14 +17,23 @@ uniform float u_tyles_x;
 uniform float u_posX;
 uniform float u_posY;
 
+float parabola( float x, float k ){
+  return pow( u_progress*x*(1.0-x), k );
+}
+
+// todo:
+// make it so that sampled uv it never goes out of bounds
+// add sublte zoom effect on each cell
 
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
+
+  float y = parabola(st.x,1.264);
   
   //vec3 color = vec3(0.0);
-  vec2 offset = vec2(u_posX, u_posY);
+  vec2 offset = vec2(u_posX+y, u_posY);
   vec2 origin = st;
-  //origin = ((origin/u_progress)/vec2(u_scale));
+  //origin = ((origin/u_originScale)/vec2(u_scale));
 
 
   st.x *= u_tyles_x;
@@ -31,7 +41,7 @@ void main() {
   st = fract(st);
 
   //color = vec3(st,0.0);
-  vec4 color = texture2D(u_texture, (st + (offset+(origin*u_progress)))*(vec2(u_scale)));
+  vec4 color = texture2D(u_texture, ((st*u_stScale) + ((offset)+(origin*u_originScale))));
   gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
 
 

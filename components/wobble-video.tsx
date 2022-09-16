@@ -15,7 +15,7 @@ import wobbleDistorsionL0 from "../shaders/wobble-distorsion-L0.frag";
 import wobbleDistorsionL1 from "../shaders/wobble-distorsion-L1.frag";
 import patternDistorsion from "../shaders/pattern-distorsion.frag";
 import { useControls } from "leva";
-import UniformsControl from "./controls/uniform-controls";
+import PatternControls from "./controls/pattern-controls";
 import { MutableRefObject } from "react";
 
 // here we try to pass the video as a texture to the shader
@@ -37,7 +37,7 @@ const VideoLayer = ({ videoPath, fragShader }: QuadTestProps) => {
     crossOrigin: "Anonymous",
   });
 
-  UniformsControl(matRef);
+  PatternControls(matRef);
 
   const size = useThree((state) => state.size);
 
@@ -45,13 +45,14 @@ const VideoLayer = ({ videoPath, fragShader }: QuadTestProps) => {
     return {
       u_texture: { value: texture },
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_progress: { value: 0.49 },
+      u_originScale: { value: 1 },
       u_posX: { value: 0.0 },
       u_posY: { value: 0.0 },
-      u_scale: { value: 3.07 },
+      u_progress: { value: 0.608 },
+      u_scale: { value: 0.62 },
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
-      u_direction: { value: 0.5 },
+      u_stScale: { value: 2.96 },
       u_alpha0: { value: 1 },
       u_alpha1: { value: 1 },
       u_tyles_y: { value: 6 },
