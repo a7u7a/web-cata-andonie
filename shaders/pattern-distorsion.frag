@@ -31,7 +31,7 @@ void main() {
   float y = parabola(st.x,1.264);
   
   //vec3 color = vec3(0.0);
-  vec2 offset = vec2(u_posX+y, u_posY);
+  vec2 offset = vec2(u_posX*y, u_posY);
   vec2 origin = st;
   //origin = ((origin/u_originScale)/vec2(u_scale));
 

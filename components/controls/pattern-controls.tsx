@@ -9,8 +9,8 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       positionX: {
         label: "PosX",
         value: 0.10,
-        min: -5,
-        max: 5,
+        min: -3,
+        max: 3,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -76,12 +76,12 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       progress: {
         label: "Progress",
         value: 0.5,
-        min: 0,
+        min: -5,
         max: 5,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
-            matRef.current.uniforms.u_progress.value = v;
+            matRef.current.uniforms.u_originScale.value = v;
           }
         },
         transient: false,
