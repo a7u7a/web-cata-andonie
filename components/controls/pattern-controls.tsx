@@ -8,9 +8,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     {
       positionX: {
         label: "PosX",
-        value: 0.10,
-        min: -3,
-        max: 3,
+        value: 0.0,
+        min: -1,
+        max: 1,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -22,9 +22,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       positionY: {
         label: "PosY",
-        value: 0.22,
-        min: -3,
-        max: 3,
+        value: 0.0,
+        min: -1,
+        max: 1,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -35,13 +35,27 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       stScale: {
         label: "st Scale",
-        value: 0.25,
+        value: 0.5,
         min: -3,
-        max: 15,
+        max: 3,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
             matRef.current.uniforms.u_stScale.value = v;
+            // matRef.current.needsUpdate = true;
+          }
+        },
+        transient: false,
+      },
+      st2Scale: {
+        label: "st2 Scale",
+        value: 0.5,
+        min: -3,
+        max: 3,
+        step: 0.00001,
+        onChange: (v) => {
+          if (matRef.current.uniforms) {
+            matRef.current.uniforms.u_st2Scale.value = v;
             // matRef.current.needsUpdate = true;
           }
         },
@@ -62,9 +76,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       // },
       originScale: {
         label: "Origin scale",
-        value: 0.5,
-        min: -5,
-        max: 5,
+        value: -3.40,
+        min: -4,
+        max: 2,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -81,7 +95,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
-            matRef.current.uniforms.u_originScale.value = v;
+            matRef.current.uniforms.u_progress.value = v;
           }
         },
         transient: false,

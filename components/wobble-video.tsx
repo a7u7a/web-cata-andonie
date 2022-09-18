@@ -23,6 +23,13 @@ interface QuadTestProps {
 }
 
 const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
+  useFrame(({ mouse }) => {
+    // console.log("mouse.x", mouse.x);
+    // console.log("mouse.y", mouse.y*10);
+    matRef.current.uniforms.u_mouseX.value = -mouse.x;
+    matRef.current.uniforms.u_mouseY.value = -mouse.y;
+  });
+
   const matRef = useRef<ShaderMaterial>(null!);
   const quadRef = useRef<Mesh>(null!);
 
@@ -35,22 +42,27 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
     playsinline: true,
   });
 
-  // PatternControls(matRef);
+  const [imgTexture] = useLoader(TextureLoader, ["imgs/xp.jpg"]);
+
+  PatternControls(matRef);
 
   const size = useThree((state) => state.size);
 
   const uniforms = useMemo(() => {
     return {
-      u_texture: { value: videoTexture },
+      u_texture: { value: imgTexture },
+      u_mouseX: { value: 0 },
+      u_mouseY: { value: 0 },
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_originScale: { value: 0.5 },
-      u_posX: { value: 0.10 },
+      u_originScale: { value: -3.4 },
+      u_posX: { value: 0.1 },
       u_posY: { value: 0.22 },
       u_progress: { value: 0.5 },
       u_scale: { value: 0.62 },
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
-      u_stScale: { value: 0.25 },
+      u_stScale: { value: 0.5 },
+      u_st2Scale: { value: 0.5 },
       u_alpha0: { value: 1 },
       u_alpha1: { value: 1 },
       u_tyles_y: { value: 6 },
@@ -61,9 +73,17 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
   useFrame((state) => {
     // console.log("state.camera", state.camera);
     if (matRef.current.uniforms) {
-      matRef.current.uniforms.u_time.value = state.clock.elapsedTime;
+      const t = state.clock.elapsedTime - 4.0;
+      matRef.current.uniforms.u_time.value = t;
     }
   });
+  // useEffect(() => {
+  //   if (matRef.current.uniforms) {
+  //     matRef.current.uniforms.u_mouseX.value.x = mouseX;
+  //     matRef.current.uniforms.u_mouseY.value.y = mouseY;
+  //   }
+  // }, [mouseX, mouseY]);
+
   useEffect(() => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width * 2;

@@ -9,6 +9,7 @@ uniform float u_time;
 uniform float u_scale;
 uniform float u_speed;
 uniform float u_stScale;
+uniform float u_st2Scale;
 uniform sampler2D u_texture;
 uniform float u_alpha1; 
 varying vec2 vUv;
@@ -16,33 +17,57 @@ uniform float u_tyles_y;
 uniform float u_tyles_x;
 uniform float u_posX;
 uniform float u_posY;
+uniform float u_mouseX;
+uniform float u_mouseY;
 
 float parabola( float x, float k ){
   return pow( u_progress*x*(1.0-x), k );
 }
 
-// todo:
-// make it so that sampled uv it never goes out of bounds
-// add sublte zoom effect on each cell
+float circle(in vec2 _st, in float _radius){
+    vec2 dist = _st-vec2(0.5);
+	return 1.-smoothstep(_radius-(_radius*2.834),
+                         _radius+(_radius*0.386),
+                         dot(dist,dist)*4.0);
+}
 
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
 
-  float y = parabola(st.x,1.264);
+  float t = u_time * 0.5;
+
+ // get parabola
+  float y = parabola(st.x,1.264)*u_originScale;
+  float x = parabola(st.y,1.264)*u_originScale;
   
-  //vec3 color = vec3(0.0);
-  vec2 offset = vec2(u_posX*y, u_posY);
-  vec2 origin = st;
-  //origin = ((origin/u_originScale)/vec2(u_scale));
+  // apply parabola to mouse/slider pos
+  vec2 offset = vec2(u_posX*y, u_posY*x);
 
-
+  // tiling
   st.x *= u_tyles_x;
   st.y *= u_tyles_y;
   st = fract(st);
 
-  //color = vec3(st,0.0);
-  vec4 color = texture2D(u_texture, ((st*u_stScale) + ((offset)+(origin*u_originScale))));
+  // scale
+  float s = 0.5;
+  st = (st+u_stScale)*u_stScale; 
+
+  // works but too tripy
+  // float y2 = parabola(st.x,1.264);
+  // float x2 = parabola(st.y,1.264);
+  // vec2 off2 = vec2(x2,y2);
+  // st = st +off2;
+
+  // zoom lens effect, add to total
+  vec2 lens = (vec2(circle(st, 0.9)) / 3.0); 
+
+
+  // find out why the tiles get stretched!
+  
+  vec4 color = texture2D(u_texture, (st - offset));
   gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
+
+
 
 
   // // vec2 uv = vUv;
