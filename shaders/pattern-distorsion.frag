@@ -31,17 +31,21 @@ float circle(in vec2 _st, in float _radius){
                          dot(dist,dist)*4.0);
 }
 
+// todo:
+// respect footage propotions and scale acording to canvas resolution
+
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
 
   float t = u_time * 0.5;
+  vec2 origin = st;
 
  // get parabola
   float y = parabola(st.x,1.264)*u_originScale;
   float x = parabola(st.y,1.264)*u_originScale;
   
   // apply parabola to mouse/slider pos
-  vec2 offset = vec2(u_posX*y, u_posY*x);
+  vec2 offset = vec2(u_mouseX*y, u_mouseY*x);
 
   // tiling
   st.x *= u_tyles_x;
@@ -50,7 +54,7 @@ void main() {
 
   // scale
   float s = 0.5;
-  st = (st+u_stScale)*u_stScale; 
+  st = (st+u_st2Scale)*u_stScale; 
 
   // works but too tripy
   // float y2 = parabola(st.x,1.264);
@@ -63,8 +67,8 @@ void main() {
 
 
   // find out why the tiles get stretched!
-  
-  vec4 color = texture2D(u_texture, (st - offset));
+
+  vec4 color = texture2D(u_texture, ((st - (origin-u_stScale)*u_st2Scale))-offset);
   gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
 
 

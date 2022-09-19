@@ -35,8 +35,8 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       stScale: {
         label: "st Scale",
-        value: 0.5,
-        min: -3,
+        value: 0.06,
+        min: -4,
         max: 3,
         step: 0.00001,
         onChange: (v) => {
@@ -49,7 +49,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       st2Scale: {
         label: "st2 Scale",
-        value: 0.5,
+        value: -1.14,
         min: -3,
         max: 3,
         step: 0.00001,
