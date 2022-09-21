@@ -24,7 +24,7 @@ uniform float u_x2;
 uniform float u_lens;
 
 float parabola( float x, float k ){
-  return pow( u_progress*x*(1.0-x), k );
+  return pow( 0.8*x*(1.0-x), k );
 }
 
 float circle(in vec2 _st, in float _radius){
@@ -37,8 +37,18 @@ float circle(in vec2 _st, in float _radius){
 float circle2(in vec2 _st, in float _radius){
     vec2 dist = _st-vec2(0.5);
 		return 1.-smoothstep(_radius-(_radius*1.474),
-                                                  _radius+(_radius*0.786),
-                         dot(dist,dist)*4.0);
+                        _radius+(_radius*0.786),
+                        dot(dist,dist)*4.0);
+}
+
+
+float circleAlpha(in vec2 _st, in float _radius, in float prog){
+  float p1 = mix(0.370,3.0 , prog); 
+  float p2 = mix(-0.5, 1.5, prog);
+    vec2 dist = _st-vec2(0.5);
+	return 1.-smoothstep(_radius-(_radius*0.132),
+                        _radius+(_radius*p2),
+                        dot(dist,dist)*4.0);
 }
 
 // todo:
@@ -62,17 +72,29 @@ void main() {
   st.x *= u_tyles_x;
   st.y *= u_tyles_y;
   st = fract(st);
+  float alphaTest = circleAlpha(st, .9, u_progress);
+
+  // idea: create a transition
+  // progress u_x1 from 0 to 0.15 (increase refraction)
+  // progress u_lens from 100 to 10 (increase lens effect)
+
+  // float refraction = mix(0.0,0.15, u_progress);
+  float refraction = 0.0;
+  // float lensDistorsion = mix(200.0, 10.0, u_progress);
+  float lensDistorsion = 200.0;
 
   // scale
   // st = (st - 0.5)*0.5;
-  // scale centered
-  vec2 lens = (vec2(circle(st, 1.9) / u_lens)); 
+  // vec2 lens = (vec2(circle(st, 1.9) / u_lens)); 
+  vec2 lens = (vec2(circle(st, 1.9) / lensDistorsion)); 
+
   // increase intensity of lens effect on center of screen
   // lens =  lens +vec3(circle2(origin, 2.0));
   // invert
   // lens = 1.0 - lens;
+  // scale centered
   float s = 0.5;
-  st = (st-s)*u_x1; 
+  st = (st-s)*refraction; 
 
   // works but too tripy
   // float y2 = parabola(st.x,1.264);
@@ -80,14 +102,9 @@ void main() {
   // vec2 off2 = vec2(x2,y2);
   // st = st +off2;
 
-  // zoom lens effect, add to total
-  
-
-
-  // find out why the tiles get stretched!
 
   vec4 color = texture2D(u_texture, ((st - (((origin-u_stScale)*u_st2Scale)))-offset)+lens);
-  gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
+  gl_FragColor = vec4(color.x,color.y,color.z, alphaTest);
 
   // gl_FragColor = vec4(lens, u_alpha1);
 
