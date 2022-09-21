@@ -21,6 +21,7 @@ uniform float u_mouseX;
 uniform float u_mouseY;
 uniform float u_x1;
 uniform float u_x2;
+uniform float u_lens;
 
 float parabola( float x, float k ){
   return pow( u_progress*x*(1.0-x), k );
@@ -29,7 +30,14 @@ float parabola( float x, float k ){
 float circle(in vec2 _st, in float _radius){
     vec2 dist = _st-vec2(0.5);
 	return 1.-smoothstep(_radius-(_radius*2.834),
-                         _radius+(_radius*0.386),
+                         _radius+(_radius*0.186),
+                         dot(dist,dist)*4.0);
+}
+
+float circle2(in vec2 _st, in float _radius){
+    vec2 dist = _st-vec2(0.5);
+		return 1.-smoothstep(_radius-(_radius*1.474),
+                                                  _radius+(_radius*0.786),
                          dot(dist,dist)*4.0);
 }
 
@@ -48,7 +56,7 @@ void main() {
   
   // apply parabola to mouse/slider pos
   vec2 offset = vec2(u_posX*y, u_posY*x);
-  //vec2 offset = vec2(u_mouseX*y, u_mouseY*x);
+  // vec2 offset = vec2(u_mouseX*y, u_mouseY*x);
 
   // tiling
   st.x *= u_tyles_x;
@@ -56,9 +64,15 @@ void main() {
   st = fract(st);
 
   // scale
-  float s = 0.5;
   // st = (st - 0.5)*0.5;
-  st = (st+u_x2)*u_x1; 
+  // scale centered
+  vec2 lens = (vec2(circle(st, 1.9) / u_lens)); 
+  // increase intensity of lens effect on center of screen
+  // lens =  lens +vec3(circle2(origin, 2.0));
+  // invert
+  // lens = 1.0 - lens;
+  float s = 0.5;
+  st = (st-s)*u_x1; 
 
   // works but too tripy
   // float y2 = parabola(st.x,1.264);
@@ -67,13 +81,15 @@ void main() {
   // st = st +off2;
 
   // zoom lens effect, add to total
-  vec2 lens = (vec2(circle(st, 0.9)) / 3.0); 
+  
 
 
   // find out why the tiles get stretched!
 
-  vec4 color = texture2D(u_texture, ((st - ((origin-u_stScale)*u_st2Scale)))-offset);
+  vec4 color = texture2D(u_texture, ((st - (((origin-u_stScale)*u_st2Scale)))-offset)+lens);
   gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
+
+  // gl_FragColor = vec4(lens, u_alpha1);
 
 
 

@@ -35,9 +35,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       stScale: {
         label: "st Scale",
-        value: 0.00,
-        min: -2,
-        max: 0,
+        value: -0.08,
+        min: -.1,
+        max: .1 ,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -47,11 +47,12 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
         },
         transient: false,
       },
+
       st2Scale: {
         label: "st2 Scale",
-        value: -1,
-        min: -3,
-        max: 3,
+        value: -0.85,
+        min: -1,
+        max: 1,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -63,9 +64,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       x1: {
         label: "x1",
-        value: 0,
-        min: -3,
-        max: 3,
+        value: 0.15,
+        min: 0,
+        max: 1,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -83,6 +84,20 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
         onChange: (v) => {
           if (matRef.current.uniforms) {
             matRef.current.uniforms.u_x2.value = v;
+          }
+        },
+        transient: false,
+      },
+      lens: {
+        label: "Lens",
+        value: 9.5,
+        min: 0,
+        max: 40,
+        step: 0.00001,
+        onChange: (v) => {
+          if (matRef.current.uniforms) {
+            matRef.current.uniforms.u_lens.value = v;
+            // matRef.current.needsUpdate = true;
           }
         },
         transient: false,
@@ -117,7 +132,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       
       progress: {
         label: "Progress",
-        value: 0.88,
+        value: 0.8,
         min: -5,
         max: 5,
         step: 0.00001,
