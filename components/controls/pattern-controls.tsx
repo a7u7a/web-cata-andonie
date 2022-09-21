@@ -35,9 +35,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       stScale: {
         label: "st Scale",
-        value: 0.06,
-        min: -4,
-        max: 3,
+        value: 0.00,
+        min: -2,
+        max: 0,
         step: 0.00001,
         onChange: (v) => {
           if (matRef.current.uniforms) {
@@ -49,7 +49,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       st2Scale: {
         label: "st2 Scale",
-        value: -1.14,
+        value: -1,
         min: -3,
         max: 3,
         step: 0.00001,
@@ -57,6 +57,32 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
           if (matRef.current.uniforms) {
             matRef.current.uniforms.u_st2Scale.value = v;
             // matRef.current.needsUpdate = true;
+          }
+        },
+        transient: false,
+      },
+      x1: {
+        label: "x1",
+        value: 0,
+        min: -3,
+        max: 3,
+        step: 0.00001,
+        onChange: (v) => {
+          if (matRef.current.uniforms) {
+            matRef.current.uniforms.u_x1.value = v;
+          }
+        },
+        transient: false,
+      },
+      x2: {
+        label: "x2",
+        value: -1,
+        min: -2,
+        max: 0,
+        step: 0.00001,
+        onChange: (v) => {
+          if (matRef.current.uniforms) {
+            matRef.current.uniforms.u_x2.value = v;
           }
         },
         transient: false,
@@ -77,7 +103,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       originScale: {
         label: "Origin scale",
         value: -3.40,
-        min: -4,
+        min: -5,
         max: 2,
         step: 0.00001,
         onChange: (v) => {
@@ -87,9 +113,11 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
         },
         transient: false,
       },
+
+      
       progress: {
         label: "Progress",
-        value: 0.5,
+        value: 0.88,
         min: -5,
         max: 5,
         step: 0.00001,

@@ -19,6 +19,8 @@ uniform float u_posX;
 uniform float u_posY;
 uniform float u_mouseX;
 uniform float u_mouseY;
+uniform float u_x1;
+uniform float u_x2;
 
 float parabola( float x, float k ){
   return pow( u_progress*x*(1.0-x), k );
@@ -45,7 +47,8 @@ void main() {
   float x = parabola(st.y,1.264)*u_originScale;
   
   // apply parabola to mouse/slider pos
-  vec2 offset = vec2(u_mouseX*y, u_mouseY*x);
+  vec2 offset = vec2(u_posX*y, u_posY*x);
+  //vec2 offset = vec2(u_mouseX*y, u_mouseY*x);
 
   // tiling
   st.x *= u_tyles_x;
@@ -54,7 +57,8 @@ void main() {
 
   // scale
   float s = 0.5;
-  st = (st+u_st2Scale)*u_stScale; 
+  // st = (st - 0.5)*0.5;
+  st = (st+u_x2)*u_x1; 
 
   // works but too tripy
   // float y2 = parabola(st.x,1.264);
@@ -68,7 +72,7 @@ void main() {
 
   // find out why the tiles get stretched!
 
-  vec4 color = texture2D(u_texture, ((st - (origin-u_stScale)*u_st2Scale))-offset);
+  vec4 color = texture2D(u_texture, ((st - ((origin-u_stScale)*u_st2Scale)))-offset);
   gl_FragColor = vec4(color.x,color.y,color.z, u_alpha1);
 
 

@@ -42,7 +42,7 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
     playsinline: true,
   });
 
-  const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
+  const [imgTexture] = useLoader(TextureLoader, ["imgs/diag.jpg"]);
 
   PatternControls(matRef);
 
@@ -50,23 +50,25 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
 
   const uniforms = useMemo(() => {
     return {
-      u_texture: { value: videoTexture },
+      u_texture: { value: imgTexture },
       u_mouseX: { value: 0 },
       u_mouseY: { value: 0 },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_originScale: { value: -3.4 },
       u_posX: { value: 0.1 },
       u_posY: { value: 0.22 },
-      u_progress: { value: 0.5 },
+      u_progress: { value: 0.88 },
       u_scale: { value: 0.62 },
       u_time: { value: 0.0 },
       u_speed: { value: 0.38738 },
-      u_stScale: { value: 0.5 },
-      u_st2Scale: { value: 0.5 },
       u_alpha0: { value: 1 },
       u_alpha1: { value: 1 },
       u_tyles_y: { value: 6 },
       u_tyles_x: { value: 8 },
+      u_stScale: { value: 0.0 },
+      u_st2Scale: { value: -1.0 },
+      u_x1: { value: 0 },
+      u_x2: { value: -1 },
     };
   }, [videoTexture]);
 
