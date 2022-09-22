@@ -33,7 +33,19 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const quadRef = useRef<Mesh>(null!);
 
-  const videoTexture = useVideoTexture(videoPath, {
+  const vPath1 = "/videos/vidrio_noaudio.mp4";
+  const vPath2 = "/videos/agua.mp4";
+
+  const videoTexture1 = useVideoTexture(vPath1, {
+    unsuspend: "canplaythrough",
+    muted: true,
+    loop: true,
+    start: true,
+    crossOrigin: "Anonymous",
+    playsinline: true,
+  });
+
+  const videoTexture2 = useVideoTexture(vPath2, {
     unsuspend: "canplaythrough",
     muted: true,
     loop: true,
@@ -50,28 +62,20 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
 
   const uniforms = useMemo(() => {
     return {
-      u_texture: { value: videoTexture },
+      u_texture1: { value: videoTexture1 },
+      u_texture2: { value: videoTexture2 },
       u_mouseX: { value: 0 },
       u_mouseY: { value: 0 },
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_originScale: { value: -3.4 },
       u_posX: { value: 0.1 },
       u_posY: { value: 0.22 },
       u_progress: { value: 0.88 },
-      u_scale: { value: 0.62 },
       u_time: { value: 0.0 },
-      u_speed: { value: 0.38738 },
-      u_alpha0: { value: 1 },
-      u_alpha1: { value: 1 },
       u_tyles_y: { value: 6 },
       u_tyles_x: { value: 8 },
-      u_stScale: { value: 0.0 },
-      u_st2Scale: { value: -1.0 },
-      u_x1: { value: 0 },
-      u_x2: { value: -1 },
-      u_lens: { value: 0.9 },
+      u_light:{value:0},
     };
-  }, [videoTexture]);
+  }, [videoTexture1, videoTexture2]);
 
   useFrame((state) => {
     // console.log("state.camera", state.camera);
@@ -80,6 +84,7 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
       matRef.current.uniforms.u_time.value = t;
     }
   });
+
   // useEffect(() => {
   //   if (matRef.current.uniforms) {
   //     matRef.current.uniforms.u_mouseX.value.x = mouseX;
@@ -94,17 +99,17 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
     }
   }, [size]);
 
-  useEffect(() => {
-    console.log("tex", videoTexture);
-  }, [videoTexture]);
+  // useEffect(() => {
+  //   console.log("tex", videoTexture);
+  // }, [videoTexture]);
 
-  useEffect(() => {
-    if (isPlay) {
-      videoTexture.image.play();
-    } else {
-      videoTexture.image.pause();
-    }
-  }, [isPlay]);
+  // useEffect(() => {
+  //   if (isPlay) {
+  //     videoTexture.image.play();
+  //   } else {
+  //     videoTexture.image.pause();
+  //   }
+  // }, [isPlay]);
 
   return (
     <ScreenQuad ref={quadRef}>
