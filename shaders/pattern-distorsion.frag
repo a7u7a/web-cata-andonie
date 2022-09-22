@@ -19,50 +19,55 @@ uniform float u_mouseX;
 uniform float u_mouseY;
 uniform float u_light;
 
+// todo:
+// respect footage propotions and scale acording to canvas resolution
+// dim image to allow type to be readable
+// make the tiles be squared relative to canvas dimensions
+// how to transition from one videotexture to the next
+// fix lens distorsion progress
 
-
+//  Function from Iñigo Quiles
+//  www.iquilezles.org/www/articles/functions/functions.htm
 float parabola( float x, float k ){
   return pow( 0.4*x*(1.0-x), k );
 }
 
-float circle(in vec2 _st, in float _radius){
-    vec2 dist = _st-vec2(0.5);
-	return 1.-smoothstep(_radius-(_radius*2.834),
-                         _radius+(_radius*0.186),
-                         dot(dist,dist)*4.0);
-}
 
-float circle2(in vec2 _st, in float _radius){
-    vec2 dist = _st-vec2(0.5);
-		return 1.-smoothstep(_radius-(_radius*1.474),
-                        _radius+(_radius*0.786),
-                        dot(dist,dist)*4.0);
+// Function by @patriciogv - 2015
+// http://patriciogonzalezvivo.com
+float circle(in vec2 _st, in float _radius){
+  vec2 dist = _st-vec2(0.5);
+	return 1.-smoothstep(_radius-(_radius*2.834),
+                       _radius+(_radius*0.186),
+                       dot(dist,dist)*4.0);
 }
 
 mat2 rotate2d(float _angle){
-    return mat2(cos(_angle),-sin(_angle),
-                sin(_angle),cos(_angle));
+  return mat2(cos(_angle),-sin(_angle),
+              sin(_angle),cos(_angle));
 }
 
 float linearMap(in float val, in float fromA, in float fromB, in float toA, in float toB ){
-    float x = (((val - fromA) * (toB - toA)) / (fromB - fromA) + toA); 
-    return clamp(toA,toB, x);
+  float x = (((val - fromA) * (toB - toA)) / (fromB - fromA) + toA); 
+  return clamp(toA,toB, x);
 }
 
-// todo:
-// respect footage propotions and scale acording to canvas resolution
-// dim image to allow type to be readable
-// how to transition from one videotexture to the next
+// make progress into a regular
+float progressCurve(in float x ){
+  return 1.0-pow(cos(PI*x),2.0);
+}
 
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
 
-  float t = u_time * 0.5;
+  float t = u_time * 0.2;
+  // float progress = u_progress;
+  float progress = progressCurve(t);
   // Keep a copy of the original uvs
   vec2 origin = st;
 
- // Get parabola
- float parabolaScale = -3.40;
+  // Get parabola
+  float parabolaScale = -3.40;
   float y = parabola(st.x,1.264) * parabolaScale;
   float x = parabola(st.y,1.264) * parabolaScale;
   // Apply parabola to mouse/slider pos
@@ -74,8 +79,10 @@ void main() {
   st.y *= u_tyles_y;
   st = fract(st);
 
+  // The idea is that fadeout happens after refraction effect using progress
+
   // Compute fade effect
-  float fadeProgress = linearMap(u_progress,0.6, 1.0, -1.5, 1.5);
+  float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
   vec2 sf = st;
 	// Move space from the center to the vec2(0.0)
   sf -= vec2(0.5);
@@ -87,7 +94,8 @@ void main() {
   float fadePct = (sin(sf.x)+-fadeProgress)*fadeScale;
 
   // Compute lens pattern effect
-  float refractionProgress = linearMap(u_progress,0.0, 0.75, 0.0, 1.0);
+
+  float refractionProgress = linearMap(progress,0.0, 0.75, 0.0, 1.0);
   float refraction = mix(0.0,0.15, refractionProgress);
   float lensDistorsion = mix(200.0, 10.0, refractionProgress);
   // Scale effect

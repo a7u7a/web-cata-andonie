@@ -103,13 +103,15 @@ const VideoLayer = ({ videoPath, fragShader, isPlay }: QuadTestProps) => {
   //   console.log("tex", videoTexture);
   // }, [videoTexture]);
 
-  // useEffect(() => {
-  //   if (isPlay) {
-  //     videoTexture.image.play();
-  //   } else {
-  //     videoTexture.image.pause();
-  //   }
-  // }, [isPlay]);
+  useEffect(() => {
+    if (isPlay) {
+      videoTexture1.image.play();
+      videoTexture2.image.play();
+    } else {
+      videoTexture1.image.pause();
+      videoTexture2.image.pause();
+    }
+  }, [isPlay]);
 
   return (
     <ScreenQuad ref={quadRef}>
