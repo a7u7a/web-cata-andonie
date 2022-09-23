@@ -8,6 +8,7 @@ import VideoTextureQuad from "../components/shader-video-texture";
 import WobbleVideo from "../components/wobble-video";
 const Home: NextPage = () => {
   const [isPlay, setIsPlay] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   return (
     <div>
@@ -37,16 +38,25 @@ const Home: NextPage = () => {
       </div> */}
 
       <div className="relative w-full h-screen">
-        <WobbleVideo isPlay={isPlay} />
-        <button
-          onClick={() => {
-            setIsPlay(!isPlay);
-            console.log("isPlay", isPlay);
-          }}
-          className="absolute left-0 bottom-0 text-white text-2xl"
-        >
-          {isPlay?"pause":"play"}
-        </button>
+        <WobbleVideo clicked={clicked} isPlay={isPlay} />
+        <div className="absolute left-0 bottom-0 text-white text-2xl">
+          <button
+            onClick={() => {
+              setIsPlay(!isPlay);
+              console.log("isPlay", isPlay);
+            }}
+          >
+            {isPlay ? "Pause" : "Play"}
+          </button>
+          <button
+            onClick={() => {
+              setClicked(!clicked);
+              console.log("clicked", clicked);
+            }}
+          >
+            Click me!
+          </button>
+        </div>
       </div>
       <div className="fixed left-0 top-0 pt-3 pl-4 text-7xl font-black text-white">
         Catalina Andonie

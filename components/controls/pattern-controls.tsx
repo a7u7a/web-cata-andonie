@@ -73,9 +73,9 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     tyles_x: {
       label: "Tiles X",
-      value: 15,
+      value: 25,
       min: 0,
-      max: 20,
+      max: 30,
       step: 0.00001,
       onChange: (v) => {
         if (matRef.current.uniforms) {
