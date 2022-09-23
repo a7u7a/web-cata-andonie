@@ -1,4 +1,16 @@
-// receives a texture and distorts it. used by ScreenQuad
+/** Receives two textures distorts them.
+    Also makes a transition to blend between them. 
+    Used on ScreenQuad.
+*/
+
+// todo:
+// respect footage propotions and scale acording to canvas resolution
+// dim image to allow type to be readable
+// make the tiles be squared relative to canvas dimensions
+// how to transition from one videotexture to the next
+// fix lens distorsion progress
+// make fade progress gradual across screen
+
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -19,19 +31,11 @@ uniform float u_mouseX;
 uniform float u_mouseY;
 uniform float u_light;
 
-// todo:
-// respect footage propotions and scale acording to canvas resolution
-// dim image to allow type to be readable
-// make the tiles be squared relative to canvas dimensions
-// how to transition from one videotexture to the next
-// fix lens distorsion progress
-
 //  Function from Iñigo Quiles
 //  www.iquilezles.org/www/articles/functions/functions.htm
 float parabola( float x, float k ){
   return pow( 0.4*x*(1.0-x), k );
 }
-
 
 // Function by @patriciogv - 2015
 // http://patriciogonzalezvivo.com
@@ -62,7 +66,7 @@ void main() {
 
   float t = u_time * 0.2;
   // float progress = u_progress;
-  float progress = progressCurve(t);
+  float progress = progressCurve(u_progress);
   // Keep a copy of the original uvs
   vec2 origin = st;
 
@@ -94,7 +98,6 @@ void main() {
   float fadePct = (sin(sf.x)+-fadeProgress)*fadeScale;
 
   // Compute lens pattern effect
-
   float refractionProgress = linearMap(progress,0.0, 0.75, 0.0, 1.0);
   float refraction = mix(0.0,0.15, refractionProgress);
   float lensDistorsion = mix(200.0, 10.0, refractionProgress);
@@ -104,18 +107,17 @@ void main() {
   float s = 0.5;
   st = (st-s)*refraction; 
 
-  // tweak position and scale
+  // Tweak position and scale
   float dispOffset = -0.08;
   float dispScale = -0.85;
 
-  // sample textures
+  // Sample textures
   vec2 disp = ((st - (((origin-dispOffset)*dispScale)))-mouseOffset)+lensEffect;
   vec4 texture1 = texture2D(u_texture1, disp);
   vec4 texture2 = texture2D(u_texture2, disp);
   
-  // blend both textures
-  // reference: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
+  // Blend both textures. Reference: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
   vec4 color = u_light * mix(texture1, texture2, smoothstep(-0.25, 0.25, fadePct));
-  
+
   gl_FragColor = color;
 }
