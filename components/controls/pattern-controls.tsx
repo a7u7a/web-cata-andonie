@@ -59,7 +59,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     light: {
       label: "Light",
-      value: 1,
+      value: 0.9,
       min: 0,
       max: 1,
       step: 0.00001,

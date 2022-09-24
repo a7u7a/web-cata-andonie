@@ -10,6 +10,8 @@ const Home: NextPage = () => {
   const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
 
+  const onClick = () => {};
+
   return (
     <div>
       <Head>
@@ -41,30 +43,28 @@ const Home: NextPage = () => {
         <WobbleVideo clicked={clicked} isPlay={isPlay} />
         <div className="absolute left-0 bottom-0 text-white text-2xl">
           <div className="flex flex-row space-x-6">
-
-          <button
-            onClick={() => {
-              setIsPlay(!isPlay);
-              console.log("isPlay", isPlay);
-            }}
+            <button
+              onClick={() => {
+                setIsPlay(!isPlay);
+                console.log("isPlay", isPlay);
+              }}
             >
-            {isPlay ? "Pause" : "Play"}
-          </button>
-          <button
-            onClick={() => {
-              setClicked(!clicked);
-              console.log("clicked", clicked);
-            }}
-            >
-            Click me!
-          </button>
-            </div>
+              {isPlay ? "Pause" : "Play"}
+            </button>
+          </div>
         </div>
       </div>
-      <div className="fixed left-0 top-0 pt-3 pl-4 text-7xl font-black text-white">
-        Catalina Andonie
+      <div className="absolute pt-3 pl-4 left-0 top-0 text-white w-full mix-blend-exclusion">
+        <div className="text-7xl font-black">Catalina Andonie</div>
+        <div className="flex flex-row justify-between text-4xl pr-4 pt-4">
+          <div>About</div>
+          <div>Works</div>
+        </div>
+        <div className="flex flex-row justify-between text-5xl pr-4 pt-4">
+          <button onClick={() => setClicked(!clicked)}>←</button>
+          <button onClick={() => setClicked(!clicked)}>→</button>
+        </div>
       </div>
-
       <div className="text-5xl">→</div>
     </div>
   );

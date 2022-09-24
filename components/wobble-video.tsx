@@ -52,7 +52,9 @@ const VideoLayer = ({
     playsinline: true,
   });
 
-  const [imgTexture] = useLoader(TextureLoader, ["imgs/grid.jpg"]);
+  videoTexture2.dispose()
+
+  const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
   // PatternControls(matRef);
 
@@ -72,7 +74,7 @@ const VideoLayer = ({
       u_time: { value: 0.0 },
       u_tyles_y: { value: 15 },
       u_tyles_x: { value: 25 },
-      u_light: { value: 1 },
+      u_light: { value: .9 },
     };
   }, [videoTexture1, videoTexture2]);
 
@@ -95,6 +97,8 @@ const VideoLayer = ({
 
   // play pause
   useEffect(() => {
+    
+
     if (isPlay) {
       videoTexture1.image.play();
       videoTexture2.image.play();
