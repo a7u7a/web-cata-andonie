@@ -111,7 +111,7 @@ const VideoLayer = ({
   const [{ fadeProgress }] = useSpring(
     {
       fadeProgress: clicked ? 0 : 1,
-      config:{duration:1000}
+      config:{duration:2000}
     },
     [clicked]
   );
@@ -119,7 +119,7 @@ const VideoLayer = ({
   const { progress } = useSpring({
     progress: clicked ? 0 : 1,
     loop: true,
-    config: { mass: 1, tension: 280, friction: 60, duration: 1000 },
+    config: { mass: 1, tension: 280, friction: 60, duration: 2000 },
   });
 
   return (

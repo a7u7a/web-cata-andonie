@@ -56,11 +56,14 @@ const Home: NextPage = () => {
           <div>About</div>
           <div>Works</div>
         </div>
-        <div className="flex flex-row justify-between text-5xl pr-4 pt-4">
+        <div className="flex flex-row justify-between text-5xl pr-4 pt-4 mix-blend-plus-lighter">
           <button onClick={() => setClicked(!clicked)}>←</button>
           <button onClick={() => setClicked(!clicked)}>→</button>
         </div>
       </div>
+      <div className="text-5xl mt-12">Hola</div>
+      <div className="text-5xl mt-12">Hola</div>
+      <div className="text-5xl mt-12">Hola</div>
       <div className="text-5xl mt-12">Hola</div>
     </div>
   );
