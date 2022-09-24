@@ -3,35 +3,23 @@ import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import { ShaderMaterial, TextureLoader, Vector2, Mesh, Vector3 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
-import patternDistorsion from "../shaders/pattern-distorsion.frag";
+import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTexture } from "./my-useVideTexture";
-import { useSpring, animated, config } from "@react-spring/three";
+import { useSpring, a, config } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 
 // here we try to pass the video as a texture to the shader
 
 interface QuadTestProps {
-  videoPath: string;
-  fragShader: string;
   isPlay: boolean;
   clicked: boolean;
 }
 
-const VideoLayer = ({
-  videoPath,
-  fragShader,
-  isPlay,
-  clicked,
-}: QuadTestProps) => {
-  useFrame(({ mouse }) => {
-    matRef.current.uniforms.u_mouseX.value = -mouse.x;
-    matRef.current.uniforms.u_mouseY.value = -mouse.y;
-  });
-
+const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const quadRef = useRef<Mesh>(null!);
+  const size = useThree((state) => state.size);
 
-  const vPath1 = "/videos/sagrada.mp4";
+  const vPath1 = "/videos/faro_zoom.mp4";
   const vPath2 = "/videos/pasillo.mp4";
   const vPath3 = "/videos/sagrada.mp4";
 
@@ -53,13 +41,18 @@ const VideoLayer = ({
     playsinline: true,
   });
 
-  videoTexture2.dispose()
+  const videoTexture3 = useVideoTexture(vPath1, {
+    unsuspend: "canplaythrough",
+    muted: true,
+    loop: true,
+    start: true,
+    crossOrigin: "Anonymous",
+    playsinline: true,
+  });
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
   // PatternControls(matRef);
-
-  const size = useThree((state) => state.size);
 
   const uniforms = useMemo(() => {
     return {
@@ -75,10 +68,17 @@ const VideoLayer = ({
       u_time: { value: 0.0 },
       u_tyles_y: { value: 15 },
       u_tyles_x: { value: 25 },
-      u_light: { value: .9 },
+      u_light: { value: 0.9 },
     };
   }, [videoTexture1, videoTexture2]);
 
+  // update mouse
+  useFrame(({ mouse }) => {
+    matRef.current.uniforms.u_mouseX.value = -mouse.x;
+    matRef.current.uniforms.u_mouseY.value = -mouse.y;
+  });
+
+  // 
   useFrame((state) => {
     if (matRef.current.uniforms) {
       const t = state.clock.elapsedTime;
@@ -91,15 +91,11 @@ const VideoLayer = ({
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width * 2;
       matRef.current.uniforms.u_resolution.value.y = size.height * 2;
-
-
     }
   }, [size]);
 
   // play pause
   useEffect(() => {
-    
-
     if (isPlay) {
       videoTexture1.image.play();
       videoTexture2.image.play();
@@ -112,7 +108,7 @@ const VideoLayer = ({
   const [{ fadeProgress }] = useSpring(
     {
       fadeProgress: clicked ? 0 : 1,
-      config:{duration:2000}
+      config: { duration: 2000 },
     },
     [clicked]
   );
@@ -124,15 +120,15 @@ const VideoLayer = ({
   });
 
   return (
-    <ScreenQuad ref={quadRef}>
+    <ScreenQuad>
       {/* @ts-ignore: https://github.com/pmndrs/react-spring/issues/1515 */}
-      <animated.shaderMaterial
+      <a.shaderMaterial
         transparent
         ref={matRef}
         uniforms={uniforms}
         uniforms-u_progress-value={progress}
         uniforms-u_fadeProgress-value={fadeProgress}
-        fragmentShader={fragShader}
+        fragmentShader={noiseTransition}
         vertexShader={clipSpaceVert}
       />
     </ScreenQuad>
@@ -157,12 +153,7 @@ const WobbleVideo = ({ isPlay, clicked }: WobbleVideoProps) => {
       }}
     >
       <group position={[0, 0, 3]}>
-        <VideoLayer
-          isPlay={isPlay}
-          clicked={clicked}
-          fragShader={patternDistorsion}
-          videoPath="/videos/vidrio_noaudio.mp4"
-        />
+        <VideoLayer isPlay={isPlay} clicked={clicked} />
       </group>
     </Canvas>
   );

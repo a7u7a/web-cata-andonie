@@ -10,8 +10,6 @@ const Home: NextPage = () => {
   const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
 
-  const onClick = () => {};
-
   return (
     <div>
       <Head>
@@ -22,11 +20,11 @@ const Home: NextPage = () => {
 
       <div className="relative w-full h-[135vh]">
         <WobbleVideo clicked={clicked} isPlay={isPlay} />
-        <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter pb-24">
+        {/* <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter pb-24">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
         voluptates voluptatem sunt unde necessitatibus possimus minus neque et
         incidunt cupiditate.
-      </div>  
+      </div>   */}
       </div>
 
       
