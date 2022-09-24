@@ -40,12 +40,14 @@ const Home: NextPage = () => {
       <div className="relative w-full h-screen">
         <WobbleVideo clicked={clicked} isPlay={isPlay} />
         <div className="absolute left-0 bottom-0 text-white text-2xl">
+          <div className="flex flex-row space-x-6">
+
           <button
             onClick={() => {
               setIsPlay(!isPlay);
               console.log("isPlay", isPlay);
             }}
-          >
+            >
             {isPlay ? "Pause" : "Play"}
           </button>
           <button
@@ -53,9 +55,10 @@ const Home: NextPage = () => {
               setClicked(!clicked);
               console.log("clicked", clicked);
             }}
-          >
+            >
             Click me!
           </button>
+            </div>
         </div>
       </div>
       <div className="fixed left-0 top-0 pt-3 pl-4 text-7xl font-black text-white">

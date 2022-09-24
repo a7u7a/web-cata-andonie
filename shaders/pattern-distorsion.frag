@@ -19,6 +19,7 @@ precision mediump float;
 
 uniform vec2 u_resolution;
 uniform float u_progress;
+uniform float u_fadeProgress;
 uniform float u_time;
 uniform sampler2D u_texture1;
 uniform sampler2D u_texture2;
@@ -70,10 +71,12 @@ void main() {
   // Keep a copy of the original uvs
   vec2 origin = st;
 
+  // Mouse interaction
   // Get parabola
   float parabolaScale = -3.40;
-  float y = parabola(st.x,1.264) * parabolaScale;
-  float x = parabola(st.y,1.264) * parabolaScale;
+  float parabolaK = 1.264;
+  float y = parabola(st.x,parabolaK) * parabolaScale;
+  float x = parabola(st.y,parabolaK) * parabolaScale;
   // Apply parabola to mouse/slider pos
   // vec2 offset = vec2(u_posX*y, u_posY*x); // using leva controls
   vec2 mouseOffset = vec2(u_mouseX*y, u_mouseY*x);
@@ -83,10 +86,11 @@ void main() {
   st.y *= u_tyles_y;
   st = fract(st);
 
-  // The idea is that fadeout happens after refraction effect using progress
+  
 
   // Compute fade effect
-  float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
+  float fadeProgress = linearMap(u_fadeProgress,0.0, 1.0, -1.0, 1.5);
+  // float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
   vec2 sf = st;
 	// Move space from the center to the vec2(0.0)
   sf -= vec2(0.5);
@@ -98,7 +102,8 @@ void main() {
   float fadePct = (sin(sf.x)+-fadeProgress)*fadeScale;
 
   // Compute lens pattern effect
-  float refractionProgress = linearMap(progress,0.0, 0.75, 0.0, 1.0);
+  //float refractionProgress = 0.0;
+  float refractionProgress = linearMap(progress,0.0, 1.0, 0.0, 1.0);
   float refraction = mix(0.0,0.15, refractionProgress);
   float lensDistorsion = mix(200.0, 10.0, refractionProgress);
   // Scale effect

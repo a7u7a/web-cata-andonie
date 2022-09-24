@@ -31,7 +31,19 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       transient: false,
     },
-    
+    fadeProgress: {
+      label: "Fade Progress",
+      value: 0,
+      min: 0,
+      max: 1,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_fadeProgress.value = v;
+        }
+      },
+      transient: false,
+    },
     progress: {
       label: "Progress",
       value: 0,
