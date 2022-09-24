@@ -89,7 +89,7 @@ void main() {
   
 
   // Compute fade effect
-  float fadeProgress = linearMap(u_fadeProgress,0.0, 1.0, -1.0, 1.5);
+  float fadeProgress = linearMap(u_fadeProgress,0.0, 1.0, -0.7, 1.2);
   // float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
   vec2 sf = st;
 	// Move space from the center to the vec2(0.0)

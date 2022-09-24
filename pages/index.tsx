@@ -39,7 +39,7 @@ const Home: NextPage = () => {
         <VideoTextureQuad />
       </div> */}
 
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-[110vh]">
         <WobbleVideo clicked={clicked} isPlay={isPlay} />
         <div className="absolute left-0 bottom-0 text-white text-2xl">
           <div className="flex flex-row space-x-6">
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="absolute pt-3 pl-4 left-0 top-0 text-white w-full mix-blend-exclusion">
+      <div className="fixed pt-3 pl-4 left-0 top-0 text-indigo-200 w-full mix-blend-plus-lighter">
         <div className="text-7xl font-black">Catalina Andonie</div>
         <div className="flex flex-row justify-between text-4xl pr-4 pt-4">
           <div>About</div>
