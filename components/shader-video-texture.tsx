@@ -34,7 +34,7 @@ const VideoPlane = ({ imgPath }: VideoPlaneProps) => {
       autoplay: true,
     })
   );
-  console.log(video);
+  // console.log(video);
   useEffect(() => void video.play(), []);
   return (
     <Plane args={[16, 9]}>

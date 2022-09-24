@@ -26,7 +26,7 @@ export function useVideoTexture(
   const texture = suspend<[url: string], () => Promise<THREE.VideoTexture>>(
     () =>
       new Promise((res, rej) => {
-        console.log("playsinline", playsinline);
+        // console.log("playsinline", playsinline);
         const video = Object.assign(document.createElement("video"), {
           src,
           crossOrigin,
@@ -43,8 +43,9 @@ export function useVideoTexture(
           //   console.log("texture", texture);
           //   console.log("video", video);
           //   console.log("event", e.type);
-          console.log("canplay", video.canPlayType("video/mp4"));
-          console.log("readyState at loadstart", video.readyState);
+
+          // console.log("canplay", video.canPlayType("video/mp4"));
+          // console.log("readyState at loadstart", video.readyState);
         });
 
         video.addEventListener("progress", (e) => {
@@ -52,11 +53,12 @@ export function useVideoTexture(
           //   video.playsinline = true;
           //   console.log("texture", texture);
           //   console.log("video", video);
+          
           //   console.log("event", e.type);
-          console.log("readyState at progress", video.readyState);
+          // console.log("readyState at progress", video.readyState);
         });
         video.addEventListener(unsuspend, (e) => {
-          console.log("event", unsuspend, e.type);
+          // console.log("event", unsuspend, e.type);
 
           return res(texture);
         });

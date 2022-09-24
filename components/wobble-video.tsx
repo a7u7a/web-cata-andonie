@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import { ShaderMaterial, TextureLoader, Vector2, Mesh, Vector3 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
 import noiseTransition from "../shaders/noise-transition.frag";
-import { useVideoTexture } from "./my-useVideTexture";
+import { useVideoTexture } from "./my-useVideoTexture";
 import { useSpring, a, config } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 
@@ -41,7 +41,7 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
     playsinline: true,
   });
 
-  const videoTexture3 = useVideoTexture(vPath1, {
+  const videoTexture3 = useVideoTexture(vPath3, {
     unsuspend: "canplaythrough",
     muted: true,
     loop: true,
@@ -72,19 +72,13 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
     };
   }, [videoTexture1, videoTexture2]);
 
-  // update mouse
-  useFrame(({ mouse }) => {
-    matRef.current.uniforms.u_mouseX.value = -mouse.x;
-    matRef.current.uniforms.u_mouseY.value = -mouse.y;
-  });
-
-  // 
-  useFrame((state) => {
-    if (matRef.current.uniforms) {
-      const t = state.clock.elapsedTime;
-      matRef.current.uniforms.u_time.value = t;
-    }
-  });
+  //
+  // useFrame((state) => {
+  //   if (matRef.current.uniforms) {
+  //     const t = state.clock.elapsedTime;
+  //     matRef.current.uniforms.u_time.value = t;
+  //   }
+  // });
 
   // provide resolution to shader
   useEffect(() => {
@@ -104,6 +98,12 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
       videoTexture2.image.pause();
     }
   }, [isPlay]);
+
+  useEffect(() => {
+    matRef.current.uniforms.u_texture2.value = clicked
+      ? videoTexture2
+      : videoTexture3;
+  }, [clicked]);
 
   const [{ fadeProgress }] = useSpring(
     {
