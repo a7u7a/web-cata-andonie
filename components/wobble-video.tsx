@@ -31,8 +31,9 @@ const VideoLayer = ({
   const matRef = useRef<ShaderMaterial>(null!);
   const quadRef = useRef<Mesh>(null!);
 
-  const vPath1 = "/videos/vidrio_noaudio.mp4";
-  const vPath2 = "/videos/agua.mp4";
+  const vPath1 = "/videos/sagrada.mp4";
+  const vPath2 = "/videos/pasillo.mp4";
+  const vPath3 = "/videos/sagrada.mp4";
 
   const videoTexture1 = useVideoTexture(vPath1, {
     unsuspend: "canplaythrough",

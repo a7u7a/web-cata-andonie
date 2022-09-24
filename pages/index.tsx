@@ -20,35 +20,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <div className="text-5xl">Catalina Andonie</div>
-      <div className="text-5xl font-bold">Catalina Andonie</div>
-      <div className="text-5xl font-black">Catalina Andonie</div> */}
-
-      {/* <div className="w-1/4">
-        <ShaderBasicSample />
-      </div> */}
-      {/* <div className="w-full h-[50vh]">
-        <ShaderTexture />
-      </div> */}
-
-      {/* <div className="w-full h-screen">
-        <ShaderTextureQuad />
-      </div> */}
-
-      {/* <div className="w-full h-[25rem]">
-        <VideoTextureQuad />
-      </div> */}
-
-      <div className="relative w-full h-[110vh]">
+      <div className="relative w-full h-[135vh]">
         <WobbleVideo clicked={clicked} isPlay={isPlay} />
-        
-      </div>
-
-      <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter">
+        <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter pb-24">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
         voluptates voluptatem sunt unde necessitatibus possimus minus neque et
         incidunt cupiditate.
+      </div>  
       </div>
+
+      
 
       <div className="fixed pt-3 pl-4 left-0 top-0 text-indigo-200 w-full mix-blend-plus-lighter">
         <div className="text-7xl font-black">Catalina Andonie</div>

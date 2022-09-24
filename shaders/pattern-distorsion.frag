@@ -1,15 +1,14 @@
-/** Receives two textures distorts them.
-    Also makes a transition to blend between them. 
-    Used on ScreenQuad.
+/** 
+  Receives two textures distorts them using tile distorsion
+  Also creates a transition to blend between them
+  Used on ScreenQuad along clip-space.vert shader
 */
 
-// todo:
-// respect footage propotions and scale acording to canvas resolution
-// dim image to allow type to be readable
-// make the tiles be squared relative to canvas dimensions
-// how to transition from one videotexture to the next
-// fix lens distorsion progress
-// make fade progress gradual across screen
+// ToDo:
+// Respect footage propotions and scale acording to canvas resolution
+// Respect footage center
+// Make the tiles be squared relative to canvas dimensions
+// Make fade progress gradual across screen (diagonal)
 
 #ifdef GL_ES
 precision mediump float;
@@ -65,14 +64,14 @@ float progressCurve(in float x ){
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
 
-  float t = u_time * 0.2;
+  // float t = u_time * 0.2;
   // float progress = u_progress;
   float progress = progressCurve(u_progress);
-  // Keep a copy of the original uvs
+  // Clone original uvs
   vec2 origin = st;
-
+ 
   // Mouse interaction
-  // Get parabola
+  // Get parabola that distorts the image
   float parabolaScale = -3.40;
   float parabolaK = 1.264;
   float y = parabola(st.x,parabolaK) * parabolaScale;
@@ -85,8 +84,6 @@ void main() {
   st.x *= u_tyles_x;
   st.y *= u_tyles_y;
   st = fract(st);
-
-  
 
   // Compute fade effect
   float fadeProgress = linearMap(u_fadeProgress,0.0, 1.0, -0.7, 1.2);
@@ -107,7 +104,8 @@ void main() {
   float refraction = mix(0.0,0.15, refractionProgress);
   float lensDistorsion = mix(200.0, 10.0, refractionProgress);
   // Scale effect
-  vec2 lensEffect = (vec2(circle(st, 1.9) / lensDistorsion)); 
+  float lensRadius = 1.9;
+  vec2 lensEffect = (vec2(circle(st, lensRadius) / lensDistorsion)); 
   // Refraction effect is achieved by scaling the tile from the tile's center point
   float s = 0.5;
   st = (st-s)*refraction; 
@@ -121,7 +119,7 @@ void main() {
   vec4 texture1 = texture2D(u_texture1, disp);
   vec4 texture2 = texture2D(u_texture2, disp);
   
-  // Blend both textures. Reference: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
+  // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
   vec4 color = u_light * mix(texture1, texture2, smoothstep(-0.25, 0.25, fadePct));
 
   gl_FragColor = color;
