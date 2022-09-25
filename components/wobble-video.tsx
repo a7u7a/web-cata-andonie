@@ -7,17 +7,18 @@ import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTexture } from "./my-useVideoTexture";
 import { useSpring, a, config } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
+import { VideoNavProps } from "../lib/interfaces";
 
 // here we try to pass the video as a texture to the shader
 
 interface QuadTestProps {
-  isPlay: boolean;
-  clicked: boolean;
+  videoNav: VideoNavProps;
 }
 
-const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
+const VideoLayer = ({ videoNav }: QuadTestProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
+  const [currentTexture, setCurrentTexture] = useState(2);
 
   const vPath1 = "/videos/faro_zoom.mp4";
   const vPath2 = "/videos/pasillo.mp4";
@@ -121,15 +122,15 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
   }, [size]);
 
   // play pause
-  useEffect(() => {
-    if (isPlay) {
-      videoTexture1.image.play();
-      videoTexture2.image.play();
-    } else {
-      videoTexture1.image.pause();
-      videoTexture2.image.pause();
-    }
-  }, [isPlay]);
+  // useEffect(() => {
+  //   if (isPlay) {
+  //     videoTexture1.image.play();
+  //     videoTexture2.image.play();
+  //   } else {
+  //     videoTexture1.image.pause();
+  //     videoTexture2.image.pause();
+  //   }
+  // }, [isPlay]);
 
   // useEffect(() => {
   //   const videos = [videoTexture1, videoTexture2, videoTexture3];
@@ -139,13 +140,28 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
   //     : videoTexture3;
   // }, [clicked]);
 
+  const onSpringEnd = (videoNav: VideoNavProps) => {
+    // console.log("fadeProgress loop", videoNav);
+    const videos = [videoTexture1, videoTexture2, videoTexture3];
+    const _ = (currentTexture) % videos.length;
+
+    console.log("onSpringEnd", _, "toggle", videoNav);
+    // use toggle value to determine which texture channel to swap
+    if (videoNav.toggle) {  
+      matRef.current.uniforms.u_texture1.value = videos[_];
+    } else {
+      matRef.current.uniforms.u_texture2.value = videos[_];
+    }
+    setCurrentTexture(currentTexture + videoNav.direction);
+  };
+
   const [{ fadeProgress }] = useSpring(
     {
-      fadeProgress: clicked ? 0 : 1,
-      loop: () => console.log("fadeProgress loop"),
+      fadeProgress: videoNav.toggle ? 0 : 1,
+      loop: () => onSpringEnd(videoNav),
       config: { duration: 2000 },
     },
-    [clicked]
+    [videoNav]
   );
 
   // const { progress } = useSpring({
@@ -171,11 +187,10 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
 };
 
 interface WobbleVideoProps {
-  isPlay: boolean;
-  clicked: boolean;
+  videoNav: VideoNavProps;
 }
 
-const WobbleVideo = ({ isPlay, clicked }: WobbleVideoProps) => {
+const WobbleVideo = ({ videoNav }: WobbleVideoProps) => {
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -188,7 +203,7 @@ const WobbleVideo = ({ isPlay, clicked }: WobbleVideoProps) => {
       }}
     >
       <group position={[0, 0, 3]}>
-        <VideoLayer isPlay={isPlay} clicked={clicked} />
+        <VideoLayer videoNav={videoNav} />
       </group>
     </Canvas>
   );
