@@ -22,6 +22,7 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
   const vPath1 = "/videos/faro_zoom.mp4";
   const vPath2 = "/videos/pasillo.mp4";
   const vPath3 = "/videos/sagrada.mp4";
+  const vPath4 = "/videos/agua.mp4";
 
   const videoTexture1 = useVideoTexture(vPath1, {
     unsuspend: "canplaythrough",
@@ -49,6 +50,37 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
     crossOrigin: "Anonymous",
     playsinline: true,
   });
+
+  const videoTexture4 = useVideoTexture(vPath4, {
+    unsuspend: "canplaythrough",
+    muted: true,
+    loop: true,
+    start: true,
+    crossOrigin: "Anonymous",
+    playsinline: true,
+  });
+
+  /**
+   * Start
+   * Showing ch1 with vt1
+   *
+   * Click
+   * Start transition
+   * Wait until ch1 is not visible
+   * End transition
+   * swap ch1 with vt3
+   * now showing ch2 with vt2
+   *
+   * Click
+   * Start transition
+   * Wait until ch2 is not visible
+   * End transition
+   * swap ch2 with vt1
+   * now showing ch1 with vt3
+   *
+   *
+   *
+   */
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
@@ -99,15 +131,18 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
     }
   }, [isPlay]);
 
-  useEffect(() => {
-    matRef.current.uniforms.u_texture2.value = clicked
-      ? videoTexture2
-      : videoTexture3;
-  }, [clicked]);
+  // useEffect(() => {
+  //   const videos = [videoTexture1, videoTexture2, videoTexture3];
+
+  //   matRef.current.uniforms.u_texture2.value = clicked
+  //     ? videoTexture2
+  //     : videoTexture3;
+  // }, [clicked]);
 
   const [{ fadeProgress }] = useSpring(
     {
       fadeProgress: clicked ? 0 : 1,
+      loop: () => console.log("fadeProgress loop"),
       config: { duration: 2000 },
     },
     [clicked]
@@ -115,7 +150,7 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
 
   const { progress } = useSpring({
     progress: clicked ? 0 : 1,
-    loop: true,
+    loop: () => console.log("progress loop"),
     config: { mass: 1, tension: 280, friction: 60, duration: 2000 },
   });
 
