@@ -148,11 +148,11 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
     [clicked]
   );
 
-  const { progress } = useSpring({
-    progress: clicked ? 0 : 1,
-    loop: () => console.log("progress loop"),
-    config: { mass: 1, tension: 280, friction: 60, duration: 2000 },
-  });
+  // const { progress } = useSpring({
+  //   progress: clicked ? 0 : 1,
+  //   loop: () => console.log("progress loop"),
+  //   config: { mass: 1, tension: 280, friction: 60, duration: 2000 },
+  // });
 
   return (
     <ScreenQuad>
@@ -161,7 +161,7 @@ const VideoLayer = ({ isPlay, clicked }: QuadTestProps) => {
         transparent
         ref={matRef}
         uniforms={uniforms}
-        uniforms-u_progress-value={progress}
+        // uniforms-u_progress-value={progress}
         uniforms-u_fadeProgress-value={fadeProgress}
         fragmentShader={noiseTransition}
         vertexShader={clipSpaceVert}
