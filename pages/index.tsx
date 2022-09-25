@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   const [clicked, setClicked] = useState(false);
   const [videoNav, setVideoNav] = useState<VideoNavProps>({
     toggle: false,
-    direction: 1,
+    direction: 0,
   });
 
   return (
