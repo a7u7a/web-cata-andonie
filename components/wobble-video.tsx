@@ -139,16 +139,33 @@ const VideoLayer = ({ videoNav }: QuadTestProps) => {
   //     : videoTexture3;
   // }, [clicked]);
 
-  const [currentTexture, setCurrentTexture] = useState(1);
+  const [currentTexture, setCurrentTexture] = useState(0);
+
+  useEffect(() => {
+    const videos = [videoTexture1, videoTexture2, videoTexture3];
+
+    const _ = Math.abs(currentTexture + videoNav.direction) % videos.length;
+    console.log("currentTexture", _);
+
+    if(videoNav.toggle){
+      matRef.current.uniforms.u_texture2.value = videos[_];
+    } else {
+      matRef.current.uniforms.u_texture1.value = videos[_];
+    }
+
+    setCurrentTexture(currentTexture + videoNav.direction);
+  }, [videoNav]);
 
   const onSpringEnd = (videoNav: VideoNavProps) => {
     // console.log("fadeProgress loop", videoNav);
     const videos = [videoTexture1, videoTexture2, videoTexture3];
 
-    const _ = (currentTexture + videoNav.direction) % (videos.length);
+    const _ = (currentTexture + videoNav.direction) % videos.length;
 
     // console.log("onSpringEnd", _, "toggle", videoNav);
     // use toggle value to determine which texture channel to swap
+
+    // replace this by tracking which channel is being shown
     if (videoNav.toggle) {
       console.log(`swap ch1 with vt${_}`);
       matRef.current.uniforms.u_texture1.value = videos[_];
@@ -156,14 +173,16 @@ const VideoLayer = ({ videoNav }: QuadTestProps) => {
       console.log(`swap ch2 with vt${_}`);
       matRef.current.uniforms.u_texture2.value = videos[_];
     }
+
     setCurrentTexture(currentTexture + videoNav.direction);
   };
 
   const [{ fadeProgress }] = useSpring(
     {
       fadeProgress: videoNav.toggle ? 0 : 1,
-      loop: () => onSpringEnd(videoNav),
-      config: { duration: 800 },
+      // loop: () => onSpringEnd(videoNav),
+      // loop: { reverse: true },
+      config: { duration: 500 },
     },
     [videoNav]
   );
