@@ -4,7 +4,7 @@ import { useThree } from "@react-three/fiber";
 import { suspend, preload, clear } from "suspend-react";
 
 interface VideoTextureProps extends HTMLVideoElement {
-  unsuspend?: "canplay" | "canplaythrough";
+  unsuspend?: "canplay" | "canplaythrough" | "loadedmetadata";
   start?: boolean;
   playsinline: boolean;
 }
@@ -32,29 +32,32 @@ export function useVideoTexture(
           crossOrigin,
           loop,
           muted,
-          playsinline,
+          playsinline:true,
           ...rest,
         });
+        // bind the video to the texture
         const texture = new THREE.VideoTexture(video);
         texture.encoding = gl.outputEncoding;
 
-        // get video dimensions
-        video.addEventListener("loadedmetadata", () => {
-          const height = video.videoHeight;
-          const width = video.videoWidth;
-          console.log("width", width, "height", height);
-          // return res({width, height})
-        });
-
-        video.addEventListener("loadstart", (e) => {
-          //   console.log("canplaytype", video);
+        video.addEventListener("loadedmetadata", (e) => {
+          // console.log("loadstart", e);
           //   video.playsinline = true;
           //   console.log("texture", texture);
           //   console.log("video", video);
           //   console.log("event", e.type);
           // console.log("canplay", video.canPlayType("video/mp4"));
           // console.log("readyState at loadstart", video.readyState);
+          // video.play()
         });
+
+        // video.addEventListener("progress", (e) => {
+        //   //   console.log("canplaytype", video);
+        //   //   video.playsinline = true;
+        //   //   console.log("texture", texture);
+        //   //   console.log("video", video);
+        //   //   console.log("event", e.type);
+        //   // console.log("readyState at progress", video.readyState);
+        // });
 
         video.addEventListener("progress", (e) => {
           //   console.log("canplaytype", video);
@@ -62,17 +65,24 @@ export function useVideoTexture(
           //   console.log("texture", texture);
           //   console.log("video", video);
           //   console.log("event", e.type);
-          // console.log("readyState at progress", video.readyState);
+          console.log("readyState at progress", video.readyState);
+          // if (video.readyState > 0) {
+          //   console.log("playing");
+          //   start && texture.image.play();
+          // }
         });
+
         video.addEventListener(unsuspend, (e) => {
-          // console.log("event", unsuspend, e.type);
+          console.log("video", video);
+          console.log("event", unsuspend, e.type);
 
           return res(texture);
         });
       }),
     [src]
   );
-  useEffect(() => void (start && texture.image.play()), [texture]);
+  useEffect(() => void console.log("hey"), [texture]);
+  // useEffect(() => void (start && texture.image.play()), [texture]);
   return texture;
 }
 

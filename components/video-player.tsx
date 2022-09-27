@@ -13,9 +13,10 @@ import { VideoNavProps } from "../lib/interfaces";
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
+  isPlay: boolean;
 }
 
-const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
+const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
 
@@ -24,45 +25,63 @@ const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
   const vPath3 = "/videos/sagrada.mp4";
   const vPath4 = "/videos/agua.mp4";
 
+  const unsuspend = "loadedmetadata";
+  const start = false;
+
   const videoTexture1 = useVideoTexture(vPath1, {
-    unsuspend: "canplaythrough",
+    unsuspend: unsuspend,
     muted: true,
     loop: true,
-    start: true,
+    start: start,
     crossOrigin: "Anonymous",
     playsinline: true,
   });
 
   const videoTexture2 = useVideoTexture(vPath2, {
-    unsuspend: "canplaythrough",
+    unsuspend: unsuspend,
     muted: true,
     loop: true,
-    start: true,
+    start: start,
     crossOrigin: "Anonymous",
     playsinline: true,
   });
 
   const videoTexture3 = useVideoTexture(vPath3, {
-    unsuspend: "canplaythrough",
+    unsuspend: unsuspend,
     muted: true,
     loop: true,
-    start: true,
+    start: start,
     crossOrigin: "Anonymous",
     playsinline: true,
   });
 
   const videoTexture4 = useVideoTexture(vPath4, {
-    unsuspend: "canplaythrough",
+    unsuspend: unsuspend,
     muted: true,
     loop: true,
-    start: true,
+    start: start,
     crossOrigin: "Anonymous",
     playsinline: true,
   });
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
-  PatternControls(matRef);
+  // PatternControls(matRef);
+
+  useEffect(() => {
+    console.log("isPlay", isPlay);
+    if (isPlay) {
+      videoTexture1.image.play();
+      videoTexture2.image.play();
+      videoTexture3.image.play();
+      videoTexture4.image.play();
+    } else {
+      videoTexture1.image.pause();
+      videoTexture2.image.pause();
+      videoTexture3.image.pause();
+      videoTexture4.image.pause();
+    }
+  }, [isPlay]);
 
   const uniforms = useMemo(() => {
     return {
@@ -109,7 +128,6 @@ const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
    * channels, following the playlist's order
    */
   useEffect(() => {
-    console.log("videoTexture1", videoTexture1.image);
     const playlist = [
       videoTexture1,
       videoTexture2,
@@ -117,7 +135,6 @@ const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
       videoTexture4,
     ];
     const _ = Math.abs(currentTexture + videoNav.direction) % playlist.length;
-    playlist[_].image.play();
 
     if (videoNav.toggle) {
       matRef.current.uniforms.u_texture2.value = playlist[_];
@@ -126,9 +143,6 @@ const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
     }
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
-
-  // pause invisible texture
-  //playlist[currentTexture].image.pause()
 
   const [{ fadeProgress }] = useSpring(
     {
@@ -160,7 +174,7 @@ const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
   );
 };
 
-const VideoPlayer = ({ videoNav }: VideoPlayerProps) => {
+const VideoPlayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -172,7 +186,7 @@ const VideoPlayer = ({ videoNav }: VideoPlayerProps) => {
         depth: false,
       }}
     >
-      <VideoLayer videoNav={videoNav} />
+      <VideoLayer isPlay={isPlay} videoNav={videoNav} />
     </Canvas>
   );
 };

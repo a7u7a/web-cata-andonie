@@ -9,7 +9,7 @@ import VideoPlayer from "../components/video-player";
 import { VideoNavProps } from "../lib/interfaces";
 
 const Home: NextPage = () => {
-  const [isPlay, setIsPlay] = useState(true);
+  const [isPlay, setIsPlay] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [videoNav, setVideoNav] = useState<VideoNavProps>({
     toggle: false,
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="relative w-full h-[135vh]">
-        <VideoPlayer videoNav={videoNav} />
+        <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
         {/* <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter pb-24">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
         voluptates voluptatem sunt unde necessitatibus possimus minus neque et
@@ -53,6 +53,13 @@ const Home: NextPage = () => {
             }
           >
             →
+          </button>
+          <button
+            onClick={() => {
+              setIsPlay(!isPlay);
+            }}
+          >
+            {isPlay ? "Pause" : "Play"}
           </button>
         </div>
       </div>
