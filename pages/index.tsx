@@ -9,7 +9,7 @@ import VideoPlayer from "../components/video-player";
 import { VideoNavProps } from "../lib/interfaces";
 
 const Home: NextPage = () => {
-  const [isPlay, setIsPlay] = useState(false);
+  const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [videoNav, setVideoNav] = useState<VideoNavProps>({
     toggle: false,
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
             →
           </button>
           <button
-            onClick={() => {
+            onClickCapture={() => {
               setIsPlay(!isPlay);
             }}
           >

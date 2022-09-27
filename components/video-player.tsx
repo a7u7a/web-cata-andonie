@@ -1,7 +1,14 @@
 import { ScreenQuad, OrbitControls, Plane } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
-import { ShaderMaterial, TextureLoader, Vector2, Mesh, Vector3 } from "three";
+import {
+  ShaderMaterial,
+  TextureLoader,
+  Vector2,
+  Mesh,
+  Vector3,
+  LinearToneMapping,
+} from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
 import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTexture } from "./my-useVideoTexture";
@@ -20,13 +27,13 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
 
-  const vPath1 = "/videos/faro_zoom.mp4";
+  const vPath1 = "/videos/faro.mp4";
   const vPath2 = "/videos/pasillo.mp4";
   const vPath3 = "/videos/sagrada.mp4";
   const vPath4 = "/videos/agua.mp4";
 
   const unsuspend = "loadedmetadata";
-  const start = false;
+  const start = true;
 
   const videoTexture1 = useVideoTexture(vPath1, {
     unsuspend: unsuspend,
@@ -34,7 +41,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     loop: true,
     start: start,
     crossOrigin: "Anonymous",
-    playsinline: true,
+    playsInline: true,
   });
 
   const videoTexture2 = useVideoTexture(vPath2, {
@@ -43,7 +50,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     loop: true,
     start: start,
     crossOrigin: "Anonymous",
-    playsinline: true,
+    playsInline: true,
   });
 
   const videoTexture3 = useVideoTexture(vPath3, {
@@ -52,7 +59,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     loop: true,
     start: start,
     crossOrigin: "Anonymous",
-    playsinline: true,
+    playsInline: true,
   });
 
   const videoTexture4 = useVideoTexture(vPath4, {
@@ -61,15 +68,16 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     loop: true,
     start: start,
     crossOrigin: "Anonymous",
-    playsinline: true,
+    playsInline: true,
   });
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
-  // PatternControls(matRef);
+  PatternControls(matRef);
 
   useEffect(() => {
     console.log("isPlay", isPlay);
+    console.log("videoTexture1.image", videoTexture1.image);
     if (isPlay) {
       videoTexture1.image.play();
       videoTexture2.image.play();
@@ -180,6 +188,7 @@ const VideoPlayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       style={{ background: "#000000" }}
       gl={{
         powerPreference: "high-performance",
+        toneMapping: LinearToneMapping,
         alpha: false,
         antialias: false,
         stencil: false,

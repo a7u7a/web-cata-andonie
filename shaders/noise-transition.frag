@@ -69,8 +69,11 @@ void main() {
   // vec2 st = gl_FragCoord.xy / ff;
   
   //  uv = (uv - 0.5) * _Scale + 0.5;
-  float scaleX = 2.38;
+  float scaleX = 3.55;
   float scaleY = 2.0;
+
+  // float scaleX = u_scaleX;
+  // float scaleY = u_scaleY;
   st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
 
   //st = st * vec2(u_scaleX,u_scaleY);

@@ -6,20 +6,20 @@ import { suspend, preload, clear } from "suspend-react";
 interface VideoTextureProps extends HTMLVideoElement {
   unsuspend?: "canplay" | "canplaythrough" | "loadedmetadata";
   start?: boolean;
-  playsinline: boolean;
+  playsInline: boolean;
 }
 
 export function useVideoTexture(
   src: string,
   props: Partial<VideoTextureProps>
 ) {
-  const { unsuspend, start, crossOrigin, muted, playsinline, loop, ...rest } = {
+  const { unsuspend, start, crossOrigin, muted, playsInline, loop, ...rest } = {
     unsuspend: "canplay",
     crossOrigin: "Anonymous",
     muted: true,
     loop: true,
     start: true,
-    playsinline: true,
+    playsInline: true,
     ...props,
   };
   const gl = useThree((state) => state.gl);
@@ -32,70 +32,18 @@ export function useVideoTexture(
           crossOrigin,
           loop,
           muted,
-          playsinline:true,
+          playsInline,
           ...rest,
         });
-        // bind the video to the texture
         const texture = new THREE.VideoTexture(video);
         texture.encoding = gl.outputEncoding;
-
-        video.addEventListener("loadedmetadata", (e) => {
-          // console.log("loadstart", e);
-          //   video.playsinline = true;
-          //   console.log("texture", texture);
-          //   console.log("video", video);
-          //   console.log("event", e.type);
-          // console.log("canplay", video.canPlayType("video/mp4"));
-          // console.log("readyState at loadstart", video.readyState);
-          // video.play()
-        });
-
-        // video.addEventListener("progress", (e) => {
-        //   //   console.log("canplaytype", video);
-        //   //   video.playsinline = true;
-        //   //   console.log("texture", texture);
-        //   //   console.log("video", video);
-        //   //   console.log("event", e.type);
-        //   // console.log("readyState at progress", video.readyState);
-        // });
-
-        video.addEventListener("progress", (e) => {
-          //   console.log("canplaytype", video);
-          //   video.playsinline = true;
-          //   console.log("texture", texture);
-          //   console.log("video", video);
-          //   console.log("event", e.type);
-          console.log("readyState at progress", video.readyState);
-          // if (video.readyState > 0) {
-          //   console.log("playing");
-          //   start && texture.image.play();
-          // }
-        });
-
         video.addEventListener(unsuspend, (e) => {
-          console.log("video", video);
-          console.log("event", unsuspend, e.type);
-
           return res(texture);
         });
       }),
     [src]
   );
-  useEffect(() => void console.log("hey"), [texture]);
-  // useEffect(() => void (start && texture.image.play()), [texture]);
+  
+  useEffect(() => void (start && texture.image.play()), [texture]);
   return texture;
 }
-
-/*
-tested mp4, webm, ogv video file
-
-events tested on iOS Safari:
-loadstart (fires)
-progress (fires)
-abort (not fired)
-stalled (not fired)
-error (not fired)
-waiting (not fired)
-canplay (not fired)
-canplaythrough (not fired)
-*/
