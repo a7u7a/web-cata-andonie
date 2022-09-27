@@ -37,13 +37,21 @@ export function useVideoTexture(
         });
         const texture = new THREE.VideoTexture(video);
         texture.encoding = gl.outputEncoding;
+
+        // get video dimensions
+        video.addEventListener("loadedmetadata", () => {
+          const height = video.videoHeight;
+          const width = video.videoWidth;
+          console.log("width", width, "height", height);
+          // return res({width, height})
+        });
+
         video.addEventListener("loadstart", (e) => {
           //   console.log("canplaytype", video);
           //   video.playsinline = true;
           //   console.log("texture", texture);
           //   console.log("video", video);
           //   console.log("event", e.type);
-
           // console.log("canplay", video.canPlayType("video/mp4"));
           // console.log("readyState at loadstart", video.readyState);
         });
@@ -53,7 +61,6 @@ export function useVideoTexture(
           //   video.playsinline = true;
           //   console.log("texture", texture);
           //   console.log("video", video);
-          
           //   console.log("event", e.type);
           // console.log("readyState at progress", video.readyState);
         });

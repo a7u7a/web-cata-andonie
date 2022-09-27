@@ -33,7 +33,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     fadeProgress: {
       label: "Fade Progress",
-      value: 0,
+      value: 1,
       min: 0,
       max: 1,
       step: 0.00001,
@@ -53,6 +53,58 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       onChange: (v) => {
         if (matRef.current.uniforms) {
           matRef.current.uniforms.u_progress.value = v;
+        }
+      },
+      transient: false,
+    },
+    offX: {
+      label: "offX",
+      value: 0,
+      min: 0,
+      max: 4,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_offX.value = v;
+        }
+      },
+      transient: false,
+    },
+    offY: {
+      label: "offY",
+      value: 0.5,
+      min: 0,
+      max: 2,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_offY.value = v;
+        }
+      },
+      transient: false,
+    },
+    scaleX: {
+      label: "scaleX",
+      value: 3.55,
+      min: 0,
+      max: 4,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_scaleX.value = v;
+        }
+      },
+      transient: false,
+    },
+    scaleY: {
+      label: "scaleY",
+      value: 2,
+      min: 0,
+      max: 2,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_scaleY.value = v;
         }
       },
       transient: false,

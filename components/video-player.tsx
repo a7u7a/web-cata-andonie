@@ -11,11 +11,11 @@ import { VideoNavProps } from "../lib/interfaces";
 
 // here we try to pass the video as a texture to the shader
 
-interface QuadTestProps {
+interface VideoPlayerProps {
   videoNav: VideoNavProps;
 }
 
-const VideoLayer = ({ videoNav }: QuadTestProps) => {
+const VideoLayer = ({ videoNav }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
 
@@ -60,31 +60,9 @@ const VideoLayer = ({ videoNav }: QuadTestProps) => {
     playsinline: true,
   });
 
-  /**
-   * Start
-   * Showing ch1 with vt1
-   *
-   * Click
-   * Start transition
-   * Wait until ch1 is not visible
-   * End transition
-   * swap ch1 with vt3
-   * now showing ch2 with vt2
-   *
-   * Click
-   * Start transition
-   * Wait until ch2 is not visible
-   * End transition
-   * swap ch2 with vt1
-   * now showing ch1 with vt3
-   *
-   *
-   *
-   */
-
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
-  // PatternControls(matRef);
+  PatternControls(matRef);
 
   const uniforms = useMemo(() => {
     return {
@@ -92,6 +70,10 @@ const VideoLayer = ({ videoNav }: QuadTestProps) => {
       u_texture1: { value: videoTexture1 },
       u_texture2: { value: videoTexture2 },
       u_mouseX: { value: 0 },
+      u_scaleX: { value: 1 },
+      u_scaleY: { value: 1 },
+      u_offX: { value: 1 },
+      u_offY: { value: 0.5 },
       u_mouseY: { value: 0 },
       u_posX: { value: 0.0 },
       u_posY: { value: 0.0 },
@@ -105,83 +87,52 @@ const VideoLayer = ({ videoNav }: QuadTestProps) => {
   }, [videoTexture1, videoTexture2]);
 
   //
-  // useFrame((state) => {
-  //   if (matRef.current.uniforms) {
-  //     const t = state.clock.elapsedTime;
-  //     matRef.current.uniforms.u_time.value = t;
-  //   }
-  // });
+  useFrame((state) => {
+    if (matRef.current.uniforms) {
+      const t = state.clock.elapsedTime;
+      matRef.current.uniforms.u_time.value = t;
+    }
+  });
 
-  // provide resolution to shader
+  // Update canvas resolution
   useEffect(() => {
     if (matRef.current.uniforms) {
-      matRef.current.uniforms.u_resolution.value.x = size.width * 2;
-      matRef.current.uniforms.u_resolution.value.y = size.height * 2;
+      matRef.current.uniforms.u_resolution.value.x = size.width;
+      matRef.current.uniforms.u_resolution.value.y = size.height;
     }
   }, [size]);
 
-  // play pause
-  // useEffect(() => {
-  //   if (isPlay) {
-  //     videoTexture1.image.play();
-  //     videoTexture2.image.play();
-  //   } else {
-  //     videoTexture1.image.pause();
-  //     videoTexture2.image.pause();
-  //   }
-  // }, [isPlay]);
-
-  // useEffect(() => {
-  //   const videos = [videoTexture1, videoTexture2, videoTexture3];
-
-  //   matRef.current.uniforms.u_texture2.value = clicked
-  //     ? videoTexture2
-  //     : videoTexture3;
-  // }, [clicked]);
-
   const [currentTexture, setCurrentTexture] = useState(0);
 
+  /**
+   * Swap textures between each of the shader`s
+   * channels, following the playlist's order
+   */
   useEffect(() => {
-    const videos = [videoTexture1, videoTexture2, videoTexture3];
+    console.log("videoTexture1", videoTexture1.image);
+    const playlist = [
+      videoTexture1,
+      videoTexture2,
+      videoTexture3,
+      videoTexture4,
+    ];
+    const _ = Math.abs(currentTexture + videoNav.direction) % playlist.length;
+    playlist[_].image.play();
 
-    const _ = Math.abs(currentTexture + videoNav.direction) % videos.length;
-    console.log("currentTexture", _);
-
-    if(videoNav.toggle){
-      matRef.current.uniforms.u_texture2.value = videos[_];
+    if (videoNav.toggle) {
+      matRef.current.uniforms.u_texture2.value = playlist[_];
     } else {
-      matRef.current.uniforms.u_texture1.value = videos[_];
+      matRef.current.uniforms.u_texture1.value = playlist[_];
     }
-
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
 
-  const onSpringEnd = (videoNav: VideoNavProps) => {
-    // console.log("fadeProgress loop", videoNav);
-    const videos = [videoTexture1, videoTexture2, videoTexture3];
-
-    const _ = (currentTexture + videoNav.direction) % videos.length;
-
-    // console.log("onSpringEnd", _, "toggle", videoNav);
-    // use toggle value to determine which texture channel to swap
-
-    // replace this by tracking which channel is being shown
-    if (videoNav.toggle) {
-      console.log(`swap ch1 with vt${_}`);
-      matRef.current.uniforms.u_texture1.value = videos[_];
-    } else {
-      console.log(`swap ch2 with vt${_}`);
-      matRef.current.uniforms.u_texture2.value = videos[_];
-    }
-
-    setCurrentTexture(currentTexture + videoNav.direction);
-  };
+  // pause invisible texture
+  //playlist[currentTexture].image.pause()
 
   const [{ fadeProgress }] = useSpring(
     {
       fadeProgress: videoNav.toggle ? 0 : 1,
-      // loop: () => onSpringEnd(videoNav),
-      // loop: { reverse: true },
       config: { duration: 500 },
     },
     [videoNav]
@@ -209,11 +160,7 @@ const VideoLayer = ({ videoNav }: QuadTestProps) => {
   );
 };
 
-interface WobbleVideoProps {
-  videoNav: VideoNavProps;
-}
-
-const WobbleVideo = ({ videoNav }: WobbleVideoProps) => {
+const VideoPlayer = ({ videoNav }: VideoPlayerProps) => {
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -225,10 +172,8 @@ const WobbleVideo = ({ videoNav }: WobbleVideoProps) => {
         depth: false,
       }}
     >
-      <group position={[0, 0, 3]}>
-        <VideoLayer videoNav={videoNav} />
-      </group>
+      <VideoLayer videoNav={videoNav} />
     </Canvas>
   );
 };
-export default WobbleVideo;
+export default VideoPlayer;

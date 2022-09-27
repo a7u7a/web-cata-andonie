@@ -7,8 +7,6 @@
 // ToDo:
 // Respect footage propotions and scale acording to canvas resolution
 // Respect footage center
-// Make the tiles be squared relative to canvas dimensions
-// Make fade progress gradual across screen (diagonal)
 
 #ifdef GL_ES
 precision mediump float;
@@ -17,6 +15,10 @@ precision mediump float;
 #define PI 3.14159265359
 
 uniform vec2 u_resolution;
+uniform float u_scaleX;
+uniform float u_scaleY;
+uniform float u_offX;
+uniform float u_offY;
 uniform float u_progress;
 uniform float u_fadeProgress;
 uniform float u_time;
@@ -62,7 +64,23 @@ float progressCurve(in float x ){
 }
 
 void main() {
+
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
+  // vec2 st = gl_FragCoord.xy / ff;
+  
+  //  uv = (uv - 0.5) * _Scale + 0.5;
+  float scaleX = 2.38;
+  float scaleY = 2.0;
+  st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
+
+  //st = st * vec2(u_scaleX,u_scaleY);
+  //st -= vec2(u_offX, u_offY); 
+  // st -= vec2(0.5);
+  // center texture
+  // float t = u_testScale * 1.777;
+  // st = vec2(st.x * u_testScale, st.y * t);
+  // st -= vec2(u_testScale-0.5, t-0.5 );
+
 
   // Compute fade effect
   float fadeProgress = linearMap(u_fadeProgress,0.0, 1.0, -0.7, 1.2);

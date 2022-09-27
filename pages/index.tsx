@@ -5,7 +5,7 @@ import ShaderBasicSample from "../components/shader-sample";
 import ShaderTexture from "../components/shader-texture";
 import ShaderTextureQuad from "../components/shader-texture2";
 import VideoTextureQuad from "../components/shader-video-texture";
-import WobbleVideo from "../components/wobble-video";
+import VideoPlayer from "../components/video-player";
 import { VideoNavProps } from "../lib/interfaces";
 
 const Home: NextPage = () => {
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="relative w-full h-[135vh]">
-        <WobbleVideo videoNav={videoNav} />
+        <VideoPlayer videoNav={videoNav} />
         {/* <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter pb-24">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
         voluptates voluptatem sunt unde necessitatibus possimus minus neque et
