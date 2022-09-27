@@ -126,6 +126,16 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width;
       matRef.current.uniforms.u_resolution.value.y = size.height;
+const ratio =size.width / size.height
+      console.log(
+        "width",
+        size.width,
+        "height",
+        size.height,
+        "ratio",
+        ratio,
+        "r", 1-ratio
+      );
     }
   }, [size]);
 

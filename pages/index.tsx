@@ -33,7 +33,7 @@ const Home: NextPage = () => {
       </div>   */}
       </div>
 
-      <div className="fixed pt-3 pl-4 left-0 top-0 text-indigo-200 w-full mix-blend-plus-lighter">
+      <div className="fixed pt-3 pl-4 left-0 top-0 text-gray-200 w-full mix-blend-plus-lighter">
         <div className="text-7xl font-black">Catalina Andonie</div>
         <div className="flex flex-row justify-between text-4xl pr-4 pt-4">
           <div>About</div>
