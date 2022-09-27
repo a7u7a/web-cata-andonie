@@ -33,10 +33,10 @@ export function useVideoTextures(videoPaths: string[]) {
     });
   }, []);
 
-  const processTextures = async () => {
+  const processTextures = suspend(async () => {
     return await Promise.all(videoPaths.map(texture));
-  };
+  },[]);
   useEffect(() => void console.log("hey"), [processTextures]);
 
-  return processTextures();
+  return processTextures;
 }

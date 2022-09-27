@@ -57,43 +57,41 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
 
   const allVideoTextures = useVideoTextures(videoPaths);
 
-  
+  // const videoTexture1 = useVideoTexture(vPath1, {
+  //   unsuspend: unsuspend,
+  //   muted: true,
+  //   loop: true,
+  //   start: start,
+  //   crossOrigin: "Anonymous",
+  //   playsInline: true,
+  // });
 
-  const videoTexture1 = useVideoTexture(vPath1, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
+  // const videoTexture2 = useVideoTexture(vPath2, {
+  //   unsuspend: unsuspend,
+  //   muted: true,
+  //   loop: true,
+  //   start: start,
+  //   crossOrigin: "Anonymous",
+  //   playsInline: true,
+  // });
 
-  const videoTexture2 = useVideoTexture(vPath2, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
+  // const videoTexture3 = useVideoTexture(vPath3, {
+  //   unsuspend: unsuspend,
+  //   muted: true,
+  //   loop: true,
+  //   start: start,
+  //   crossOrigin: "Anonymous",
+  //   playsInline: true,
+  // });
 
-  const videoTexture3 = useVideoTexture(vPath3, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
-
-  const videoTexture4 = useVideoTexture(vPath4, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
+  // const videoTexture4 = useVideoTexture(vPath4, {
+  //   unsuspend: unsuspend,
+  //   muted: true,
+  //   loop: true,
+  //   start: start,
+  //   crossOrigin: "Anonymous",
+  //   playsInline: true,
+  // });
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
@@ -122,8 +120,8 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const uniforms = useMemo(() => {
     return {
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_texture1: { value: videoTexture1 },
-      u_texture2: { value: videoTexture2 },
+      u_texture1: { value: allVideoTextures[0] },
+      u_texture2: { value: allVideoTextures[1] },
       u_mouseX: { value: 0 },
       u_scaleX: { value: 1 },
       u_scaleY: { value: 1 },
@@ -139,7 +137,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       u_tyles_x: { value: 25 },
       u_light: { value: 0.9 },
     };
-  }, [videoTexture1, videoTexture2]);
+  }, [allVideoTextures]);
 
   //
   useFrame((state) => {
@@ -175,18 +173,18 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
    * channels, following the playlist's order
    */
   useEffect(() => {
-    const playlist = [
-      videoTexture1,
-      videoTexture2,
-      videoTexture3,
-      videoTexture4,
-    ];
-    const _ = Math.abs(currentTexture + videoNav.direction) % playlist.length;
+    // const playlist = [
+    //   videoTexture1,
+    //   videoTexture2,
+    //   videoTexture3,
+    //   videoTexture4,
+    // ];
+    const _ = Math.abs(currentTexture + videoNav.direction) % allVideoTextures.length;
 
     if (videoNav.toggle) {
-      matRef.current.uniforms.u_texture2.value = playlist[_];
+      matRef.current.uniforms.u_texture2.value = allVideoTextures[_];
     } else {
-      matRef.current.uniforms.u_texture1.value = playlist[_];
+      matRef.current.uniforms.u_texture1.value = allVideoTextures[_];
     }
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
