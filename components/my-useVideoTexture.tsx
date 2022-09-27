@@ -13,6 +13,7 @@ export function useVideoTexture(
   src: string,
   props: Partial<VideoTextureProps>
 ) {
+  
   const { unsuspend, start, crossOrigin, muted, playsInline, loop, ...rest } = {
     unsuspend: "canplay",
     crossOrigin: "Anonymous",
@@ -22,11 +23,11 @@ export function useVideoTexture(
     playsInline: true,
     ...props,
   };
+  
   const gl = useThree((state) => state.gl);
   const texture = suspend<[url: string], () => Promise<THREE.VideoTexture>>(
     () =>
       new Promise((res, rej) => {
-        // console.log("playsinline", playsinline);
         const video = Object.assign(document.createElement("video"), {
           src,
           crossOrigin,
@@ -43,7 +44,7 @@ export function useVideoTexture(
       }),
     [src]
   );
-  
+
   useEffect(() => void (start && texture.image.play()), [texture]);
   return texture;
 }

@@ -1,6 +1,18 @@
-import { ScreenQuad, OrbitControls, Plane } from "@react-three/drei";
+import {
+  ScreenQuad,
+  OrbitControls,
+  Plane,
+  useTexture,
+} from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import {
+  useEffect,
+  useMemo,
+  Suspense,
+  useRef,
+  useState,
+  useLayoutEffect,
+} from "react";
 import {
   ShaderMaterial,
   TextureLoader,
@@ -12,6 +24,7 @@ import {
 import clipSpaceVert from "../shaders/clip-space.vert";
 import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTexture } from "./my-useVideoTexture";
+import { useVideoTextures } from "./my-useVideoTextures";
 import { useSpring, a, config } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 import { VideoNavProps } from "../lib/interfaces";
@@ -27,6 +40,13 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
 
+  const videoPaths = [
+    "/videos/faro.mp4",
+    "/videos/pasillo.mp4",
+    "/videos/sagrada.mp4",
+    "/videos/agua.mp4",
+  ];
+
   const vPath1 = "/videos/faro.mp4";
   const vPath2 = "/videos/pasillo.mp4";
   const vPath3 = "/videos/sagrada.mp4";
@@ -34,6 +54,10 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
 
   const unsuspend = "loadedmetadata";
   const start = true;
+
+  const allVideoTextures = useVideoTextures(videoPaths);
+
+  
 
   const videoTexture1 = useVideoTexture(vPath1, {
     unsuspend: unsuspend,
@@ -73,23 +97,27 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
-  PatternControls(matRef);
-
   useEffect(() => {
-    console.log("isPlay", isPlay);
-    console.log("videoTexture1.image", videoTexture1.image);
-    if (isPlay) {
-      videoTexture1.image.play();
-      videoTexture2.image.play();
-      videoTexture3.image.play();
-      videoTexture4.image.play();
-    } else {
-      videoTexture1.image.pause();
-      videoTexture2.image.pause();
-      videoTexture3.image.pause();
-      videoTexture4.image.pause();
-    }
-  }, [isPlay]);
+    console.log("allVideoTextures", allVideoTextures);
+  }, [allVideoTextures]);
+
+  // PatternControls(matRef);
+
+  // useEffect(() => {
+  //   console.log("isPlay", isPlay);
+  //   console.log("videoTexture1.image", videoTexture1.image);
+  //   if (isPlay) {
+  //     videoTexture1.image.play();
+  //     videoTexture2.image.play();
+  //     videoTexture3.image.play();
+  //     videoTexture4.image.play();
+  //   } else {
+  //     videoTexture1.image.pause();
+  //     videoTexture2.image.pause();
+  //     videoTexture3.image.pause();
+  //     videoTexture4.image.pause();
+  //   }
+  // }, [isPlay]);
 
   const uniforms = useMemo(() => {
     return {
@@ -126,7 +154,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width;
       matRef.current.uniforms.u_resolution.value.y = size.height;
-const ratio =size.width / size.height
+      const ratio = size.width / size.height;
       console.log(
         "width",
         size.width,
@@ -134,7 +162,8 @@ const ratio =size.width / size.height
         size.height,
         "ratio",
         ratio,
-        "r", 1-ratio
+        "r",
+        1 - ratio
       );
     }
   }, [size]);
@@ -178,19 +207,26 @@ const ratio =size.width / size.height
 
   return (
     <ScreenQuad>
-      {/* @ts-ignore: https://github.com/pmndrs/react-spring/issues/1515 */}
-      <a.shaderMaterial
-        transparent
-        ref={matRef}
-        uniforms={uniforms}
-        // uniforms-u_progress-value={progress}
-        uniforms-u_fadeProgress-value={fadeProgress}
-        fragmentShader={noiseTransition}
-        vertexShader={clipSpaceVert}
-      />
+      <Suspense fallback={<FallbackMaterial url="imgs/orb.jpg" />}>
+        {/* @ts-ignore: https://github.com/pmndrs/react-spring/issues/1515 */}
+        <a.shaderMaterial
+          transparent
+          ref={matRef}
+          uniforms={uniforms}
+          // uniforms-u_progress-value={progress}
+          uniforms-u_fadeProgress-value={fadeProgress}
+          fragmentShader={noiseTransition}
+          vertexShader={clipSpaceVert}
+        />
+      </Suspense>
     </ScreenQuad>
   );
 };
+
+function FallbackMaterial({ url }: { url: string }) {
+  const texture = useTexture(url);
+  return <meshBasicMaterial map={texture} toneMapped={false} />;
+}
 
 const VideoPlayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   return (
