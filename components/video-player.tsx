@@ -22,6 +22,7 @@ import {
   LinearToneMapping,
 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
+import linearFadeTransition from "../shaders/linear-fade-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTexture } from "./my-useVideoTexture";
 import { useVideoTextures } from "./my-useVideoTextures";
@@ -49,30 +50,26 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
-  useEffect(() => {
-    console.log("allVideoTextures", playlist);
-  }, [playlist]);
-
-  // PatternControls(matRef);
+  PatternControls(matRef);
 
   const uniforms = useMemo(() => {
     return {
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_texture1: { value: playlist[0] },
-      u_texture2: { value: playlist[1] },
-      u_mouseX: { value: 0 },
-      u_scaleX: { value: 1 },
-      u_scaleY: { value: 1 },
-      u_offX: { value: 1 },
-      u_offY: { value: 0.5 },
-      u_mouseY: { value: 0 },
-      u_posX: { value: 0.0 },
-      u_posY: { value: 0.0 },
+      u_texture1: { value: playlist[3] },
+      u_texture2: { value: playlist[3] },
       u_progress: { value: 0 },
       u_fadeProgress: { value: 0 },
       u_time: { value: 0.0 },
-      u_tyles_y: { value: 15 },
-      u_tyles_x: { value: 25 },
+      u_scale: { value: 7.216 },
+      u_w1: { value: 0.1 },
+      u_w2: { value: 0.1 },
+      u_w3: { value: 0.1 },
+      u_v2: { value: 0.25 },
+      u_v3: { value: 0.25 },
+      u_v4: { value: 0.746 },
+      u_v5: { value: 1.106 },
+      u_v6: { value: 0.7 },
+      u_v7: { value: 0.75 },
       u_light: { value: 0.9 },
     };
   }, [playlist]);
@@ -93,18 +90,19 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     }
   }, [size]);
 
-  const [currentTexture, setCurrentTexture] = useState(0);
+  const [currentTexture, setCurrentTexture] = useState(2);
 
   /**
    * Swap textures between each of the shader`s
    * channels, following the playlist's order
    */
   useEffect(() => {
-    const _ = Math.abs(currentTexture + videoNav.direction) % playlist.length;
+    const nextVideoIndex =
+      Math.abs(currentTexture + videoNav.direction) % playlist.length;
     if (videoNav.toggle) {
-      matRef.current.uniforms.u_texture2.value = playlist[_];
+      matRef.current.uniforms.u_texture2.value = playlist[nextVideoIndex];
     } else {
-      matRef.current.uniforms.u_texture1.value = playlist[_];
+      matRef.current.uniforms.u_texture1.value = playlist[nextVideoIndex];
     }
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);

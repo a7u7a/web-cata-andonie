@@ -26,19 +26,19 @@ const Home: NextPage = () => {
 
       <div className="relative w-full h-[135vh]">
         <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
-        <div className="absolute pl-4 left-0 bottom-0 text-white text-4xl w-2/3 mix-blend-plus-lighter pb-24">
+        {/* <div className="absolute pl-4 left-0 bottom-0 text-white text-4xl w-2/3 mix-blend-plus-lighter pb-24">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
         voluptates voluptatem sunt unde necessitatibus possimus minus neque et
         incidunt cupiditate.
-      </div>  
+      </div>   */}
       </div>
 
-      <div className="fixed pt-3 pl-4 left-0 top-0 text-gray-200 w-full mix-blend-plus-lighter">
-        <div className="text-7xl font-black">Catalina Andonie</div>
-        <div className="flex flex-row justify-between text-4xl pr-4 pt-4">
+      <div className="fixed pt-3 pl-4 left-0 top-0 text-gray-200  mix-blend-plus-lighter">
+        {/* <div className="text-7xl font-black">Catalina Andonie</div> */}
+        {/* <div className="flex flex-row justify-between text-4xl pr-4 pt-4">
           <div>About</div>
           <div>Works</div>
-        </div>
+        </div> */}
         <div className="flex flex-row justify-between text-5xl pr-4 pt-4 mix-blend-plus-lighter">
           <button
             onClick={() =>
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
           </button> */}
         </div>
       </div>
-      <div className="pl-4 pt-12 text-black text-4xl w-2/3">
+      <div className="pl-4 pt-12 text-black text-4xl w-2/3 pb-28">
         Resto del contenido acá. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
         voluptates voluptatem sunt unde necessitatibus possimus minus neque et
         incidunt cupiditate.
