@@ -29,8 +29,6 @@ import { useSpring, a, config } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 import { VideoNavProps } from "../lib/interfaces";
 
-// here we try to pass the video as a texture to the shader
-
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
   isPlay: boolean;
@@ -47,81 +45,21 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     "/videos/agua.mp4",
   ];
 
-  const vPath1 = "/videos/faro.mp4";
-  const vPath2 = "/videos/pasillo.mp4";
-  const vPath3 = "/videos/sagrada.mp4";
-  const vPath4 = "/videos/agua.mp4";
-
-  const unsuspend = "loadedmetadata";
-  const start = true;
-
-  const allVideoTextures = useVideoTextures(videoPaths);
-
-  // const videoTexture1 = useVideoTexture(vPath1, {
-  //   unsuspend: unsuspend,
-  //   muted: true,
-  //   loop: true,
-  //   start: start,
-  //   crossOrigin: "Anonymous",
-  //   playsInline: true,
-  // });
-
-  // const videoTexture2 = useVideoTexture(vPath2, {
-  //   unsuspend: unsuspend,
-  //   muted: true,
-  //   loop: true,
-  //   start: start,
-  //   crossOrigin: "Anonymous",
-  //   playsInline: true,
-  // });
-
-  // const videoTexture3 = useVideoTexture(vPath3, {
-  //   unsuspend: unsuspend,
-  //   muted: true,
-  //   loop: true,
-  //   start: start,
-  //   crossOrigin: "Anonymous",
-  //   playsInline: true,
-  // });
-
-  // const videoTexture4 = useVideoTexture(vPath4, {
-  //   unsuspend: unsuspend,
-  //   muted: true,
-  //   loop: true,
-  //   start: start,
-  //   crossOrigin: "Anonymous",
-  //   playsInline: true,
-  // });
+  const playlist = useVideoTextures(videoPaths);
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
   useEffect(() => {
-    console.log("allVideoTextures", allVideoTextures);
-  }, [allVideoTextures]);
+    console.log("allVideoTextures", playlist);
+  }, [playlist]);
 
   // PatternControls(matRef);
-
-  // useEffect(() => {
-  //   console.log("isPlay", isPlay);
-  //   console.log("videoTexture1.image", videoTexture1.image);
-  //   if (isPlay) {
-  //     videoTexture1.image.play();
-  //     videoTexture2.image.play();
-  //     videoTexture3.image.play();
-  //     videoTexture4.image.play();
-  //   } else {
-  //     videoTexture1.image.pause();
-  //     videoTexture2.image.pause();
-  //     videoTexture3.image.pause();
-  //     videoTexture4.image.pause();
-  //   }
-  // }, [isPlay]);
 
   const uniforms = useMemo(() => {
     return {
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_texture1: { value: allVideoTextures[0] },
-      u_texture2: { value: allVideoTextures[1] },
+      u_texture1: { value: playlist[0] },
+      u_texture2: { value: playlist[1] },
       u_mouseX: { value: 0 },
       u_scaleX: { value: 1 },
       u_scaleY: { value: 1 },
@@ -137,9 +75,9 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       u_tyles_x: { value: 25 },
       u_light: { value: 0.9 },
     };
-  }, [allVideoTextures]);
+  }, [playlist]);
 
-  //
+  // unused
   useFrame((state) => {
     if (matRef.current.uniforms) {
       const t = state.clock.elapsedTime;
@@ -152,17 +90,6 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width;
       matRef.current.uniforms.u_resolution.value.y = size.height;
-      const ratio = size.width / size.height;
-      console.log(
-        "width",
-        size.width,
-        "height",
-        size.height,
-        "ratio",
-        ratio,
-        "r",
-        1 - ratio
-      );
     }
   }, [size]);
 
@@ -173,18 +100,11 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
    * channels, following the playlist's order
    */
   useEffect(() => {
-    // const playlist = [
-    //   videoTexture1,
-    //   videoTexture2,
-    //   videoTexture3,
-    //   videoTexture4,
-    // ];
-    const _ = Math.abs(currentTexture + videoNav.direction) % allVideoTextures.length;
-
+    const _ = Math.abs(currentTexture + videoNav.direction) % playlist.length;
     if (videoNav.toggle) {
-      matRef.current.uniforms.u_texture2.value = allVideoTextures[_];
+      matRef.current.uniforms.u_texture2.value = playlist[_];
     } else {
-      matRef.current.uniforms.u_texture1.value = allVideoTextures[_];
+      matRef.current.uniforms.u_texture1.value = playlist[_];
     }
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);

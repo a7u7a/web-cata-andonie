@@ -6,7 +6,7 @@ import { suspend, preload, clear } from "suspend-react";
 export function useVideoTextures(videoPaths: string[]) {
   const gl = useThree((state) => state.gl);
 
-  const texture = useCallback((path: string): Promise<THREE.VideoTexture> => {
+  const texture = (path: string): Promise<THREE.VideoTexture> => {
     const { unsuspend, start, crossOrigin, muted, playsInline, loop } = {
       unsuspend: "loadedmetadata",
       crossOrigin: "Anonymous",
@@ -17,6 +17,7 @@ export function useVideoTextures(videoPaths: string[]) {
     };
 
     return new Promise((res, rej) => {
+      
       const video = Object.assign(document.createElement("video"), {
         src: path,
         crossOrigin,
@@ -24,6 +25,7 @@ export function useVideoTextures(videoPaths: string[]) {
         muted,
         playsInline,
       });
+
       const texture = new THREE.VideoTexture(video);
       texture.encoding = gl.outputEncoding;
       video.addEventListener(unsuspend, (e) => {
@@ -31,12 +33,11 @@ export function useVideoTextures(videoPaths: string[]) {
         return res(texture);
       });
     });
-  }, []);
+  };
 
   const processTextures = suspend(async () => {
     return await Promise.all(videoPaths.map(texture));
-  },[]);
-  useEffect(() => void console.log("hey"), [processTextures]);
+  }, []);
 
   return processTextures;
 }
