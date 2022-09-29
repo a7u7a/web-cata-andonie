@@ -21,7 +21,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       label: "Progress",
       value: 0,
       min: 0,
-      max: 15,
+      max: 1,
       step: 0.00001,
       onChange: (v) => {
         if (matRef.current.uniforms) {

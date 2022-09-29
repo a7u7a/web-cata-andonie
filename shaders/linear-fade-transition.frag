@@ -63,7 +63,7 @@ float progressCurve(in float x ){
 void main() {
 
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
-  st.x *= u_resolution.x/u_resolution.y;
+  
 
   // Scale responsive to fit height
   float scale = 2.0;

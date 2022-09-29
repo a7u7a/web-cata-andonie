@@ -1,11 +1,4 @@
-/** 
-  Receives two textures distorts them using tile distorsion
-  Also creates a transition to blend between them
-  Used on ScreenQuad along clip-space.vert shader
-*/
 
-// ToDo:
-// add noise
 
 #ifdef GL_ES
 precision mediump float;
@@ -103,13 +96,17 @@ float snoise(vec2 v)
   return 130.0 * dot(m, g);
 }
 
+float linearMap(in float val, in float fromA, in float fromB, in float toA, in float toB ){
+    float x = (((val - fromA) * (toB - toA)) / (fromB - fromA) + toA); 
+    return clamp(fromA,toB, x);
+}
 
 void main() {
 
-  float p = u_time;
-  // float p = u_progress;
+  // float p = u_time;
+  float p = u_progress;
   vec2 st = gl_FragCoord.xy/u_resolution.xy;
-  st.x *= u_resolution.x/u_resolution.y;
+  // st.x *= u_resolution.x/u_resolution.y;
 
   // Scale responsive to fit height
   float scale = 2.0;
@@ -119,9 +116,6 @@ void main() {
   float scaleY = scale;
   st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
 
-
-  // noise controls
-  // vec3 color = vec3(0.);
   vec2 pos = vec2(st * u_scale);
   
   float DF = 0.0;
@@ -129,22 +123,22 @@ void main() {
   // Add a random position
   float a = 0.0;
   vec2 vel = vec2(p*.1);
-  DF += snoise(pos+vel)*u_v2+u_time*0.5;
+  DF += snoise(pos+vel)*u_v2+u_time;
   
   // Add a random position
   a = snoise(pos*vec2(cos(p*u_w1),sin(p*u_w2))*u_w3)*3.1415;
   vel = vec2(cos(a),sin(a));
   DF += snoise(pos+vel)*u_v4+u_v5;
 
-
   // Sample textures
   vec2 disp = st; 
   vec4 texture1 = texture2D(u_texture1, disp);
   vec4 texture2 = texture2D(u_texture2, disp);
   
+  float t1 = linearMap(p,0.1, 1.0, 0.0, 1.0);
+  float t2 = linearMap(p,0.0, 0.9, 0.0, 1.0);
+
   // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
-  vec4 color = mix(texture1, texture2, smoothstep(u_v6, u_v7, fract(DF)));
+  vec4 color = mix(texture1, texture2, smoothstep(t1, t2, fract(DF)));
   gl_FragColor = vec4(color);
-  // vec3 color = vec3( smoothstep(.7,.75,fract(DF)) );
-  // gl_FragColor = vec4(color,1.0);
 }

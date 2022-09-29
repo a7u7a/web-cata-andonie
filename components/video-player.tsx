@@ -55,15 +55,15 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const uniforms = useMemo(() => {
     return {
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_texture1: { value: playlist[3] },
-      u_texture2: { value: playlist[3] },
+      u_texture1: { value: playlist[0] },
+      u_texture2: { value: playlist[1] },
       u_progress: { value: 0 },
       u_fadeProgress: { value: 0 },
       u_time: { value: 0.0 },
       u_scale: { value: 7.216 },
-      u_w1: { value: 0.1 },
-      u_w2: { value: 0.1 },
-      u_w3: { value: 0.1 },
+      u_w1: { value: 0.15 },
+      u_w2: { value: 0.15 },
+      u_w3: { value: 0.15 },
       u_v2: { value: 0.25 },
       u_v3: { value: 0.25 },
       u_v4: { value: 0.746 },
@@ -90,7 +90,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     }
   }, [size]);
 
-  const [currentTexture, setCurrentTexture] = useState(2);
+  const [currentTexture, setCurrentTexture] = useState(1);
 
   /**
    * Swap textures between each of the shader`s
@@ -110,7 +110,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const [{ fadeProgress }] = useSpring(
     {
       fadeProgress: videoNav.toggle ? 0 : 1,
-      config: { duration: 500 },
+      config: { duration: 300 },
     },
     [videoNav]
   );
@@ -129,8 +129,8 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
           transparent
           ref={matRef}
           uniforms={uniforms}
-          // uniforms-u_progress-value={progress}
-          uniforms-u_fadeProgress-value={fadeProgress}
+          uniforms-u_progress-value={fadeProgress}
+          // uniforms-u_fadeProgress-value={fadeProgress}
           fragmentShader={noiseTransition}
           vertexShader={clipSpaceVert}
         />
