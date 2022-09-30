@@ -22,14 +22,13 @@ export function useVideoTextures(videoPaths: string[]) {
         crossOrigin,
         loop,
         muted,
-        autoplay:true,
         playsInline,
       });
       const texture = new THREE.VideoTexture(video);
       texture.encoding = gl.outputEncoding;
       video.addEventListener(unsuspend, (e) => {
-        console.log("video", video);
-        // start && texture.image.play();
+        // console.log("video", video);
+        start && texture.image.play();
         return res(texture);
       });
     });

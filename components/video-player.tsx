@@ -24,11 +24,11 @@ import {
 import clipSpaceVert from "../shaders/clip-space.vert";
 import linearFadeTransition from "../shaders/linear-fade-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
-import { useVideoTexture } from "./my-useVideoTexture";
-import { useVideoTextures } from "./my-useVideoTextures";
-import { useSpring, a, config } from "@react-spring/three";
+import { useVideoTexture } from "../hooks/my-useVideoTexture";
+import { useVideoTextures } from "../hooks/my-useVideoTextures";
+import { useSpring, a, config, SpringValue } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
-import { VideoNavProps } from "../lib/interfaces";
+import { VideoNavProps } from "../interfaces/interfaces";
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
@@ -100,19 +100,30 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
 
-  const [{ progress }] = useSpring(
+  // const [{ progress }] = useSpring(
+  //   {
+  //     progress: videoNav.toggle ? 0 : 1,
+  //     config: { duration: 300 },
+  //   },
+  //   [videoNav]
+  // );
+
+  const [faderProgress, setFaderProgress] = useState(0);
+
+  const { progress } = useSpring(
     {
       progress: videoNav.toggle ? 0 : 1,
-      config: { duration: 300 },
-    },
-    [videoNav]
+      onChange: () => {
+        // spring cumulative progress
+        const p = progress.get();
+        const dir = videoNav.direction;
+        const dif = Math.abs(p - faderProgress) * dir;
+        matRef.current.uniforms.u_progress.value += dif;
+        setFaderProgress(p);
+      },
+      config: { mass: 1, tension: 280, friction: 60, duration: 500 },
+    }
   );
-
-  // const { progress } = useSpring({
-  //   progress: clicked ? 0 : 1,
-  //   loop: () => console.log("progress loop"),
-  //   config: { mass: 1, tension: 280, friction: 60, duration: 2000 },
-  // });
 
   return (
     <ScreenQuad>
@@ -122,7 +133,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
           transparent
           ref={matRef}
           uniforms={uniforms}
-          uniforms-u_progress-value={progress}
+          // uniforms-u_progress-value={progress}
           fragmentShader={linearFadeTransition}
           vertexShader={clipSpaceVert}
         />

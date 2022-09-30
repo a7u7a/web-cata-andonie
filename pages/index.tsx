@@ -6,7 +6,7 @@ import ShaderTexture from "../components/shader-texture";
 import ShaderTextureQuad from "../components/shader-texture2";
 import VideoTextureQuad from "../components/shader-video-texture";
 import VideoPlayer from "../components/video-player";
-import { VideoNavProps } from "../lib/interfaces";
+import { VideoNavProps } from "../interfaces/interfaces";
 
 const Home: NextPage = () => {
   const [isPlay, setIsPlay] = useState(true);

@@ -24,36 +24,10 @@ uniform sampler2D u_texture2;
 varying vec2 vUv;
 uniform float u_light;
 
-//  Function from Iñigo Quiles
-//  www.iquilezles.org/www/articles/functions/functions.htm
-float parabola( float x, float k ){
-  return pow( 0.4*x*(1.0-x), k );
-}
-
-// Function by @patriciogv - 2015
-// http://patriciogonzalezvivo.com
-float circle(in vec2 _st, in float _radius){
-  vec2 dist = _st-vec2(0.5);
-	return 1.-smoothstep(_radius-(_radius*2.834),
-                       _radius+(_radius*0.186),
-                       dot(dist,dist)*4.0);
-}
-
 mat2 rotate2d(float _angle){
   return mat2(cos(_angle),-sin(_angle),
               sin(_angle),cos(_angle));
 }
-
-float linearMap(in float val, in float fromA, in float fromB, in float toA, in float toB ){
-  float x = (((val - fromA) * (toB - toA)) / (fromB - fromA) + toA); 
-  return clamp(toA,toB, x);
-}
-
-// make progress into a regular
-float progressCurve(in float x ){
-  return 1.0-pow(cos(PI*x),2.0);
-}
-
 
 float sinu(float d,float amplitude, float frequence) {   
   float triangle = abs(mod(d * frequence,2.0)-1.);
@@ -65,39 +39,24 @@ void main() {
 
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
   
- float p = u_progress;
-
+  // Create fade sweep
+  float progress = u_progress;
   vec2 sf = st;  
   sf = rotate2d(-0.192 * PI) * sf;
-
   float offX = -0.0;
   sf += vec2(offX,0.0);
   float wave = -0.5;
   float amp = 2.0;
   float freq = 0.2;
-  wave += (sinu((sf.x*freq)+p, amp, 1.0));
-
+  wave += (sinu((sf.x*freq)+progress, amp, 1.0));
 
   // Scale responsive to fit height
   float scale = 2.0;
   float canvasAspect = u_resolution.x / u_resolution.y;
-  float videoAspect = 1.77; // asumes 1280 x 720
+  float videoAspect = 1.77; // asumes 1280 x 720 texture resolution
   float scaleX = (scale * videoAspect) / canvasAspect;
   float scaleY = scale;
   st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
-
-  // // Compute fade effect
-  // float fadeProgress = linearMap(u_progress,0.0, 1.0, -0.7, 1.2);
-  // // float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
-  // vec2 sf = st;
-	// // Move space from the center to the vec2(0.0)
-  // sf -= vec2(0.5);
-  // // Rotate the space
-  // sf = rotate2d( -0.184*PI ) * sf;
-  // // Move it back to the original place
-  // sf += vec2(0.5);
-  // float fadeScale = 0.8;
-  // float fadePct = (sin(sf.x)+-fadeProgress)*fadeScale;
 
   // Sample textures
   vec2 disp = st; 
