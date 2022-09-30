@@ -17,19 +17,19 @@ export function useVideoTextures(videoPaths: string[]) {
     };
 
     return new Promise((res, rej) => {
-      
       const video = Object.assign(document.createElement("video"), {
         src: path,
         crossOrigin,
         loop,
         muted,
+        autoplay:true,
         playsInline,
       });
-
       const texture = new THREE.VideoTexture(video);
       texture.encoding = gl.outputEncoding;
       video.addEventListener(unsuspend, (e) => {
-        start && texture.image.play();
+        console.log("video", video);
+        // start && texture.image.play();
         return res(texture);
       });
     });

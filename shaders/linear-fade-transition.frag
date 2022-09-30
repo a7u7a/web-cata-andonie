@@ -14,20 +14,14 @@ precision mediump float;
 #define PI 3.14159265359
 
 uniform vec2 u_resolution;
-uniform float u_offX;
-uniform float u_offY;
 uniform float u_progress;
-uniform float u_fadeProgress;
+uniform float u_w1;
+uniform float u_w2;
+uniform float u_w3;
 uniform float u_time;
 uniform sampler2D u_texture1;
 uniform sampler2D u_texture2;
 varying vec2 vUv;
-uniform float u_tyles_y;
-uniform float u_tyles_x;
-uniform float u_posX;
-uniform float u_posY;
-uniform float u_mouseX;
-uniform float u_mouseY;
 uniform float u_light;
 
 //  Function from Iñigo Quiles
@@ -60,10 +54,29 @@ float progressCurve(in float x ){
   return 1.0-pow(cos(PI*x),2.0);
 }
 
+
+float sinu(float d,float amplitude, float frequence) {   
+  float triangle = abs(mod(d * frequence,2.0)-1.);
+  float y = amplitude*(triangle * triangle * (3.0 - 2.0 * triangle));
+  return y;
+}
+
 void main() {
 
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
   
+ float p = u_progress;
+
+  vec2 sf = st;  
+  sf = rotate2d(-0.192 * PI) * sf;
+
+  float offX = -0.0;
+  sf += vec2(offX,0.0);
+  float wave = -0.5;
+  float amp = 2.0;
+  float freq = 0.2;
+  wave += (sinu((sf.x*freq)+p, amp, 1.0));
+
 
   // Scale responsive to fit height
   float scale = 2.0;
@@ -73,18 +86,18 @@ void main() {
   float scaleY = scale;
   st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
 
-  // Compute fade effect
-  float fadeProgress = linearMap(u_fadeProgress,0.0, 1.0, -0.7, 1.2);
-  // float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
-  vec2 sf = st;
-	// Move space from the center to the vec2(0.0)
-  sf -= vec2(0.5);
-  // Rotate the space
-  sf = rotate2d( -0.184*PI ) * sf;
-  // Move it back to the original place
-  sf += vec2(0.5);
-  float fadeScale = 0.8;
-  float fadePct = (sin(sf.x)+-fadeProgress)*fadeScale;
+  // // Compute fade effect
+  // float fadeProgress = linearMap(u_progress,0.0, 1.0, -0.7, 1.2);
+  // // float fadeProgress = linearMap(progress,0.6, 1.0, -1.5, 1.5);
+  // vec2 sf = st;
+	// // Move space from the center to the vec2(0.0)
+  // sf -= vec2(0.5);
+  // // Rotate the space
+  // sf = rotate2d( -0.184*PI ) * sf;
+  // // Move it back to the original place
+  // sf += vec2(0.5);
+  // float fadeScale = 0.8;
+  // float fadePct = (sin(sf.x)+-fadeProgress)*fadeScale;
 
   // Sample textures
   vec2 disp = st; 
@@ -92,7 +105,7 @@ void main() {
   vec4 texture2 = texture2D(u_texture2, disp);
   
   // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
-  vec4 color = u_light * mix(texture1, texture2, smoothstep(-0.25, 0.25, fadePct));
+  vec4 color = u_light * mix(texture1, texture2, smoothstep(-0.25, 0.25, wave));
 
   gl_FragColor = color;
 }

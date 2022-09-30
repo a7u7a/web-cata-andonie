@@ -50,7 +50,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
 
   const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
 
-  PatternControls(matRef);
+  // PatternControls(matRef);
 
   const uniforms = useMemo(() => {
     return {
@@ -58,18 +58,11 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       u_texture1: { value: playlist[0] },
       u_texture2: { value: playlist[1] },
       u_progress: { value: 0 },
-      u_fadeProgress: { value: 0 },
       u_time: { value: 0.0 },
-      u_scale: { value: 7.216 },
-      u_w1: { value: 0.15 },
-      u_w2: { value: 0.15 },
-      u_w3: { value: 0.15 },
-      u_v2: { value: 0.25 },
-      u_v3: { value: 0.25 },
-      u_v4: { value: 0.746 },
-      u_v5: { value: 1.106 },
-      u_v6: { value: 0.7 },
-      u_v7: { value: 0.75 },
+      u_scale: { value: 1 },
+      u_w1: { value: 0 },
+      u_w2: { value: 0 },
+      u_w3: { value: 0 },
       u_light: { value: 0.9 },
     };
   }, [playlist]);
@@ -107,9 +100,9 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
 
-  const [{ fadeProgress }] = useSpring(
+  const [{ progress }] = useSpring(
     {
-      fadeProgress: videoNav.toggle ? 0 : 1,
+      progress: videoNav.toggle ? 0 : 1,
       config: { duration: 300 },
     },
     [videoNav]
@@ -129,9 +122,8 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
           transparent
           ref={matRef}
           uniforms={uniforms}
-          uniforms-u_progress-value={fadeProgress}
-          // uniforms-u_fadeProgress-value={fadeProgress}
-          fragmentShader={noiseTransition}
+          uniforms-u_progress-value={progress}
+          fragmentShader={linearFadeTransition}
           vertexShader={clipSpaceVert}
         />
       </Suspense>
