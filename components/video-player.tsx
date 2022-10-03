@@ -29,7 +29,7 @@ import { useVideoTextures } from "../hooks/my-useVideoTextures";
 import { useSpring, a, config, SpringValue } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 import { VideoNavProps } from "../interfaces/interfaces";
-import { useScroll } from "react-use";
+
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
@@ -102,12 +102,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
 
-  const scrollRef = useRef(document.body);
-  const { x, y } = useScroll(scrollRef);
-
-  useEffect(() => {
-    console.log("xy", x, y);
-  }, [x, y]);
+  
 
   const [faderProgress, setFaderProgress] = useState(0);
 
