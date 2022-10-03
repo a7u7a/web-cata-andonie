@@ -13,6 +13,7 @@ precision mediump float;
 
 #define PI 3.14159265359
 
+uniform float u_scroll;
 uniform vec2 u_resolution;
 uniform float u_progress;
 uniform float u_w1;
@@ -35,15 +36,23 @@ float sinu(float d,float amplitude, float frequence) {
   return y;
 }
 
+//  Function from Iñigo Quiles
+//  www.iquilezles.org/www/articles/functions/functions.htm
+float parabola( float x, float k ){
+  return pow( 0.4*x*(1.0-x), k );
+}
+
 void main() {
 
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
   
+  
+
   // Create fade sweep
   float progress = u_progress;
   vec2 sf = st;  
   sf = rotate2d(-0.192 * PI) * sf;
-  float offX = -0.0;
+  float offX = 0.1;
   sf += vec2(offX,0.0);
   float wave = -0.5;
   float amp = 2.0;
@@ -58,8 +67,15 @@ void main() {
   float scaleY = scale;
   st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
 
+  // Create scroll distorsion
+  float parabolaScale = -3.40;
+  float parabolaK = 1.264;
+  float y = parabola(st.x,parabolaK) * parabolaScale;
+  float x = parabola(st.y,parabolaK) * parabolaScale;
+  vec2 scrollDistorsion = vec2(0.0, u_scroll*x);
+
   // Sample textures
-  vec2 disp = st; 
+  vec2 disp = st-scrollDistorsion; 
   vec4 texture1 = texture2D(u_texture1, disp);
   vec4 texture2 = texture2D(u_texture2, disp);
   

@@ -29,6 +29,7 @@ import { useVideoTextures } from "../hooks/my-useVideoTextures";
 import { useSpring, a, config, SpringValue } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 import { VideoNavProps } from "../interfaces/interfaces";
+import { useScroll } from "react-use";
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
@@ -64,6 +65,7 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       u_w2: { value: 0 },
       u_w3: { value: 0 },
       u_light: { value: 0.9 },
+      u_scroll: { value: 0.0 },
     };
   }, [playlist]);
 
@@ -100,30 +102,27 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
 
-  // const [{ progress }] = useSpring(
-  //   {
-  //     progress: videoNav.toggle ? 0 : 1,
-  //     config: { duration: 300 },
-  //   },
-  //   [videoNav]
-  // );
+  const scrollRef = useRef(document.body);
+  const { x, y } = useScroll(scrollRef);
+
+  useEffect(() => {
+    console.log("xy", x, y);
+  }, [x, y]);
 
   const [faderProgress, setFaderProgress] = useState(0);
 
-  const { progress } = useSpring(
-    {
-      progress: videoNav.toggle ? 0 : 1,
-      onChange: () => {
-        // spring cumulative progress
-        const p = progress.get();
-        const dir = videoNav.direction;
-        const dif = Math.abs(p - faderProgress) * dir;
-        matRef.current.uniforms.u_progress.value += dif;
-        setFaderProgress(p);
-      },
-      config: { mass: 1, tension: 280, friction: 60, duration: 500 },
-    }
-  );
+  const { progress } = useSpring({
+    progress: videoNav.toggle ? 0 : 1,
+    onChange: () => {
+      // spring cumulative progress
+      const p = progress.get();
+      const dir = videoNav.direction;
+      const dif = Math.abs(p - faderProgress) * dir;
+      matRef.current.uniforms.u_progress.value += dif;
+      setFaderProgress(p);
+    },
+    config: { mass: 1, tension: 280, friction: 60, duration: 500 },
+  });
 
   return (
     <ScreenQuad>
