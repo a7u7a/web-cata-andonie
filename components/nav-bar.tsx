@@ -5,7 +5,7 @@ const NavBar = () => {
     w-screen bg-black text-white"
     >
       <div className="pl-4 p-3 font-black text-2xl">Catalina Andonie</div>
-      <div className="flex pr-4 p-3 items-center font-black text-xl hover:underline hover:cursor-pointer text-center">
+      <div className="flex pr-4 p-3 items-center font-black text-lg hover:underline hover:cursor-pointer text-center">
         <div>English</div>
       </div>
     </div>
