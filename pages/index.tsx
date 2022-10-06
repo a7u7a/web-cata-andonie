@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Head from "next/head";
+
 import { useState, useRef, useEffect, SyntheticEvent, UIEvent } from "react";
 import VideoHero from "../components/video-hero";
 import NavBar from "../components/nav-bar";
@@ -7,17 +7,15 @@ import About from "../components/about";
 import News from "../components/news";
 import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/works-catalogue";
+import MyFooter from "../components/my-footer";
+import MyHeader from "../components/my-header";
 // import { getPosts } from "../lib/posts";
 // import { GetStaticProps } from "next";
 
 const Home: NextPage = () => {
   return (
     <div>
-      <Head>
-        <title>Catalina Andonie</title>
-        <meta name="description" content="Catalina Andonie" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MyHeader />
       <VideoHero />
       <NavBar />
       <div className="flex flex-row m-2">
@@ -31,10 +29,10 @@ const Home: NextPage = () => {
           <News />
           <IndexImage h={1159} w={1500} src="/imgs/maqueta/vertical-1.jpg" />
           <IndexImage h={1340} w={957} src="/imgs/maqueta/horizontal-2.jpg" />
-          
         </div>
       </div>
       <WorksCatalogue />
+      <MyFooter />
     </div>
   );
 };
