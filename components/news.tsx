@@ -6,7 +6,7 @@ const News = () => {
         <div className="text-black text-3xl underline cursor-pointer">Bio</div>
       </div>
       <div className="pl-4 pr-4 pt-8">
-        <div className="flex flex-row max-h-72">
+        <div className="flex flex-row">
 
           <div className="flex flex-col w-1/2 mr-1">
             <div className="font-bold text-xl">Current</div>
