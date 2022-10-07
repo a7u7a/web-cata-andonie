@@ -4,7 +4,7 @@ const getImages = () => {
   const filenames = [];
   for (let i = 0; i < 19; i++) {
     const name = `/imgs/works/${i + 1}.jpg`;
-    console.log("name", name);
+    
     filenames.push(name);
   }
   return filenames;

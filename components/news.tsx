@@ -1,6 +1,6 @@
 const News = () => {
   return (
-    <div className="bg-gray-200 pt-8 pb-8">
+    <div className="pt-8 pb-8">
       <div className="flex flex-row justify-between pl-4 pr-4">
         <div className="text-black text-3xl">Exhibitions</div>
         <div className="text-black text-3xl underline cursor-pointer">Bio</div>
