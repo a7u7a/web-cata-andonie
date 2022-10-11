@@ -8,18 +8,25 @@ export interface VideoNavProps {
 }
 
 export interface workPost {
+  id: string; // post filename
   date: string;
   title: string;
+  title_eng: string;
   contentSpanish: string; // post body
-  id: string; // post filename
+  contentEnglish: string;
   category: string;
   thumbnail: string;
-  contentEnglish: string;
   front_page: boolean;
   front_thumbnail: string;
   front_img_w?: number; // optional because only relevant on home page
   front_img_h?: number;
-  title_eng: string;
   tags: string[];
   hero_img: string;
+}
+
+export interface bioPost {
+  date: string;
+  title: string;
+  contentSpanish: string; // post body
+  id: string; // post filename
 }

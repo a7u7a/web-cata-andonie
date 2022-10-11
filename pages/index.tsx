@@ -14,15 +14,15 @@ import { GetStaticProps } from "next";
 import { workPost } from "../interfaces/interfaces";
 
 interface HomeProps {
-  allPosts: workPost[];
+  workPosts: workPost[];
 }
 
 function split(arr: workPost[], index: number) {
   return [arr.slice(0, index), arr.slice(index)];
 }
 
-export default function Home({ allPosts }: HomeProps) {
-  const frontPagePosts = allPosts.filter((post) => post.front_page);
+export default function Home({ workPosts }: HomeProps) {
+  const frontPagePosts = workPosts.filter((post) => post.front_page);
   // split front page posts into two lists, one for each column
   const [firstCol, secondCol] = split(
     frontPagePosts,
@@ -76,10 +76,10 @@ export default function Home({ allPosts }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPosts = await getAllWorkPosts();
+  const workPosts = await getAllWorkPosts();
   return {
     props: {
-      allPosts,
+      workPosts,
     },
   };
 };

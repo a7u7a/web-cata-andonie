@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.bio {
+  @apply w-full text-black text-[0.95rem]
+  prose prose-sm
+  prose-h1:text-xl prose-h1:font-bold prose-h1:pt-8
+}
+
+
 @layer base {
   @font-face {
     font-family: "Riforma";
@@ -22,3 +29,5 @@
     font-style: black;
   }
 }
+
+
