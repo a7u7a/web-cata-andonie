@@ -29,8 +29,6 @@ export default function Home({ allPosts }: HomeProps) {
     Math.floor(frontPagePosts.length / 3)
   );
 
-  console.log("firstCol", firstCol, "secondCol", secondCol);
-
   return (
     <div>
       <MyHeader />

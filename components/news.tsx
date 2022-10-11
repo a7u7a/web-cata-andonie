@@ -4,11 +4,9 @@ const News = () => {
   return (
     <div className="pt-8 pb-8">
       <div className="flex flex-row justify-between pl-4 pr-4">
-        <div className="text-black text-3xl">Exhibitions</div>
+        <div className="text-3xl">Exhibitions</div>
         <Link href={"/bio"}>
-          <div className="text-black text-3xl underline cursor-pointer">
-            Bio
-          </div>
+          <div className="text-3xl underline cursor-pointer">Bio</div>
         </Link>
       </div>
       <div className="pl-4 pr-4 pt-8">
