@@ -1,13 +1,18 @@
+import Link from "next/link";
+
 const News = () => {
   return (
     <div className="pt-8 pb-8">
       <div className="flex flex-row justify-between pl-4 pr-4">
         <div className="text-black text-3xl">Exhibitions</div>
-        <div className="text-black text-3xl underline cursor-pointer">Bio</div>
+        <Link href={"/bio"}>
+          <div className="text-black text-3xl underline cursor-pointer">
+            Bio
+          </div>
+        </Link>
       </div>
       <div className="pl-4 pr-4 pt-8">
         <div className="flex flex-row">
-
           <div className="flex flex-col w-1/2 mr-1">
             <div className="font-bold text-xl">Current</div>
             <ul className="space-y-1">
