@@ -10,15 +10,6 @@ const VideoHero = () => {
     direction: 0,
   });
 
-  // todo: fix ts error
-  // useEffect(() => {
-  //   const onScroll = (e:UIEvent<HTMLElement>) => {
-  //     console.log(e.target.documentElement.scrollTop)
-  //   };
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
-
   return (
     <div>
       <div className="absolute z-0 w-full h-[135vh]">
