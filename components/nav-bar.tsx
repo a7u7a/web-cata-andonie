@@ -12,10 +12,7 @@ const NavBar = ({
   scrollTop,
   scrollThreshold,
 }: NavBarProps) => {
-  const [isVisible, setVisible] = useState(false);
-  const [isTransparent, setTransparent] = useState(false);
   const [check, setCheck] = useState(false);
-  const [checkTwo, setCheckTwo] = useState(false);
   const [classString, setClassString] = useState("");
 
   // Using two useEffects so I can avoid updating isVisible every time scrollTop changes
@@ -33,18 +30,14 @@ const NavBar = ({
   }, [scrollTop]);
 
   useEffect(() => {
-    console.log("change check");
-
-    // check ? setVisible(true) : setVisible(false);
-
     if (transparent) {
-      // go from bg-transparent to bg-black
+      // either transition from bg-transparent to bg-black
       setClassString(`fixed inset-x-0 top-0 flex flex-row justify-between
         w-screen text-white z-50 
         transition-all duration-300 ease-out
         ${check ? "bg-black" : " bg-transparent"} `);
     } else {
-      // either go from opacity-0 to opacity-100
+      // or transition from opacity-0 to opacity-100
       setClassString(`fixed inset-x-0 top-0 flex flex-row justify-between
         w-screen text-white z-50 
         transition-all duration-300 ease-out bg-black

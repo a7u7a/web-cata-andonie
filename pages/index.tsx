@@ -36,7 +36,7 @@ export default function Home({ workPosts }: HomeProps) {
       const target = e.target as Document;
       const scrollTop = target.documentElement.scrollTop;
       setScrollTop(scrollTop);
-      console.log("scrollTop", scrollTop);
+      // console.log("scrollTop", scrollTop);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -58,7 +58,7 @@ export default function Home({ workPosts }: HomeProps) {
               title={post.title}
               h={post.front_img_h!}
               w={post.front_img_w!}
-              src={post.front_thumbnail}
+              src={post.front_thumbnail!}
             />
           ))}
         </div>
@@ -73,7 +73,7 @@ export default function Home({ workPosts }: HomeProps) {
               title={post.title}
               h={post.front_img_h!}
               w={post.front_img_w!}
-              src={post.front_thumbnail}
+              src={post.front_thumbnail!}
             />
           ))}
         </div>

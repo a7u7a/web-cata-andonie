@@ -2,26 +2,36 @@
  * -1 = backwards
  * 1 = forwards
  */
+
 export interface VideoNavProps {
   toggle: boolean;
   direction: number;
 }
 
 export interface workPost {
-  id: string; // post filename
   date: string;
-  title: string;
-  title_eng: string;
-  contentSpanish: string; // post body
-  contentEnglish: string;
-  category: string;
   thumbnail: string;
   front_page: boolean;
-  front_thumbnail: string;
+  title: string;
+  title_eng: string;
+  year: number;
+  // optional
+  hero_img?: string;
+  medidas?: string;
+  front_thumbnail?: string;
+  material?: string;
+  material_eng?: string;
+  locacion?: string;
+  locacion_eng?: string;
+  tecnica?: string;
+  tecnica_eng?: string;
+  // computed
+  id: string; // post filename
+  // computed optional
+  contentSpanish?: string; // post body
+  contentEnglish?: string; //body_eng
   front_img_w?: number; // optional because only relevant on home page
   front_img_h?: number;
-  tags: string[];
-  hero_img: string;
 }
 
 export interface bioPost {

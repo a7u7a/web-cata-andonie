@@ -27,18 +27,40 @@ export const getWorkPost = (id: string): workPost => {
   const contentEnglishOut = _.content.split("\n").join("\r\n");
 
   return {
-    id,
-    title: matterResult.data.title,
     date: matterResult.data.date,
     thumbnail: matterResult.data.thumbnail,
-    contentSpanish,
-    tags: matterResult.data.tags,
-    hero_img: matterResult.data.hero_img,
-    title_eng: matterResult.data.title_eng,
-    contentEnglish: contentEnglishOut,
-    category: matterResult.data.category,
     front_page: matterResult.data.front_page,
-    front_thumbnail: matterResult.data.front_thumbnail,
+    title: matterResult.data.title,
+    title_eng: matterResult.data.title_eng,
+    year: matterResult.data.year,
+    // optional
+    hero_img: matterResult.data.hero_img
+      ? matterResult.data.hero_img
+      : undefined,
+    medidas: matterResult.data.medidas ? matterResult.data.medidas : undefined,
+    front_thumbnail: matterResult.data.front_thumbnail
+      ? matterResult.data.front_thumbnail
+      : undefined,
+    material: matterResult.data.material
+      ? matterResult.data.material
+      : undefined,
+    material_eng: matterResult.data.material_eng
+      ? matterResult.data.material_eng
+      : undefined,
+    locacion: matterResult.data.locacion
+      ? matterResult.data.locacion
+      : undefined,
+    locacion_eng: matterResult.data.locacion_eng
+      ? matterResult.data.locacion_eng
+      : undefined,
+    tecnica: matterResult.data.tecnica ? matterResult.data.tecnica : undefined,
+    tecnica_eng: matterResult.data.tecnica_eng
+      ? matterResult.data.tecnica_eng
+      : undefined,
+    // computed
+    id,
+    contentSpanish,
+    contentEnglish: contentEnglishOut,
   };
 };
 
@@ -53,27 +75,33 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
     const _ = matter(matterResult.data.body_eng);
     const contentEnglishOut = _.content.split("\n").join("\r\n");
 
-    // img probe
-    const img = fs.createReadStream(
-      path.join(process.cwd(), "public" + matterResult.data.front_thumbnail)
-    );
-    const dimensions = await probe(img);
+    var dimensions;
+    if (matterResult.data.front_thumbnail) {
+      // img probe
+      const img = fs.createReadStream(
+        path.join(process.cwd(), "public" + matterResult.data.front_thumbnail)
+      );
+      dimensions = await probe(img);
+    }
 
     return {
-      id,
-      title: matterResult.data.title,
       date: matterResult.data.date,
       thumbnail: matterResult.data.thumbnail,
-      contentSpanish,
-      tags: matterResult.data.tags,
-      hero_img: matterResult.data.hero_img,
-      title_eng: matterResult.data.title_eng,
-      contentEnglish: contentEnglishOut,
-      category: matterResult.data.category,
       front_page: matterResult.data.front_page,
-      front_thumbnail: matterResult.data.front_thumbnail,
-      front_img_w: dimensions.width,
-      front_img_h: dimensions.height,
+      title: matterResult.data.title,
+      title_eng: matterResult.data.title_eng,
+      year: matterResult.data.year,
+      // optional
+      hero_img: matterResult.data.hero_img,
+      medidas: matterResult.data.medidas,
+      front_thumbnail: matterResult.data.front_thumbnail
+        ? matterResult.data.front_thumbnail
+        : undefined,
+      // computed
+      id,
+      // computed optional
+      front_img_w: dimensions ? dimensions.width : undefined,
+      front_img_h: dimensions ? dimensions.height : undefined,
     };
   };
   const processFileNames = async () => {

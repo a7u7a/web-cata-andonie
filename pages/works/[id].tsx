@@ -25,11 +25,12 @@ interface WorkPostProps {
 }
 
 export default function Post({ workPost }: WorkPostProps) {
-  
+  console.log("workPost", workPost);
+
   return (
     <div>
       <NavBar />
-      <ImageHero src={workPost.hero_img} />
+      <ImageHero src={workPost.hero_img!} />
 
       <div className="flex flex-row m-2">
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
