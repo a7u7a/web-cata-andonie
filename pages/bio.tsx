@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { GetStaticProps } from "next";
 import { getAllBioPosts } from "../lib/posts";
 import { bioPost } from "../interfaces/interfaces";
@@ -24,9 +25,22 @@ const Bio = ({ bioPosts }: BioProps) => {
   //   }
   // });
 
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e: Event) => {
+      const target = e.target as Document;
+      const scrollTop = target.documentElement.scrollTop;
+      setScrollTop(scrollTop);
+      // console.log("scrollTop", scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div>
-      <NavBar transparent={true} />
+      <NavBar transparent={true} scrollThreshold={349} scrollTop={scrollTop} />
       <div className="w-screen bg-gray-200">
         <div className="pt-28 pb-28 ml-6 text-3xl font-bold w-2/3 text-white">
           B. 1989, Santiago de Chile. Lives and works in Santiago de Chile. Ut

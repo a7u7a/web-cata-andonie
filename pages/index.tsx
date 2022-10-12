@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { useState, useRef, useEffect, SyntheticEvent, UIEvent } from "react";
+import { useState, useRef, useEffect } from "react";
 import VideoHero from "../components/video-hero";
 import NavBar from "../components/nav-bar";
 import About from "../components/about";
@@ -29,10 +29,14 @@ export default function Home({ workPosts }: HomeProps) {
     Math.floor(frontPagePosts.length / 3)
   );
 
+  const [scrollTop, setScrollTop] = useState(0);
+
   useEffect(() => {
     const onScroll = (e: Event) => {
       const target = e.target as Document;
-      console.log(target.documentElement.scrollTop);
+      const scrollTop = target.documentElement.scrollTop;
+      setScrollTop(scrollTop);
+      console.log("scrollTop", scrollTop);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -42,8 +46,9 @@ export default function Home({ workPosts }: HomeProps) {
     <div>
       <MyHeader />
       <VideoHero />
-      <NavBar />
+      <NavBar transparent={false} scrollTop={scrollTop} scrollThreshold={1013} />
       <div className="flex flex-row m-2">
+        {/* Columna derecha */}
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
           <About />
           {firstCol.map((post, i) => (
@@ -56,12 +61,9 @@ export default function Home({ workPosts }: HomeProps) {
               src={post.front_thumbnail}
             />
           ))}
-          {/* 
-          <IndexImage h={2824} w={1564} src="/imgs/maqueta/horizontal-1.jpg" />
-          <IndexImage h={1340} w={890} src="/imgs/maqueta/horizontal-3.jpg" /> 
-          */}
-          {/* <IndexImage h={1142} w={1614} src="/imgs/maqueta/vertical-2.jpg" /> */}
         </div>
+
+        {/* Columna izquierda */}
         <div className="flex flex-col w-1/2 pl-1 space-y-2">
           <News />
           {secondCol.map((post, i) => (
@@ -74,8 +76,6 @@ export default function Home({ workPosts }: HomeProps) {
               src={post.front_thumbnail}
             />
           ))}
-          {/* <IndexImage h={1159} w={1500} src="/imgs/maqueta/vertical-1.jpg" />
-          <IndexImage h={1340} w={957} src="/imgs/maqueta/horizontal-2.jpg" /> */}
         </div>
       </div>
       <WorksCatalogue />
