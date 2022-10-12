@@ -13,6 +13,8 @@ import { getAllWorkPosts } from "../lib/posts";
 import { GetStaticProps } from "next";
 import { workPost } from "../interfaces/interfaces";
 
+import { useScroll } from "react-use";
+
 interface HomeProps {
   workPosts: workPost[];
 }
@@ -22,6 +24,9 @@ function split(arr: workPost[], index: number) {
 }
 
 export default function Home({ workPosts }: HomeProps) {
+  const scrollRef = useRef(null);
+  const { x, y } = useScroll(scrollRef);
+
   const frontPagePosts = workPosts.filter((post) => post.front_page);
   // split front page posts into two lists, one for each column
   const [firstCol, secondCol] = split(
@@ -29,12 +34,18 @@ export default function Home({ workPosts }: HomeProps) {
     Math.floor(frontPagePosts.length / 3)
   );
 
+  useEffect(() => {
+    console.log("y", y);
+  }, [y]);
+
   return (
-    <div>
+    <div >
       <MyHeader />
       <VideoHero />
-      <NavBar />
-      <div className="flex flex-row m-2">
+      <NavBar x={x} y={y} />
+      <div className="flex flex-row m-2"
+      ref={scrollRef}
+      >
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
           <About />
           {firstCol.map((post, i) => (

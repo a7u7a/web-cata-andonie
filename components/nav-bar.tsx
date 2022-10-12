@@ -2,9 +2,11 @@ import Link from "next/link";
 
 interface NavBarProps {
   transparent?: boolean;
+  x?: number;
+  y?: number;
 }
 
-const NavBar = ({ transparent = false }: NavBarProps) => {
+const NavBar = ({ transparent = false, x, y }: NavBarProps) => {
   return (
     <div
       className={`fixed inset-x-0 top-0 flex flex-row justify-between
@@ -12,6 +14,10 @@ const NavBar = ({ transparent = false }: NavBarProps) => {
           transparent ? "bg-transparent" : "bg-black"
         }`}
     >
+      <div>
+        <div>x: {x}</div>
+        <div>y: {y}</div>
+      </div>
       <Link href={"/"}>
         <div className="pl-6 p-3 font-black text-2xl cursor-pointer hover:text-gray-300">
           Catalina Andonie

@@ -12,7 +12,18 @@ interface BioProps {
 }
 
 const Bio = ({ bioPosts }: BioProps) => {
-  
+  // get all titles and split by column
+  // const re = /#{1,6}.+(?=\n)/g;
+  // const f = bioPosts[0].contentSpanish.match(re);
+
+  // const titles: string[][] = [];
+  // bioPosts.map((post) => {
+  //   const f = post.contentSpanish.match(re);
+  //   if (f?.length) {
+  //     titles.push(f);
+  //   }
+  // });
+
   return (
     <div>
       <NavBar transparent={true} />
@@ -35,9 +46,9 @@ const Bio = ({ bioPosts }: BioProps) => {
             </div>
 
             <div className="flex flex-row space-x-6 pr-6">
-              <BioColumnFromMarkdown bioPost={bioPosts[0]} proseClass="bio" />
-              <BioColumnFromMarkdown bioPost={bioPosts[1]} proseClass="bio" />
-              <BioColumnFromMarkdown bioPost={bioPosts[2]} proseClass="bio" />
+              <BioColumnFromMarkdown bioPost={bioPosts[0]} />
+              <BioColumnFromMarkdown bioPost={bioPosts[1]} />
+              <BioColumnFromMarkdown bioPost={bioPosts[2]} />
             </div>
           </div>
         </div>

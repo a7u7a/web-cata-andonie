@@ -3,16 +3,23 @@ import { bioPost } from "../../interfaces/interfaces";
 
 interface BioColumnFromMarkdownProps {
   bioPost: bioPost;
-  proseClass: string;
 }
 
-const BioColumnFromMarkdown = ({
-  bioPost,
-  proseClass,
-}: BioColumnFromMarkdownProps) => {
-    return (
+const BioColumnFromMarkdown = ({ bioPost }: BioColumnFromMarkdownProps) => {
+  return (
+    <ReactMarkdown
       // eslint-disable-next-line
-    <ReactMarkdown children={bioPost.contentSpanish} className={proseClass} />
+      children={bioPost.contentSpanish}
+      className="bio"
+      components={{
+        // this should go into a separate component
+        h1: ({ node, ...props }) => {
+          const id = props.children[0] as string;
+
+          return <h1 {...props} id={id.replaceAll(" ", "_")} />;
+        },
+      }}
+    />
   );
 };
 

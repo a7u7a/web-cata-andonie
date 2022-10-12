@@ -83,29 +83,6 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
   return processFileNames();
 };
 
-// export const getAllBioPosts = (): Promise<bioPost[]> => {
-//   const fileNames = fs.readdirSync(bioDirectory);
-
-//   const allPostsData = async (fileName: string) => {
-//     const id = fileName.replace(/\.md$/, "");
-//     const fullPath = path.join(bioDirectory, fileName);
-//     const fileContents = fs.readFileSync(fullPath, "utf8");
-//     const matterResult = matter(fileContents);
-//     const contentSpanish = matterResult.content;
-//     return {
-//       id,
-//       title: matterResult.data.title,
-//       date: matterResult.data.date,
-//       contentSpanish,
-//     };
-//   };
-//   const processFileNames = async () => {
-//     return await Promise.all(fileNames.map(allPostsData));
-//   };
-
-//   return processFileNames();
-// };
-
 export const getAllBioPosts = () => {
   const fileNames = fs.readdirSync(bioDirectory);
   const allPostsData: bioPost[] = fileNames.map((fileName) => {
@@ -116,7 +93,6 @@ export const getAllBioPosts = () => {
     const contentSpanish = matterResult.content;
     return {
       id,
-      title: matterResult.data.title,
       date: matterResult.data.date,
       contentSpanish,
     };
