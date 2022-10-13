@@ -12,7 +12,7 @@ material: cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistem
 material_eng: light boxes, borosilicate, insulators, stroboscopic lights, sound system, relay
 locacion: Casa de los Carrera
 locacion_eng: none
-tecnica: ""
+tecnica: none
 tecnica_eng: none
 body_eng: "For this show, I interpreted what was made previously in Galería
   CIMA.  The exhibition was relocated to a 300 year old 500 mt2 cellar that was
