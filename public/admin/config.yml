@@ -65,7 +65,7 @@ collections:
       - {label: "Materiales (English)", name: "material_eng", widget: "string"}
       - {label: "Locación", name: "locacion", widget: "string"}
       - {label: "Locación (English)", name: "locacion_eng", widget: "string"}
-      - {label: "Técnica", name: "tecnica", widget: "string"}
+      - {label: "Técnica", name: "tecnica", widget: "string", required: false}
       - {label: "Técnica (English)", name: "tecnica_eng", widget: "string"}
       - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
       - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
