@@ -6,6 +6,7 @@ title: Alta Tensión II
 title_eng: High Voltage II
 hero_img: /imgs/none.jpg
 medidas: 400 x 3000 x 2300 cm
+medidas_eng: 400 x 3000 x 2300 cm
 year: 2020
 material: cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistema
   de sonido, relay

@@ -5,7 +5,8 @@ front_page: true
 title: Muffins
 title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
-medidas: variables
+medidas: medidas variables
+medidas_eng: variable measurements
 year: 2016
 material: poliuretano, resina, silicona caucho, MDF, tubos de PVC
 material_eng: polyurethane, resin, silicone rubber, MDF, PVC pipes

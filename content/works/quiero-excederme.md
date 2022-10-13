@@ -5,7 +5,8 @@ front_page: true
 title: Quiero excederme
 title_eng: Quiero excederme
 hero_img: /imgs/none.jpg
-medidas: variable
+medidas: medidas variables
+medidas_eng: variable measurements
 year: 2022
 material: mármol, granito, cuarzita, ónix, acero, bronce, espejo, madera
 material_eng: marble, granite, cuarzite, onyx, steel, bronze, mirror, wood

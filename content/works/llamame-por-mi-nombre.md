@@ -5,7 +5,8 @@ front_page: true
 title: Llámame por mi Nombre
 title_eng: Call me by my Name
 hero_img: /imgs/none.jpg
-medidas: none
+medidas: ""
+medidas_eng: ""
 year: 2018
 material: piedra combarbalita, hormigón armado
 material_eng: combarbalita stone, reinforced concrete

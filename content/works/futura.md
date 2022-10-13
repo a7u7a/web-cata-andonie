@@ -6,6 +6,7 @@ title: Futura
 title_eng: Futura
 hero_img: /imgs/none.jpg
 medidas: 600 x 372 x 372 cm
+medidas_eng: 600 x 372 x 372 cm
 year: 2021
 material: flocki, vidrio, acrílico, bronce, granito, madera
 material_eng: flocki, glass, acrylic, brass, granite, wood

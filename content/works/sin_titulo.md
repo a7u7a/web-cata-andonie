@@ -5,7 +5,8 @@ front_page: true
 title: Sin Título
 title_eng: Untitled
 hero_img: /imgs/none.jpg
-medidas: variables
+medidas: medidas variables
+medidas_eng: variable measurements
 year: 2016
 material: none
 material_eng: none

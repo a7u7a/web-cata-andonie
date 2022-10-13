@@ -6,6 +6,7 @@ title: Medios Industriales
 title_eng: Industrial Resources
 hero_img: /imgs/none.jpg
 medidas: variables
+medidas_eng: variables
 year: 2014
 material: poliuretano, resina, silicona caucho, óleo, collage, encapso k
 material_eng: projected polyurethane foam

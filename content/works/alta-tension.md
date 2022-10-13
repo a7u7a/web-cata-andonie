@@ -5,7 +5,8 @@ front_page: true
 title: Alta Tensión
 title_eng: High Voltage
 hero_img: /imgs/none.jpg
-medidas: variables
+medidas: medidas variables
+medidas_eng: variable measurements
 year: 2019
 material: cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistema de sonido
 material_eng: light boxes, borosilicate, insulators, stroboscopic lights, sound system

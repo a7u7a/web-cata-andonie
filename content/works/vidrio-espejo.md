@@ -6,6 +6,7 @@ title: Vidrio Espejo
 title_eng: Mirror Glass
 hero_img: /imgs/none.jpg
 medidas: 250 x 114 x 17 cm
+medidas_eng: 250 x 114 x 17 cm
 year: 2014
 material: espejo, madera
 material_eng: mirror, wood

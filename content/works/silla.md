@@ -6,6 +6,7 @@ title: Silla
 title_eng: Chair
 hero_img: /imgs/none.jpg
 medidas: 80 x 220 x 55 cm
+medidas_eng: 80 x 220 x 55 cm
 year: 2016
 material: poliuretano, acero
 material_eng: polyurethane, steel

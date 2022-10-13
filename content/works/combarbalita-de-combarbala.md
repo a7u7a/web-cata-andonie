@@ -5,7 +5,8 @@ front_page: true
 title: Combarbalita de Combarbalá
 title_eng: Combarbalita from Combarbalá
 hero_img: /imgs/none.jpg
-medidas: variables
+medidas: medidas variables
+medidas_eng: variable measurements
 year: 2018
 material: none
 material_eng: none

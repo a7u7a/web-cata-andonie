@@ -6,6 +6,7 @@ title: Polímero
 title_eng: Polymer
 hero_img: /imgs/none.jpg
 medidas: 60 x 150 x 137 cm
+medidas_eng: 60 x 150 x 137 cm
 year: 2014
 material: PLA, melamina, yeso, madera
 material_eng: PLA, melamine, plaster, wood

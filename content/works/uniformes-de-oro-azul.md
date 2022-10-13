@@ -5,7 +5,8 @@ front_page: true
 title: Uniformes de Oro Azul
 title_eng: Uniforms of Blue Gold
 hero_img: /imgs/none.jpg
-medidas: variable
+medidas: medidas variables
+medidas_eng: variable measurements
 year: 2020
 material: 4 piedras de lapislázuli 
 material_eng: 4 lapislazuli stones 

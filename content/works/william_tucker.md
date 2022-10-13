@@ -6,6 +6,7 @@ title: William Tucker
 title_eng: William Tucker
 hero_img: /imgs/none.jpg
 medidas: 141 x 193 x 47 cm
+medidas_eng: 141 x 193 x 47 cm
 year: 2017
 material: melanina ranurada, yeso, baldes
 material_eng: slotted melamine, plaster, buckets

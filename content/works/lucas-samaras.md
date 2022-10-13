@@ -6,6 +6,7 @@ title: Lucas Samaras
 title_eng: Lucas Samaras
 hero_img: /imgs/none.jpg
 medidas: 138 x 120 x 32 cm
+medidas_eng: 138 x 120 x 32 cm
 year: 2017
 material: poliuretano, madera
 material_eng: polyurethane, wood

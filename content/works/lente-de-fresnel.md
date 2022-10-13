@@ -6,6 +6,7 @@ title: Lente de Fresnel
 title_eng: Frensnel Lens
 hero_img: /imgs/none.jpg
 medidas: 39,8 x 39,8 x 159 cm 
+medidas_eng: 39,8 x 39,8 x 159 cm 
 year: 2021
 material: escultura en acrílico, vidrio, bronce
 material_eng: sculpture in acrylic, glass, brass

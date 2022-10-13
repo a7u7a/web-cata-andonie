@@ -6,6 +6,7 @@ title: Joachim Bandau y Duo de Chaise Longues
 title_eng: Joachim Bandau and Chaise Longues
 hero_img: /imgs/none.jpg
 medidas: 350 x 120 x 120 cm
+medidas_eng: 350 x 120 x 120 cm
 year: 2014
 material: resina reforzada con fibra de vidrio, masilla, pintura acrílica, melamina 
 material_eng: fiberglass, acrylic paint, melamine, filler 

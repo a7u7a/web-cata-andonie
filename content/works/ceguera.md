@@ -6,6 +6,7 @@ title: Ceguera
 title_eng: Blindness
 hero_img: /imgs/none.jpg
 medidas: 350 x 712 x 1145 cm
+medidas_eng: 350 x 712 x 1145 cm
 year: 2014
 material: lana aislante poliéster, clavos
 material_eng: grey polyester insulation wool, nails
