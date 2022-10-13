@@ -14,7 +14,8 @@ locacion: ""
 locacion_eng: ""
 tecnica: ""
 tecnica_eng: ""
-body_eng: Mirror Glass is a found object I came across on a site with an
+body_eng: >-
+  Mirror Glass is a found object I came across on a site with an
   abandoned building that was about to be demolished.  Initially, the object had
   its wood support and mirror parts disseminated in its structure with some of
   them missing.  I made the decision to restore the absent pieces of mirror and

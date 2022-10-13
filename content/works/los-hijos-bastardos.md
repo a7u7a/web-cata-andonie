@@ -5,8 +5,8 @@ front_page: true
 title: Los Hijos Bastardos
 title_eng: The Illegitimate Sons
 hero_img: /imgs/none.jpg
-medidas: ""
-medidas_eng: ""
+medidas: none
+medidas_eng: none
 year: 2014
 material: hormigón armado, acero, mangueras
 material_eng: reinforced concrete, steel, hoses

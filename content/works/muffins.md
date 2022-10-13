@@ -16,6 +16,5 @@ tecnica: none
 tecnica_eng: none
 body_eng: >-
   none
-
 ---
 none
