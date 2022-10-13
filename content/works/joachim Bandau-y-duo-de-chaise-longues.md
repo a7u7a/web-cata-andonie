@@ -2,8 +2,8 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: true
-title: Proyecto Intemperie
-title_eng: Outdoors Project
+title: Joachim Bandau y Duo de Chaise Longues
+title_eng: Joachim Bandau and Chaise Longues
 hero_img: /imgs/none.jpg
 medidas: 350 x 120 x 120 cm
 year: 2014

@@ -2,8 +2,8 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: true
-title: Proyecto Intemperie
-title_eng: Outdoors Project
+title: Uniformes de Oro Azul
+title_eng: Uniforms of Blue Gold
 hero_img: /imgs/none.jpg
 medidas: variable
 year: 2020

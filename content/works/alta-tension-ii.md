@@ -2,8 +2,8 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: true
-title: Proyecto Intemperie
-title_eng: Outdoors Project
+title: Alta Tensión II 
+title_eng: High Voltage II
 hero_img: /imgs/none.jpg
 medidas: 400 x 3000 x 2300 cm
 year: 2020
