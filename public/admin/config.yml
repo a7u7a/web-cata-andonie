@@ -4,7 +4,9 @@ backend:
 
 media_folder: "public/uploads" # Where media files will be stored
 public_folder: "/uploads" # Where the media files can be accesed from the server
-publish_mode: editorial_workflow # For Drafts
+#publish_mode: editorial_workflow # For Drafts
+
+local_backend: true
 
 collections:
   - name: "about" # Used in routes, e.g., /admin/collections/blog
