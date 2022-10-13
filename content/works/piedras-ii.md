@@ -5,8 +5,8 @@ front_page: true
 title: Piedras II
 title_eng: Stones II
 hero_img: /imgs/none.jpg
-medidas: ""
-medidas_eng: ""
+medidas: none
+medidas_eng: none
 year: 2021
 material: combarbalita, resina reforzada en fibra de vidrio
 material_eng: combarbalita, fiberglass

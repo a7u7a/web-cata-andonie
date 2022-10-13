@@ -10,10 +10,10 @@ medidas_eng: 250 x 114 x 17 cm
 year: 2014
 material: espejo, madera
 material_eng: mirror, wood
-locacion: ""
-locacion_eng: ""
-tecnica: ""
-tecnica_eng: ""
+locacion: none
+locacion_eng: none
+tecnica: none
+tecnica_eng: none
 body_eng: >-
   Mirror Glass is a found object I came across on a site with an
   abandoned building that was about to be demolished.  Initially, the object had

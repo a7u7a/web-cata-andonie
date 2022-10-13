@@ -12,8 +12,8 @@ material: poliuretano, resina, silicona caucho, óleo, collage, encapso k
 material_eng: projected polyurethane foam
 locacion: Centro de Información Turística de Providencia
 locacion_eng: Centro de Información Turística de Providencia
-tecnica: ""
-tecnica_eng: ""
+tecnica: none
+tecnica_eng: none
 body_eng: >-
   In Industrial Resources I exhibited three techniques that were
   presented under the prism of a personal research towards the industrial:
