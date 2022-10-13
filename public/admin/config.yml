@@ -61,8 +61,8 @@ collections:
       - {label: "Titulo", name: "title", widget: "string"}
       - {label: "Titulo (English) ", name: "title_eng", widget: "string"}
       - {label: "Hero Image", name: "hero_img", widget: "image"}
-      - {label: "Medidas", name: "medidas", widget: "string"}
-      - {label: "Medidas (English)", name: "medidas_eng", widget: "string"}
+      - {label: "Medidas", name: "medidas", widget: "string", required: false}
+      - {label: "Medidas (English)", name: "medidas_eng", widget: "string", required: false}
       - {label: "Año", name: "year", widget: "number", value_type: "int"}
       - {label: "Materiales (Castellano)", name: "material", widget: "string"}
       - {label: "Materiales (English)", name: "material_eng", widget: "string", }
