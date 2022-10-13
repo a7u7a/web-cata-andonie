@@ -10,12 +10,11 @@ medidas_eng: 370 x 580 x 480 cm
 year: 2012
 material: espuma de poliuretano proyectada
 material_eng: projected polyurethane foam
-locacion: none
-locacion_eng: none
-tecnica: none
-tecnica_eng: none
-body_eng: >-
-  The Outdoors Project involved covering with projected polyurethane
+locacion: ""
+locacion_eng: ""
+tecnica: ""
+tecnica_eng: ""
+body_eng: The Outdoors Project involved covering with projected polyurethane
   foam all the walls on a vacant site in the center of the city of Santiago as
   in the felt that is placed on the walls in the installation Plight (1985) by
   the artist Joseph Beuys.  My intervention was to upholster and cover the
