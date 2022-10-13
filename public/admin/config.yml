@@ -45,10 +45,11 @@ collections:
     create: false # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
+    - {label: "Fecha de publicación", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: "HH:mm", format: "LLL"}
       - {label: "Cuerpo", name: "body", widget: "markdown"}
-  - name: "sensiblog" # Used in routes, e.g., /admin/collections/blog
-    label: "Sensiblog" # Used in the UI
-    folder: "content/sensiblog" # The path to the folder where the documents are stored
+  - name: "works" # Used in routes, e.g., /admin/collections/blog
+    label: "Works" # Used in the UI
+    folder: "content/works" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
@@ -68,17 +69,3 @@ collections:
       - {label: "Técnica (English)", name: "tecnica_eng", widget: "string"}
       - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
       - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
-  - name: "posible" # Used in routes, e.g., /admin/collections/blog
-    label: "Posible" # Used in the UI
-    folder: "content/posible" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - {label: "Fecha de publicación", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: "HH:mm", format: "LLL"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Stock", name: "stock", widget: "number"}
-      - {label: "Price", name: "price", widget: "number"}
-      - {label: "Titulo", name: "title", widget: "string"}
-      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
-      - {label: "Description (English)", name: "description_eng", widget: "markdown"}
-      - {label: "Descripción (Español)", name: "description", widget: "markdown"}
