@@ -1,0 +1,84 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "public/uploads" # Where media files will be stored
+public_folder: "/uploads" # Where the media files can be accesed from the server
+publish_mode: editorial_workflow # For Drafts
+
+collections:
+  - name: "about" # Used in routes, e.g., /admin/collections/blog
+    label: "About" # Used in the UI
+    folder: "content/about" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
+      - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
+  - name: "current_exhib" # Used in routes, e.g., /admin/collections/blog
+    label: "Current Exhibitions" # Used in the UI
+    folder: "content/current_exhib" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
+      - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
+  - name: "recent_exhib" # Used in routes, e.g., /admin/collections/blog
+    label: "Recent Exhibitions" # Used in the UI
+    folder: "content/recent_exhib" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
+      - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
+  - name: "upcoming_exhib" # Used in routes, e.g., /admin/collections/blog
+    label: "Upcoming Exhibitions" # Used in the UI
+    folder: "content/upcoming_exhib" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
+      - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
+  - name: "bio" # Used in routes, e.g., /admin/collections/blog
+    label: "Bio" # Used in the UI
+    folder: "content/bio" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Cuerpo", name: "body", widget: "markdown"}
+  - name: "sensiblog" # Used in routes, e.g., /admin/collections/blog
+    label: "Sensiblog" # Used in the UI
+    folder: "content/sensiblog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Fecha de publicación", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: "HH:mm", format: "LLL"}
+      - {label: "Imagen de portada", name: "thumbnail", widget: "image"}
+      - {label: "Mostrar en selección", name: "front_page", widget: "boolean", default: false}
+      - {label: "Titulo", name: "title", widget: "string"}
+      - {label: "Titulo (English) ", name: "title_eng", widget: "string"}
+      - {label: "Hero Image", name: "hero_img", widget: "image"}
+      - {label: "Medidas", name: "medidas", widget: "string"}
+      - {label: "Año", name: "year", widget: "number", value_type: "int"}
+      - {label: "Materiales (Castellano)", name: "material", widget: "string"}
+      - {label: "Materiales (English)", name: "material_eng", widget: "string"}
+      - {label: "Locación", name: "locacion", widget: "string"}
+      - {label: "Locación (English)", name: "locacion_eng", widget: "string"}
+      - {label: "Técnica", name: "tecnica", widget: "string"}
+      - {label: "Técnica (English)", name: "tecnica_eng", widget: "string"}
+      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
+      - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
+  - name: "posible" # Used in routes, e.g., /admin/collections/blog
+    label: "Posible" # Used in the UI
+    folder: "content/posible" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Fecha de publicación", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: "HH:mm", format: "LLL"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Stock", name: "stock", widget: "number"}
+      - {label: "Price", name: "price", widget: "number"}
+      - {label: "Titulo", name: "title", widget: "string"}
+      - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
+      - {label: "Description (English)", name: "description_eng", widget: "markdown"}
+      - {label: "Descripción (Español)", name: "description", widget: "markdown"}

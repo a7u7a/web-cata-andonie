@@ -7,7 +7,6 @@ title_eng: Mirror Glass
 hero_img: /imgs/none.jpg
 medidas: 250 x 114 x 17 cm
 year: 2014
-front_thumbnail: /imgs/none.jpg
 material: espejo, madera
 material_eng: mirror, wood
 locacion: none

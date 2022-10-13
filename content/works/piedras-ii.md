@@ -7,7 +7,6 @@ title_eng: Stones II
 hero_img: /imgs/none.jpg
 medidas: none
 year: 2021
-front_thumbnail: /imgs/none.jpg
 material: combarbalita, resina reforzada en fibra de vidrio
 material_eng: combarbalita, fiberglass
 locacion: none

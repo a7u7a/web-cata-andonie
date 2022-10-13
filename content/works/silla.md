@@ -7,7 +7,6 @@ title_eng: Chair
 hero_img: /imgs/none.jpg
 medidas: 80 x 220 x 55 cm
 year: 2016
-front_thumbnail: /imgs/none.jpg
 material: poliuretano, acero
 material_eng: polyurethane, steel
 locacion: none

@@ -7,7 +7,6 @@ title_eng: Collection
 hero_img: /imgs/none.jpg
 medidas: variables
 year: 2021
-front_thumbnail: /imgs/none.jpg
 material: abalones, mármol, bronce, conchas, nautilus
 material_eng: abalones, nautilus, marble, brass, shells
 locacion: none

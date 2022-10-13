@@ -7,7 +7,6 @@ title_eng: High Voltage
 hero_img: /imgs/none.jpg
 medidas: variables
 year: 2019
-front_thumbnail: /imgs/none.jpg
 material: cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistema de sonido
 material_eng: light boxes, borosilicate, insulators, stroboscopic lights, sound system
 locacion: Galería CIMA

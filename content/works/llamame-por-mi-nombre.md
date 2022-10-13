@@ -7,7 +7,6 @@ title_eng: Call me by my Name
 hero_img: /imgs/none.jpg
 medidas: none
 year: 2018
-front_thumbnail: /imgs/none.jpg
 material: piedra combarbalita, hormigón armado
 material_eng: combarbalita stone, reinforced concrete
 locacion: Galería Artespacio

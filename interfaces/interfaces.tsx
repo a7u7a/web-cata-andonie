@@ -18,7 +18,6 @@ export interface workPost {
   // optional
   hero_img?: string;
   medidas?: string;
-  front_thumbnail?: string;
   material?: string;
   material_eng?: string;
   locacion?: string;

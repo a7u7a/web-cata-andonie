@@ -7,7 +7,6 @@ title_eng: Matteo Thun
 hero_img: /imgs/none.jpg
 medidas: 164 x 114 x 23 cm
 year: 2017
-front_thumbnail: /imgs/none.jpg
 material: poliuretano, madera
 material_eng: polyurethane, wood
 locacion: none

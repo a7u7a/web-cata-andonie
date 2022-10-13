@@ -7,7 +7,6 @@ title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
 medidas: 350 x 120 x 120 cm
 year: 2014
-front_thumbnail: /imgs/none.jpg
 material: resina reforzada con fibra de vidrio, masilla, pintura acrílica, melamina 
 material_eng: fiberglass, acrylic paint, melamine, filler 
 locacion: Palacio Cousiño para One Moment Art

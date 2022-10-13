@@ -38,9 +38,6 @@ export const getWorkPost = (id: string): workPost => {
       ? matterResult.data.hero_img
       : undefined,
     medidas: matterResult.data.medidas ? matterResult.data.medidas : undefined,
-    front_thumbnail: matterResult.data.front_thumbnail
-      ? matterResult.data.front_thumbnail
-      : undefined,
     material: matterResult.data.material
       ? matterResult.data.material
       : undefined,
@@ -76,10 +73,10 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
     const contentEnglishOut = _.content.split("\n").join("\r\n");
 
     var dimensions;
-    if (matterResult.data.front_thumbnail) {
+    if (matterResult.data.thumbnail) {
       // img probe
       const img = fs.createReadStream(
-        path.join(process.cwd(), "public" + matterResult.data.front_thumbnail)
+        path.join(process.cwd(), "public" + matterResult.data.thumbnail)
       );
       dimensions = await probe(img);
     }
@@ -94,9 +91,6 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
       // optional
       hero_img: matterResult.data.hero_img,
       medidas: matterResult.data.medidas,
-      front_thumbnail: matterResult.data.front_thumbnail
-        ? matterResult.data.front_thumbnail
-        : undefined,
       // computed
       id,
       // computed optional

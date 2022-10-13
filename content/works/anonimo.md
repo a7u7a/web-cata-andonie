@@ -7,7 +7,6 @@ title_eng: Anonymous
 hero_img: /imgs/none.jpg
 medidas: 150 x 290 x 223 cm
 year: 2017
-front_thumbnail: /imgs/none.jpg
 material: acero, textil impermeable, espuma
 material_eng: steel, waterproof textile, foam
 locacion: none

@@ -7,7 +7,6 @@ title_eng: Light Green
 hero_img: /imgs/none.jpg
 medidas: 295 x 385 x 330 cm
 year: 2018
-front_thumbnail: /imgs/none.jpg
 material: lana aislante poliéster, clavos
 material_eng: polyester insulation wool, nails
 locacion: One Moment Art

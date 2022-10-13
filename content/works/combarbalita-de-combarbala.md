@@ -7,7 +7,6 @@ title_eng: Combarbalita from Combarbalá
 hero_img: /imgs/none.jpg
 medidas: variables
 year: 2018
-front_thumbnail: /imgs/none.jpg
 material: none
 material_eng: none
 locacion: none

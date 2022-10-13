@@ -7,7 +7,6 @@ title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
 medidas: 370 x 580 x 480 cm
 year: 2012
-front_thumbnail: /imgs/none.jpg
 material: espuma de poliuretano proyectada
 material_eng: projected polyurethane foam
 locacion: none

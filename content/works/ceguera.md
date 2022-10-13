@@ -7,7 +7,6 @@ title_eng: Blindness
 hero_img: /imgs/none.jpg
 medidas: 350 x 712 x 1145 cm
 year: 2014
-front_thumbnail: /imgs/none.jpg
 material: lana aislante poliéster, clavos
 material_eng: grey polyester insulation wool, nails
 locacion: Sagrada Mercancía

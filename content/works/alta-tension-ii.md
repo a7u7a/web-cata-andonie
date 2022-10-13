@@ -7,7 +7,6 @@ title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
 medidas: 400 x 3000 x 2300 cm
 year: 2020
-front_thumbnail: /imgs/none.jpg
 material: cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistema de sonido, relay
 material_eng: light boxes, borosilicate, insulators, stroboscopic lights, sound system, relay
 locacion: Casa de los Carrera 

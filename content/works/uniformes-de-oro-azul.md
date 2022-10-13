@@ -7,7 +7,6 @@ title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
 medidas: variable
 year: 2020
-front_thumbnail: /imgs/none.jpg
 material: 4 piedras de lapislázuli 
 material_eng: 4 lapislazuli stones 
 locacion: OMA Art Gallery

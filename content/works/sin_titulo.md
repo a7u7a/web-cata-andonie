@@ -7,7 +7,6 @@ title_eng: Untitled
 hero_img: /imgs/none.jpg
 medidas: variables
 year: 2016
-front_thumbnail: /imgs/none.jpg
 material: none
 material_eng: none
 locacion: none

@@ -58,7 +58,7 @@ export default function Home({ workPosts }: HomeProps) {
               title={post.title}
               h={post.front_img_h!}
               w={post.front_img_w!}
-              src={post.front_thumbnail!}
+              src={post.thumbnail!}
             />
           ))}
         </div>
@@ -73,7 +73,7 @@ export default function Home({ workPosts }: HomeProps) {
               title={post.title}
               h={post.front_img_h!}
               w={post.front_img_w!}
-              src={post.front_thumbnail!}
+              src={post.thumbnail!}
             />
           ))}
         </div>

@@ -7,7 +7,6 @@ title_eng: Frensnel Lens
 hero_img: /imgs/none.jpg
 medidas: 39,8 x 39,8 x 159 cm 
 year: 2021
-front_thumbnail: /imgs/none.jpg
 material: escultura en acrílico, vidrio, bronce
 material_eng: sculpture in acrylic, glass, brass
 locacion: none

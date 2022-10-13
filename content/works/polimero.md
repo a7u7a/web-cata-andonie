@@ -7,7 +7,6 @@ title_eng: Polymer
 hero_img: /imgs/none.jpg
 medidas: 60 x 150 x 137 cm
 year: 2014
-front_thumbnail: /imgs/none.jpg
 material: PLA, melamina, yeso, madera
 material_eng: PLA, melamine, plaster, wood
 locacion: OMA Art Gallery

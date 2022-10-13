@@ -7,7 +7,6 @@ title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
 medidas: variables
 year: 2016
-front_thumbnail: /imgs/none.jpg
 material: poliuretano, resina, silicona caucho, MDF, tubos de PVC
 material_eng: polyurethane, resin, silicone rubber, MDF, PVC pipes
 locacion: none
