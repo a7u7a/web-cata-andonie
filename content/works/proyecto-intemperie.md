@@ -1,5 +1,5 @@
 ---
-date: May 27, 2022 11:39 PM
+date: October 13, 2022 6:13 PM
 thumbnail: /imgs/none.jpg
 front_page: true
 title: Proyecto Intemperie
