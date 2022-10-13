@@ -2,6 +2,8 @@ backend:
   name: git-gateway
   branch: netlify-prod # Branch to update (optional; defaults to master)
 
+#local_backend: true
+
 media_folder: "public/uploads" # Where media files will be stored
 public_folder: "/uploads" # Where the media files can be accesed from the server
 #publish_mode: editorial_workflow # For Drafts
@@ -62,10 +64,10 @@ collections:
       - {label: "Medidas", name: "medidas", widget: "string"}
       - {label: "Año", name: "year", widget: "number", value_type: "int"}
       - {label: "Materiales (Castellano)", name: "material", widget: "string"}
-      - {label: "Materiales (English)", name: "material_eng", widget: "string"}
-      - {label: "Locación", name: "locacion", widget: "string"}
-      - {label: "Locación (English)", name: "locacion_eng", widget: "string"}
+      - {label: "Materiales (English)", name: "material_eng", widget: "string", }
+      - {label: "Locación", name: "locacion", widget: "string", required: false}
+      - {label: "Locación (English)", name: "locacion_eng", widget: "string", required: false}
       - {label: "Técnica", name: "tecnica", widget: "string", required: false}
-      - {label: "Técnica (English)", name: "tecnica_eng", widget: "string"}
+      - {label: "Técnica (English)", name: "tecnica_eng", widget: "string", required: false}
       - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
       - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
