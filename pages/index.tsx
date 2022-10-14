@@ -34,8 +34,10 @@ export default function Home({
   // split front page posts into two lists, one for each column
   const [firstCol, secondCol] = split(
     frontPagePosts,
-    Math.floor(frontPagePosts.length / 3)
+    Math.floor((frontPagePosts.length / 2)+1)
   );
+
+
 
   const [scrollTop, setScrollTop] = useState(0);
 
