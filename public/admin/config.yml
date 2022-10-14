@@ -60,6 +60,11 @@ collections:
       - {label: "Locación (English)", name: "locacion_eng", widget: "string"}
       - {label: "Técnica", name: "tecnica", widget: "string"}
       - {label: "Técnica (English)", name: "tecnica_eng", widget: "string"}
-      - {label: "Imágenes", name: "images", widget: "image", media_library: { allow_multiple: true}},
+       - {
+          label: "Imágenes",
+          name: "imagenes",
+          widget: "image",
+          media_library: { config: { multiple: true } },
+        }
       - {label: "Cuerpo (Castellano)", name: "body", widget: "markdown"}
       - {label: "Cuerpo (English)", name: "body_eng", widget: "markdown"}
