@@ -1,4 +1,6 @@
 ---
+title: Recientes
+title_eng: Recent
 body_eng: |-
   2021
   Group Show, Relato Salvaje, Oma Galeria de Arte, Santiago, Chile.
