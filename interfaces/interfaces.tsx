@@ -53,3 +53,11 @@ export interface exhibitionsPost {
   contentSpanish: string; // post body
   contentEnglish: string; //body_eng
 }
+
+export interface aboutPost {
+  id: string;
+  title: string;
+  title_eng: string;
+  contentSpanish: string; // post body
+  contentEnglish: string; //body_eng
+}

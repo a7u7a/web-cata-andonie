@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import { GetStaticProps } from "next";
 import { useState, useRef, useEffect } from "react";
 import VideoHero from "../components/video-hero";
 import NavBar from "../components/nav-bar";
@@ -8,20 +8,28 @@ import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/works-catalogue";
 import MyFooter from "../components/my-footer";
 import MyHeader from "../components/my-header";
-import { getAllWorkPosts, getAllExhibitionsPosts } from "../lib/posts";
-import { GetStaticProps } from "next";
-import { workPost, exhibitionsPost } from "../interfaces/interfaces";
+import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
+import {
+  getAllWorkPosts,
+  getAllExhibitionsPosts,
+  getAbout,
+} from "../lib/posts";
 
 interface HomeProps {
   workPosts: workPost[];
   exhibitionsPosts: exhibitionsPost[];
+  aboutPost: aboutPost;
 }
 
 function split(arr: workPost[], index: number) {
   return [arr.slice(0, index), arr.slice(index)];
 }
 
-export default function Home({ workPosts, exhibitionsPosts }: HomeProps) {
+export default function Home({
+  workPosts,
+  exhibitionsPosts,
+  aboutPost,
+}: HomeProps) {
   const frontPagePosts = workPosts.filter((post) => post.front_page);
   // split front page posts into two lists, one for each column
   const [firstCol, secondCol] = split(
@@ -54,7 +62,7 @@ export default function Home({ workPosts, exhibitionsPosts }: HomeProps) {
       <div className="flex flex-row m-2">
         {/* Columna derecha */}
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
-          <About />
+          <About aboutPost={aboutPost} />
           {firstCol.map((post, i) => (
             <IndexImage
               key={i}
@@ -91,10 +99,12 @@ export default function Home({ workPosts, exhibitionsPosts }: HomeProps) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const workPosts = await getAllWorkPosts();
   const exhibitionsPosts = getAllExhibitionsPosts();
+  const aboutPost = getAbout();
   return {
     props: {
       workPosts,
       exhibitionsPosts,
+      aboutPost,
     },
   };
 };

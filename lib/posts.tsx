@@ -6,6 +6,7 @@ import {
   bioPost,
   bioStatementPost,
   exhibitionsPost,
+  aboutPost,
 } from "../interfaces/interfaces";
 import probe from "probe-image-size";
 
@@ -13,6 +14,7 @@ const worksDirectory = path.join(process.cwd(), "content/works");
 const bioDirectory = path.join(process.cwd(), "content/bio");
 const bioStatementDirectory = path.join(process.cwd(), "content/bio_statement");
 const exhibitionsDirectory = path.join(process.cwd(), "content/exhibitions");
+const aboutDirectory = path.join(process.cwd(), "content/about");
 
 export const getAllPostIds = () => {
   const fileNames = fs.readdirSync(worksDirectory);
@@ -142,6 +144,25 @@ export const getBioStatement = (): bioStatementPost => {
   return {
     id,
     title: matterResult.data.title,
+    contentSpanish,
+    contentEnglish: contentEnglishOut,
+  };
+};
+
+export const getAbout = (): aboutPost => {
+  const fileName = "about.md";
+  const id = fileName.replace(/\.md$/, "");
+  const fullPath = path.join(aboutDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const matterResult = matter(fileContents);
+  const contentSpanish = matterResult.content;
+  const _ = matter(matterResult.data.body_eng);
+  const contentEnglishOut = _.content.split("\n").join("\r\n");
+
+  return {
+    id,
+    title: matterResult.data.title,
+    title_eng: matterResult.data.title_eng,
     contentSpanish,
     contentEnglish: contentEnglishOut,
   };
