@@ -1,8 +1,8 @@
 ---
-date: May 27, 2022 11:39 PM
+date: October 13, 2022 10:03 PM
 thumbnail: /imgs/none.jpg
 front_page: true
-title: Alta Tensión II 
+title: Alta Tensión II
 title_eng: High Voltage II
 hero_img: /imgs/none.jpg
 medidas: 400 x 3000 x 2300 cm
@@ -15,8 +15,7 @@ locacion: Casa de los Carrera
 locacion_eng: none
 tecnica: none
 tecnica_eng: none
-body_eng: >-
-  For this show, I interpreted what was made previously in Galería
+body_eng: For this show, I interpreted what was made previously in Galería
   CIMA.  The exhibition was relocated to a 300 year old 500 mt2 cellar that was
   formerly part of the estate in which the founding fathers of Chile
   lived.  Dust is a great lead player in this cellar, therefore included in this
