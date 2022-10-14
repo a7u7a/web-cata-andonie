@@ -1,12 +1,18 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { workPost, bioPost, bioStatement } from "../interfaces/interfaces";
+import {
+  workPost,
+  bioPost,
+  bioStatementPost,
+  exhibitionsPost,
+} from "../interfaces/interfaces";
 import probe from "probe-image-size";
 
 const worksDirectory = path.join(process.cwd(), "content/works");
 const bioDirectory = path.join(process.cwd(), "content/bio");
 const bioStatementDirectory = path.join(process.cwd(), "content/bio_statement");
+const exhibitionsDirectory = path.join(process.cwd(), "content/exhibitions");
 
 export const getAllPostIds = () => {
   const fileNames = fs.readdirSync(worksDirectory);
@@ -123,7 +129,7 @@ export const getAllBioPosts = () => {
   return allPostsData;
 };
 
-export const getBioStatement = (): bioStatement => {
+export const getBioStatement = (): bioStatementPost => {
   const fileName = "bio_statement.md";
   const id = fileName.replace(/\.md$/, "");
   const fullPath = path.join(bioStatementDirectory, `${id}.md`);
@@ -139,4 +145,26 @@ export const getBioStatement = (): bioStatement => {
     contentSpanish,
     contentEnglish: contentEnglishOut,
   };
+};
+
+export const getAllExhibitionsPosts = () => {
+  const fileNames = fs.readdirSync(exhibitionsDirectory);
+
+  const allPostsData: exhibitionsPost[] = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, "");
+    const fullPath = path.join(exhibitionsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const matterResult = matter(fileContents);
+    const contentSpanish = matterResult.content;
+    const _ = matter(matterResult.data.body_eng);
+    const contentEnglishOut = _.content.split("\n").join("\r\n");
+    return {
+      id,
+      title: matterResult.data.title,
+      title_eng: matterResult.data.title_eng,
+      contentSpanish,
+      contentEnglish: contentEnglishOut,
+    };
+  });
+  return allPostsData;
 };

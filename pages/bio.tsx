@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { GetStaticProps } from "next";
 import { getAllBioPosts, getBioStatement } from "../lib/posts";
-import { bioPost, bioStatement } from "../interfaces/interfaces";
+import { bioPost, bioStatementPost } from "../interfaces/interfaces";
 import BioIndex from "../components/bio/bio-index";
 import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";
 
@@ -10,7 +10,7 @@ import NavBar from "../components/nav-bar";
 
 interface BioProps {
   bioPosts: bioPost[];
-  bioStatement: bioStatement;
+  bioStatement: bioStatementPost;
 }
 
 const Bio = ({ bioPosts, bioStatement }: BioProps) => {

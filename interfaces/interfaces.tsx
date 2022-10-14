@@ -39,9 +39,17 @@ export interface bioPost {
   id: string; // post filename
 }
 
-export interface bioStatement {
+export interface bioStatementPost {
   id: string;
   title: string;
+  contentSpanish: string; // post body
+  contentEnglish: string; //body_eng
+}
+
+export interface exhibitionsPost {
+  id: string;
+  title: string;
+  title_eng: string;
   contentSpanish: string; // post body
   contentEnglish: string; //body_eng
 }

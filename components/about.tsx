@@ -1,8 +1,16 @@
+import ReactMarkdown from "react-markdown";
+
 const About = () => {
   return (
     <div className="pt-8 pb-20">
       <div className="pl-4 text-black text-3xl">About</div>
       <div className="pl-4 pr-4 pt-8 text-black text-3xl">
+        {/* <ReactMarkdown
+        // eslint-disable-next-line
+        children={post.contentSpanish}
+        className="news"
+      /> */}
+
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eaque
           iste similique, omnis voluptatum, placeat asperiores dignissimos

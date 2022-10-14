@@ -1,6 +1,23 @@
 import Link from "next/link";
+import { exhibitionsPost } from "../interfaces/interfaces";
+import NewsSection from "../components/news/news-section";
 
-const News = () => {
+interface NewsProps {
+  exhibitionsPosts: exhibitionsPost[];
+}
+
+const News = ({ exhibitionsPosts }: NewsProps) => {
+  // assumes only one per section
+  const currentSection = exhibitionsPosts.filter(
+    (post) => post.id === "current"
+  )[0];
+  const recentSection = exhibitionsPosts.filter(
+    (post) => post.id === "recent"
+  )[0];
+  const upcomingSection = exhibitionsPosts.filter(
+    (post) => post.id === "upcoming"
+  )[0];
+
   return (
     <div className="pt-8 pb-8">
       <div className="flex flex-row justify-between pl-4 pr-4">
@@ -10,9 +27,11 @@ const News = () => {
         </Link>
       </div>
       <div className="pl-4 pr-4 pt-8">
-        <div className="flex flex-row">
+        <div className="flex flex-row space-x-4">
           <div className="flex flex-col w-1/2 mr-1">
-            <div className="font-bold text-xl">Current</div>
+            <NewsSection post={currentSection} />
+            <NewsSection post={recentSection} />
+            {/* <div className="font-bold text-xl">Current</div>
             <ul className="space-y-1">
               <li>Group Show, The name of a current show, more info.</li>
             </ul>
@@ -20,17 +39,11 @@ const News = () => {
             <ul className="space-y-1">
               <li>Group Show, The name of a current show, more info.</li>
               <li>Group Show, The name of a current show, more info.</li>
-            </ul>
+            </ul> */}
           </div>
 
           <div className="flex flex-col w-1/2 ml-1">
-            <div className="font-bold text-xl">Upcoming</div>
-            <ul className="space-y-1">
-              <li>Group Show, The name of a current show, more info.</li>
-              <li>Group Show, The name of a current show, more info.</li>
-              <li>Group Show, The name of a current show, more info.</li>
-              <li>Group Show, The name of a current show, more info.</li>
-            </ul>
+          <NewsSection post={upcomingSection} />
           </div>
         </div>
       </div>
