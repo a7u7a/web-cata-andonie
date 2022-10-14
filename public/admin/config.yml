@@ -62,12 +62,7 @@ collections:
         }
       - { label: "Imagen de portada", name: "thumbnail", widget: "image" }
       - { label: "Hero Image", name: "hero_img", widget: "image" }
-      - {
-          label: "Imágenes",
-          name: "imagenes",
-          widget: "image",
-          media_library: { config: { allow_multiple: true } },
-        }
+      - { label: "Imágenes", name: "imagenes", widget: "list" }
       - {
           label: "Mostrar en selección",
           name: "front_page",
