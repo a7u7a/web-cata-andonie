@@ -1,11 +1,12 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { workPost, bioPost } from "../interfaces/interfaces";
+import { workPost, bioPost, bioStatement } from "../interfaces/interfaces";
 import probe from "probe-image-size";
 
 const worksDirectory = path.join(process.cwd(), "content/works");
 const bioDirectory = path.join(process.cwd(), "content/bio");
+const bioStatementDirectory = path.join(process.cwd(), "content/bio_statement");
 
 export const getAllPostIds = () => {
   const fileNames = fs.readdirSync(worksDirectory);
@@ -120,4 +121,22 @@ export const getAllBioPosts = () => {
     };
   });
   return allPostsData;
+};
+
+export const getBioStatement = (): bioStatement => {
+  const fileName = "bio_statement.md";
+  const id = fileName.replace(/\.md$/, "");
+  const fullPath = path.join(bioStatementDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const matterResult = matter(fileContents);
+  const contentSpanish = matterResult.content;
+  const _ = matter(matterResult.data.body_eng);
+  const contentEnglishOut = _.content.split("\n").join("\r\n");
+
+  return {
+    id,
+    title: matterResult.data.title,
+    contentSpanish,
+    contentEnglish: contentEnglishOut,
+  };
 };

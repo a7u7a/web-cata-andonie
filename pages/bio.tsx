@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { GetStaticProps } from "next";
-import { getAllBioPosts } from "../lib/posts";
-import { bioPost } from "../interfaces/interfaces";
+import { getAllBioPosts, getBioStatement } from "../lib/posts";
+import { bioPost, bioStatement } from "../interfaces/interfaces";
 import BioIndex from "../components/bio/bio-index";
 import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";
 
@@ -10,9 +10,10 @@ import NavBar from "../components/nav-bar";
 
 interface BioProps {
   bioPosts: bioPost[];
+  bioStatement: bioStatement;
 }
 
-const Bio = ({ bioPosts }: BioProps) => {
+const Bio = ({ bioPosts, bioStatement }: BioProps) => {
   // get all titles and split by column
   // const re = /#{1,6}.+(?=\n)/g;
   // const f = bioPosts[0].contentSpanish.match(re);
@@ -43,9 +44,7 @@ const Bio = ({ bioPosts }: BioProps) => {
       <NavBar transparent={true} scrollThreshold={349} scrollTop={scrollTop} />
       <div className="w-screen bg-gray-200">
         <div className="pt-28 pb-28 ml-6 text-3xl font-bold w-2/3 text-white">
-          B. 1989, Santiago de Chile. Lives and works in Santiago de Chile. Ut
-          sodales felis et lectus ullamcorper, eget rhoncus massa viverra.
-          Aenean volutpat mauris at ultricies porta. Nullam nec tincidunt sem.
+          {bioStatement.contentSpanish}
         </div>
       </div>
 
@@ -75,9 +74,11 @@ export default Bio;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const bioPosts = await getAllBioPosts();
+  const bioStatement = getBioStatement();
   return {
     props: {
       bioPosts,
+      bioStatement,
     },
   };
 };

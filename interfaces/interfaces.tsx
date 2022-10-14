@@ -38,3 +38,10 @@ export interface bioPost {
   contentSpanish: string; // post body
   id: string; // post filename
 }
+
+export interface bioStatement {
+  id: string;
+  title: string;
+  contentSpanish: string; // post body
+  contentEnglish: string; //body_eng
+}
