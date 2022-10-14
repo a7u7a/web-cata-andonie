@@ -12,7 +12,7 @@ collections:
   - name: "about" # Used in routes, e.g., /admin/collections/blog
     label: "About" # Used in the UI
     folder: "content/about" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
+    create: false # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Titulo", name: "title", widget: "string" }
@@ -22,7 +22,7 @@ collections:
   - name: "exhibitions" # Used in routes, e.g., /admin/collections/blog
     label: "Exhibitions" # Used in the UI
     folder: "content/exhibitions" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
+    create: false # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Titulo", name: "title", widget: "string" }
@@ -32,7 +32,7 @@ collections:
   - name: "bio" # Used in routes, e.g., /admin/collections/blog
     label: "Bio" # Used in the UI
     folder: "content/bio" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
+    create: false # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Titulo", name: "title", widget: "string" }
@@ -40,7 +40,7 @@ collections:
   - name: "bio_statement" # Used in routes, e.g., /admin/collections/blog
     label: "Bio Statement" # Used in the UI
     folder: "content/bio_statement" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
+    create: false # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Titulo", name: "title", widget: "string" }
