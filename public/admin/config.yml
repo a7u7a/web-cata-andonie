@@ -61,6 +61,13 @@ collections:
           format: "LLL",
         }
       - { label: "Imagen de portada", name: "thumbnail", widget: "image" }
+      - { label: "Hero Image", name: "hero_img", widget: "image" }
+      - {
+          label: "Imágenes",
+          name: "imagenes",
+          widget: "image",
+          media_library: { config: { multiple: true } },
+        }
       - {
           label: "Mostrar en selección",
           name: "front_page",
@@ -69,7 +76,6 @@ collections:
         }
       - { label: "Titulo", name: "title", widget: "string" }
       - { label: "Titulo (English) ", name: "title_eng", widget: "string" }
-      - { label: "Hero Image", name: "hero_img", widget: "image" }
       - { label: "Medidas", name: "medidas", widget: "string" }
       - { label: "Medidas (English)", name: "medidas_eng", widget: "string" }
       - { label: "Año", name: "year", widget: "number", value_type: "int" }
@@ -83,11 +89,5 @@ collections:
       - { label: "Locación (English)", name: "locacion_eng", widget: "string" }
       - { label: "Técnica", name: "tecnica", widget: "string" }
       - { label: "Técnica (English)", name: "tecnica_eng", widget: "string" }
-      - {
-          label: "Imágenes",
-          name: "imagenes",
-          widget: "image",
-          media_library: { config: { multiple: true } },
-        }
       - { label: "Cuerpo (Castellano)", name: "body", widget: "markdown" }
       - { label: "Cuerpo (English)", name: "body_eng", widget: "markdown" }
