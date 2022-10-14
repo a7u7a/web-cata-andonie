@@ -25,7 +25,7 @@ interface WorkPostProps {
 }
 
 export default function Post({ workPost }: WorkPostProps) {
-  console.log("workPost", workPost);
+  // console.log("workPost", workPost);
 
   return (
     <div>

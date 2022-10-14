@@ -34,7 +34,7 @@ export interface workPost {
 }
 
 export interface bioPost {
-  date: string;
+  title: string;
   contentSpanish: string; // post body
   id: string; // post filename
 }

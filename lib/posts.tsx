@@ -115,7 +115,7 @@ export const getAllBioPosts = () => {
     const contentSpanish = matterResult.content;
     return {
       id,
-      date: matterResult.data.date,
+      title: matterResult.data.title,
       contentSpanish,
     };
   });
