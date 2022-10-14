@@ -1,5 +1,5 @@
 ---
-date: May 27, 2022 11:39 PM
+title: columna 3
 ---
 
 # Education
