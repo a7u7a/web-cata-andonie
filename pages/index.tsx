@@ -90,7 +90,7 @@ export default function Home({
           ))}
         </div>
       </div>
-      <WorksCatalogue />
+      <WorksCatalogue posts={workPosts} />
       <MyFooter />
     </div>
   );

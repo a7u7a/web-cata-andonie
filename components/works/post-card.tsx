@@ -57,21 +57,6 @@ const PostCard = ({ post }: PostCardProps) => {
           className="work"
         />
       </div>
-
-      {/* <div >
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid ipsam
-        ea mollitia perspiciatis et culpa voluptatibus repellendus est, omnis
-        laboriosam beatae, dolor eius accusamus eveniet. Consectetur cupiditate
-        consequuntur obcaecati quam accusamus. Quod, quisquam. Incidunt
-        consequatur numquam eveniet, eaque debitis soluta eligendi architecto
-        ducimus maiores, necessitatibus labore voluptas autem dolor eius
-        similique odit ut ex sapiente aut doloribus ad fugit! Quasi, eaque!
-        Nobis accusamus, blanditiis dolor et alias quidem provident, voluptatem
-        quia harum omnis itaque totam veritatis aut, soluta odit. Veritatis
-        pariatur ipsum aliquam voluptate enim incidunt modi a placeat autem!
-        Possimus voluptate deserunt aliquam. Quo earum, numquam natus laudantium
-        minima ea error doloremque.
-      </div> */}
     </div>
   );
 };
