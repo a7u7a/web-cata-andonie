@@ -4,21 +4,9 @@ import NavBar from "../../components/nav-bar";
 import WorksCatalogue from "../../components/works-catalogue";
 import MyFooter from "../../components/my-footer";
 import IdImage from "../../components/works/id-image";
-// import {
-//   getAllPostIds,
-//   getSensiblogPost,
-//   getRelatedSensiblogPosts,
-// } from "../../lib/posts";
 import { getWorkPost, getAllPostIds } from "../../lib/posts";
 import { workPost } from "../../interfaces/interfaces";
 import PostCard from "../../components/works/post-card";
-// import { sensiblogPost } from "../../interfaces/posts";
-// import FromMarkdownHorizontal from "../../components/from-markdown-horizontal";
-// import LanguageButton from "../../components/languageBtn";
-// import DateEl from "../../components/date";
-// import UpButton from "../../components/upBtn";
-// import CategoryTag from "../../components/sensiblog/category-tag";
-// import RelatedPosts from "../../components/sensiblog/related-posts";
 
 interface WorkPostProps {
   workPost: workPost;
@@ -51,8 +39,8 @@ export default function Post({ workPost }: WorkPostProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds();
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const paths = getAllPostIds(locales);
   return {
     paths,
     fallback: false,

@@ -16,15 +16,21 @@ const bioStatementDirectory = path.join(process.cwd(), "content/bio_statement");
 const exhibitionsDirectory = path.join(process.cwd(), "content/exhibitions");
 const aboutDirectory = path.join(process.cwd(), "content/about");
 
-export const getAllPostIds = () => {
+export const getAllPostIds = (locales: string[] | undefined) => {
   const fileNames = fs.readdirSync(worksDirectory);
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
-      },
-    };
-  });
+  const p = [];
+  for (const locale of locales!) {
+    const paths = fileNames.map((fileName) => {
+      return {
+        params: {
+          id: fileName.replace(/\.md$/, ""),
+        },
+        locale,
+      };
+    });
+    p.push(paths);
+  }
+  return [...p[0], ...p[1]];
 };
 
 export const getWorkPost = (id: string): workPost => {
