@@ -13,7 +13,7 @@ const IdImage = ({ src, h, w }: IndexImageProps) => {
   return (
     <div
       className={`w-full relative ${
-        h > w ? "aspect-[4/3]" : "aspect-[3/4]"
+        w > h ? "aspect-[4/3]" : "aspect-[3/4]"
       }`}
     >
       <Image src={src} objectFit="cover" layout="fill" alt="imagen" />

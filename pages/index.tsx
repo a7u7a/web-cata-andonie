@@ -44,7 +44,6 @@ export default function Home({
       const target = e.target as Document;
       const scrollTop = target.documentElement.scrollTop;
       setScrollTop(scrollTop);
-      // console.log("scrollTop", scrollTop);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);

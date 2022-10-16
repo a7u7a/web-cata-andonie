@@ -26,12 +26,13 @@ export interface workPost {
   tecnica?: string;
   tecnica_eng?: string;
   // computed
-  id: string; // post filename
+  id: string; // postP filename
   // computed optional
   contentSpanish?: string; // post body
   contentEnglish?: string; //body_eng
   front_img_w?: number; // optional because only relevant on home page
   front_img_h?: number;
+  pathsAndDims?: { w: number; h: number; path: string }[];
 }
 
 export interface bioPost {

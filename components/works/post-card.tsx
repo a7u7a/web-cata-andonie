@@ -8,14 +8,6 @@ interface PostCardProps {
 
 const PostCard = ({ post }: PostCardProps) => {
   const { locale } = useRouter();
-  console.log("post", post);
-  // const tableData = [
-  //   "Acero, textil impermeable y espuma",
-  //   "150 x 290 x 223 cm",
-  //   "Ubicacion de la obra",
-  //   "Fotografia Isidora Rodriguez",
-  //   "2019",
-  // ];
 
   const _ = [
     locale === "es" ? post.material : post.material_eng,
@@ -31,7 +23,7 @@ const PostCard = ({ post }: PostCardProps) => {
   return (
     <div className="flex flex-col p-2 pl-4 ">
       <div className="mt-14 text-3xl font-bold">
-        Titulo quaerat labore nulla
+        {locale === "es" ? post.title! : post.title_eng!}
       </div>
       <div className="text-sm font-bold text-gray-600">
         <ul className="mt-20 space-y-[0.4rem] w-1/2 ">
@@ -47,7 +39,7 @@ const PostCard = ({ post }: PostCardProps) => {
           ))}
         </ul>
       </div>
-      
+
       <div className="mt-20 pr-2  pb-20">
         <ReactMarkdown
           // eslint-disable-next-line
