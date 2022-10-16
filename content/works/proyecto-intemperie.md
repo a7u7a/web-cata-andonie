@@ -1,15 +1,15 @@
 ---
 date: October 13, 2022 6:13 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Proyecto Intemperie
 title_eng: Outdoors Project
 hero_img: /imgs/none.jpg
 medidas: 370 x 580 x 480 cm
 medidas_eng: 370 x 580 x 480 cm
 year: 2012
-material: espuma de poliuretano proyectada
-material_eng: projected polyurethane foam
+material: Espuma de poliuretano proyectada
+material_eng: Projected polyurethane foam
 locacion: none
 locacion_eng: none
 tecnica: none

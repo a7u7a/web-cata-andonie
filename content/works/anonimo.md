@@ -8,8 +8,8 @@ hero_img: /imgs/none.jpg
 medidas: 150 x 290 x 223 cm
 medidas_eng: 150 x 290 x 223 cm
 year: 2017
-material: acero, textil impermeable, espuma
-material_eng: steel, waterproof textile, foam
+material: Acero, textil impermeable, espuma
+material_eng: Steel, waterproof textile, foam
 locacion: none
 locacion_eng: none
 tecnica: none

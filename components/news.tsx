@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { exhibitionsPost } from "../interfaces/interfaces";
 import NewsSection from "../components/news/news-section";
 
@@ -7,6 +6,7 @@ interface NewsProps {
 }
 
 const News = ({ exhibitionsPosts }: NewsProps) => {
+
   // assumes only one per section
   const currentSection = exhibitionsPosts.filter(
     (post) => post.id === "current"

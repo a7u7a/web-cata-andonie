@@ -9,22 +9,19 @@ import { workPost } from "../../interfaces/interfaces";
 import PostCard from "../../components/works/post-card";
 
 interface WorkPostProps {
-  workPost: workPost;
+  post: workPost;
 }
 
-export default function Post({ workPost }: WorkPostProps) {
-  // console.log("workPost", workPost);
-
+export default function Post({ post }: WorkPostProps) {
+  console.log("post", post);
   return (
     <div>
       <NavBar />
-      <ImageHero src={workPost.hero_img!} />
+      <ImageHero src={post.hero_img!} />
 
       <div className="flex flex-row m-2">
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
-          <PostCard workPost={workPost} />
-          {/* <IndexImage h={2824} w={1564} src="/imgs/maqueta/horizontal-1.jpg" />
-           */}
+          <PostCard post={post} />
           <IdImage h={1142} w={1614} src="/imgs/maqueta/vertical-2.jpg" />
         </div>
         <div className="flex flex-col w-1/2 pl-1 space-y-2">
@@ -48,10 +45,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const workPost = getWorkPost(params!.id as string);
+  const post = getWorkPost(params!.id as string);
   return {
     props: {
-      workPost,
+      post,
     },
   };
 };

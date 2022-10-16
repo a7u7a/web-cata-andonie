@@ -8,8 +8,8 @@ hero_img: /imgs/none.jpg
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2021
-material: abalones, mármol, bronce, conchas, nautilus
-material_eng: abalones, nautilus, marble, brass, shells
+material: Abalones, mármol, bronce, conchas, nautilus
+material_eng: Abalones, nautilus, marble, brass, shells
 locacion: none
 locacion_eng: none
 tecnica: none

@@ -46,38 +46,11 @@ const NavBar = ({
     }
   }, [check]);
 
-  // // set language
-  // const [lang, setLang] = useState("en");
-  // useEffect(() => {
-  //   if (sessionStorage.getItem("lang")) {
-  //     setLang(sessionStorage.getItem("lang")!);
-  //   } else {
-  //     // if no language in sessionstorage, get from browser
-  //     if (/^es\b/.test(navigator.language)) {
-  //       setLang("es");
-  //     } else {
-  //       setLang("en");
-  //     }
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   sessionStorage.setItem("lang", lang);
-  //   console.log("setting lang to", sessionStorage.getItem("lang"));
-  // }, [lang]);
-
   const router = useRouter();
-  const { locale } = useRouter();
+  const { locales, locale: activeLocale, pathname, asPath, query } = router;
 
-  // const onChangeLanguage = (lang: string) => (e: Event) => {
-  //   e.preventDefault();
-  //   router.push(router.asPath, undefined, { locale: lang });
-  //   console.log("locale after", locale);
-  // };
-
-  // useEffect(() => {
-  //   console.log("locale", locale);
-  // }, [locale]);
+  // Get other locale, assumes only two locales
+  const otherLocale = locales!.filter((locale) => locale !== activeLocale)[0];
 
   return (
     <div className={classString}>
@@ -93,12 +66,14 @@ const NavBar = ({
           </div>
         </Link>
 
-        <button
-          // onClick={() => onChangeLanguage("es")}
-          className="flex items-center text-center text-xl hover:underline"
+        <div
+          className="flex items-center text-center text-xl hover:underline cursor-pointer"
+          placeholder=""
         >
-          <div>English</div>
-        </button>
+          <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
+            <div>English</div>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ export default function Home({
   const frontPagePosts = workPosts.filter((post) => post.front_page);
   const [firstCol, secondCol] = split(
     frontPagePosts,
-    Math.floor(frontPagePosts.length / 2 + 1)
+    Math.floor(frontPagePosts.length / 2)
   );
 
   // Update scroll
@@ -62,7 +62,7 @@ export default function Home({
       <div className="flex flex-row m-2">
         {/* Columna derecha */}
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
-          <About aboutPost={aboutPost} />
+          <About post={aboutPost} />
           {firstCol.map((post, i) => (
             <IndexImage
               key={i}

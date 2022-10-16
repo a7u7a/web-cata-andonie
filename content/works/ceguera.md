@@ -8,8 +8,8 @@ hero_img: /imgs/none.jpg
 medidas: 350 x 712 x 1145 cm
 medidas_eng: 350 x 712 x 1145 cm
 year: 2014
-material: lana aislante poliéster, clavos
-material_eng: grey polyester insulation wool, nails
+material: Lana aislante poliéster, clavos
+material_eng: Grey polyester insulation wool, nails
 locacion: Sagrada Mercancía
 locacion_eng: Sagrada Mercancía
 tecnica: none

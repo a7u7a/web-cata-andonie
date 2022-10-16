@@ -1,7 +1,7 @@
 ---
 date: October 13, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Combarbalita de Combarbalá
 title_eng: Combarbalita from Combarbalá
 hero_img: /imgs/none.jpg

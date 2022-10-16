@@ -1,15 +1,15 @@
 ---
 date: October 13, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Joachim Bandau y Duo de Chaise Longues
 title_eng: Joachim Bandau and Chaise Longues
 hero_img: /imgs/none.jpg
 medidas: 350 x 120 x 120 cm
 medidas_eng: 350 x 120 x 120 cm
 year: 2014
-material: resina reforzada con fibra de vidrio, masilla, pintura acrílica, melamina
-material_eng: fiberglass, acrylic paint, melamine, filler
+material: Resina reforzada con fibra de vidrio, masilla, pintura acrílica, melamina
+material_eng: Fiberglass, acrylic paint, melamine, filler
 locacion: Palacio Cousiño para One Moment Art
 locacion_eng: Palacio Cousiño for One Moment Art
 tecnica: dos piezas de 77 x 190 x 48 cm c/u

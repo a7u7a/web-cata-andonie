@@ -1,19 +1,19 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Sin Título
 title_eng: Untitled
 hero_img: /imgs/none.jpg
-medidas: medidas variables
-medidas_eng: variable measurements
+medidas: Medidas variables
+medidas_eng: Variable measurements
 year: 2016
 material: none
 material_eng: none
 locacion: none
 locacion_eng: none
-tecnica: serie de 14 collage 
-tecnica_eng: series of 14 collage 
+tecnica: Serie de 14 collage 
+tecnica_eng: Series of 14 collage 
 body_eng: >-
   These collages have their neuralgic point the work over the composition through the exaggeration in the reliance of the size of the image against the passepartout.  In other words, by the way these collages of industrial images obtained from the internet and newspapers over a white background were distributed, they give the impression that something is missing and the work is incomplete.  Something similar as if in a magazine one eliminates the text and leaves only the images that come along with it.  Normally, the passepartout doesn’t have protagonism, but in these works, the images complement the emptiness in such a way that the image is made available to the above, not the other way around.  In view of the above, the framing of these works was in itself a collaborative job because they had to format the collages based on my instructions. 
 ---

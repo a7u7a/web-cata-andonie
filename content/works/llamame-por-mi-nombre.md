@@ -1,15 +1,15 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Llámame por mi Nombre
 title_eng: Call me by my Name
 hero_img: /imgs/none.jpg
 medidas: none
 medidas_eng: none
 year: 2018
-material: piedra combarbalita, hormigón armado
-material_eng: combarbalita stone, reinforced concrete
+material: Piedra combarbalita, hormigón armado
+material_eng: Combarbalita stone, reinforced concrete
 locacion: Galería Artespacio
 locacion_eng: Galería Artespacio
 tecnica: none

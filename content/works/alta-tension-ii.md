@@ -8,9 +8,9 @@ hero_img: /imgs/none.jpg
 medidas: 400 x 3000 x 2300 cm
 medidas_eng: 400 x 3000 x 2300 cm
 year: 2020
-material: cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistema
+material: Cajas de luz, borosilicato, aisladores, luces estroboscópicas, sistema
   de sonido, relay
-material_eng: light boxes, borosilicate, insulators, stroboscopic lights, sound system, relay
+material_eng: Light boxes, borosilicate, insulators, stroboscopic lights, sound system, relay
 locacion: Casa de los Carrera
 locacion_eng: none
 tecnica: none

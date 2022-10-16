@@ -1,7 +1,7 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Polímero
 title_eng: Polymer
 hero_img: /imgs/none.jpg

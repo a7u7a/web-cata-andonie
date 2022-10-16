@@ -49,26 +49,31 @@ export const getWorkPost = (id: string): workPost => {
     title_eng: matterResult.data.title_eng,
     year: matterResult.data.year,
     // optional
-    hero_img: matterResult.data.hero_img
-      ? matterResult.data.hero_img
-      : undefined,
-    medidas: matterResult.data.medidas ? matterResult.data.medidas : undefined,
-    material: matterResult.data.material
-      ? matterResult.data.material
-      : undefined,
-    material_eng: matterResult.data.material_eng
-      ? matterResult.data.material_eng
-      : undefined,
-    locacion: matterResult.data.locacion
-      ? matterResult.data.locacion
-      : undefined,
-    locacion_eng: matterResult.data.locacion_eng
-      ? matterResult.data.locacion_eng
-      : undefined,
-    tecnica: matterResult.data.tecnica ? matterResult.data.tecnica : undefined,
+    hero_img:
+      matterResult.data.hero_img != "none" ? matterResult.data.hero_img : "",
+    medidas:
+      matterResult.data.medidas != "none" ? matterResult.data.medidas : "",
+    medidas_eng:
+      matterResult.data.medidas_eng != "none"
+        ? matterResult.data.medidas_eng
+        : "",
+    material:
+      matterResult.data.material != "none" ? matterResult.data.material : "",
+    material_eng:
+      matterResult.data.material_eng != "none"
+        ? matterResult.data.material_eng
+        : "",
+    locacion:
+      matterResult.data.locacion != "none" ? matterResult.data.locacion : "",
+    locacion_eng:
+      matterResult.data.locacion_eng != "none"
+        ? matterResult.data.locacion_eng
+        : "",
+    tecnica:
+      matterResult.data.tecnica != "none" ? matterResult.data.tecnica : "",
     tecnica_eng: matterResult.data.tecnica_eng
       ? matterResult.data.tecnica_eng
-      : undefined,
+      : "",
     // computed
     id,
     contentSpanish,

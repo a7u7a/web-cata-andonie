@@ -2,14 +2,15 @@ import ReactMarkdown from "react-markdown";
 import { bioPost } from "../../interfaces/interfaces";
 
 interface BioColumnFromMarkdownProps {
-  bioPost: bioPost;
+  post: bioPost;
 }
 
-const BioColumnFromMarkdown = ({ bioPost }: BioColumnFromMarkdownProps) => {
+const BioColumnFromMarkdown = ({ post }: BioColumnFromMarkdownProps) => {
+  
   return (
     <ReactMarkdown
       // eslint-disable-next-line
-      children={bioPost.contentSpanish}
+      children={post.contentSpanish}
       className="bio"
       components={{
         // this should go into a separate component

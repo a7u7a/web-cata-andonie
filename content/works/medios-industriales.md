@@ -1,15 +1,15 @@
 ---
 date: October 13, 2022 6:12 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Medios Industriales
 title_eng: Industrial Resources
 hero_img: /imgs/none.jpg
 medidas: variables
 medidas_eng: variables
 year: 2014
-material: poliuretano, resina, silicona caucho, óleo, collage, encapso k
-material_eng: projected polyurethane foam
+material: Poliuretano, resina, silicona caucho, óleo, collage, encapso k
+material_eng: Projected polyurethane foam
 locacion: Centro de Información Turística de Providencia
 locacion_eng: Centro de Información Turística de Providencia
 tecnica: none

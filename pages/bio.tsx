@@ -14,6 +14,7 @@ interface BioProps {
 }
 
 const Bio = ({ bioPosts, bioStatement }: BioProps) => {
+  // maybe will use this in the future to build index sidebar titles from content
   // get all titles and split by column
   // const re = /#{1,6}.+(?=\n)/g;
   // const f = bioPosts[0].contentSpanish.match(re);
@@ -59,9 +60,9 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
             </div>
 
             <div className="flex flex-row space-x-6 pr-6">
-              <BioColumnFromMarkdown bioPost={bioPosts[0]} />
-              <BioColumnFromMarkdown bioPost={bioPosts[1]} />
-              <BioColumnFromMarkdown bioPost={bioPosts[2]} />
+              <BioColumnFromMarkdown post={bioPosts[0]} />
+              <BioColumnFromMarkdown post={bioPosts[1]} />
+              <BioColumnFromMarkdown post={bioPosts[2]} />
             </div>
           </div>
         </div>

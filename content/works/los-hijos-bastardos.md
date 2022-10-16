@@ -1,15 +1,15 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Los Hijos Bastardos
 title_eng: The Illegitimate Sons
 hero_img: /imgs/none.jpg
 medidas: none
 medidas_eng: none
 year: 2014
-material: hormigón armado, acero, mangueras
-material_eng: reinforced concrete, steel, hoses
+material: Hormigón armado, acero, mangueras
+material_eng: Reinforced concrete, steel, hoses
 locacion: Museo de Arte Contemporáneo Quinta Normal
 locacion_eng: Museo de Arte Contemporáneo Quinta Normal
 tecnica: serie de 8 objetos de medidas variables

@@ -1,15 +1,15 @@
 ---
 date: October 13, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Futura
 title_eng: Futura
 hero_img: /imgs/none.jpg
 medidas: 600 x 372 x 372 cm
 medidas_eng: 600 x 372 x 372 cm
 year: 2021
-material: flocki, vidrio, acrílico, bronce, granito, madera
-material_eng: flocki, glass, acrylic, brass, granite, wood
+material: Flocki, vidrio, acrílico, bronce, granito, madera
+material_eng: Flocki, glass, acrylic, brass, granite, wood
 locacion: XV Bienal de Artes Mediales de Santiago, Museo de Bellas Artes
 locacion_eng: XV Bienal de Artes Mediales de Santiago, Museo de Bellas Artes
 tecnica: none

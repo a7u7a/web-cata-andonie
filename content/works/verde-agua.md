@@ -1,15 +1,15 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Verde Agua
 title_eng: Light Green
 hero_img: /imgs/none.jpg
 medidas: 295 x 385 x 330 cm
 medidas_eng: 295 x 385 x 330 cm
 year: 2018
-material: lana aislante poliéster, clavos
-material_eng: polyester insulation wool, nails
+material: Lana aislante poliéster, clavos
+material_eng: Polyester insulation wool, nails
 locacion: One Moment Art
 locacion_eng: One Moment Art
 tecnica: none

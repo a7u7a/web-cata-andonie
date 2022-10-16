@@ -1,15 +1,15 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
-front_page: true
+front_page: false
 title: Silla
 title_eng: Chair
 hero_img: /imgs/none.jpg
 medidas: 80 x 220 x 55 cm
 medidas_eng: 80 x 220 x 55 cm
 year: 2016
-material: poliuretano, acero
-material_eng: polyurethane, steel
+material: Poliuretano, acero
+material_eng: Polyurethane, steel
 locacion: none
 locacion_eng: none
 tecnica: none
