@@ -30,17 +30,15 @@ export default function Home({
   exhibitionsPosts,
   aboutPost,
 }: HomeProps) {
-  const frontPagePosts = workPosts.filter((post) => post.front_page);
   // split front page posts into two lists, one for each column
+  const frontPagePosts = workPosts.filter((post) => post.front_page);
   const [firstCol, secondCol] = split(
     frontPagePosts,
-    Math.floor((frontPagePosts.length / 2)+1)
+    Math.floor(frontPagePosts.length / 2 + 1)
   );
 
-
-
+  // Update scroll
   const [scrollTop, setScrollTop] = useState(0);
-
   useEffect(() => {
     const onScroll = (e: Event) => {
       const target = e.target as Document;

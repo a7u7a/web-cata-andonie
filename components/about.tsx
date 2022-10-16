@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 import { aboutPost } from "../interfaces/interfaces";
 
@@ -6,29 +8,24 @@ interface AboutProps {
 }
 
 const About = ({ aboutPost }: AboutProps) => {
+  const { locale, locales } = useRouter();
+  console.log("locales",locales);
+
   return (
     <div className="pt-8 pb-20">
-      <div className="pl-4 text-black text-3xl">{aboutPost.title}</div>
+      <div className="pl-4 text-black text-3xl">
+        {locale === "es" ? aboutPost.title : aboutPost.title_eng}
+      </div>
       <div className="pl-4 pr-4 pt-8 text-black text-3xl">
         <ReactMarkdown
           // eslint-disable-next-line
-          children={aboutPost.contentSpanish}
+          children={
+            locale === "es"
+              ? aboutPost.contentSpanish
+              : aboutPost.contentEnglish
+          }
           className="about"
         />
-
-        {/* <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eaque
-          iste similique, omnis voluptatum, placeat asperiores dignissimos
-          aperiam illo, voluptatibus cupiditate impedit dolorem enim. Odit, ab
-          mollitia. Corrupti, repellat dicta?
-        </p>
-        <br />
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione
-          eaque ullam animi. Nostrum quibusdam harum iste, recusandae
-          reprehenderit eveniet quaerat earum? Asperiores facere ut sapiente
-          necessitatibus quia impedit maiores animi.
-        </p> */}
       </div>
     </div>
   );

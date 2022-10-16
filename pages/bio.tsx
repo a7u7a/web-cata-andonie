@@ -55,7 +55,7 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
         <div className="flex flex-row w-3/4">
           <div className="flex flex-col mb-20">
             <div className="flex items-center h-28">
-              <div className="text-3xl ">Bio</div>
+              <div className="text-3xl ">Artist Bio</div>
             </div>
 
             <div className="flex flex-row space-x-6 pr-6">

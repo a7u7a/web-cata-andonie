@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useState, useEffect, useLayoutEffect } from "react";
 
 interface NavBarProps {
   transparent?: boolean;
@@ -45,6 +46,39 @@ const NavBar = ({
     }
   }, [check]);
 
+  // // set language
+  // const [lang, setLang] = useState("en");
+  // useEffect(() => {
+  //   if (sessionStorage.getItem("lang")) {
+  //     setLang(sessionStorage.getItem("lang")!);
+  //   } else {
+  //     // if no language in sessionstorage, get from browser
+  //     if (/^es\b/.test(navigator.language)) {
+  //       setLang("es");
+  //     } else {
+  //       setLang("en");
+  //     }
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   sessionStorage.setItem("lang", lang);
+  //   console.log("setting lang to", sessionStorage.getItem("lang"));
+  // }, [lang]);
+
+  const router = useRouter();
+  const { locale } = useRouter();
+
+  // const onChangeLanguage = (lang: string) => (e: Event) => {
+  //   e.preventDefault();
+  //   router.push(router.asPath, undefined, { locale: lang });
+  //   console.log("locale after", locale);
+  // };
+
+  // useEffect(() => {
+  //   console.log("locale", locale);
+  // }, [locale]);
+
   return (
     <div className={classString}>
       <Link href={"/"}>
@@ -58,9 +92,13 @@ const NavBar = ({
             Bio
           </div>
         </Link>
-        <div className="flex items-center text-center text-xl hover:underline cursor-pointer">
+
+        <button
+          // onClick={() => onChangeLanguage("es")}
+          className="flex items-center text-center text-xl hover:underline"
+        >
           <div>English</div>
-        </div>
+        </button>
       </div>
     </div>
   );
