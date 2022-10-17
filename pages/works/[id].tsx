@@ -18,33 +18,25 @@ function split(arr: { h: number; w: number; path: string }[], index: number) {
 }
 
 export default function Post({ post, workPosts }: WorkPostProps) {
-
-  const [firstCol, secondCol] = post.pathsAndDims?split(
-    post.pathsAndDims!,
-    Math.floor((post.pathsAndDims!.length / 2))
-  ) : []
+  const [firstCol, secondCol] = post.pathsAndDims
+    ? split(post.pathsAndDims!, Math.floor(post.pathsAndDims!.length / 2))
+    : [];
 
   return (
     <div>
       <NavBar />
       <ImageHero src={post.hero_img!} />
-
       <div className="flex flex-row m-2">
         <div className="flex flex-col w-1/2 pr-1 space-y-2">
           <PostCard post={post} />
           {firstCol.map((img, i) => (
             <IdImage key={i} src={img.path} h={img.h} w={img.w} />
           ))}
-
-          {/* <IdImage h={1142} w={1614} src="/imgs/maqueta/vertical-2.jpg" /> */}
         </div>
         <div className="flex flex-col w-1/2 pl-1 space-y-2">
           {secondCol.map((img, i) => (
             <IdImage key={i} src={img.path} h={img.h} w={img.w} />
           ))}
-          {/* <IdImage h={1159} w={1500} src="/imgs/maqueta/vertical-1.jpg" />
-          <IdImage h={1340} w={957} src="/imgs/maqueta/horizontal-2.jpg" />
-          <IdImage h={1340} w={890} src="/imgs/maqueta/horizontal-3.jpg" /> */}
         </div>
       </div>
       <WorksCatalogue posts={workPosts} />
