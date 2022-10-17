@@ -24,8 +24,6 @@ export default function Post({ post, workPosts }: WorkPostProps) {
     Math.floor((post.pathsAndDims!.length / 2))
   ) : []
 
-  console.log("firstCol", firstCol.length, "secondCol", secondCol.length);
-
   return (
     <div>
       <NavBar />
