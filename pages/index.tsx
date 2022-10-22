@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import { useState, useRef, useEffect } from "react";
+import useMediaQuery from "../lib/media";
 import VideoHero from "../components/video-hero";
 import NavBar from "../components/nav-bar";
 import About from "../components/about";
@@ -49,6 +50,12 @@ export default function Home({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isSm = useMediaQuery("(max-width: 768px)");
+
+  useEffect(() => {
+    console.log("isSm", isSm);
+  }, [isSm]);
+
   return (
     <div>
       <MyHeader />
@@ -58,36 +65,63 @@ export default function Home({
         scrollTop={scrollTop}
         scrollThreshold={1013}
       />
-      <div className="flex flex-row m-2">
+      <div className="flex flex-col md:flex-row m-2">
         {/* Columna derecha */}
-        <div className="flex flex-col w-1/2 pr-1 space-y-2">
+
+        <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
           <About post={aboutPost} />
-          {firstCol.map((post, i) => (
-            <IndexImage
-              key={i}
-              href={"works/" + post.id}
-              title={post.title}
-              h={post.front_img_h!}
-              w={post.front_img_w!}
-              src={post.thumbnail!}
-            />
-          ))}
+
+          {isSm ? (
+            <></>
+          ) : (
+            firstCol.map((post, i) => (
+              <IndexImage
+                key={i}
+                href={"works/" + post.id}
+                title={post.title}
+                h={post.front_img_h!}
+                w={post.front_img_w!}
+                src={post.thumbnail!}
+              />
+            ))
+          )}
         </div>
 
         {/* Columna izquierda */}
-        <div className="flex flex-col w-1/2 pl-1 space-y-2">
+        <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
           <News exhibitionsPosts={exhibitionsPosts} />
-          {secondCol.map((post, i) => (
-            <IndexImage
-              key={i}
-              href={"works/" + post.id}
-              title={post.title}
-              h={post.front_img_h!}
-              w={post.front_img_w!}
-              src={post.thumbnail!}
-            />
-          ))}
+          {isSm ? (
+            <></>
+          ) : (
+            secondCol.map((post, i) => (
+              <IndexImage
+                key={i}
+                href={"works/" + post.id}
+                title={post.title}
+                h={post.front_img_h!}
+                w={post.front_img_w!}
+                src={post.thumbnail!}
+              />
+            ))
+          )}
         </div>
+
+        {isSm ? (
+          <div className="flex flex-col space-y-2">
+            {frontPagePosts.map((post, i) => (
+              <IndexImage
+                key={i}
+                href={"works/" + post.id}
+                title={post.title}
+                h={post.front_img_h!}
+                w={post.front_img_w!}
+                src={post.thumbnail!}
+              />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <WorksCatalogue posts={workPosts} />
       <MyFooter />
