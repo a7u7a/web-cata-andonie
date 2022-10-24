@@ -20,14 +20,14 @@
 .about {
   @apply w-full text-black text-3xl space-y-10
   prose 
-  prose-p:my-0
+  prose-p:my-0;
 }
 
 .work {
   @apply w-full text-black
-  columns-2 text-[0.95rem] text-justify gap-6
+  columns-1 md:columns-2 text-[0.95rem] text-justify gap-6
   prose 
-  prose-p:my-0
+  prose-p:my-0;
 }
 
 @layer base {

@@ -52,7 +52,7 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
     <div>
       <NavBar transparent={true} scrollThreshold={349} scrollTop={scrollTop} />
       <div className="w-screen bg-gray-200">
-        <div className="pt-28 pb-28 ml-6 text-3xl font-bold w-2/3 text-white">
+        <div className="pt-28 pb-28 pl-3 md:pl-6 pr-3 md:pr-6 text-3xl font-bold w-full md:w-2/3 text-white">
           {locale === "es"
             ? bioStatement.contentSpanish
             : bioStatement.contentEnglish}
@@ -60,19 +60,19 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
       </div>
 
       {isMd ? (
-        <div className="flex flex-row space-x-6 mb-6">
-          <div className="flex flex-col w-1/2 pl-6">
+        <div className="flex flex-row space-x-4 mb-6">
+          <div className="flex flex-col w-1/2 pl-3 md:pl-6">
             <BioIndex />
             <BioColumnFromMarkdown post={bioPosts[0]} />
             <BioColumnFromMarkdown post={bioPosts[2]} />
           </div>
-          <div className="flex flex-col w-1/2 pr-6">
+          <div className="flex flex-col w-1/2 pr-3 md:pr-6">
             <BioColumnFromMarkdown post={bioPosts[1]} />
           </div>
         </div>
       ) : (
         <div className="flex justify-between">
-          <div className="sticky top-0 w-1/4 self-start pl-6">
+          <div className="sticky top-0 w-1/4 self-start pl-3 md:pl-6">
             <BioIndex />
           </div>
 
@@ -83,7 +83,7 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
                 <div className="text-3xl ">Artist Bio</div>
               </div>
 
-              <div className="flex flex-row space-x-6 pr-6">
+              <div className="flex flex-row space-x-6 pr-3 md:pr-6">
                 <BioColumnFromMarkdown post={bioPosts[0]} />
                 <BioColumnFromMarkdown post={bioPosts[1]} />
                 <BioColumnFromMarkdown post={bioPosts[2]} />

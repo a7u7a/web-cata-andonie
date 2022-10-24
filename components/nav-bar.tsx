@@ -55,11 +55,11 @@ const NavBar = ({
   return (
     <div className={classString}>
       <Link href={"/"}>
-        <div className="pl-6 p-3 font-black text-2xl cursor-pointer hover:text-gray-300">
+        <div className="pl-3 md:pl-6 p-3 font-black text-2xl cursor-pointer hover:text-gray-300">
           Catalina Andonie
         </div>
       </Link>
-      <div className="flex flex-row pr-6 space-x-12">
+      <div className="flex flex-row pr-3 md:pr-6 space-x-5 md:space-x-12">
         <Link href={"/bio"}>
           <div className="flex items-center text-center text-xl hover:underline cursor-pointer">
             Bio

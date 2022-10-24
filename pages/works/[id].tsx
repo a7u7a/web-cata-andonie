@@ -27,13 +27,13 @@ export default function Post({ post, workPosts }: WorkPostProps) {
       <NavBar />
       <ImageHero src={post.hero_img!} />
       <div className="flex flex-col md:flex-row m-2">
-        <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
+        <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-1 space-y-2">
           <PostCard post={post} />
           {firstCol.map((img, i) => (
             <IdImage key={i} src={img.path} h={img.h} w={img.w} />
           ))}
         </div>
-        <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
+        <div className="flex flex-col w-full md:w-1/2 pl-0 md:pl-1 space-y-2">
           {secondCol.map((img, i) => (
             <IdImage key={i} src={img.path} h={img.h} w={img.w} />
           ))}

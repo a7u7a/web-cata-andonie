@@ -20,10 +20,10 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
 
   return (
     <div className="pt-8 pb-8">
-      <div className="flex flex-row justify-between pl-4 pr-4">
+      <div className="flex flex-row justify-between pl-1 md:pl-4 pr-1 md:pr-4">
         <div className="text-3xl">Exhibitions</div>
       </div>
-      <div className="pl-4 pr-4 pt-8">
+      <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-8">
         <div className="flex flex-row space-x-4">
           <div className="flex flex-col w-1/2 mr-1">
             <NewsSection post={currentSection} />

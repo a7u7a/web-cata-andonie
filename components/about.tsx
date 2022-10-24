@@ -11,10 +11,10 @@ const About = ({ post }: AboutProps) => {
 
   return (
     <div className="pt-8 pb-10 md:pb-20">
-      <div className="pl-4 text-black text-3xl">
+      <div className="pl-1 md:pl-4 text-black text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div>
-      <div className="pl-4 pr-4 pt-8 text-black text-3xl">
+      <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-8 text-black text-3xl">
         <ReactMarkdown
           // eslint-disable-next-line
           children={
