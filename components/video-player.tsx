@@ -123,7 +123,6 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       <Suspense fallback={<FallbackMaterial url="imgs/orb.jpg" />}>
         {/* @ts-ignore: https://github.com/pmndrs/react-spring/issues/1515 */}
         <a.shaderMaterial
-          transparent
           ref={matRef}
           uniforms={uniforms}
           // uniforms-u_progress-value={progress}

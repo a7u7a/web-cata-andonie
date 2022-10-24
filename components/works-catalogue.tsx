@@ -32,7 +32,7 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
               alt="imagen"
             />
             <div className="absolute opacity-0 hover:opacity-100 left-0 top-0 inset-0 font-bold">
-              <div className="text-lg p-3 text-white">
+              <div className="text-lg text-white">
                 {locale === "es" ? post.title : post.title_eng}
               </div>
             </div>
