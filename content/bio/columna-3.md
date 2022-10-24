@@ -1,50 +1,104 @@
 ---
 title: columna 3
+body_eng: |-
+  # Education
+
+  2017
+  * B.A. from Pontificia Universidad Catolica de Chile, Visual Arts, Santiago, Chile.
+
+  2014
+  * Extension Course in Printmaking, Pontificia Universidad Catolica de Chile, Santiago, Chile.
+
+  # Workshops
+
+  2012
+  * Pablo Rivera and Livia Marin’s Workshop, Santiago, Chile.
+
+  2010
+  * Eugenio Dittborn’s Workshop in Work Analysis, Santiago, Chile.
+
+  # Teaching
+
+  2012
+  * Teaching assistant for Printmaking I course of study, Pontificia Universidad Catolica de Chile, Santiago, Chile.
+
+  # Residencies
+
+  2018
+  Sagrada Mercancia, Santiago, Chile.
+
+  # Honors and Awards
+
+  2014
+  Honorable Mention, Premio MAVI/Minera Escondida, Museo de Artes Visuales MAVI, Santiago, Chile.
+
+  # Collections
+
+  * Jose Manuel Diaz Collection
+  * Gonzalo Rojas Collection
+  * Andrea Yarur Collection
+  * Victor Leyton Collection
+  * Paulina Barahona Collection.
+
+  # Auctions
+
+  2020
+  * Online Auction to Benefit Artishock Magazine, Santiago, Chile.
+
+  2018
+  * Auction to Benefit Artishock Magazine, Galeria Patricia Ready, Santiago, Chile.
 ---
 
-# Education
+# Educación
 
 2017
-* B.A. from Pontificia Universidad Catolica de Chile, Visual Arts, Santiago, Chile.
+
+- B.A. from Pontificia Universidad Catolica de Chile, Visual Arts, Santiago, Chile.
 
 2014
-* Extension Course in Printmaking, Pontificia Universidad Catolica de Chile, Santiago, Chile.
+
+- Extension Course in Printmaking, Pontificia Universidad Catolica de Chile, Santiago, Chile.
 
 # Workshops
 
 2012
-* Pablo Rivera and Livia Marin’s Workshop, Santiago, Chile.
+
+- Pablo Rivera and Livia Marin’s Workshop, Santiago, Chile.
 
 2010
-* Eugenio Dittborn’s Workshop in Work Analysis, Santiago, Chile.
 
-# Teaching
+- Eugenio Dittborn’s Workshop in Work Analysis, Santiago, Chile.
+
+# Enseñanza
 
 2012
-* Teaching assistant for Printmaking I course of study, Pontificia Universidad Catolica de Chile, Santiago, Chile.
 
-# Residencies
+- Teaching assistant for Printmaking I course of study, Pontificia Universidad Catolica de Chile, Santiago, Chile.
+
+# Residencias
 
 2018
 Sagrada Mercancia, Santiago, Chile.
 
-# Honors and Awards
+# Premios
 
 2014
 Honorable Mention, Premio MAVI/Minera Escondida, Museo de Artes Visuales MAVI, Santiago, Chile.
 
-# Collections
+# Colecciones
 
-* Jose Manuel Diaz Collection
-* Gonzalo Rojas Collection
-* Andrea Yarur Collection
-* Victor Leyton Collection
-* Paulina Barahona Collection.
+- Jose Manuel Diaz Collection
+- Gonzalo Rojas Collection
+- Andrea Yarur Collection
+- Victor Leyton Collection
+- Paulina Barahona Collection.
 
-# Auctions
+# Subastas
 
 2020
-* Online Auction to Benefit Artishock Magazine, Santiago, Chile.
+
+- Online Auction to Benefit Artishock Magazine, Santiago, Chile.
 
 2018
-* Auction to Benefit Artishock Magazine, Galeria Patricia Ready, Santiago, Chile.
+
+- Auction to Benefit Artishock Magazine, Galeria Patricia Ready, Santiago, Chile.

@@ -1,16 +1,18 @@
 import ReactMarkdown from "react-markdown";
+import { useRouter } from "next/router";
 import { bioPost } from "../../interfaces/interfaces";
-
 interface BioColumnFromMarkdownProps {
   post: bioPost;
 }
 
 const BioColumnFromMarkdown = ({ post }: BioColumnFromMarkdownProps) => {
-  
+  const { locale } = useRouter();
   return (
     <ReactMarkdown
       // eslint-disable-next-line
-      children={post.contentSpanish}
+      children={  locale === "es"
+      ? post.contentSpanish
+      : post.contentEnglish}
       className="bio"
       components={{
         // this should go into a separate component

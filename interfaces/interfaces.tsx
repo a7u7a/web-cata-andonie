@@ -38,6 +38,7 @@ export interface workPost {
 export interface bioPost {
   title: string;
   contentSpanish: string; // post body
+  contentEnglish: string;
   id: string; // post filename
 }
 

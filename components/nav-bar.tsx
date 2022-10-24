@@ -71,7 +71,11 @@ const NavBar = ({
           placeholder=""
         >
           <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
-            <div>English</div>
+            <div>{
+              activeLocale === "es"
+                ? "English"
+                : "Español"
+            }</div>
           </Link>
         </div>
       </div>

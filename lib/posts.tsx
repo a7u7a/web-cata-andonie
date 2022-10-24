@@ -175,10 +175,13 @@ export const getAllBioPosts = () => {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const matterResult = matter(fileContents);
     const contentSpanish = matterResult.content;
+    const _ = matter(matterResult.data.body_eng);
+    const contentEnglishOut = _.content.split("\n").join("\r\n");
     return {
       id,
       title: matterResult.data.title,
       contentSpanish,
+      contentEnglish: contentEnglishOut,
     };
   });
   return allPostsData;
