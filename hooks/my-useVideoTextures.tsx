@@ -27,7 +27,12 @@ export function useVideoTextures(videoPaths: string[]) {
       const texture = new THREE.VideoTexture(video);
       texture.encoding = gl.outputEncoding;
       video.addEventListener(unsuspend, (e) => {
-        start && texture.image.play();
+        console.log("loadedmetadata");
+        try {
+          start && texture.image.play();
+        } catch (e) {
+          console.log(e);
+        }
         return res(texture);
       });
     });
