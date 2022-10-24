@@ -24,7 +24,6 @@ import {
 import clipSpaceVert from "../shaders/clip-space.vert";
 import linearFadeTransition from "../shaders/linear-fade-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
-import { useVideoTexture } from "../hooks/my-useVideoTexture";
 import { useVideoTextures } from "../hooks/my-useVideoTextures";
 import { useSpring, a, config, SpringValue } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";

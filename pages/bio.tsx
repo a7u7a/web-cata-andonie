@@ -49,10 +49,12 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
       </div>
 
       <div className="flex justify-between">
-        <BioIndex />
+        <div className="sticky top-0 w-1/4 self-start">
+          <BioIndex />
+        </div>
 
         {/* main content */}
-        <div className="flex flex-row w-3/4">
+        <div className="w-3/4">
           <div className="flex flex-col mb-20">
             <div className="flex items-center h-28">
               <div className="text-3xl ">Artist Bio</div>

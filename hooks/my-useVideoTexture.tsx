@@ -9,13 +9,12 @@ interface VideoTextureProps extends HTMLVideoElement {
   playsInline: boolean;
 }
 
-export function useVideoTexture(
+export function MyUseVideoTexture(
   src: string,
   props: Partial<VideoTextureProps>
 ) {
-  
   const { unsuspend, start, crossOrigin, muted, playsInline, loop, ...rest } = {
-    unsuspend: "canplay",
+    unsuspend: "loadedmetadata",
     crossOrigin: "Anonymous",
     muted: true,
     loop: true,
@@ -23,7 +22,7 @@ export function useVideoTexture(
     playsInline: true,
     ...props,
   };
-  
+
   const gl = useThree((state) => state.gl);
   const texture = suspend<[url: string], () => Promise<THREE.VideoTexture>>(
     () =>
@@ -39,12 +38,19 @@ export function useVideoTexture(
         const texture = new THREE.VideoTexture(video);
         texture.encoding = gl.outputEncoding;
         video.addEventListener(unsuspend, (e) => {
+          console.log("start play");
           return res(texture);
         });
       }),
     [src]
   );
 
-  useEffect(() => void (start && texture.image.play()), [texture]);
+  useEffect(() => {
+    try {
+      start && texture.image.play();
+    } catch (e) {
+      console.log(e);
+    }
+  }, [texture]);
   return texture;
 }
