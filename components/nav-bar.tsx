@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useMeasure from "react-use-measure";
 import { useState, useEffect, useLayoutEffect } from "react";
 
 interface NavBarProps {
@@ -16,10 +17,12 @@ const NavBar = ({
   const [check, setCheck] = useState(false);
   const [classString, setClassString] = useState("");
 
+  const [ref, bounds] = useMeasure();
+
   // Using two useEffects so I can avoid updating isVisible every time scrollTop changes
   useEffect(() => {
     if (scrollThreshold != undefined) {
-      if (scrollTop! >= scrollThreshold) {
+      if (scrollTop! >= scrollThreshold - bounds.height) {
         // update visibility
         setCheck(true);
       } else {
@@ -53,7 +56,7 @@ const NavBar = ({
   const otherLocale = locales!.filter((locale) => locale !== activeLocale)[0];
 
   return (
-    <div className={classString}>
+    <div ref={ref} className={classString}>
       <Link href={"/"}>
         <div className="pl-3 md:pl-6 p-3 font-black text-2xl cursor-pointer hover:text-gray-300">
           Catalina Andonie
@@ -71,11 +74,7 @@ const NavBar = ({
           placeholder=""
         >
           <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
-            <div>{
-              activeLocale === "es"
-                ? "English"
-                : "Español"
-            }</div>
+            <div>{activeLocale === "es" ? "English" : "Español"}</div>
           </Link>
         </div>
       </div>

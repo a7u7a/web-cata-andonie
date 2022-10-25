@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import { useState, useRef, useEffect } from "react";
+import useMeasure from "react-use-measure";
 import useMediaQuery from "../lib/media";
 import VideoHero from "../components/video-hero";
 import NavBar from "../components/nav-bar";
@@ -52,21 +53,22 @@ export default function Home({
 
   const isSm = useMediaQuery("(max-width: 768px)");
 
-  useEffect(() => {
-    console.log("isSm", isSm);
-  }, [isSm]);
+  const [ref, bounds] = useMeasure();
 
   return (
     <div>
       <MyHeader />
-      <VideoHero />
+      <VideoHero height={bounds.height} ref={ref} />
       <NavBar
         transparent={false}
         scrollTop={scrollTop}
-        scrollThreshold={1013}
+        scrollThreshold={bounds.height}
       />
       <div className="flex flex-col md:flex-row m-2">
         {/* Columna derecha */}
+        {/* <div ref={ref} className="h-24 bg-red-500">
+          helo
+        </div> */}
 
         <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
           <About post={aboutPost} />

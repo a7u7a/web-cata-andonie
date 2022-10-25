@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import useMeasure from "react-use-measure";
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
 import useMediaQuery from "../lib/media";
@@ -42,16 +43,18 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
   }, []);
 
   const isMd = useMediaQuery("(max-width: 768px)");
-  useEffect(() => {
-    console.log("isSm", isMd);
-  }, [isMd]);
 
   const { locale } = useRouter();
+  const [ref, bounds] = useMeasure();
 
   return (
     <div>
-      <NavBar transparent={true} scrollThreshold={349} scrollTop={scrollTop} />
-      <div className="w-screen bg-gray-200">
+      <NavBar
+        transparent={true}
+        scrollThreshold={bounds.height}
+        scrollTop={scrollTop}
+      />
+      <div ref={ref} className="w-screen bg-gray-200">
         <div className="pt-28 pb-28 pl-3 md:pl-6 pr-3 md:pr-6 text-3xl font-bold w-full md:w-2/3 text-white">
           {locale === "es"
             ? bioStatement.contentSpanish
