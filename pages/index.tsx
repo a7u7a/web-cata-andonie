@@ -1,5 +1,6 @@
-import { GetStaticProps } from "next";
 import { useState, useRef, useEffect } from "react";
+import { GetStaticProps } from "next";
+import Head from "next/head";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
 import useMediaQuery from "../lib/media";
@@ -10,7 +11,6 @@ import News from "../components/news";
 import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/works-catalogue";
 import MyFooter from "../components/my-footer";
-import MyHeader from "../components/my-header";
 import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
 import {
   getAllWorkPosts,
@@ -58,7 +58,11 @@ export default function Home({
 
   return (
     <div>
-      <MyHeader />
+      <Head>
+        <title>Catalina Andonie</title>
+        <meta name="description" content="Catalina Andonie, Artista" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <VideoHero height={bounds.height} ref={ref} />
       <NavBar
         transparent={false}

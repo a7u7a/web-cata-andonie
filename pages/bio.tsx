@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import Head from "next/head";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
 import { useRouter } from "next/router";
@@ -50,6 +51,11 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
 
   return (
     <div>
+      <Head>
+        <title>Bio Catalina Andonie</title>
+        <meta name="description" content="Catalina Andonie, Artista" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <NavBar
         transparent={true}
         scrollThreshold={bounds.height}

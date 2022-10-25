@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { exhibitionsPost } from "../interfaces/interfaces";
 import NewsSection from "../components/news/news-section";
 
@@ -6,6 +7,7 @@ interface NewsProps {
 }
 
 const News = ({ exhibitionsPosts }: NewsProps) => {
+  const { locale } = useRouter();
   // assumes only one per section
   const currentSection = exhibitionsPosts.filter(
     (post) => post.id === "current"
@@ -20,11 +22,13 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
   return (
     <div className="pt-0 md:pt-8 pb-8">
       <div className="flex flex-row justify-between pl-1 md:pl-4 pr-1 md:pr-4">
-        <div className="text-3xl">Exhibitions</div>
+        <div className="text-3xl">
+          {locale === "es" ? "Exhibiciones" : "Exhibitions"}
+        </div>
       </div>
       <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-8">
         <div className="flex flex-row space-x-4">
-          <div className="flex flex-col w-1/2 mr-1">
+          <div className="flex flex-col w-1/2 mr-1 space-y-2">
             <NewsSection post={currentSection} />
             <NewsSection post={recentSection} />
             {/* <div className="font-bold text-xl">Current</div>

@@ -29,27 +29,22 @@ import { useSpring, a, config, SpringValue } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
 import { VideoNavProps } from "../interfaces/interfaces";
 
-
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
   isPlay: boolean;
 }
 
+const shuffledVideoPaths = [
+  "/videos/faro.mp4",
+  "/videos/pasillo.mp4",
+  "/videos/sagrada.mp4",
+  "/videos/agua.mp4",
+].sort((a, b) => 0.5 - Math.random());
+
 const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
-
-  const videoPaths = [
-    "/videos/faro.mp4",
-    "/videos/pasillo.mp4",
-    "/videos/sagrada.mp4",
-    "/videos/agua.mp4",
-  ];
-
-  const playlist = useVideoTextures(videoPaths);
-
-  const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
-
+  const playlist = useVideoTextures(shuffledVideoPaths);
   // PatternControls(matRef);
 
   const uniforms = useMemo(() => {
@@ -100,8 +95,6 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     }
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
-
-  
 
   const [faderProgress, setFaderProgress] = useState(0);
 

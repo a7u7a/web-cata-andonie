@@ -17,10 +17,9 @@ const NavBar = ({
 }: NavBarProps) => {
   const [check, setCheck] = useState(false);
   const [classString, setClassString] = useState("");
-
   const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
 
-  // Using two useEffects so I can avoid updating isVisible every time scrollTop changes
+  // Using two useEffects so I can avoid updating the check every time scrollTop updates
   useEffect(() => {
     if (scrollThreshold != undefined) {
       if (scrollTop! >= scrollThreshold - bounds.height) {

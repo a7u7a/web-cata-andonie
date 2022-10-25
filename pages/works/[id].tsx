@@ -1,4 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+import { useRouter } from "next/router";
+import Head from "next/head";
 import ImageHero from "../../components/works/image-hero";
 import NavBar from "../../components/nav-bar";
 import WorksCatalogue from "../../components/works-catalogue";
@@ -18,12 +20,18 @@ function split(arr: { h: number; w: number; path: string }[], index: number) {
 }
 
 export default function Post({ post, workPosts }: WorkPostProps) {
+  const { locale } = useRouter();
   const [firstCol, secondCol] = post.pathsAndDims
     ? split(post.pathsAndDims!, Math.floor(post.pathsAndDims!.length / 2))
     : [];
 
   return (
     <div>
+      <Head>
+        <title>{locale === "es" ? post.title : post.title_eng}</title>
+        <meta name="description" content="Catalina Andonie, Artista" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <NavBar />
       <ImageHero src={post.hero_img!} />
       <div className="flex flex-col md:flex-row m-2">
