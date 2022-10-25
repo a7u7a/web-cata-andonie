@@ -1,6 +1,6 @@
 ---
 date: October 13, 2022 10:04 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/ceguera/1.jpeg
 front_page: true
 title: Ceguera
 title_eng: Blindness

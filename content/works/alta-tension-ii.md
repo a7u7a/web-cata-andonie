@@ -1,6 +1,6 @@
 ---
 date: October 13, 2022 10:03 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/alta-tension-ii/1.jpg
 front_page: true
 title: Alta Tensión II
 title_eng: High Voltage II

@@ -1,6 +1,6 @@
 ---
 date: October 13, 2022 10:04 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/coleccion/1.jpg
 front_page: true
 title: Colección
 title_eng: Collection
