@@ -10,9 +10,8 @@ const PageNotFound = () => {
           {locale === "es" ? "Página no encontrada" : "Page not found"}
         </div>
       </div>
-
       <div className="flex flex-row justify-center underline">
-        <Link href="/">{locale === "es" ? "Inicio" : "Home"}</Link>
+        <Link href="/">{locale === "es" ? "Volver al inicio" : "Home"}</Link>
       </div>
     </div>
   );
