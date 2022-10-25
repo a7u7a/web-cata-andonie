@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@juggle/resize-observer": "^3.4.0",
     "@react-spring/three": "^9.5.4",
     "@react-three/drei": "^9.25.3",
     "@react-three/fiber": "^8.6.0",

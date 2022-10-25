@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import { useState, useRef, useEffect } from "react";
 import useMeasure from "react-use-measure";
+import { ResizeObserver } from "@juggle/resize-observer";
 import useMediaQuery from "../lib/media";
 import VideoHero from "../components/video-hero";
 import NavBar from "../components/nav-bar";
@@ -53,7 +54,7 @@ export default function Home({
 
   const isSm = useMediaQuery("(max-width: 768px)");
 
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
 
   return (
     <div>

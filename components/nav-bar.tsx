@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useMeasure from "react-use-measure";
+import { ResizeObserver } from '@juggle/resize-observer'
 import { useState, useEffect, useLayoutEffect } from "react";
 
 interface NavBarProps {
@@ -17,7 +18,7 @@ const NavBar = ({
   const [check, setCheck] = useState(false);
   const [classString, setClassString] = useState("");
 
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
 
   // Using two useEffects so I can avoid updating isVisible every time scrollTop changes
   useEffect(() => {
