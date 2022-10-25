@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import useMeasure from "react-use-measure";
-import { ResizeObserver } from '@juggle/resize-observer'
+import { ResizeObserver } from "@juggle/resize-observer";
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
 import useMediaQuery from "../lib/media";
@@ -52,7 +52,7 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
     <div>
       <NavBar
         transparent={true}
-        scrollThreshold={bounds.height}
+        scrollThreshold={bounds.height ? bounds.height : 1500}
         scrollTop={scrollTop}
       />
       <div ref={ref} className="w-screen bg-gray-200">
