@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const MyFooter = () => {
   const { locale } = useRouter();
   return (
-    <div className="flex flex-col md:flex-row w-full pt-10 md:pt-20 p-3 md:p-6 bg-gray-200 space-y-12 md:space-y-0">
+    <div className="flex flex-col md:flex-row w-full pt-10 md:pt-20 p-3 md:p-6 bg-gray-200 space-y-12 md:space-y-0 md:space-x-6">
       <div className="w-full md:w-1/2 md:h-96">
         <div className="text-2xl">
           {locale === "es" ? "Colofón" : "Colophon"}

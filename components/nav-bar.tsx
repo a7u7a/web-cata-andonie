@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useMeasure from "react-use-measure";
-import { ResizeObserver } from '@juggle/resize-observer'
+import { ResizeObserver } from "@juggle/resize-observer";
 import { useState, useEffect, useLayoutEffect } from "react";
 
 interface NavBarProps {
@@ -13,7 +13,7 @@ interface NavBarProps {
 const NavBar = ({
   transparent = false,
   scrollTop,
-  scrollThreshold = 1500,
+  scrollThreshold,
 }: NavBarProps) => {
   const [check, setCheck] = useState(false);
   const [classString, setClassString] = useState("");
@@ -32,7 +32,7 @@ const NavBar = ({
     } else {
       setCheck(true);
     }
-  }, [scrollTop]);
+  }, [scrollTop, scrollThreshold, bounds.height]);
 
   useEffect(() => {
     if (transparent) {
