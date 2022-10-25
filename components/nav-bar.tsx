@@ -13,7 +13,7 @@ interface NavBarProps {
 const NavBar = ({
   transparent = false,
   scrollTop,
-  scrollThreshold,
+  scrollThreshold = 1500,
 }: NavBarProps) => {
   const [check, setCheck] = useState(false);
   const [classString, setClassString] = useState("");

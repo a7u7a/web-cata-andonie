@@ -6,7 +6,6 @@ interface NewsProps {
 }
 
 const News = ({ exhibitionsPosts }: NewsProps) => {
-
   // assumes only one per section
   const currentSection = exhibitionsPosts.filter(
     (post) => post.id === "current"
@@ -19,7 +18,7 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
   )[0];
 
   return (
-    <div className="pt-8 pb-8">
+    <div className="pt-0 md:pt-8 pb-8">
       <div className="flex flex-row justify-between pl-1 md:pl-4 pr-1 md:pr-4">
         <div className="text-3xl">Exhibitions</div>
       </div>
@@ -40,7 +39,7 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
           </div>
 
           <div className="flex flex-col w-1/2 ml-1">
-          <NewsSection post={upcomingSection} />
+            <NewsSection post={upcomingSection} />
           </div>
         </div>
       </div>

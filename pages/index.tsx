@@ -59,7 +59,7 @@ export default function Home({
   return (
     <div>
       <MyHeader />
-      <VideoHero height={bounds.height ? bounds.height : 1500 } ref={ref} />
+      <VideoHero height={bounds.height} ref={ref} />
       <NavBar
         transparent={false}
         scrollTop={scrollTop}

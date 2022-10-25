@@ -52,7 +52,7 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
     <div>
       <NavBar
         transparent={true}
-        scrollThreshold={bounds.height ? bounds.height : 1500}
+        scrollThreshold={bounds.height}
         scrollTop={scrollTop}
       />
       <div ref={ref} className="w-screen bg-gray-200">
