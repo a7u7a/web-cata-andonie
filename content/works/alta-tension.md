@@ -1,10 +1,10 @@
 ---
-date: October 13, 2022 10:03 PM
+date: October 2, 2022 10:03 PM
 thumbnail: /uploads/works/alta-tension/1.jpg
+hero_img: /imgs/none.jpg
 front_page: true
 title: Alta Tensión
 title_eng: High Voltage
-hero_img: /imgs/none.jpg
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2019
