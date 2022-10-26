@@ -1,10 +1,10 @@
 ---
-date: October 13, 2022 10:05 PM
+date: October 9, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
+hero_img: /imgs/none.jpg
 front_page: false
 title: Joachim Bandau y Duo de Chaise Longues
 title_eng: Joachim Bandau and Chaise Longues
-hero_img: /imgs/none.jpg
 medidas: 350 x 120 x 120 cm
 medidas_eng: 350 x 120 x 120 cm
 year: 2014
