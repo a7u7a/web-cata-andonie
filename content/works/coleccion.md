@@ -1,10 +1,10 @@
 ---
-date: October 13, 2022 10:04 PM
+date: October 5, 2022 10:04 PM
 thumbnail: /uploads/works/coleccion/1.jpg
+hero_img: /imgs/none.jpg
 front_page: true
 title: Colección
 title_eng: Collection
-hero_img: /imgs/none.jpg
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2021
