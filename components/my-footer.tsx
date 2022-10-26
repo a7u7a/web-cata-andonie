@@ -9,21 +9,29 @@ const MyFooter = () => {
           {locale === "es" ? "Colofón" : "Colophon"}
         </div>
         <div className="mt-8">
-          {locale === "es"
-            ? `Español lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          corporis asperiores incidunt quam, rerum debitis voluptate enim, quia
-          doloremque eius, dicta eos ut. Commodi adipisci tempore iste, fugit
-          reprehenderit quam.`
-            : `English lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          corporis asperiores incidunt quam, rerum debitis voluptate enim, quia
-          doloremque eius, dicta eos ut. Commodi adipisci tempore iste, fugit
-          reprehenderit quam.`}
+          {locale === "es" ? (
+            <p>
+              corporis asperiores incidunt quam, rerum debitis voluptate enim,
+              quia doloremque eius, dicta eos ut. Commodi adipisci tempore iste,
+              fugit Español lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Laudantium reprehenderit quam.
+            </p>
+          ) : (
+            <p>
+              English lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium corporis asperiores incidunt quam, rerum debitis
+              voluptate enim, quia doloremque eius, dicta eos ut. Commodi
+              adipisci tempore iste, fugit reprehenderit quam.
+            </p>
+          )}
         </div>
       </div>
 
       <div className="flex flex-row space-x-6 md:w-1/2 w-full">
         <div className="w-1/2 h-96">
-          <div className="text-2xl">{locale === "es" ? "Fotografía" : "Photography"}</div>
+          <div className="text-2xl">
+            {locale === "es" ? "Fotografía" : "Photography"}
+          </div>
           <div className="mt-8">
             <ul>
               <li>Paola Velázquez</li>
@@ -37,7 +45,9 @@ const MyFooter = () => {
         </div>
 
         <div className="w-1/2 h-96">
-          <div className="text-2xl">{locale === "es" ? "Contacto" : "Contact"}</div>
+          <div className="text-2xl">
+            {locale === "es" ? "Contacto" : "Contact"}
+          </div>
           <div className="mt-8">
             <div>
               <a
@@ -54,7 +64,11 @@ const MyFooter = () => {
             </div>
           </div>
 
-          <div className="">{locale === "es" ? "Todos los derechos reservados" : "All rights reserved"}</div>
+          <div className="">
+            {locale === "es"
+              ? "Todos los derechos reservados"
+              : "All rights reserved"}
+          </div>
           <div className="">2022</div>
         </div>
       </div>

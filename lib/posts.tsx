@@ -36,7 +36,7 @@ export const getAllPostIds = (locales: string[] | undefined) => {
   return [...p[0], ...p[1]];
 };
 
-// [{path: "/imgs/maqueta/vertical-1.jpg", w:1159, h:1500 }]
+
 const getImagesPathsAndDimensions = async (id: string) => {
   const fullPath = path.join(imagesDirectory, `${id}`);
   const fullPath2 = path.join(imagesDirectory2, `${id}`);
