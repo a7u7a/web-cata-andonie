@@ -42,13 +42,11 @@ export default function Home({
     Math.floor(frontPagePosts.length / 2)
   );
 
-
   useEffect(() => {
     frontPagePosts.sort((a, b) => {
       return new Date(b.date).valueOf() - new Date(a.date).valueOf();
     });
   }, []);
-
 
   // Update scroll
   const [scrollTop, setScrollTop] = useState(0);
@@ -72,8 +70,6 @@ export default function Home({
   useEffect(() => {
     console.log("worksBounds", worksBounds);
   }, [worksBounds]);
-
-
 
   return (
     <div>
@@ -101,7 +97,8 @@ export default function Home({
         <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
           <About post={aboutPost} />
 
-          <Image alt="Mountains"
+          {/* BLUR IMAGE PLACEHOLDER EXAMPLE */}
+          {/* <Image alt="Mountains"
       src={firstCol[0].thumbnail!}
       placeholder="blur"
       blurDataURL="/imgs/test.jpg"
@@ -110,7 +107,7 @@ export default function Home({
       style={{
         maxWidth: '100%',
         height: 'auto',
-      }} />
+      }} /> */}
 
           {isMd ? (
             <></>
