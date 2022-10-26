@@ -62,7 +62,7 @@ const NavBar = ({
           Catalina Andonie
         </div>
       </Link>
-      <div className="flex flex-row pr-3 md:pr-6 space-x-5 md:space-x-12">
+      <div className="flex flex-row pr-3 sm:pr-6 space-x-3 md:space-x-12">
         <Link href={"/bio"}>
           <div className="flex items-center text-center text-xl hover:underline cursor-pointer">
             Bio

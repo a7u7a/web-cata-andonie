@@ -21,8 +21,8 @@ const IndexImage = ({ src, h, w, title, href }: IndexImageProps) => {
       >
         <Image src={src} objectFit="cover" layout="fill" alt="imagen" />
 
-        <div className="absolute opacity-0 hover:opacity-100 left-0 top-0 inset-0 font-bold">
-          <div className="text-xl p-6 text-white">{title}</div>
+        <div className="absolute opacity-100 md:opacity-0 hover:opacity-100 left-0 top-0 inset-0 font-bold">
+          <div className="text-xl p-3 md:p-6 text-white">{title}</div>
         </div>
       </div>
     </Link>

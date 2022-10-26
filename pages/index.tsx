@@ -52,9 +52,16 @@ export default function Home({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isSm = useMediaQuery("(max-width: 768px)");
+  const isMd = useMediaQuery("(max-width: 768px)");
+  // const isSm = useMediaQuery("(max-width: 640px)");
 
-  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
+  const [videoHeroRef, videoHeroBounds] = useMeasure({
+    polyfill: ResizeObserver,
+  });
+  const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
+  useEffect(() => {
+    console.log("worksBounds", worksBounds);
+  }, [worksBounds]);
 
   return (
     <div>
@@ -63,11 +70,15 @@ export default function Home({
         <meta name="description" content="Catalina Andonie, Artista" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <VideoHero height={bounds.height} ref={ref} />
+      <VideoHero
+        height={videoHeroBounds.height}
+        worksHeight={worksBounds.y}
+        ref={videoHeroRef}
+      />
       <NavBar
         transparent={false}
         scrollTop={scrollTop}
-        scrollThreshold={bounds.height}
+        scrollThreshold={videoHeroBounds.height}
       />
       <div className="flex flex-col md:flex-row m-2">
         {/* Columna derecha */}
@@ -78,7 +89,7 @@ export default function Home({
         <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
           <About post={aboutPost} />
 
-          {isSm ? (
+          {isMd ? (
             <></>
           ) : (
             firstCol.map((post, i) => (
@@ -97,7 +108,7 @@ export default function Home({
         {/* Columna izquierda */}
         <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
           <News exhibitionsPosts={exhibitionsPosts} />
-          {isSm ? (
+          {isMd ? (
             <></>
           ) : (
             secondCol.map((post, i) => (
@@ -113,8 +124,8 @@ export default function Home({
           )}
         </div>
 
-        {isSm ? (
-          <div className="flex flex-col space-y-2">
+        {isMd ? (
+          <div ref={worksRef} id="works" className="flex flex-col space-y-2">
             {frontPagePosts.map((post, i) => (
               <IndexImage
                 key={i}
