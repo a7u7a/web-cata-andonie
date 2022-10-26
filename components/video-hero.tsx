@@ -1,4 +1,4 @@
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import useMediaQuery from "../lib/media";
 import VideoPlayer from "../components/video-player";
@@ -30,12 +30,29 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
     };
     const { locale } = useRouter();
 
+    const videoNext = () => {
+      setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
+    };
+
+    const videoPrev = () => {
+      setVideoNav({ toggle: !videoNav.toggle, direction: -1 });
+    };
+
     return (
       <div ref={ref}>
         <div className="absolute z-0 w-full h-[135vh]">
           <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
         </div>
-
+        <div className="">
+          <div
+            onClick={videoNext}
+            className=" h-[135vh] absolute w-1/2 inset-y-0 left-0 cursor-w-resize"
+          />
+          <div
+            onClick={videoPrev}
+            className=" h-[135vh] absolute w-1/2 inset-y-0 right-0 cursor-e-resize"
+          />
+        </div>
         <div className="flex flex-row justify-center ">
           <div className="h-[135vh] w-screen max-w-screen-2xl">
             <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
