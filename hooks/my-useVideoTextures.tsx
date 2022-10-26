@@ -27,7 +27,7 @@ export function useVideoTextures(videoPaths: string[]) {
       const texture = new THREE.VideoTexture(video);
       texture.encoding = gl.outputEncoding;
       video.addEventListener(unsuspend, (e) => {
-        console.log("loadedmetadata");
+        // console.log("loadedmetadata");
         try {
           start && texture.image.play();
         } catch (e) {

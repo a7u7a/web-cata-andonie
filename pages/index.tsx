@@ -88,81 +88,70 @@ export default function Home({
         scrollTop={scrollTop}
         scrollThreshold={videoHeroBounds.height}
       />
-      <div className="flex flex-col md:flex-row m-2">
-        {/* Columna derecha */}
-        {/* <div ref={ref} className="h-24 bg-red-500">
-          helo
-        </div> */}
+      <div className="flex flex-row justify-center">
 
-        <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
-          <About post={aboutPost} />
+      
+      <div className="max-w-screen-2xl">
+        <div className="flex flex-col md:flex-row m-2">
+          <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
+            <About post={aboutPost} />
 
-          {/* BLUR IMAGE PLACEHOLDER EXAMPLE */}
-          {/* <Image alt="Mountains"
-      src={firstCol[0].thumbnail!}
-      placeholder="blur"
-      blurDataURL="/imgs/test.jpg"
-      width={700}
-      height={475}
-      style={{
-        maxWidth: '100%',
-        height: 'auto',
-      }} /> */}
-
-          {isMd ? (
-            <></>
-          ) : (
-            firstCol.map((post, i) => (
-              <IndexImage
-                key={i}
-                href={"works/" + post.id}
-                title={post.title}
-                h={post.front_img_h!}
-                w={post.front_img_w!}
-                src={post.thumbnail!}
-              />
-            ))
-          )}
-        </div>
-
-        {/* Columna izquierda */}
-        <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
-          <News exhibitionsPosts={exhibitionsPosts} />
-          {isMd ? (
-            <></>
-          ) : (
-            secondCol.map((post, i) => (
-              <IndexImage
-                key={i}
-                href={"works/" + post.id}
-                title={post.title}
-                h={post.front_img_h!}
-                w={post.front_img_w!}
-                src={post.thumbnail!}
-              />
-            ))
-          )}
-        </div>
-
-        {isMd ? (
-          <div ref={worksRef} id="works" className="flex flex-col space-y-2">
-            {frontPagePosts.map((post, i) => (
-              <IndexImage
-                key={i}
-                href={"works/" + post.id}
-                title={post.title}
-                h={post.front_img_h!}
-                w={post.front_img_w!}
-                src={post.thumbnail!}
-              />
-            ))}
+            {isMd ? (
+              <></>
+            ) : (
+              firstCol.map((post, i) => (
+                <IndexImage
+                  key={i}
+                  href={"works/" + post.id}
+                  title={post.title}
+                  h={post.front_img_h!}
+                  w={post.front_img_w!}
+                  src={post.thumbnail!}
+                />
+              ))
+            )}
           </div>
-        ) : (
-          <></>
-        )}
+
+          {/* Columna izquierda */}
+          <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
+            <News exhibitionsPosts={exhibitionsPosts} />
+            {isMd ? (
+              <></>
+            ) : (
+              secondCol.map((post, i) => (
+                <IndexImage
+                  key={i}
+                  href={"works/" + post.id}
+                  title={post.title}
+                  h={post.front_img_h!}
+                  w={post.front_img_w!}
+                  src={post.thumbnail!}
+                />
+              ))
+            )}
+          </div>
+
+          {isMd ? (
+            <div ref={worksRef} id="works" className="flex flex-col space-y-2">
+              {frontPagePosts.map((post, i) => (
+                <IndexImage
+                  key={i}
+                  href={"works/" + post.id}
+                  title={post.title}
+                  h={post.front_img_h!}
+                  w={post.front_img_w!}
+                  src={post.thumbnail!}
+                />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+        <WorksCatalogue posts={workPosts} />
+        <MyFooter />
       </div>
-      <WorksCatalogue posts={workPosts} />
-      <MyFooter />
+      </div>
     </div>
   );
 }

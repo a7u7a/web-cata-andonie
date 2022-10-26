@@ -38,7 +38,6 @@ export function MyUseVideoTexture(
         const texture = new THREE.VideoTexture(video);
         texture.encoding = gl.outputEncoding;
         video.addEventListener(unsuspend, (e) => {
-          console.log("start play");
           return res(texture);
         });
       }),

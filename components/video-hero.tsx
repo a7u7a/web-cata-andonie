@@ -36,23 +36,25 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
           <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
         </div>
 
-        <div className="h-[135vh]">
-          <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
-            <div className="w-full text-4xl md:text-6xl font-black">
-              Catalina Andonie
-            </div>
-            <div className="flex flex-row justify-between text-2xl md:text-3xl pr-3 sm:pr-6 pt-4 md:pt-8 pb-4">
-              <div
-                onClick={clickHandler}
-                className="hover:underline underline-offset-4 hover:cursor-pointer"
-              >
-                {locale === "es" ? "Info" : "About"}
+        <div className="flex flex-row justify-center ">
+          <div className="h-[135vh] w-screen max-w-screen-2xl">
+            <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
+              <div className="w-full text-4xl md:text-6xl font-black">
+                Catalina Andonie
               </div>
-              <div
-                onClick={isMd ? clickHandlerSmall : clickHandler}
-                className="hover:underline underline-offset-4 hover:cursor-pointer"
-              >
-                {locale === "es" ? "Obra" : "Works"}
+              <div className="flex flex-row justify-between text-2xl md:text-3xl pr-3 sm:pr-6 pt-4 md:pt-8 pb-4">
+                <div
+                  onClick={clickHandler}
+                  className="hover:underline underline-offset-4 hover:cursor-pointer"
+                >
+                  {locale === "es" ? "Info" : "About"}
+                </div>
+                <div
+                  onClick={isMd ? clickHandlerSmall : clickHandler}
+                  className="hover:underline underline-offset-4 hover:cursor-pointer"
+                >
+                  {locale === "es" ? "Obra" : "Works"}
+                </div>
               </div>
             </div>
           </div>
