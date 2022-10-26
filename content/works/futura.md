@@ -1,10 +1,10 @@
 ---
-date: October 13, 2022 10:05 PM
+date: October 8, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
+hero_img: /imgs/none.jpg
 front_page: false
 title: Futura
 title_eng: Futura
-hero_img: /imgs/none.jpg
 medidas: 600 x 372 x 372 cm
 medidas_eng: 600 x 372 x 372 cm
 year: 2021
