@@ -1,10 +1,10 @@
 ---
-date: October 13, 2022 10:04 PM
+date: October 4, 2022 10:04 PM
 thumbnail: /uploads/works/ceguera/1.jpeg
+hero_img: /imgs/none.jpg
 front_page: true
 title: Ceguera
 title_eng: Blindness
-hero_img: /imgs/none.jpg
 medidas: 350 x 712 x 1145 cm
 medidas_eng: 350 x 712 x 1145 cm
 year: 2014
