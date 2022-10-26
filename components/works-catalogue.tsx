@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { workPost } from "../interfaces/interfaces";
 
 interface WorksCatalogueProps {
@@ -20,6 +21,13 @@ interface WorksCatalogueProps {
 const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
   // const filenames = getImages();
   const { locale } = useRouter();
+
+  useEffect(() => {
+    posts.sort((a, b) => {
+      return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+    });
+  }, []);
+
   return (
     <div className="ml-2 mr-2 mb-2">
       <div className="pl-1 md:pl-4 pt-6 pb-8 text-3xl">
