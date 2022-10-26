@@ -1,10 +1,10 @@
 ---
-date: October 13, 2022 10:05 PM
+date: October 7, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
+hero_img: /imgs/none.jpg
 front_page: false
 title: Combarbalita de Combarbalá
 title_eng: Combarbalita from Combarbalá
-hero_img: /imgs/none.jpg
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2018
