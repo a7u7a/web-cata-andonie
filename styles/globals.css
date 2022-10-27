@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.bio {
+  @apply w-full text-black text-[0.95rem]
+  prose prose-sm
+  prose-h1:text-xl prose-h1:font-bold prose-h1:pt-8;
+}
+
+.news {
+  @apply w-full text-black
+  prose 
+  prose-ul:list-none prose-ul:list-outside prose-ul:pl-0 prose-ul:mt-0 prose-ul:mb-0
+  prose-li:pl-0
+  prose-p:my-2
+  prose-h1:text-xl prose-h1:font-bold prose-h1:pt-8;
+}
+
+.about {
+  @apply w-full text-black text-3xl space-y-10
+  prose 
+  prose-p:my-0;
+}
+
+.work {
+  @apply w-full text-black
+  columns-1 sm:columns-2 text-[0.95rem] text-justify gap-6
+  prose 
+  prose-p:my-0;
+}
+
 @layer base {
   @font-face {
     font-family: "Riforma";

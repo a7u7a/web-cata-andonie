@@ -9,19 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@juggle/resize-observer": "^3.4.0",
     "@react-spring/three": "^9.5.4",
     "@react-three/drei": "^9.25.3",
     "@react-three/fiber": "^8.6.0",
     "@react-three/postprocessing": "^2.6.2",
+    "@types/probe-image-size": "^7.2.0",
     "@types/three": "^0.143.2",
+    "gray-matter": "^4.0.3",
     "leva": "^0.9.31",
     "next": "12.2.5",
+    "phosphor-react": "^1.4.1",
+    "probe-image-size": "^7.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-markdown": "^8.0.3",
+    "react-use-measure": "^2.1.1",
     "three": "^0.144.0",
     "ts-shader-loader": "^2.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.7",
     "@types/node": "18.7.14",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",

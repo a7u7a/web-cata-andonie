@@ -1,6 +1,18 @@
-import { ScreenQuad, OrbitControls, Plane } from "@react-three/drei";
+import {
+  ScreenQuad,
+  OrbitControls,
+  Plane,
+  useTexture,
+} from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import {
+  useEffect,
+  useMemo,
+  Suspense,
+  useRef,
+  useState,
+  useLayoutEffect,
+} from "react";
 import {
   ShaderMaterial,
   TextureLoader,
@@ -10,110 +22,52 @@ import {
   LinearToneMapping,
 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
+import linearFadeTransition from "../shaders/linear-fade-transition.frag";
+import newTransition from "../shaders/new-transition.frag";
+import patternTransition from "../shaders/pattern-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
-import { useVideoTexture } from "./my-useVideoTexture";
-import { useSpring, a, config } from "@react-spring/three";
+import { useVideoTextures } from "../hooks/my-useVideoTextures";
+import { useSpring, a, config, SpringValue } from "@react-spring/three";
 import PatternControls from "./controls/pattern-controls";
-import { VideoNavProps } from "../lib/interfaces";
-
-// here we try to pass the video as a texture to the shader
+import { VideoNavProps } from "../interfaces/interfaces";
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
   isPlay: boolean;
 }
 
+const shuffledVideoPaths = [
+  "/videos/faro.mp4",
+  "/videos/pasillo.mp4",
+  "/videos/sagrada.mp4",
+  "/videos/agua.mp4",
+].sort((a, b) => 0.5 - Math.random());
+
 const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
-
-  const vPath1 = "/videos/faro.mp4";
-  const vPath2 = "/videos/pasillo.mp4";
-  const vPath3 = "/videos/sagrada.mp4";
-  const vPath4 = "/videos/agua.mp4";
-
-  const unsuspend = "loadedmetadata";
-  const start = true;
-
-  const videoTexture1 = useVideoTexture(vPath1, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
-
-  const videoTexture2 = useVideoTexture(vPath2, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
-
-  const videoTexture3 = useVideoTexture(vPath3, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
-
-  const videoTexture4 = useVideoTexture(vPath4, {
-    unsuspend: unsuspend,
-    muted: true,
-    loop: true,
-    start: start,
-    crossOrigin: "Anonymous",
-    playsInline: true,
-  });
-
-  const [imgTexture] = useLoader(TextureLoader, ["imgs/orb.jpg"]);
-
-  PatternControls(matRef);
-
-  useEffect(() => {
-    console.log("isPlay", isPlay);
-    console.log("videoTexture1.image", videoTexture1.image);
-    if (isPlay) {
-      videoTexture1.image.play();
-      videoTexture2.image.play();
-      videoTexture3.image.play();
-      videoTexture4.image.play();
-    } else {
-      videoTexture1.image.pause();
-      videoTexture2.image.pause();
-      videoTexture3.image.pause();
-      videoTexture4.image.pause();
-    }
-  }, [isPlay]);
+  const playlist = useVideoTextures(shuffledVideoPaths);
+  // PatternControls(matRef);
 
   const uniforms = useMemo(() => {
     return {
       u_resolution: { value: new Vector2(size.width, size.height) },
-      u_texture1: { value: videoTexture1 },
-      u_texture2: { value: videoTexture2 },
-      u_mouseX: { value: 0 },
-      u_scaleX: { value: 1 },
-      u_scaleY: { value: 1 },
-      u_offX: { value: 1 },
-      u_offY: { value: 0.5 },
-      u_mouseY: { value: 0 },
-      u_posX: { value: 0.0 },
-      u_posY: { value: 0.0 },
+      u_texture1: { value: playlist[0] },
+      u_texture2: { value: playlist[1] },
       u_progress: { value: 0 },
-      u_fadeProgress: { value: 0 },
       u_time: { value: 0.0 },
-      u_tyles_y: { value: 15 },
-      u_tyles_x: { value: 25 },
+      u_scale: { value: 1 },
+      u_w1: { value: 0 },
+      u_w2: { value: 0 },
+      u_w3: { value: 0 },
       u_light: { value: 0.9 },
+      u_scroll: { value: 0.0 },
+      u_xtiles: { value: 0.9 },
+      u_ytiles: { value: 0.9 },
     };
-  }, [videoTexture1, videoTexture2]);
+  }, [playlist]);
 
-  //
+  // unused
   useFrame((state) => {
     if (matRef.current.uniforms) {
       const t = state.clock.elapsedTime;
@@ -126,71 +80,61 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width;
       matRef.current.uniforms.u_resolution.value.y = size.height;
-const ratio =size.width / size.height
-      console.log(
-        "width",
-        size.width,
-        "height",
-        size.height,
-        "ratio",
-        ratio,
-        "r", 1-ratio
-      );
     }
   }, [size]);
 
-  const [currentTexture, setCurrentTexture] = useState(0);
+  const [currentTexture, setCurrentTexture] = useState(1);
 
   /**
    * Swap textures between each of the shader`s
    * channels, following the playlist's order
    */
   useEffect(() => {
-    const playlist = [
-      videoTexture1,
-      videoTexture2,
-      videoTexture3,
-      videoTexture4,
-    ];
-    const _ = Math.abs(currentTexture + videoNav.direction) % playlist.length;
-
+    const nextVideoIndex =
+      Math.abs(currentTexture + videoNav.direction) % playlist.length;
     if (videoNav.toggle) {
-      matRef.current.uniforms.u_texture2.value = playlist[_];
+      matRef.current.uniforms.u_texture2.value = playlist[nextVideoIndex];
     } else {
-      matRef.current.uniforms.u_texture1.value = playlist[_];
+      matRef.current.uniforms.u_texture1.value = playlist[nextVideoIndex];
     }
     setCurrentTexture(currentTexture + videoNav.direction);
   }, [videoNav]);
 
-  const [{ fadeProgress }] = useSpring(
-    {
-      fadeProgress: videoNav.toggle ? 0 : 1,
-      config: { duration: 500 },
-    },
-    [videoNav]
-  );
+  const [faderProgress, setFaderProgress] = useState(0);
 
-  // const { progress } = useSpring({
-  //   progress: clicked ? 0 : 1,
-  //   loop: () => console.log("progress loop"),
-  //   config: { mass: 1, tension: 280, friction: 60, duration: 2000 },
-  // });
+  const { progress } = useSpring({
+    progress: videoNav.toggle ? 0 : 1,
+    onChange: () => {
+      // spring cumulative progress
+      const p = progress.get();
+      const dir = videoNav.direction;
+      const dif = Math.abs(p - faderProgress) * dir;
+      matRef.current.uniforms.u_progress.value += dif;
+      setFaderProgress(p);
+    },
+    config: { mass: 1, tension: 280, friction: 60, duration: 500 },
+  });
 
   return (
     <ScreenQuad>
-      {/* @ts-ignore: https://github.com/pmndrs/react-spring/issues/1515 */}
-      <a.shaderMaterial
-        transparent
-        ref={matRef}
-        uniforms={uniforms}
-        // uniforms-u_progress-value={progress}
-        uniforms-u_fadeProgress-value={fadeProgress}
-        fragmentShader={noiseTransition}
-        vertexShader={clipSpaceVert}
-      />
+      <Suspense fallback={<FallbackMaterial url="imgs/orb.jpg" />}>
+        {/* @ts-ignore: https://github.com/pmndrs/react-spring/issues/1515 */}
+        <a.shaderMaterial
+          ref={matRef}
+          uniforms={uniforms}
+          // uniforms-u_progress-value={progress}
+          fragmentShader={linearFadeTransition}
+          vertexShader={clipSpaceVert}
+        />
+      </Suspense>
     </ScreenQuad>
   );
 };
+
+function FallbackMaterial({ url }: { url: string }) {
+  const texture = useTexture(url);
+  return <meshBasicMaterial map={texture} toneMapped={false} />;
+}
 
 const VideoPlayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   return (

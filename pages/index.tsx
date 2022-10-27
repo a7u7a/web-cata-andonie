@@ -1,74 +1,167 @@
-import type { NextPage } from "next";
+import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
+import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
-import ShaderBasicSample from "../components/shader-sample";
-import ShaderTexture from "../components/shader-texture";
-import ShaderTextureQuad from "../components/shader-texture2";
-import VideoTextureQuad from "../components/shader-video-texture";
-import VideoPlayer from "../components/video-player";
-import { VideoNavProps } from "../lib/interfaces";
+import useMeasure from "react-use-measure";
+import { ResizeObserver } from "@juggle/resize-observer";
+import useMediaQuery from "../lib/media";
+import VideoHero from "../components/video-hero";
+import NavBar from "../components/nav-bar";
+import About from "../components/about";
+import News from "../components/news";
+import IndexImage from "../components/index-image";
+import WorksCatalogue from "../components/works-catalogue";
+import MyFooter from "../components/my-footer";
+import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
+import {
+  getAllWorkPosts,
+  getAllExhibitionsPosts,
+  getAbout,
+} from "../lib/posts";
 
-const Home: NextPage = () => {
-  const [isPlay, setIsPlay] = useState(true);
-  const [clicked, setClicked] = useState(false);
-  const [videoNav, setVideoNav] = useState<VideoNavProps>({
-    toggle: false,
-    direction: 0,
+interface HomeProps {
+  workPosts: workPost[];
+  exhibitionsPosts: exhibitionsPost[];
+  aboutPost: aboutPost;
+}
+
+function split(arr: workPost[], index: number) {
+  return [arr.slice(0, index), arr.slice(index)];
+}
+
+export default function Home({
+  workPosts,
+  exhibitionsPosts,
+  aboutPost,
+}: HomeProps) {
+  // split front page posts into two lists, one for each column
+
+  const frontPagePosts = workPosts.filter((post) => post.front_page);
+  const [firstCol, secondCol] = split(
+    frontPagePosts,
+    Math.floor(frontPagePosts.length / 2)
+  );
+
+  useEffect(() => {
+    frontPagePosts.sort((a, b) => {
+      return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+    });
+  }, []);
+
+  // Update scroll
+  const [scrollTop, setScrollTop] = useState(0);
+  useEffect(() => {
+    const onScroll = (e: Event) => {
+      const target = e.target as Document;
+      const scrollTop = target.documentElement.scrollTop;
+      setScrollTop(scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const isMd = useMediaQuery("(max-width: 768px)");
+  // const isSm = useMediaQuery("(max-width: 640px)");
+
+  const [videoHeroRef, videoHeroBounds] = useMeasure({
+    polyfill: ResizeObserver,
   });
+  const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
 
   return (
     <div>
       <Head>
         <title>Catalina Andonie</title>
-        <meta name="description" content="Catalina Andonie" />
+        <meta name="description" content="Catalina Andonie, Artista" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <VideoHero
+        height={videoHeroBounds.height}
+        worksHeight={worksBounds.y}
+        ref={videoHeroRef}
+      />
+      <NavBar
+        transparent={false}
+        scrollTop={scrollTop}
+        scrollThreshold={videoHeroBounds.height}
+      />
+      <div className="flex flex-row justify-center">
 
-      <div className="relative w-full h-[135vh]">
-        <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
-        {/* <div className="absolute pl-4 left-0 bottom-0 text-indigo-200 text-4xl w-2/3 mix-blend-plus-lighter pb-24">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fugit
-        voluptates voluptatem sunt unde necessitatibus possimus minus neque et
-        incidunt cupiditate.
-      </div>   */}
-      </div>
+      
+      <div className="max-w-screen-2xl">
+        <div className="flex flex-col md:flex-row m-2">
+          <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
+            <About post={aboutPost} />
 
-      <div className="fixed pt-3 pl-4 left-0 top-0 text-gray-200 w-full mix-blend-plus-lighter">
-        <div className="text-7xl font-black">Catalina Andonie</div>
-        <div className="flex flex-row justify-between text-4xl pr-4 pt-4">
-          <div>About</div>
-          <div>Works</div>
+            {isMd ? (
+              <></>
+            ) : (
+              firstCol.map((post, i) => (
+                <IndexImage
+                  key={i}
+                  href={"works/" + post.id}
+                  title={post.title}
+                  h={post.front_img_h!}
+                  w={post.front_img_w!}
+                  src={post.thumbnail!}
+                />
+              ))
+            )}
+          </div>
+
+          {/* Columna izquierda */}
+          <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
+            <News exhibitionsPosts={exhibitionsPosts} />
+            {isMd ? (
+              <></>
+            ) : (
+              secondCol.map((post, i) => (
+                <IndexImage
+                  key={i}
+                  href={"works/" + post.id}
+                  title={post.title}
+                  h={post.front_img_h!}
+                  w={post.front_img_w!}
+                  src={post.thumbnail!}
+                />
+              ))
+            )}
+          </div>
+
+          {isMd ? (
+            <div ref={worksRef} id="works" className="flex flex-col space-y-2">
+              {frontPagePosts.map((post, i) => (
+                <IndexImage
+                  key={i}
+                  href={"works/" + post.id}
+                  title={post.title}
+                  h={post.front_img_h!}
+                  w={post.front_img_w!}
+                  src={post.thumbnail!}
+                />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
-        <div className="flex flex-row justify-between text-5xl pr-4 pt-4 mix-blend-plus-lighter">
-          <button
-            onClick={() =>
-              setVideoNav({ toggle: !videoNav.toggle, direction: -1 })
-            }
-          >
-            ←
-          </button>
-          <button
-            onClick={() =>
-              setVideoNav({ toggle: !videoNav.toggle, direction: 1 })
-            }
-          >
-            →
-          </button>
-          <button
-            onClickCapture={() => {
-              setIsPlay(!isPlay);
-            }}
-          >
-            {isPlay ? "Pause" : "Play"}
-          </button>
-        </div>
+        <WorksCatalogue posts={workPosts} />
+        <MyFooter />
       </div>
-      <div className="text-5xl mt-12">Hola</div>
-      <div className="text-5xl mt-12">Hola</div>
-      <div className="text-5xl mt-12">Hola</div>
-      <div className="text-5xl mt-12">Hola</div>
+      </div>
     </div>
   );
-};
+}
 
-export default Home;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const workPosts = await getAllWorkPosts();
+  const exhibitionsPosts = getAllExhibitionsPosts();
+  const aboutPost = getAbout();
+  return {
+    props: {
+      workPosts,
+      exhibitionsPosts,
+      aboutPost,
+    },
+  };
+};

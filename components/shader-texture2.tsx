@@ -37,7 +37,6 @@ const ScreenQuadWithCustomShader = ({ imgPath }: QuadTestProps) => {
   }, [textureA]);
 
   useFrame((state) => {
-    // console.log("state.camera", state.camera);
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_time.value = state.clock.elapsedTime;
     }
