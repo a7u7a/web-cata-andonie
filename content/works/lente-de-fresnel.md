@@ -3,6 +3,7 @@ date: October 10, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
 hero_img: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Lente de Fresnel
 title_eng: Frensnel Lens
 medidas: 39,8 x 39,8 x 159 cm

@@ -2,6 +2,7 @@
 date: October 13, 2022 6:13 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Proyecto Intemperie
 title_eng: Outdoors Project
 hero_img: /imgs/none.jpg

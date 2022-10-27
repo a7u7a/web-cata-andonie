@@ -9,6 +9,7 @@ import IdImage from "../../components/works/id-image";
 import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
 import { workPost } from "../../interfaces/interfaces";
 import PostCard from "../../components/works/post-card";
+import YouTubeEmbed from "../../components/youtube-embed";
 
 interface WorkPostProps {
   workPosts: workPost[];
@@ -33,7 +34,11 @@ export default function Post({ post, workPosts }: WorkPostProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <ImageHero src={post.hero_img!} />
+      {post.yt_url.length > 0 ? (
+        <YouTubeEmbed url="https://www.youtube.com/embed/n48pzSbs0lA" />
+      ) : (
+        <ImageHero src={post.hero_img!} />
+      )}
       <div className="flex flex-col md:flex-row m-2">
         <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-1 space-y-2">
           <PostCard post={post} />

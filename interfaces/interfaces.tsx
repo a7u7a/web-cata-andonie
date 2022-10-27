@@ -16,6 +16,7 @@ export interface workPost {
   title_eng: string;
   year: number;
   // optional
+  yt_url: string;
   hero_img?: string;
   medidas?: string;
   medidas_eng?: string;

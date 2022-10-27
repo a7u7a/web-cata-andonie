@@ -2,6 +2,7 @@
 date: October 13, 2022 6:12 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Medios Industriales
 title_eng: Industrial Resources
 hero_img: /imgs/none.jpg

@@ -3,6 +3,7 @@ date: October 2, 2022 10:03 PM
 thumbnail: /uploads/works/alta-tension/1.jpg
 hero_img: /imgs/none.jpg
 front_page: true
+yt_url: https://www.youtube.com/embed/n48pzSbs0lA
 title: Alta Tensión
 title_eng: High Voltage
 medidas: medidas variables

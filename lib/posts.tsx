@@ -83,6 +83,7 @@ export const getWorkPost = (id: string): Promise<workPost> => {
       title_eng: matterResult.data.title_eng,
       year: matterResult.data.year,
       // optional
+      yt_url: matterResult.data.yt_url != "none" ? matterResult.data.yt_url : "",
       hero_img:
         matterResult.data.hero_img != "none" ? matterResult.data.hero_img : "",
       medidas:
@@ -145,6 +146,7 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
 
     return {
       date: matterResult.data.date,
+      yt_url: matterResult.data.yt_url,
       thumbnail: matterResult.data.thumbnail,
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,

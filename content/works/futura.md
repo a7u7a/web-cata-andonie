@@ -3,6 +3,7 @@ date: October 8, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
 hero_img: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Futura
 title_eng: Futura
 medidas: 600 x 372 x 372 cm
