@@ -67,9 +67,6 @@ export default function Home({
     polyfill: ResizeObserver,
   });
   const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
-  useEffect(() => {
-    console.log("worksBounds", worksBounds);
-  }, [worksBounds]);
 
   return (
     <div>

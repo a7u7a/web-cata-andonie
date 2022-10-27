@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import useMediaQuery from "../lib/media";
 import VideoPlayer from "../components/video-player";
 import { VideoNavProps } from "../interfaces/interfaces";
+import { CaretRight, CaretLeft } from "phosphor-react";
 
 interface VideoHeroProps {
   height: number;
@@ -31,11 +32,11 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
     const { locale } = useRouter();
 
     const videoNext = () => {
-      setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
+      setVideoNav({ toggle: !videoNav.toggle, direction: -1 });
     };
 
     const videoPrev = () => {
-      setVideoNav({ toggle: !videoNav.toggle, direction: -1 });
+      setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
     };
 
     return (
@@ -43,17 +44,19 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
         <div className="absolute z-0 w-full h-[135vh]">
           <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
         </div>
-        <div className="">
-          <div
-            onClick={videoNext}
-            className=" h-[135vh] absolute w-1/2 inset-y-0 left-0 cursor-w-resize"
-          />
-          <div
-            onClick={videoPrev}
-            className=" h-[135vh] absolute w-1/2 inset-y-0 right-0 cursor-e-resize"
-          />
-        </div>
-        <div className="flex flex-row justify-center ">
+        {/* <div>
+          <div className="h-[135vh] absolute inset-y-0 left-0 flex items-center pl-4 sm:pl-8">
+            <button onClick={videoNext}>
+              <CaretLeft size={40} weight="bold" color="white" />
+            </button>
+          </div>
+          <div className="h-[135vh] absolute inset-y-0 right-0 flex items-center pr-4 sm:pr-8">
+            <button onClick={videoPrev}>
+              <CaretRight size={40} weight="bold" color="white" />
+            </button>
+          </div>
+        </div> */}
+        <div>
           <div className="h-[135vh] w-screen max-w-screen-2xl">
             <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
               <div className="w-full text-4xl md:text-6xl font-black">
@@ -72,6 +75,14 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
                 >
                   {locale === "es" ? "Obra" : "Works"}
                 </div>
+              </div>
+              <div className="flex flex-row justify-between pr-3 sm:pr-6 pt-4 md:pt-8 pb-4">
+                <button onClick={videoNext}>
+                  <CaretLeft size={38} weight="bold" color="white" />
+                </button>
+                <button onClick={videoPrev}>
+                  <CaretRight size={38} weight="bold" color="white" />
+                </button>
               </div>
             </div>
           </div>

@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { workPost } from "../interfaces/interfaces";
+import CatalogueImage from "./catalogue-image";
 
 interface WorksCatalogueProps {
   posts: workPost[];
@@ -21,6 +22,7 @@ interface WorksCatalogueProps {
 const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
   // const filenames = getImages();
   const { locale } = useRouter();
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     posts.sort((a, b) => {
@@ -35,21 +37,7 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-2 gap-y-2">
         {posts.map((post, i) => (
-          <Link key={i} href={"works/" + post.id}>
-            <div className="relative h-44 sm:h-64 md:h-44 lg:h-48 w-full cursor-pointer">
-              <Image
-                src={post.thumbnail!}
-                objectFit="cover"
-                layout="fill"
-                alt="imagen"
-              />
-              <div className="absolute opacity-0 hover:opacity-100 mx-2 my-1 left-0 top-0 inset-0 font-bold">
-                <div className="text-base md:text-lg text-white break-words">
-                  {locale === "es" ? post.title : post.title_eng}
-                </div>
-              </div>
-            </div>
-          </Link>
+          <CatalogueImage key={i} post={post} />
         ))}
       </div>
     </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 
 interface NavBarProps {
   transparent?: boolean;
@@ -71,7 +71,6 @@ const NavBar = ({
 
         <div
           className="flex items-center text-center text-xl hover:underline cursor-pointer"
-          placeholder=""
         >
           <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
             <div>{activeLocale === "es" ? "English" : "Español"}</div>

@@ -4,7 +4,6 @@ import { ShaderMaterial, TextureLoader, Vector2 } from "three";
 
 const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
   const { progress } = useControls("Noise shader", {
-    
     progress: {
       label: "Progress",
       value: 0,
@@ -28,6 +27,33 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       onChange: (v) => {
         if (matRef.current.uniforms) {
           matRef.current.uniforms.u_light.value = v;
+        }
+      },
+      transient: false,
+    },
+
+    x_tiles: {
+      label: "X tiles",
+      value: 1,
+      min: 1,
+      max: 20,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_xtiles.value = v;
+        }
+      },
+      transient: false,
+    },
+    y_tiles: {
+      label: "Y tiles",
+      value: 1,
+      min: 1,
+      max: 20,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_ytiles.value = v;
         }
       },
       transient: false,
@@ -84,7 +110,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
         }
       },
       transient: false,
-    }
+    },
   });
 };
 

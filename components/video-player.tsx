@@ -23,6 +23,8 @@ import {
 } from "three";
 import clipSpaceVert from "../shaders/clip-space.vert";
 import linearFadeTransition from "../shaders/linear-fade-transition.frag";
+import newTransition from "../shaders/new-transition.frag";
+import patternTransition from "../shaders/pattern-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTextures } from "../hooks/my-useVideoTextures";
 import { useSpring, a, config, SpringValue } from "@react-spring/three";
@@ -60,6 +62,8 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
       u_w3: { value: 0 },
       u_light: { value: 0.9 },
       u_scroll: { value: 0.0 },
+      u_xtiles: { value: 0.9 },
+      u_ytiles: { value: 0.9 },
     };
   }, [playlist]);
 
