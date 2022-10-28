@@ -46,8 +46,6 @@ void main() {
 
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
   
-  
-
   // Create fade sweep
   float progress = u_progress;
   vec2 sf = st;  

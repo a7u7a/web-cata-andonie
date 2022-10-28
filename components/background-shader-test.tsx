@@ -7,8 +7,20 @@ import {
   Vector2,
   LinearToneMapping,
 } from "three";
+import {
+  EffectComposer,
+  DotScreen,
+  BrightnessContrast,
+  HueSaturation,
+  DepthOfField,
+  Bloom,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
 import clipSpaceVert from "../shaders/clip-space.vert";
 import backgroundDistorsion from "../shaders/background-distorsion.frag";
+import wobbleBackgroundDistorsion from "../shaders/wobble-background-distorsion.frag";
+import BackgroundControls from "./controls/background-controls";
 
 /**
  * This component will take a shader and a list of images as textures for the shader.
@@ -18,15 +30,24 @@ import backgroundDistorsion from "../shaders/background-distorsion.frag";
 
 const QuadLayer = () => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, ["/imgs/img3.png"]);
+  const [textureA] = useLoader(TextureLoader, ["/imgs/espuma.png"]);
   const size = useThree((state) => state.size);
-
+//   BackgroundControls(matRef);
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_time: {
         value: 0.0,
+      },
+      u_progress: {
+        value: 1.0,
+      },
+      u_scale: {
+        value: 0.82,
+      },
+      u_speed: {
+        value: 0.05,
       },
     }),
     [textureA]
@@ -50,7 +71,7 @@ const QuadLayer = () => {
       <shaderMaterial
         ref={matRef}
         uniforms={uniforms}
-        fragmentShader={backgroundDistorsion}
+        fragmentShader={wobbleBackgroundDistorsion}
         vertexShader={clipSpaceVert}
       />
     </ScreenQuad>
@@ -71,6 +92,11 @@ const BackgroundShader = () => {
       }}
     >
       <QuadLayer />
+      <EffectComposer>
+        {/* <DotScreen angle={1.0} scale={0.7} /> */}
+        <BrightnessContrast brightness={-0.3} />
+        <HueSaturation saturation={-1} />
+      </EffectComposer>
     </Canvas>
   );
 };
