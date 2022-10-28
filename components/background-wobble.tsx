@@ -12,13 +12,9 @@ import {
   DotScreen,
   BrightnessContrast,
   HueSaturation,
-  DepthOfField,
-  Bloom,
-  Noise,
-  Vignette,
 } from "@react-three/postprocessing";
 import clipSpaceVert from "../shaders/clip-space.vert";
-import backgroundDistorsion from "../shaders/background-distorsion.frag";
+
 import wobbleBackgroundDistorsion from "../shaders/wobble-background-distorsion.frag";
 import BackgroundControls from "./controls/background-controls";
 
@@ -28,11 +24,17 @@ import BackgroundControls from "./controls/background-controls";
  * Also it will apply a postprocessing effect of black and white and film grain
  */
 
-const QuadLayer = () => {
+interface BackgroundWobbleProps {
+  progress: number;
+  scale: number;
+  src: string;
+}
+
+const QuadLayer = ({ progress, scale, src }: BackgroundWobbleProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, ["/imgs/espuma.png"]);
+  const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
-//   BackgroundControls(matRef);
+  //   BackgroundControls(matRef);
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
@@ -41,10 +43,10 @@ const QuadLayer = () => {
         value: 0.0,
       },
       u_progress: {
-        value: 1.0,
+        value: progress,
       },
       u_scale: {
-        value: 0.82,
+        value: scale,
       },
       u_speed: {
         value: 0.05,
@@ -78,7 +80,7 @@ const QuadLayer = () => {
   );
 };
 
-const BackgroundShader = () => {
+const BackgroundWobble = ({ progress, scale, src }: BackgroundWobbleProps) => {
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -91,7 +93,7 @@ const BackgroundShader = () => {
         depth: false,
       }}
     >
-      <QuadLayer />
+      <QuadLayer progress={progress} scale={scale} src={src} />
       <EffectComposer>
         {/* <DotScreen angle={1.0} scale={0.7} /> */}
         <BrightnessContrast brightness={-0.3} />
@@ -101,4 +103,4 @@ const BackgroundShader = () => {
   );
 };
 
-export default BackgroundShader;
+export default BackgroundWobble;

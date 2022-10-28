@@ -9,6 +9,7 @@ import { getAllBioPosts, getBioStatement } from "../lib/posts";
 import { bioPost, bioStatementPost } from "../interfaces/interfaces";
 import BioIndex from "../components/bio/bio-index";
 import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";
+import BioHeader from "../components/bio-header";
 
 import MyFooter from "../components/my-footer";
 import NavBar from "../components/nav-bar";
@@ -61,13 +62,14 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
         scrollThreshold={bounds.height}
         scrollTop={scrollTop}
       />
-      <div ref={ref} className="w-screen bg-gray-200">
+      <BioHeader bioStatement={bioStatement} ref={ref} />
+      {/* <div ref={ref} className="w-screen bg-gray-200">
         <div className="pt-28 pb-28 pl-3 md:pl-6 pr-3 md:pr-6 text-3xl font-bold w-full md:w-2/3 text-white">
           {locale === "es"
             ? bioStatement.contentSpanish
             : bioStatement.contentEnglish}
         </div>
-      </div>
+      </div> */}
 
       {isMd ? (
         <div className="flex flex-row space-x-4 mb-6">
