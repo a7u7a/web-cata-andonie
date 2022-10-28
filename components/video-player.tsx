@@ -1,7 +1,5 @@
 import {
   ScreenQuad,
-  OrbitControls,
-  Plane,
   useTexture,
 } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";

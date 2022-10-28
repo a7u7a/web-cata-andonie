@@ -44,18 +44,6 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
         <div className="absolute z-0 w-full h-[135vh]">
           <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
         </div>
-        {/* <div>
-          <div className="h-[135vh] absolute inset-y-0 left-0 flex items-center pl-4 sm:pl-8">
-            <button onClick={videoNext}>
-              <CaretLeft size={40} weight="bold" color="white" />
-            </button>
-          </div>
-          <div className="h-[135vh] absolute inset-y-0 right-0 flex items-center pr-4 sm:pr-8">
-            <button onClick={videoPrev}>
-              <CaretRight size={40} weight="bold" color="white" />
-            </button>
-          </div>
-        </div> */}
         <div>
           <div className="h-[135vh] w-screen max-w-screen-2xl">
             <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
