@@ -27,7 +27,7 @@ const IndexImage = ({ src, h, w, title, href }: IndexImageProps) => {
 
         <div className="absolute left-0 top-0 inset-0">
           <div
-            className={`opacity-100 font-base text-3xl p-3 md:p-6 text-white transition-opacity duration-200 ${
+            className={`opacity-100 font-base text-xl md:text-3xl p-3 md:p-6 text-white transition-opacity duration-200 ${
               hovered ? "opacity-100" : "md:opacity-0"
             }`}
           >

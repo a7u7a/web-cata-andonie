@@ -15,7 +15,7 @@ const MyFooter = () => {
           speed={-0.02}
         />
       </div>
-      <div className="absolute flex flex-col w-full pt-10 md:pt-20 p-3 md:p-6 space-y-12 md:space-y-0 text-white">
+      <div className="absolute flex flex-col w-full pt-12 md:pt-20 p-3 md:p-6 text-white">
         {/* Colophon */}
         <div className="w-full md:w-1/2">
           <div className="text-2xl">
