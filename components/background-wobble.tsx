@@ -14,7 +14,6 @@ import {
   HueSaturation,
 } from "@react-three/postprocessing";
 import clipSpaceVert from "../shaders/clip-space.vert";
-
 import wobbleBackgroundDistorsion from "../shaders/wobble-background-distorsion.frag";
 import BackgroundControls from "./controls/background-controls";
 
@@ -28,13 +27,21 @@ interface BackgroundWobbleProps {
   progress: number;
   scale: number;
   src: string;
+  imgAspect: number;
+  imgScale: number;
 }
 
-const QuadLayer = ({ progress, scale, src }: BackgroundWobbleProps) => {
+const QuadLayer = ({
+  progress,
+  scale,
+  src,
+  imgAspect,
+  imgScale,
+}: BackgroundWobbleProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
-  //   BackgroundControls(matRef);
+  // BackgroundControls(matRef);
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
@@ -51,6 +58,12 @@ const QuadLayer = ({ progress, scale, src }: BackgroundWobbleProps) => {
       u_speed: {
         value: 0.05,
       },
+      u_imgAspect: {
+        value: imgAspect,
+      },
+      u_imgScale:{
+        value: imgScale,
+      }
     }),
     [textureA]
   );
@@ -80,7 +93,13 @@ const QuadLayer = ({ progress, scale, src }: BackgroundWobbleProps) => {
   );
 };
 
-const BackgroundWobble = ({ progress, scale, src }: BackgroundWobbleProps) => {
+const BackgroundWobble = ({
+  progress,
+  scale,
+  src,
+  imgAspect,
+  imgScale,
+}: BackgroundWobbleProps) => {
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -93,7 +112,13 @@ const BackgroundWobble = ({ progress, scale, src }: BackgroundWobbleProps) => {
         depth: false,
       }}
     >
-      <QuadLayer progress={progress} scale={scale} src={src} />
+      <QuadLayer
+        progress={progress}
+        scale={scale}
+        src={src}
+        imgAspect={imgAspect}
+        imgScale={imgScale}
+      />
       <EffectComposer>
         {/* <DotScreen angle={1.0} scale={0.7} /> */}
         <BrightnessContrast brightness={-0.3} />

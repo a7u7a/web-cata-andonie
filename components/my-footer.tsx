@@ -8,8 +8,10 @@ const MyFooter = () => {
       <div className="absolute w-full h-[100vh] md:h-[70vh] ">
         <BackgroundShader
           progress={1.0}
-          scale={0.82}
+          scale={0.52}
           src={"/imgs/espuma.png"}
+          imgAspect={1.5229}
+          imgScale={2.0}
         />
       </div>
       <div className="absolute flex flex-col md:flex-row w-full pt-10 md:pt-20 p-3 md:p-6 space-y-12 md:space-y-0 md:space-x-6 text-white">
