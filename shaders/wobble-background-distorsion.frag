@@ -27,7 +27,7 @@ void main() {
   p +=  cos(u_progress);
   p +=  tan(u_progress/2.0);
 
-  p += u_progress * 2.1 * cos(u_scale * 8.7 * p.yx + newTime + vec2(2.2,3.4));
+  p += u_progress * 9.1 * cos(u_scale * 8.7 * p.yx + (newTime*2.0) + vec2(-1.2,3.4));
   // p += u_progress * 4.1 * cos(u_scale * 8.7 * p.yx + newTime + vec2(2.2,3.4));
   p += u_progress * .3 * cos(u_scale * 5.7 * p.yx + newTime * 2.6 + vec2(2.2,1.4));
   p += u_progress * 3.1 * sin(u_scale * 3.0 * p.yx + newTime + vec2(1.2,3.4));

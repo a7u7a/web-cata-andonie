@@ -7,20 +7,21 @@ const MyFooter = () => {
     <div className="relative">
       <div className="absolute w-full h-[100vh] md:h-[70vh] ">
         <BackgroundShader
-          progress={1.0}
-          scale={0.52}
-          src={"/imgs/espuma.png"}
+          progress={0.5}
+          scale={0.8}
+          src={"/imgs/conchas.jpg"}
           imgAspect={1.5229}
-          imgScale={2.0}
+          imgScale={1.5}
+          speed={-0.02}
         />
       </div>
-      <div className="absolute flex flex-col md:flex-row w-full pt-10 md:pt-20 p-3 md:p-6 space-y-12 md:space-y-0 md:space-x-6 text-white">
+      <div className="absolute flex flex-col w-full pt-10 md:pt-20 p-3 md:p-6 space-y-12 md:space-y-0 text-white">
         {/* Colophon */}
-        <div className="w-full md:w-1/2 md:mt-8">
+        <div className="w-full md:w-1/2">
           <div className="text-2xl">
             {/* {locale === "es" ? "Colofón" : "Colophon"} */}
           </div>
-          <div className="mt-8">
+          <div className="">
             {locale === "es" ? (
               <p>
                 corporis asperiores incidunt quam, rerum debitis voluptate enim,
@@ -39,7 +40,7 @@ const MyFooter = () => {
           </div>
         </div>
 
-        <div className="flex flex-row space-x-6 md:w-1/2 w-full">
+        <div className="flex flex-row md:w-1/2 w-full pt-12">
           {/* Photographers */}
           <div className="w-1/2 ">
             <div className="text-2xl">

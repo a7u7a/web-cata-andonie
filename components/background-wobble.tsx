@@ -10,7 +10,9 @@ import {
 import {
   EffectComposer,
   DotScreen,
+  Outline,
   BrightnessContrast,
+  Noise,
   HueSaturation,
 } from "@react-three/postprocessing";
 import clipSpaceVert from "../shaders/clip-space.vert";
@@ -29,6 +31,7 @@ interface BackgroundWobbleProps {
   src: string;
   imgAspect: number;
   imgScale: number;
+  speed: number;
 }
 
 const QuadLayer = ({
@@ -37,6 +40,7 @@ const QuadLayer = ({
   src,
   imgAspect,
   imgScale,
+  speed,
 }: BackgroundWobbleProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
@@ -56,14 +60,14 @@ const QuadLayer = ({
         value: scale,
       },
       u_speed: {
-        value: 0.05,
+        value: speed,
       },
       u_imgAspect: {
         value: imgAspect,
       },
-      u_imgScale:{
+      u_imgScale: {
         value: imgScale,
-      }
+      },
     }),
     [textureA]
   );
@@ -99,6 +103,7 @@ const BackgroundWobble = ({
   src,
   imgAspect,
   imgScale,
+  speed,
 }: BackgroundWobbleProps) => {
   return (
     <Canvas
@@ -118,10 +123,12 @@ const BackgroundWobble = ({
         src={src}
         imgAspect={imgAspect}
         imgScale={imgScale}
+        speed={speed}
       />
       <EffectComposer>
-        {/* <DotScreen angle={1.0} scale={0.7} /> */}
-        <BrightnessContrast brightness={-0.3} />
+        {/* <DotScreen angle={1.0} scale={1.5} /> */}
+        <Outline />
+        <BrightnessContrast brightness={-0.4} />
         <HueSaturation saturation={-1} />
       </EffectComposer>
     </Canvas>
