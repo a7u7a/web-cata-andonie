@@ -40,12 +40,12 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
     };
 
     return (
-      <div ref={ref}>
-        <div className="absolute z-0 w-full h-[135vh]">
+      <div ref={ref} className="relative">
+        <div className="absolute z-0 w-full h-full">
           <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
         </div>
         <div>
-          <div className="h-[135vh] w-screen max-w-screen-2xl">
+          <div className="w-screen max-w-screen-2xl h-[135vh]">
             <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
               <div className="w-full text-4xl md:text-6xl font-black">
                 Catalina Andonie

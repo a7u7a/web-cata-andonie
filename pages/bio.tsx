@@ -63,14 +63,6 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
         scrollTop={scrollTop}
       />
       <BioHeader bioStatement={bioStatement} ref={ref} />
-      {/* <div ref={ref} className="w-screen bg-gray-200">
-        <div className="pt-28 pb-28 pl-3 md:pl-6 pr-3 md:pr-6 text-3xl font-bold w-full md:w-2/3 text-white">
-          {locale === "es"
-            ? bioStatement.contentSpanish
-            : bioStatement.contentEnglish}
-        </div>
-      </div> */}
-
       {isMd ? (
         <div className="flex flex-row space-x-4 mb-6">
           <div className="flex flex-col w-1/2 pl-3 md:pl-6">

@@ -4,14 +4,19 @@ import BackgroundShader from "./background-wobble";
 const MyFooter = () => {
   const { locale } = useRouter();
   return (
-    <div>
-      <div className="absolute w-full h-[90vh] md:h-96 ">
-        <BackgroundShader progress={1.0} scale={0.82} src={"/imgs/espuma.png"} />
+    <div className="relative">
+      <div className="absolute w-full h-[100vh] md:h-[70vh] ">
+        <BackgroundShader
+          progress={1.0}
+          scale={0.82}
+          src={"/imgs/espuma.png"}
+        />
       </div>
       <div className="absolute flex flex-col md:flex-row w-full pt-10 md:pt-20 p-3 md:p-6 space-y-12 md:space-y-0 md:space-x-6 text-white">
-        <div className="w-full md:w-1/2">
+        {/* Colophon */}
+        <div className="w-full md:w-1/2 md:mt-8">
           <div className="text-2xl">
-            {locale === "es" ? "Colofón" : "Colophon"}
+            {/* {locale === "es" ? "Colofón" : "Colophon"} */}
           </div>
           <div className="mt-8">
             {locale === "es" ? (
@@ -33,6 +38,7 @@ const MyFooter = () => {
         </div>
 
         <div className="flex flex-row space-x-6 md:w-1/2 w-full">
+          {/* Photographers */}
           <div className="w-1/2 ">
             <div className="text-2xl">
               {locale === "es" ? "Fotografía" : "Photography"}
@@ -48,8 +54,8 @@ const MyFooter = () => {
               </ul>
             </div>
           </div>
-
-          <div className="w-1/2 ">
+          {/* Contact */}
+          <div className="w-1/2">
             <div className="text-2xl">
               {locale === "es" ? "Contacto" : "Contact"}
             </div>
