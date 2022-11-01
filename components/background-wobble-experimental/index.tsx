@@ -53,8 +53,14 @@ const QuadLayer = ({
       u_time: {
         value: 0.0,
       },
-      u_progress: {
-        value: progress,
+      u_p1: {
+        value: 0.0,
+      },
+      u_p2: {
+        value: 0.0,
+      },
+      u_p3: {
+        value: 0.0,
       },
       u_scale: {
         value: scale,
@@ -128,7 +134,7 @@ const BackgroundWobbleExperimental = ({
       <EffectComposer>
         {/* <DotScreen angle={1.0} scale={1.5} /> */}
         <Outline />
-        <BrightnessContrast brightness={-0.4} />
+        <BrightnessContrast brightness={-0.0} />
         <HueSaturation saturation={-1} />
       </EffectComposer>
     </Canvas>

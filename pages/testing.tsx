@@ -2,7 +2,7 @@ import BackgroundWobbleExperimental from "../components/background-wobble-experi
 
 const ShaderTest = () => {
   return (
-    <div className="w-full h-[50vh]">
+    <div className="w-full h-[80vh]">
       <BackgroundWobbleExperimental
         progress={0.5}
         scale={0.8}
