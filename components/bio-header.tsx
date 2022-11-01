@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { useRouter } from "next/router";
 import { bioStatementPost } from "../interfaces/interfaces";
-import BackgroundShader from "./background-wobble";
+import BackgroundShader from "./background-wobble/background-wobble";
 
 interface BioHeaderProps {
   bioStatement: bioStatementPost;

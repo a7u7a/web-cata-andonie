@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import BackgroundShader from "./background-wobble";
+import BackgroundWobble from "./background-wobble/background-wobble";
 
 const MyFooter = () => {
   const { locale } = useRouter();
   return (
     <div className="relative">
-      <div className="absolute w-full h-[100vh] md:h-[70vh] ">
-        <BackgroundShader
+      <div className="absolute w-full h-[100vh] md:h-[70vh]">
+        <BackgroundWobble
           progress={0.5}
           scale={0.8}
           src={"/imgs/conchas.jpg"}

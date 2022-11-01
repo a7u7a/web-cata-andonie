@@ -3,7 +3,7 @@ import { ScreenQuad } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import {
   ShaderMaterial,
-  TextureLoader,
+  TextureLoader,  
   Vector2,
   LinearToneMapping,
 } from "three";
@@ -15,9 +15,9 @@ import {
   Noise,
   HueSaturation,
 } from "@react-three/postprocessing";
-import clipSpaceVert from "../shaders/clip-space.vert";
-import wobbleBackgroundDistorsion from "../shaders/wobble-background-distorsion.frag";
-import BackgroundControls from "./controls/background-controls";
+import clipSpaceVert from "./clip-space.vert";
+import distorsion from "./distorsion.frag";
+import Controls from "./controls";
 
 /**
  * This component will take a shader and a list of images as textures for the shader.
@@ -45,7 +45,7 @@ const QuadLayer = ({
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
-  // BackgroundControls(matRef);
+  Controls(matRef);
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
@@ -90,14 +90,14 @@ const QuadLayer = ({
       <shaderMaterial
         ref={matRef}
         uniforms={uniforms}
-        fragmentShader={wobbleBackgroundDistorsion}
+        fragmentShader={distorsion}
         vertexShader={clipSpaceVert}
       />
     </ScreenQuad>
   );
 };
 
-const BackgroundWobble = ({
+const BackgroundWobbleExperimental = ({
   progress,
   scale,
   src,
@@ -135,4 +135,4 @@ const BackgroundWobble = ({
   );
 };
 
-export default BackgroundWobble;
+export default BackgroundWobbleExperimental;
