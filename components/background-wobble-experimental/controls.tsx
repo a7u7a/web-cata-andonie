@@ -7,8 +7,8 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     p1: {
       label: "p1",
       value: 0,
-      min: 0,
-      max: 1,
+      min: -0.03,
+      max: 0.03,
       step: 0.00001,
       onChange: (v) => {
         if (matRef.current.uniforms) {
@@ -20,8 +20,8 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     p2: {
       label: "p2",
       value: 0,
-      min: 0,
-      max: 1,
+      min: -0.3,
+      max: 0.3,
       step: 0.00001,
       onChange: (v) => {
         if (matRef.current.uniforms) {

@@ -1,9 +1,9 @@
-import BackgroundWobbleExperimental from "../components/background-wobble-experimental/index";
+import BackgroundNoiseDisplacement from "../components/background-noise-displacement/index";
 
 const ShaderTest = () => {
   return (
     <div className="w-full h-[80vh]">
-      <BackgroundWobbleExperimental
+      <BackgroundNoiseDisplacement
         progress={0.5}
         scale={0.8}
         src={"/imgs/text1.png"}
