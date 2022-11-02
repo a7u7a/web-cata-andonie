@@ -5,6 +5,7 @@ precision mediump float;
 #define PI 3.14159265359
 
 uniform vec2 u_resolution;
+uniform float u_p;
 uniform float u_w1;
 uniform float u_w2;
 uniform float u_w3;
@@ -13,7 +14,10 @@ uniform float u_v4;
 uniform float u_v5;
 uniform float u_progress;
 uniform float u_time;
+uniform float u_speed;
 uniform float u_scale;
+uniform float u_imgScale;
+uniform float u_imgAspect;
 uniform sampler2D u_texture1;
 uniform sampler2D u_texture2;
 varying vec2 vUv;
@@ -97,18 +101,21 @@ float linearMap(in float val, in float fromA, in float fromB, in float toA, in f
 
 void main() {
 
-  float p = u_time;
+float p = u_p;
+  // float p = u_time * u_speed;
+  
   // float p = u_progress;
   vec2 st = gl_FragCoord.xy/u_resolution.xy;
   // st.x *= u_resolution.x/u_resolution.y;
 
   // Scale responsive to fit height
-  float scale = 2.0;
+  float scale = u_imgScale;
   float canvasAspect = u_resolution.x / u_resolution.y;
-  float videoAspect = 1.77; // asumes 1280 x 720
+  float videoAspect = u_imgAspect;
   float scaleX = (scale * videoAspect) / canvasAspect;
   float scaleY = scale;
-  st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
+  st = ((((st)-1.0)/vec2(scaleX, scaleY))) + 0.5;
+  
 
   vec2 pos = vec2(st * u_scale);
   
@@ -116,8 +123,9 @@ void main() {
   
   // Add a random position
   float a = 0.0;
-  vec2 vel = vec2(p*.1);
-  DF += snoise(pos+vel)*u_v2+u_time*0.5;
+  // vec2 vel = vec2(p*.1);
+  vec2 vel = vec2(u_time * u_speed);
+  DF += snoise(pos+vel)*u_v2+0.5;
   
   // Add a random position
   a = snoise(pos*vec2(cos(p*u_w1),sin(p*u_w2))*u_w3)*3.1415;

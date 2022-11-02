@@ -54,6 +54,7 @@ const QuadLayer = ({
       u_texture1: { value: textureA },
       u_texture2: { value: textureB },
       u_progress: { value: 0 },
+      u_p: { value: 0.0 },
       u_w1: { value: 0.15 },
       u_w2: { value: 0.15 },
       u_w3: { value: 0.15 },
@@ -68,6 +69,12 @@ const QuadLayer = ({
       },
       u_speed: {
         value: speed,
+      },
+      u_imgAspect: {
+        value: imgAspect,
+      },
+      u_imgScale: {
+        value: imgScale,
       },
     }),
     [textureA, textureB]
@@ -128,9 +135,9 @@ const BackgroundNoiseDisplacement = ({
       />
       <EffectComposer>
         {/* <DotScreen angle={1.0} scale={1.5} /> */}
-        <Outline />
-        <BrightnessContrast brightness={-0.0} />
-        <HueSaturation saturation={-1} />
+        {/* <Outline /> */}
+        {/* <BrightnessContrast brightness={-0.3} contrast={0.5} /> */}
+        {/* <HueSaturation saturation={-1} /> */}
       </EffectComposer>
     </Canvas>
   );
