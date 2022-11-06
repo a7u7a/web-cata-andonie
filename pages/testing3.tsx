@@ -1,13 +1,13 @@
-import BackgroundNoiseDisplacement from "../components/background-noise-displacement/index";
+import StackingEffects from "../components/stacking-effects/index";
 
 const ShaderTest = () => {
   return (
     <div className="relative">
       <div className="fixed w-full h-[100vh]">
-        <BackgroundNoiseDisplacement
+        <StackingEffects
           progress={0.5}
           scale={0.8}
-          src={"/shader-backgrounds2/4.png"}
+          src={"/shader-backgrounds/1.png"}
           imgAspect={1.77}
           imgScale={2.0}
           speed={-0.02}
