@@ -13,7 +13,7 @@ const ShaderTest = () => {
           speed={-0.02}
         />{" "}
       </div>
-      <div>
+      {/* <div>
         <div className="absolute p-6 text-white ">
           <div className="font-bold text-7xl mix-blend-difference">Catalina Andonie</div>
           <div className="text-3xl text-white w-1/2 mt-10">
@@ -35,7 +35,7 @@ const ShaderTest = () => {
           </div>
         </div>
         <div>hola</div>
-      </div>
+      </div> */}
     </div>
   );
 };
