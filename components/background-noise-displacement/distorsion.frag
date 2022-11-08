@@ -142,7 +142,6 @@ float p = u_p;
   // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
   // vec4 color = mix(texture1, texture2, smoothstep(t1, t2, fract(DF)));
 
-
   vec2 newST = vec2(0.0,0.0);
   newST.x = mix(st.x, DF, 0.1);
   newST.y = mix(st.y, DF, 0.1);

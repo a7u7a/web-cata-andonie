@@ -33,6 +33,7 @@ export const wrapEffect = <T extends new (...args: any[]) => Effect>(
 
 export const useVector2 = (props: any, key: string): Vector2 => {
   const vec: ReactThreeFiber.Vector2 = props[key]
+  {/* @ts-ignore */}
   return useMemo(() => {
     if (vec instanceof Vector2) {
       return new Vector2().set(vec.x, vec.y)
