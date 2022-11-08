@@ -179,7 +179,7 @@ const UseFBOScene = () => {
       blending: { value: 1 },
       blendingMode: { value: 1 },
       greyscale: { value: true },
-      disable: { value: false },
+      disable: { value: true },
     }),
     []
   );
@@ -243,9 +243,10 @@ const BackgroundNoiseDisplacement = ({
         depth: false,
       }}
     >
-      <ambientLight intensity={1} />
+      
       <OrbitControls />
       <UseFBOScene />
+      
       <EffectComposer>
         {/* <DotScreen angle={1.0} scale={1.5} /> */}
         {/* <Outline /> */}

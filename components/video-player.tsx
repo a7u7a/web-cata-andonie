@@ -1,7 +1,4 @@
-import {
-  ScreenQuad,
-  useTexture,
-} from "@react-three/drei";
+import { ScreenQuad, useTexture } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import {
   useEffect,
@@ -32,19 +29,24 @@ import { VideoNavProps } from "../interfaces/interfaces";
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
   isPlay: boolean;
+  setName: (titulo: string) => void;
 }
 
 const shuffledVideoPaths = [
-  "/videos/faro.mp4",
-  "/videos/pasillo.mp4",
-  "/videos/sagrada.mp4",
-  "/videos/agua.mp4",
+  { name: "Faro", path: "/videos/faro.mp4" },
+  { name: "Pasillo", path: "/videos/pasillo.mp4" },
+  { name: "Sagrada", path: "/videos/sagrada.mp4" },
+  { name: "Agua", path: "/videos/agua.mp4" },
 ].sort((a, b) => 0.5 - Math.random());
 
-const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
+const paths = shuffledVideoPaths.map((item) => {
+  return item.path;
+});
+
+const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
-  const playlist = useVideoTextures(shuffledVideoPaths);
+  const playlist = useVideoTextures(paths);
   // PatternControls(matRef);
 
   const uniforms = useMemo(() => {
@@ -65,13 +67,12 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
     };
   }, [playlist]);
 
-  // unused
-  useFrame((state) => {
-    if (matRef.current.uniforms) {
-      const t = state.clock.elapsedTime;
-      matRef.current.uniforms.u_time.value = t;
-    }
-  });
+  // useFrame((state) => {
+  //   if (matRef.current.uniforms) {
+  //     const t = state.clock.elapsedTime;
+  //     matRef.current.uniforms.u_time.value = t;
+  //   }
+  // });
 
   // Update canvas resolution
   useEffect(() => {
@@ -82,6 +83,13 @@ const VideoLayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
   }, [size]);
 
   const [currentTexture, setCurrentTexture] = useState(1);
+
+  useEffect(() => {
+    // console.log("currentTexture", currentTexture);
+    const videoIndex = currentTexture % playlist.length;
+
+    setName(shuffledVideoPaths[videoIndex].name);
+  }, [currentTexture]);
 
   /**
    * Swap textures between each of the shader`s
@@ -134,7 +142,7 @@ function FallbackMaterial({ url }: { url: string }) {
   return <meshBasicMaterial map={texture} toneMapped={false} />;
 }
 
-const VideoPlayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
+const VideoPlayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -147,7 +155,7 @@ const VideoPlayer = ({ videoNav, isPlay }: VideoPlayerProps) => {
         depth: false,
       }}
     >
-      <VideoLayer isPlay={isPlay} videoNav={videoNav} />
+      <VideoLayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
     </Canvas>
   );
 };

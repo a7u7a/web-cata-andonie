@@ -11,6 +11,7 @@ interface VideoHeroProps {
 }
 
 const VideoHero = () => {
+  const [tituloVideo, setTituloVideo] = useState("");
   const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [videoNav, setVideoNav] = useState<VideoNavProps>({
@@ -37,16 +38,20 @@ const VideoHero = () => {
     setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
   };
 
+  const setName = (titulo: string) => {
+    setTituloVideo(titulo);
+  };
+
   return (
     <div>
       <div className="relative">
         <div className="absolute z-0 w-full h-full">
-          <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
+          <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
         </div>
         <div>
           <div className="w-screen h-[90vh]">
-            <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
-              <div className="flex flex-row justify-between pr-3 sm:pr-6 pt-4 md:pt-8 pb-4">
+            <div className="sticky pl-4 pr-4 inset-x-0 top-0 text-gray-200 mix-blend-plus-lighter">
+              <div className="flex flex-row justify-between pt-4 pb-4">
                 <button onClick={videoNext}>
                   <ArrowLeft size={38} weight="bold" color="white" />
                 </button>
@@ -54,6 +59,9 @@ const VideoHero = () => {
                   <ArrowRight size={38} weight="bold" color="white" />
                 </button>
               </div>
+            </div>
+            <div className="absolute bottom-0 left-0 ml-4 mb-4">
+              <div className="text-white">{tituloVideo}</div>
             </div>
           </div>
         </div>
