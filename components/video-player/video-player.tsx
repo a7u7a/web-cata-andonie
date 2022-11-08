@@ -16,15 +16,15 @@ import {
   Vector3,
   LinearToneMapping,
 } from "three";
-import clipSpaceVert from "../shaders/clip-space.vert";
-import linearFadeTransition from "../shaders/linear-fade-transition.frag";
+import clipSpaceVert from "./clip-space.vert";
+import linearFadeTransition from "./linear-fade-transition.frag";
 import newTransition from "../shaders/new-transition.frag";
 import patternTransition from "../shaders/pattern-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
-import { useVideoTextures } from "../hooks/my-useVideoTextures";
+import { useVideoTextures } from "../../hooks/my-useVideoTextures";
 import { useSpring, a, config, SpringValue } from "@react-spring/three";
-import PatternControls from "./controls/pattern-controls";
-import { VideoNavProps } from "../interfaces/interfaces";
+import PatternControls from "./controls";
+import { VideoNavProps } from "../../interfaces/interfaces";
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
@@ -47,7 +47,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
   const playlist = useVideoTextures(paths);
-  // PatternControls(matRef);
+  PatternControls(matRef);
 
   const uniforms = useMemo(() => {
     return {
@@ -55,24 +55,18 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
       u_texture1: { value: playlist[0] },
       u_texture2: { value: playlist[1] },
       u_progress: { value: 0 },
-      u_time: { value: 0.0 },
-      u_scale: { value: 1 },
-      u_w1: { value: 0 },
-      u_w2: { value: 0 },
-      u_w3: { value: 0 },
+      u_scale: { value: 2.27 },
       u_light: { value: 0.9 },
-      u_scroll: { value: 0.0 },
-      u_xtiles: { value: 0.9 },
-      u_ytiles: { value: 0.9 },
+      u_time: { value: 0.0 },
     };
   }, [playlist]);
 
-  // useFrame((state) => {
-  //   if (matRef.current.uniforms) {
-  //     const t = state.clock.elapsedTime;
-  //     matRef.current.uniforms.u_time.value = t;
-  //   }
-  // });
+  useFrame((state) => {
+    if (matRef.current.uniforms) {
+      const t = state.clock.elapsedTime;
+      matRef.current.uniforms.u_time.value = t;
+    }
+  });
 
   // Update canvas resolution
   useEffect(() => {
@@ -85,8 +79,8 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   const [currentTexture, setCurrentTexture] = useState(1);
 
   useEffect(() => {
-    // console.log("currentTexture", currentTexture);
-    const videoIndex = currentTexture % playlist.length;
+    const videoIndex = Math.abs(currentTexture) % playlist.length;
+    console.log("videoIndex", videoIndex);
 
     setName(shuffledVideoPaths[videoIndex].name);
   }, [currentTexture]);
@@ -118,7 +112,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
       matRef.current.uniforms.u_progress.value += dif;
       setFaderProgress(p);
     },
-    config: { mass: 1, tension: 280, friction: 60, duration: 500 },
+    config: { mass: 1, tension: 280, friction: 60, duration: 600 },
   });
 
   return (

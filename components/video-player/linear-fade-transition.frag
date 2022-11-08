@@ -1,27 +1,41 @@
+/** 
+  Receives two textures distorts them using tile distorsion
+  Also creates a transition to blend between them
+  Used on ScreenQuad along clip-space.vert shader
+*/
+
+// ToDo:
+// add noise
+
 #ifdef GL_ES
 precision mediump float;
 #endif
 
 #define PI 3.14159265359
 
+uniform float u_scroll;
 uniform vec2 u_resolution;
-uniform float u_p;
-uniform float u_w1;
-uniform float u_w2;
-uniform float u_w3;
-uniform float u_v2;
-uniform float u_v4;
-uniform float u_v5;
 uniform float u_progress;
-uniform float u_time;
-uniform float u_speed;
 uniform float u_scale;
-uniform float u_imgScale;
-uniform float u_imgAspect;
+uniform float u_time;
 uniform sampler2D u_texture1;
 uniform sampler2D u_texture2;
 varying vec2 vUv;
 uniform float u_light;
+
+
+mat2 rotate2d(float _angle){
+  return mat2(cos(_angle),-sin(_angle),
+              sin(_angle),cos(_angle));
+}
+
+float sinu(float d,float amplitude, float frequence) {   
+  float triangle = abs(mod(d * frequence,2.0)-1.);
+  float y = amplitude*(triangle * triangle * (3.0 - 2.0 * triangle));
+  return y;
+}
+
+
 
 // Description : Array and textureless GLSL 2D simplex noise function.
 //      Author : Ian McEwan, Ashima Arts.
@@ -99,53 +113,72 @@ float linearMap(in float val, in float fromA, in float fromB, in float toA, in f
     return clamp(fromA,toB, x);
 }
 
+
 void main() {
 
-float p = u_p;
-  // float p = u_time * u_speed;
-  
-  // float p = u_progress;
-  vec2 st = gl_FragCoord.xy/u_resolution.xy;
-  // st.x *= u_resolution.x/u_resolution.y;
+  vec2 st = gl_FragCoord.xy / u_resolution.xy;
 
-  // Scale responsive to fit height
-  float scale = u_imgScale;
-  float canvasAspect = u_resolution.x / u_resolution.y;
-  float videoAspect = u_imgAspect;
-  float scaleX = (scale * videoAspect) / canvasAspect;
-  float scaleY = scale;
-  st = ((((st)-1.0)/vec2(scaleX, scaleY))) + 0.5+(u_time*0.01);
-  
-
-  vec2 pos = vec2(st * u_scale);
+  // displacement noise
+  float u_p = 0.01;
+  float u_w1 = 1.0;
+  float u_w2 = 1.0;
+  float u_w3 = 1.0;
+  float u_v2 = 1.0;
+  float u_v4 = 0.9;
+  float u_v5 = 0.4;
+  float u_speed = 0.4;
+  float u_dis_scale = 0.88;
+  float p = u_p;
+  vec2 pos = vec2(st * u_dis_scale);
   float DF = 0.0;
-  
   // Add a random position
   float a = 0.0;
   // vec2 vel = vec2(p*.1);
   vec2 vel = vec2(u_time * u_speed);
   DF += snoise(pos+vel)*u_v2+0.5;
-  
   // Add a random position
   a = snoise(pos*vec2(cos(p*u_w1),sin(p*u_w2))*u_w3)*3.1415;
   vel = vec2(cos(a),sin(a));
   DF += snoise(pos+vel)*u_v4+u_v5;
 
-  // Sample textures
-  // vec2 disp = st; 
-  // vec4 texture1 = texture2D(u_texture1, disp);
-  // vec4 texture2 = texture2D(u_texture2, disp);
+
   
-  // float t1 = linearMap(u_progress,0.1, 1.0, 0.0, 1.0);
-  // float t2 = linearMap(u_progress,0.0, 0.9, 0.0, 1.0);
+  // Create fade sweep
+  float progress = u_progress;
+  vec2 sf = st;  
+  sf = rotate2d(-0.192 * PI) * sf;
+  float offX = 0.1;
+  sf += vec2(offX,0.0);
+  float wave = -0.5;
+  float amp = 2.5;
+  float freq = 0.2;
+  wave += (sinu((sf.x*freq)+progress, amp, 1.0));
 
-  // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
-  // vec4 color = mix(texture1, texture2, smoothstep(t1, t2, fract(DF)));
+  // Scale responsive to fit height
+  float scale = u_scale;
+  float canvasAspect = u_resolution.x / u_resolution.y;
+  float videoAspect = 1.77; // asumes 1280 x 720 texture resolution
+  float scaleX = (scale * videoAspect) / canvasAspect;
+  float scaleY = scale;
+  st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
 
 
+  // noise disp stuff
   vec2 newST = vec2(0.0,0.0);
-  newST.x = mix(st.x, DF, 0.1);
+  newST.x = mix(st.x, DF, 0.3);
   newST.y = mix(st.y, DF, 0.1);
-  vec4 color = texture2D(u_texture1, newST);
-  gl_FragColor = vec4(color);
+  // clamp wave to 0,1
+  float dispWave = clamp(wave, 0.0, 1.0);
+  dispWave = pow(cos(PI*dispWave),2.0);
+  newST = newST * (1.0-dispWave);
+
+  // Sample textures
+  vec2 disp = st+newST; 
+  vec4 texture1 = texture2D(u_texture1, disp);
+  vec4 texture2 = texture2D(u_texture2, disp);
+  
+  // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
+  vec4 color = u_light * mix(texture1, texture2, smoothstep(-0.25, 0.25, wave));
+
+  gl_FragColor = color;
 }

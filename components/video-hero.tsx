@@ -1,7 +1,7 @@
 import { useState, forwardRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import useMediaQuery from "../lib/media";
-import VideoPlayer from "../components/video-player";
+import VideoPlayer from "./video-player/video-player";
 import { VideoNavProps } from "../interfaces/interfaces";
 import { CaretRight, CaretLeft } from "phosphor-react";
 
