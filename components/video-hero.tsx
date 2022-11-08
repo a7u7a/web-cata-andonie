@@ -13,6 +13,7 @@ interface VideoHeroProps {
 const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
   ({ height, worksHeight }: VideoHeroProps, ref) => {
     VideoHero.displayName = "VideoHero";
+    const [tituloVideo, setTituloVideo] = useState("");
     const [isPlay, setIsPlay] = useState(true);
     const [clicked, setClicked] = useState(false);
     const [videoNav, setVideoNav] = useState<VideoNavProps>({
@@ -39,10 +40,14 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
       setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
     };
 
+    const setName = (titulo: string) => {
+      setTituloVideo(titulo);
+    };
+
     return (
       <div ref={ref} className="relative">
         <div className="absolute z-0 w-full h-full">
-          <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
+          <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
         </div>
         <div>
           <div className="w-screen max-w-screen-2xl h-[135vh]">
