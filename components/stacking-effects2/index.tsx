@@ -262,7 +262,7 @@ const BackgroundNoiseDisplacement = ({
           greyscale={greyscale}
           scatter={scatter}
         /> */}
-        <BrightnessContrast brightness={-0.3} contrast={0.5} />
+        <BrightnessContrast brightness={-0.2} contrast={0.0} />
 
         {/* <Bloom intensity={5} radius={2.1}/> */}
         {/* <HueSaturation saturation={-1} /> */}

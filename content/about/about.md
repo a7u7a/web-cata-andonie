@@ -2,12 +2,10 @@
 title: Acerca de
 title_eng: About
 body_eng: |-
-  AAALorem ipsum dolor sit amet consectetur adipisicing elit. Quos eaque iste similique, omnis voluptatum, placeat asperiores dignissimos aperiam illo, voluptatibus cupiditate impedit dolorem enim. Odit, ab mollitia. Corrupti, repellat dicta? 
-  
-  
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione eaque ullam animi. Nostrum quibusdam harum iste, recusandae reprehenderit eveniet quaerat earum? Asperiores facere ut sapiente necessitatibus quia impedit maiores animi.
+   Ambiguity has a wide-range of associations and, at the same time, a lack of them.  That is what, in a certain sense, makes it resist classification, cancelling it and making it inaccessible and operational as such. 
+   
+   My sculptures and installations refer to preexistent objects or works to elaborate pieces where there is an experimentation towards ambiguity, mostly objects reproduced through archives, found objects, and redesigned objects.
 ---
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eaque iste similique, omnis voluptatum, placeat asperiores dignissimos aperiam illo, voluptatibus cupiditate impedit dolorem enim. Odit, ab mollitia. Corrupti, repellat dicta?
+La ambigüedad tiene una diversidad de referentes y, al mismo tiempo, una falta de ellos. Eso es lo que en cierto sentido la hace resistente a una clasificación, anulándola y haciéndola impenetrable y operativa como tal. 
 
-
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione eaque ullam animi. Nostrum quibusdam harum iste, recusandae reprehenderit eveniet quaerat earum? Asperiores facere ut sapiente necessitatibus quia impedit maiores animi.
+Mis esculturas e instalaciones hacen referencia a objetos preexistentes para elaborar piezas donde exista una experimentación en torno a esa ambigüedad. En su mayoría objetos reproducidos a través de archivos, objetos rescatados y objetos rediseñados.

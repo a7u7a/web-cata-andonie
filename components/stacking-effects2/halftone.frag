@@ -31,7 +31,7 @@ uniform float blending;
 uniform int blendingMode;
 // varying vec2 vUV;
 uniform bool greyscale;
-const int samples = 4;
+const int samples = 2;
 
 // my variables
 uniform sampler2D u_texture;
@@ -41,30 +41,30 @@ uniform float u_imgAspect;
 varying vec2 vUv;
 
 float blend( float a, float b, float t ) {
-		// linear blend
-			return a * ( 1.0 - t ) + b * t;
-		}
-		float hypot( float x, float y ) {
-		// vector magnitude
-			return sqrt( x * x + y * y );
-		}
-		float rand( vec2 seed ){
-		// get pseudo-random number
-			return fract( sin( dot( seed.xy, vec2( 12.9898, 78.233 ) ) ) * 43758.5453 );
-		}
-		float distanceToDotRadius( float channel, vec2 coord, vec2 normal, vec2 p, float angle, float rad_max ) {
-		// apply shape-specific transforms
-			float dist = hypot( coord.x - p.x, coord.y - p.y );
-			float rad = channel;
-			if ( shape == SHAPE_DOT ) {
-				rad = pow( abs( rad ), 1.125 ) * rad_max;
-			} else if ( shape == SHAPE_ELLIPSE ) {
-				rad = pow( abs( rad ), 1.125 ) * rad_max;
-				if ( dist != 0.0 ) {
-					float dot_p = abs( ( p.x - coord.x ) / dist * normal.x + ( p.y - coord.y ) / dist * normal.y );
-					dist = ( dist * ( 1.0 - SQRT2_HALF_MINUS_ONE ) ) + dot_p * dist * SQRT2_MINUS_ONE;
-				}
-			} else if ( shape == SHAPE_LINE ) {
+	// linear blend
+	return a * ( 1.0 - t ) + b * t;
+}
+float hypot( float x, float y ) {
+// vector magnitude
+	return sqrt( x * x + y * y );
+}
+float rand( vec2 seed ){
+	// get pseudo-random number
+	return fract( sin( dot( seed.xy, vec2( 12.9898, 78.233 ) ) ) * 43758.5453 );
+}
+float distanceToDotRadius( float channel, vec2 coord, vec2 normal, vec2 p, float angle, float rad_max ) {
+	// apply shape-specific transforms
+		float dist = hypot( coord.x - p.x, coord.y - p.y );
+		float rad = channel;
+		if ( shape == SHAPE_DOT ) {
+			rad = pow( abs( rad ), 1.125 ) * rad_max;
+		} else if ( shape == SHAPE_ELLIPSE ) {
+			rad = pow( abs( rad ), 1.125 ) * rad_max;
+			if ( dist != 0.0 ) {
+				float dot_p = abs( ( p.x - coord.x ) / dist * normal.x + ( p.y - coord.y ) / dist * normal.y );
+				dist = ( dist * ( 1.0 - SQRT2_HALF_MINUS_ONE ) ) + dot_p * dist * SQRT2_MINUS_ONE;
+			}
+		} else if ( shape == SHAPE_LINE ) {
 				rad = pow( abs( rad ), 1.5) * rad_max;
 				float dot_p = ( p.x - coord.x ) * normal.x + ( p.y - coord.y ) * normal.y;
 				dist = hypot( normal.x * dot_p, normal.y * dot_p );
@@ -170,6 +170,7 @@ float blend( float a, float b, float t ) {
 			c.p4.y = c.p1.y - n.y * normal_step - n.x * line_step;
 			return c;
 		}
+
 		float blendColour( float a, float b, float t ) {
 		// blend colours
 			if ( blendingMode == BLENDING_LINEAR ) {
@@ -189,16 +190,7 @@ float blend( float a, float b, float t ) {
 
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    // Scale responsive to fit height
-    // float scale = 2.0;
-    // float canvasAspect = u_resolution.x / u_resolution.y;
-    // float videoAspect = u_imgAspect;
-    // float scaleX = (scale * videoAspect) / canvasAspect;
-    // float scaleY = scale;
-    // st = ((((st)-1.0)/vec2(scaleX, scaleY))) + 0.5;
-    // st = st + (u_time*0.01);
 
-    
     if ( ! disable ) {
       // setup
       vec2 p = vec2( st.x * width, st.y * height );
@@ -212,13 +204,13 @@ void main() {
       float g = getDotColour( cell_g, p, 1, rotateG, aa );
       float b = getDotColour( cell_b, p, 2, rotateB, aa );
       // blend with original
-      vec4 colour = texture2D( u_texture, vUv );
-      r = blendColour( r, colour.r, blending );
-      g = blendColour( g, colour.g, blending );
-      b = blendColour( b, colour.b, blending );
-      if ( greyscale ) {
+    //   vec4 colour = texture2D( u_texture, vUv );
+    //   r = blendColour( r, colour.r, blending );
+    //   g = blendColour( g, colour.g, blending );
+    //   b = blendColour( b, colour.b, blending );
+      // always grayscale
         r = g = b = (r + b + g) / 3.0;
-      }
+      
       gl_FragColor = vec4( r, g, b, 1.0 );
     } else {
       gl_FragColor = texture2D( u_texture, st );

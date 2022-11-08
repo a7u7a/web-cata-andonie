@@ -23,6 +23,12 @@
   prose-p:my-0;
 }
 
+.newAbout {
+  @apply w-full text-white text-3xl space-y-10
+  prose 
+  prose-p:my-0 leading-snug;
+}
+
 .work {
   @apply w-full text-black
   columns-1 sm:columns-2 text-[0.95rem] text-justify gap-6
