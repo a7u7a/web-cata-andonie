@@ -223,14 +223,14 @@ const BackgroundNoiseDisplacement = ({
   imgScale,
   speed,
 }: BackgroundWobbleProps) => {
-  const { noiseScale } = useControls({
-    noiseScale: {
-      value: 0.88,
-      min: 0,
-      max: 4,
-      step: 0.001,
-    },
-  });
+  // const { noiseScale } = useControls({
+  //   noiseScale: {
+  //     value: 0.88,
+  //     min: 0,
+  //     max: 4,
+  //     step: 0.001,
+  //   },
+  // });
   return (
     <Canvas
       style={{ background: "#000000" }}
@@ -249,7 +249,7 @@ const BackgroundNoiseDisplacement = ({
       <EffectComposer>
         {/* <DotScreen angle={1.0} scale={1.5} /> */}
         {/* <Outline /> */}
-        <NoiseDistorsion u_scale={noiseScale} />
+        <NoiseDistorsion u_scale={0.88} />
         {/* <Halftone
           shape={shape}
           radius={radius}

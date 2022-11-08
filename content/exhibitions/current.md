@@ -1,9 +1,9 @@
 ---
 title: Actuales
-title_eng: Current
+title_eng: CURRENT
 body_eng: |-
-  * Group Show, The name of a current show, more info.
-  * Solo Show, The name of a current show, more info.
+  * Group Show, The name of a current show, [more info](https://duckduckgo.com).
+  * Solo Show, The name of a current show, [more info](https://duckduckgo.com).
 ---
 * Expo grupal , Nombre de la expo, [más info](https://duckduckgo.com).
 * Expo Solo, Nombre de la expo, [más info](https://duckduckgo.com).
