@@ -26,7 +26,8 @@
     "react-markdown": "^8.0.3",
     "react-use-measure": "^2.1.1",
     "three": "^0.144.0",
-    "ts-shader-loader": "^2.0.1"
+    "ts-shader-loader": "^2.0.1",
+    "wouter": "^2.8.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.7",
