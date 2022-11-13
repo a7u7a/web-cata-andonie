@@ -47,7 +47,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const size = useThree((state) => state.size);
   const playlist = useVideoTextures(paths);
-  PatternControls(matRef);
+  // PatternControls(matRef);
 
   const uniforms = useMemo(() => {
     return {
