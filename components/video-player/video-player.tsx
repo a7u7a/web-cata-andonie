@@ -17,7 +17,7 @@ import {
   LinearToneMapping,
 } from "three";
 import clipSpaceVert from "./clip-space.vert";
-import linearFadeTransition from "./linear-fade-transition.frag";
+import linearFadeTransition2 from "./linear-fade-transition2.frag";
 import newTransition from "../shaders/new-transition.frag";
 import patternTransition from "../shaders/pattern-transition.frag";
 import noiseTransition from "../shaders/noise-transition.frag";
@@ -123,7 +123,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
           ref={matRef}
           uniforms={uniforms}
           // uniforms-u_progress-value={progress}
-          fragmentShader={linearFadeTransition}
+          fragmentShader={linearFadeTransition2}
           vertexShader={clipSpaceVert}
         />
       </Suspense>

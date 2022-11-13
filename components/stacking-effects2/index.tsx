@@ -243,39 +243,11 @@ const BackgroundNoiseDisplacement = ({
         depth: false,
       }}
     >
-      
-      <OrbitControls />
-      <UseFBOScene />
-      
+      <UseFBOScene /> 
       <EffectComposer>
-        {/* <DotScreen angle={1.0} scale={1.5} /> */}
-        {/* <Outline /> */}
         <NoiseDistorsion u_scale={0.88} />
-        {/* <Halftone
-          shape={shape}
-          radius={radius}
-          width={width}
-          height={height}
-          disable={disable}
-          rotateR={(Math.PI / rotateR) * 1}
-          rotateG={(Math.PI / rotateG) * 2}
-          rotateB={(Math.PI / rotateB) * 3}
-          greyscale={greyscale}
-          scatter={scatter}
-        /> */}
         <BrightnessContrast brightness={-0.2} contrast={0.0} />
-
-        {/* <Bloom intensity={5} radius={2.1}/> */}
-        {/* <HueSaturation saturation={-1} /> */}
       </EffectComposer>
-      {/* <QuadLayer
-        progress={progress}
-        scale={scale}
-        src={src}
-        imgAspect={imgAspect}
-        imgScale={imgScale}
-        speed={speed}
-      /> */}
     </Canvas>
   );
 };
