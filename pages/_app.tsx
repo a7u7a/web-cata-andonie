@@ -5,32 +5,23 @@ import { useState, forwardRef, useEffect, CSSProperties } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import PageBackground from "../components/stacking-effects3/index";
 
-const AppWrapper = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
-  // initial state
-  const [componentArray, setComponentArray] = useState([
-    <Component key={router.pathname} {...pageProps} />,
-  ]);
+interface AppWrapperProps {
+  children: JSX.Element;
+}
 
-  const transitions = useTransition(componentArray, {
+const AppWrapper = ({ children }: AppWrapperProps) => {
+  const router = useRouter();
+  const transitions = useTransition(router, {
     from: { opacity: 0 },
-    enter: { opacity: 1, position: "relative" },
-    leave: { opacity: 0, position: "absolute" },
+    enter: { opacity: 1, position: "absolute" },
+    leave: { opacity: 0, position: "relative" },
     config: { mass: 1, tension: 280, friction: 60, duration: 600 },
   });
-
-  // Updates the array when needed. Avoids rerenders
-  useEffect(() => {
-    if (componentArray[0].key === router.pathname) {
-      return;
-    }
-    setComponentArray([<Component key={router.pathname} {...pageProps} />]);
-  }, [Component, pageProps, router, componentArray]);
 
   return (
     <>
       {transitions((style, item) => {
-        return <animated.div style={style}>{item}</animated.div>;
+        return <animated.div style={style}>{children}</animated.div>;
       })}
     </>
   );
@@ -39,7 +30,7 @@ const AppWrapper = ({ Component, pageProps }: AppProps) => {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
-      <div className="fixed w-full h-[110vh] ">
+      <div className="fixed w-full h-[110vh]">
         <PageBackground
           progress={0.5}
           scale={0.8}
@@ -48,10 +39,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           imgScale={2.0}
           speed={-0.02}
         />
-        <AppWrapper>
-          <Component {...pageProps} />
-        </AppWrapper>
       </div>
+      <AppWrapper>
+        <Component {...pageProps} />
+      </AppWrapper>
     </div>
   );
 }

@@ -19,7 +19,7 @@ void main() {
     // float scaleX = (scale * videoAspect) / canvasAspect;
     // float scaleY = scale;
     // st = ((((st)-1.0)/vec2(scaleX, scaleY))) + 0.5;
-    // st = st + (u_time*0.01);
+    st = st + (u_time*0.01);
 
     gl_FragColor = texture2D( u_texture, st ); 
   }

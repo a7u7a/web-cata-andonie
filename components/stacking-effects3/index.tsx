@@ -26,11 +26,8 @@ interface BackgroundWobbleProps {
   speed: number;
 }
 
-const QuadLayer = ({
-  src,
-  imgAspect,
-}: BackgroundWobbleProps) => {
-  console.log("heyfuck");
+const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
+  console.log("PageBackground render");
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
@@ -46,6 +43,7 @@ const QuadLayer = ({
   );
 
   useFrame((state) => {
+    // console.log("time", state.clock.elapsedTime);
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_time.value = state.clock.elapsedTime;
       matRef.current.needsUpdate = true;
@@ -107,7 +105,7 @@ const PageBackground = ({
         speed={-0.02}
       />
       <EffectComposer>
-        <NoiseDistorsion u_scale={0.88} />
+        {/* <NoiseDistorsion u_scale={0.88} /> */}
         <BrightnessContrast brightness={-0.2} contrast={0.0} />
       </EffectComposer>
     </Canvas>
