@@ -2,32 +2,42 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useState, forwardRef, useEffect, CSSProperties } from "react";
-import { useTransition, animated } from "@react-spring/web";
+import { useTransition, animated, Transition } from "@react-spring/web";
 import PageBackground from "../components/stacking-effects3/index";
 
 interface AppWrapperProps {
   children: JSX.Element;
 }
 
-const AppWrapper = ({ children }: AppWrapperProps) => {
-  const router = useRouter();
-  const transitions = useTransition(router, {
-    from: { opacity: 0 },
-    enter: { opacity: 1, position: "absolute" },
-    leave: { opacity: 0, position: "relative" },
-    config: { mass: 1, tension: 280, friction: 60, duration: 600 },
-  });
+// const AppWrapper = ({ children }: AppWrapperProps) => {
+//   const router = useRouter();
+//   const transitions = useTransition(router, {
+//     from: { opacity: 0 },
+//     enter: { opacity: 1, position: "absolute" },
+//     leave: { opacity: 0, position: "relative" },
+//     config: { mass: 1, tension: 280, friction: 60, duration: 600 },
+//   });
 
-  return (
-    <>
-      {transitions((style, item) => {
-        return <animated.div style={style}>{children}</animated.div>;
-      })}
-    </>
-  );
-};
+//   return (
+//     <>
+//       {transitions((style, item) => {
+        
+
+//         return <animated.div style={style}>{children}</animated.div>;
+//       })}
+//     </>
+//   );
+// };
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const items = [
+    {
+      id: router.route,
+      Component,
+      pageProps
+    }
+  ];
   return (
     <div>
       <div className="fixed w-full h-[110vh]">
@@ -40,9 +50,32 @@ function MyApp({ Component, pageProps }: AppProps) {
           speed={-0.02}
         />
       </div>
-      <AppWrapper>
-        <Component {...pageProps} />
-      </AppWrapper>
+      <Transition
+      items={items}
+      keys={(item) => item.id}
+      from={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      enter={{ opacity: 1, position: "relative" }}
+      leave={{ opacity: 0, position: "absolute" }}
+    >
+      {(
+        styles,
+        { pageProps: animatedPageProps, Component: AnimatedComponent },
+        key
+      ) => (
+        <animated.div
+          key={key}
+          style={{
+            ...styles,
+            width: "100%",
+            height: "100%",
+            overflow: "hidden"
+          }}
+        >
+          <AnimatedComponent {...animatedPageProps} />
+        </animated.div>
+      )}
+    </Transition>
     </div>
   );
 }
