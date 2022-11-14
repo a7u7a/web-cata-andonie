@@ -55,22 +55,22 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
       <div>
         <div>
           <div className="pl-4 relative flex flex-col">
-            <div className="pt-20 mix-blend-difference grow-0 transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
+            <div className="pt-20 mix-blend-difference grow-0 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
               <div className="font-bold text-7xl">Catalina Andonie</div>
             </div>
             <div className="pt-20 flex flex-row justify-between">
               <About post={aboutPost} />
               <div className="flex flex-col space-y-4 w-1/4 pr-4 text-5xl text-white">
-                <Link href={"/new-bio"} className="mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  Exhibitions
-                </Link>
-                <div className="mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
+                <div className="opacity-10 mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+                  <Link href={"/new-bio"}>Exhibitions</Link>
+                </div>
+                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Works
                 </div>
-                <div className="mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
+                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Bio
                 </div>
-                <div className="mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
+                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Contact
                 </div>
               </div>

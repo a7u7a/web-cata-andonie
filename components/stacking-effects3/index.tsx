@@ -31,13 +31,24 @@ const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
-  // Controls(matRef);
+  Controls(matRef);
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_imgAspect: { value: imgAspect },
+      u_imgScale:{ value: 1.5 },
       u_time: { value: 0.0 },
+      u_progress: { value: 0.0 },
+      u_speed: { value: 0.01 },
+      u_scale: { value: 0.88 },
+      u_p: { value: 0.01 },
+      u_w1: { value: 1.0 },
+      u_w2: { value: 1.0 },
+      u_w3: { value: 1.0 },
+      u_v2: { value: 1.0 },
+      u_v4: { value: 0.9 },
+      u_v5: { value: 0.4 },
     }),
     [textureA]
   );

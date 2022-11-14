@@ -136,7 +136,7 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     imgScale: {
       label: "imgScale",
-      value: 2.0,
+      value: 1.5,
       min: 0.01,
       max: 3,
       step: 0.00001,

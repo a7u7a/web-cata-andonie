@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <PageBackground
           progress={0.5}
           scale={0.8}
-          src={"/shader-backgrounds/2.png"}
+          src={"/shader-backgrounds/1.png"}
           imgAspect={1.77}
           imgScale={2.0}
           speed={-0.02}
