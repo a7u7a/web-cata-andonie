@@ -14,7 +14,7 @@ import {
 import clipSpaceVert from "./clip-space.vert";
 import baseFragment from "./base.frag";
 import Controls from "./controls";
-import NoiseDistorsion from "./noise-distorsion";
+// import NoiseDistorsion from "./noise-distorsion";
 import { useControls } from "leva";
 
 interface BackgroundWobbleProps {
@@ -37,7 +37,7 @@ const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_imgAspect: { value: imgAspect },
-      u_imgScale:{ value: 1.5 },
+      u_imgScale:{ value: 2.5 },
       u_time: { value: 0.0 },
       u_progress: { value: 0.0 },
       u_speed: { value: 0.01 },

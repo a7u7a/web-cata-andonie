@@ -54,14 +54,22 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
     <div>
       <div>
         <div>
+
+
+<div className="fixed inset-y-0 right-0">
+
+</div>
+
           <div className="pl-4 relative flex flex-col">
-            <div className="pt-20 mix-blend-difference grow-0 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-              <div className="font-bold text-7xl">Catalina Andonie</div>
-            </div>
-            <div className="pt-20 flex flex-row justify-between">
-              <About post={aboutPost} />
+            {/* <div className="pt-20 mix-blend-difference  ">
+              <div className="font-bold text-7xl flex content-end">
+                <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer ">
+                  Catalina Andonie
+                </p>
+              </div>
+
               <div className="flex flex-col space-y-4 w-1/4 pr-4 text-5xl text-white">
-                <div className="opacity-10 mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   <Link href={"/new-bio"}>Exhibitions</Link>
                 </div>
                 <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
@@ -74,6 +82,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
                   Contact
                 </div>
               </div>
+            </div> */}
+
+            <div className="pt-20 flex flex-row justify-between">
+              <About post={aboutPost} />
             </div>
           </div>
         </div>
