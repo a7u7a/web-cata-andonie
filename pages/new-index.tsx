@@ -51,9 +51,9 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
 
   return (
-    <div>
+    <div className="pt-[110vh]">
       <div>
-        <div>
+        <div className="absolute z-50">
           {/* <div className="inset-y-0 right-0 mix-blend-difference z-50 w-full">
             <div className="pt-4 ">
               <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer text-8xl font-bold">
@@ -62,8 +62,8 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
             </div>
           </div> */}
 
-          <div className="pl-4 relative flex flex-col">
-            <div className="pt-20 mix-blend-difference  ">
+          <div className=" pl-4 flex flex-col">
+            <div className="pt-20 mix-blend-difference ">
               {/* <div className="font-bold text-7xl flex content-end">
                 <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer ">
                   Catalina Andonie
@@ -101,9 +101,8 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
           </div> */}
           <div className="">
             {/* <News exhibitionsPosts={exhibitionsPosts} /> */}
-            
-              <About post={aboutPost} />
-            
+
+            <About post={aboutPost} />
           </div>
         </div>
 

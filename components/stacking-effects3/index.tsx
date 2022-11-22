@@ -119,7 +119,7 @@ const PageBackground = ({
       />
       <EffectComposer>
         {/* <NoiseDistorsion u_scale={0.88} /> */}
-        <BrightnessContrast brightness={-0.4} contrast={0.5} />
+        <BrightnessContrast brightness={-0.2} contrast={0.5} />
       </EffectComposer>
     </Canvas>
   );

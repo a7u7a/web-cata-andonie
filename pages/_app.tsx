@@ -37,10 +37,31 @@ function MyApp({ Component, pageProps }: AppProps) {
       pageProps,
     },
   ];
+  // return (
+  //   <div>
+  //     <div className="z-0 fixed w-full flex flex-row justify-center text-8xl font-bold">
+  //       Catalina Andonie
+  //     </div>
+  //     <div className="absolute z-10 w-full h-[110vh] pt-40">
+  //       <PageBackground
+  //         progress={0.5}
+  //         scale={0.8}
+  //         src={"/shader-backgrounds2/1.png"}
+  //         imgAspect={1.77}
+  //         imgScale={2.0}
+  //         speed={-0.02}
+  //       />
+  //     </div>
+  //     <Component {...pageProps} />
+  //   </div>
+  // );
+
   return (
     <div>
-      <div className="fixed">Henlo</div>
-      <div className="fixed w-full h-[110vh]">
+      <div className="z-0 fixed w-full flex flex-row justify-center text-8xl font-bold">
+        Catalina Andonie
+      </div>
+      <div className="absolute z-10 w-full h-[110vh] pt-40">
         <PageBackground
           progress={0.5}
           scale={0.8}
@@ -57,8 +78,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         keys={(item) => item.id}
         from={{ opacity: 0 }}
         initial={{ opacity: 0 }}
-        enter={{ opacity: 1, position: "relative" }}
-        leave={{ opacity: 0, position: "absolute" }}
+        enter={{ opacity: 1  }}
+        leave={{ opacity: 0}}
       >
         {(
           // @ts-ignore
