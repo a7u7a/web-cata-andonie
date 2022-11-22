@@ -32,14 +32,14 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
 
   return (
     <div className="relative">
-      <div>
+      <div className="bg-white">
         <div className="w-1/2 text-7xl pt-4 mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
           <div className="pl-4 pt-20 pb-8 font-bold text-7xl">
             {locale === "es" ? "Catálogo de obras" : "All works"}
           </div>
         </div>
       </div>
-      <div className="relative grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+      <div className="relative grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 ">
         {posts.map((post, i) => (
           <CatalogueImage key={i} post={post} />
         ))}

@@ -70,7 +70,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
                 </p>
               </div> */}
 
-              <div className="flex flex-col space-y-0 w-1/4 pr-4 text-8xl text-white mb-20">
+              <div className="flex flex-col space-y-0 pr-4 text-8xl text-white mb-20">
                 <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   <Link href={"/exhibitions"}>Exhibitions</Link>
                 </div>
@@ -93,18 +93,21 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         </div>
         <VideoHero />
 
-        <div className="relative p-6 flex flex-row">
-          <div className="w-1/2">
+        <div className="relative flex flex-row">
+          {/* <div className="w-1/2">
             <div className="absolute w-1/2 inset-x-0 bottom-0 text-7xl pt-4 mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
               <div className="pl-4 pb-8 font-bold text-7xl">Selected</div>
             </div>
-          </div>
-          <div className="w-1/2">
-            <News exhibitionsPosts={exhibitionsPosts} />
+          </div> */}
+          <div className="">
+            {/* <News exhibitionsPosts={exhibitionsPosts} /> */}
+            
+              <About post={aboutPost} />
+            
           </div>
         </div>
 
-        <div className="relative flex flex-col md:flex-row">
+        <div className="relative flex flex-col md:flex-row bg-white">
           <div className="flex flex-col w-full md:w-1/2">
             {isMd ? (
               <></>

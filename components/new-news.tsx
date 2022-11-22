@@ -22,9 +22,9 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
   return (
     <div className="pt-0 md:pt-8 pb-20">
       <div className="">
-        <div className="font-bold text-7xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
+        {/* <div className="font-bold text-7xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
           {locale === "es" ? "Exhibiciones" : "Exhibitions"}
-        </div>
+        </div> */}
         <div className="flex flex-col space-y-8 pt-12">
           <NewsSection post={currentSection} />
           <NewsSection post={recentSection} />

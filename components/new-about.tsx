@@ -10,7 +10,7 @@ const About = ({ post }: AboutProps) => {
   const { locale } = useRouter();
 
   return (
-    <div className="w-1/2 pb-24">
+    <div className="bg-white p-6 pb-24">
       {/* <div className="pl-1 md:pl-4 text-white text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div> */}
