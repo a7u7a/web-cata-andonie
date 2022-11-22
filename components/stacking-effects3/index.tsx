@@ -37,7 +37,7 @@ const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_imgAspect: { value: imgAspect },
-      u_imgScale:{ value: 2.5 },
+      u_imgScale: { value: 2.5 },
       u_time: { value: 0.0 },
       u_progress: { value: 0.0 },
       u_speed: { value: 0.01 },
@@ -49,6 +49,8 @@ const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
       u_v2: { value: 1.0 },
       u_v4: { value: 0.9 },
       u_v5: { value: 0.4 },
+      u_v6: { value: 0.4 },
+      u_v7: { value: 0.4 },
     }),
     [textureA]
   );
@@ -117,7 +119,7 @@ const PageBackground = ({
       />
       <EffectComposer>
         {/* <NoiseDistorsion u_scale={0.88} /> */}
-        <BrightnessContrast brightness={-0.2} contrast={0.0} />
+        <BrightnessContrast brightness={-0.2} contrast={0.5} />
       </EffectComposer>
     </Canvas>
   );

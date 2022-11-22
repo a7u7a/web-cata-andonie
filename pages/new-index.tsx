@@ -54,23 +54,25 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
     <div>
       <div>
         <div>
-
-
-<div className="fixed inset-y-0 right-0">
-
-</div>
+          {/* <div className="inset-y-0 right-0 mix-blend-difference z-50 w-full">
+            <div className="pt-4 ">
+              <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer text-8xl font-bold">
+                Catalina Andonie
+              </p>
+            </div>
+          </div> */}
 
           <div className="pl-4 relative flex flex-col">
-            {/* <div className="pt-20 mix-blend-difference  ">
-              <div className="font-bold text-7xl flex content-end">
+            <div className="pt-20 mix-blend-difference  ">
+              {/* <div className="font-bold text-7xl flex content-end">
                 <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer ">
                   Catalina Andonie
                 </p>
-              </div>
+              </div> */}
 
-              <div className="flex flex-col space-y-4 w-1/4 pr-4 text-5xl text-white">
+              <div className="flex flex-col space-y-0 w-1/4 pr-4 text-8xl text-white mb-20">
                 <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  <Link href={"/new-bio"}>Exhibitions</Link>
+                  <Link href={"/exhibitions"}>Exhibitions</Link>
                 </div>
                 <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Works
@@ -82,11 +84,11 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
                   Contact
                 </div>
               </div>
-            </div> */}
-
-            <div className="pt-20 flex flex-row justify-between">
-              <About post={aboutPost} />
             </div>
+
+            {/* <div className="pt-48 flex flex-row justify-between">
+              <About post={aboutPost} />
+            </div> */}
           </div>
         </div>
         <VideoHero />

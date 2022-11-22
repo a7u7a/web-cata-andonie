@@ -15,6 +15,8 @@ uniform float u_w3;
 uniform float u_v2;
 uniform float u_v4;
 uniform float u_v5;
+uniform float u_v6;
+uniform float u_v7;
 uniform float u_progress;
 uniform float u_speed;
 uniform float u_scale;
@@ -97,10 +99,11 @@ void main() {
 
   vec2 st = gl_FragCoord.xy/u_resolution.xy;
 
+  float time = u_time * u_speed;
 
   // move image around in a circle
   // map time to degree
-  float theta = radians(mix(0.0, 360.0, u_time*0.05));
+  float theta = radians(mix(0.0, 360.0, time*0.05));
   // apply circle 
   st = vec2(st.x+(cos(theta)*0.1), st.y+(sin(theta)*0.1));
 
@@ -121,17 +124,18 @@ void main() {
   // Add a random position
   float a = 0.0;
   // vec2 vel = vec2(p*.1);
-  vec2 vel = vec2(u_time * u_speed);
-  DF += snoise(pos+vel)*u_v2+0.5;
+  vec2 vel = vec2(time);
+  DF += snoise(pos+vel)*cos(time*u_v2)+0.5;
   
   // Add a random position
-  a = snoise(pos*vec2(cos(p*u_w1),sin(p*u_w2))*u_w3)*3.1415;
-  vel = vec2(cos(a),sin(a));
-  DF += snoise(pos+vel)*u_v4+u_v5;
+  a = snoise(pos*vec2(cos(time*u_w1),sin((sin(time*u_w2))))*(cos(time)*u_w3))*3.1415;
+  vel = vec2(cos(-a),sin(a));
+  DF += snoise(pos+vel)*(cos(time)*u_v4)+(sin(time)*u_v5);
+  //DF += snoise(pos+vel)*(cos(time)*u_v4)+(sin(time)*u_v5);
   
   vec2 newST = vec2(0.0,0.0);
-  newST.x = mix(st.x, DF, 0.1);
-  newST.y = mix(st.y, DF, 0.1);
+  newST.x = mix(st.x, DF, u_v6);
+  newST.y = mix(st.y, DF, u_v7);
   vec4 color = texture2D(u_texture, newST);
   gl_FragColor = vec4(color);
 }

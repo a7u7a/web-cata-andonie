@@ -21,7 +21,6 @@ interface AppWrapperProps {
 //   return (
 //     <>
 //       {transitions((style, item) => {
-        
 
 //         return <animated.div style={style}>{children}</animated.div>;
 //       })}
@@ -35,8 +34,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     {
       id: router.route,
       Component,
-      pageProps
-    }
+      pageProps,
+    },
   ];
   return (
     <div>
@@ -44,38 +43,43 @@ function MyApp({ Component, pageProps }: AppProps) {
         <PageBackground
           progress={0.5}
           scale={0.8}
-          src={"/shader-backgrounds/1.png"}
+          src={"/shader-backgrounds2/1.png"}
           imgAspect={1.77}
           imgScale={2.0}
           speed={-0.02}
         />
       </div>
+
       <Transition
-      items={items}
-      keys={(item) => item.id}
-      from={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
-      enter={{ opacity: 1, position: "relative" }}
-      leave={{ opacity: 0, position: "absolute" }}
-    >
-      {(
-        styles,
-        { pageProps: animatedPageProps, Component: AnimatedComponent },
-        key
-      ) => (
-        <animated.div
-          key={key}
-          style={{
-            ...styles,
-            width: "100%",
-            height: "100%",
-            overflow: "hidden"
-          }}
-        >
-          <AnimatedComponent {...animatedPageProps} />
-        </animated.div>
-      )}
-    </Transition>
+        items={items}
+        // @ts-ignore
+        keys={(item) => item.id}
+        from={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        enter={{ opacity: 1, position: "relative" }}
+        leave={{ opacity: 0, position: "absolute" }}
+      >
+        {(
+          // @ts-ignore
+          styles,
+          // @ts-ignore
+          { pageProps: animatedPageProps, Component: AnimatedComponent },
+          // @ts-ignore
+          key
+        ) => (
+          <animated.div
+            key={key}
+            style={{
+              ...styles,
+              width: "100%",
+              height: "100%",
+              overflow: "hidden",
+            }}
+          >
+            <AnimatedComponent {...animatedPageProps} />
+          </animated.div>
+        )}
+      </Transition>
     </div>
   );
 }

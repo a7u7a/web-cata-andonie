@@ -108,9 +108,35 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
       },
       transient: false,
     },
+    v6: {
+      label: "v6",
+      value: 0.0,
+      min: 0,
+      max: 1.5,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_v6.value = v;
+        }
+      },
+      transient: false,
+    },
+    v7: {
+      label: "v7",
+      value: 0.4,
+      min: 0,
+      max: 1.5,
+      step: 0.00001,
+      onChange: (v) => {
+        if (matRef.current.uniforms) {
+          matRef.current.uniforms.u_v7.value = v;
+        }
+      },
+      transient: false,
+    },
     scale: {
       label: "scale",
-      value: 0.88,
+      value: 1.68,
       min: 0,
       max: 20,
       step: 0.00001,
@@ -136,7 +162,7 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     imgScale: {
       label: "imgScale",
-      value: 1.5,
+      value: 1.85,
       min: 0.01,
       max: 3,
       step: 0.00001,
