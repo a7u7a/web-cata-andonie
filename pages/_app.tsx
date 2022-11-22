@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="z-0 fixed w-full flex flex-row justify-center text-8xl font-bold">
         Catalina Andonie
       </div>
-      <div className="absolute z-10 w-full h-[110vh] pt-40">
+      <div className="absolute z-10 w-full h-[110vh] mt-40">
         <PageBackground
           progress={0.5}
           scale={0.8}
