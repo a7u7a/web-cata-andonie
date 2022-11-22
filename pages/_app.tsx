@@ -39,6 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   ];
   return (
     <div>
+      <div className="fixed">Henlo</div>
       <div className="fixed w-full h-[110vh]">
         <PageBackground
           progress={0.5}
