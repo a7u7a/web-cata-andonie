@@ -14,19 +14,19 @@ interface ExhibitionsProps {
 
 const Exhibitions = ({ exhibitionsPosts }: ExhibitionsProps) => {
   return (
-    <div className="relative p-6 flex flex-row">
-      <div className="flex flex-col space-y-0 pr-4  mb-20 w-1/2">
-        <div className="text-8xl text-white mix-blend-difference transition-all duration-300 hover:text-indigo-600 hover:cursor-pointer">
-          <Link href={"/exhibitions"}>Exhibitions</Link>
-        </div>
-        <div className="text-4xl font-bold text-white mix-blend-difference transition-all duration-300 hover:text-indigo-600  hover:cursor-pointer">
-          <Link href={"/new-index"}>Back</Link>
-        </div>
-        
+    <div className="pt-40">
+      <div className="absolute h-[110vh] p-6 z-50">
+        <div className="flex flex-col space-y-0 pr-4  mb-20 w-1/2">
+          <div className="text-8xl text-white mix-blend-difference transition-all duration-300 hover:text-indigo-600 hover:cursor-pointer">
+            <Link href={"/exhibitions"}>Exhibitions</Link>
+          </div>
+          <div className="text-4xl font-bold text-white mix-blend-difference transition-all duration-300 hover:text-indigo-600  hover:cursor-pointer">
+            <Link href={"/test-layout"}>Back</Link>
+          </div>
+
           <News exhibitionsPosts={exhibitionsPosts} />
-        
+        </div>
       </div>
-      
     </div>
   );
 };

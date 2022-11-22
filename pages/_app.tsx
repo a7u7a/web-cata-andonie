@@ -78,8 +78,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         keys={(item) => item.id}
         from={{ opacity: 0 }}
         initial={{ opacity: 0 }}
-        enter={{ opacity: 1  }}
-        leave={{ opacity: 0}}
+        enter={{ opacity: 1, position: "relative" }}
+        leave={{ opacity: 0, position: "absolute" }}
+        config= {{ mass: 1, tension: 280, friction: 60, duration: 600 }}
       >
         {(
           // @ts-ignore

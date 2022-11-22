@@ -27,7 +27,7 @@ interface BackgroundWobbleProps {
 }
 
 const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
-  console.log("PageBackground render");
+  // console.log("PageBackground render");
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
