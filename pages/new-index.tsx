@@ -52,61 +52,32 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   return (
     <div>
+        {/* <About post={aboutPost} /> */}
       <div>
-        <div>
-          {/* <div className="inset-y-0 right-0 mix-blend-difference z-50 w-full">
-            <div className="pt-4 ">
-              <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer text-8xl font-bold">
-                Catalina Andonie
-              </p>
-            </div>
-          </div> */}
 
+        <div>
           <div className="pl-4 relative flex flex-col">
             <div className="pt-20 mix-blend-difference  ">
-              {/* <div className="font-bold text-7xl flex content-end">
-                <p className="absolute right-0 pr-4 transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer ">
-                  Catalina Andonie
-                </p>
-              </div> */}
-
-              <div className="flex flex-col space-y-0 pr-4 text-8xl text-white mb-20">
-                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  <Link href={"/exhibitions"}>Exhibitions</Link>
-                </div>
-                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+              <div className="flex flex-col space-y-0 pr-4 text-8xl font-bold text-white mb-20">
+              <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Works
                 </div>
                 <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+                  <Link href={"/exhibitions"}>Exhibitions</Link>
+                </div>
+                
+                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Bio
                 </div>
-                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+                {/* <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Contact
-                </div>
+                </div> */}
               </div>
             </div>
-
-            {/* <div className="pt-48 flex flex-row justify-between">
-              <About post={aboutPost} />
-            </div> */}
-          </div>
-        </div>
-        <VideoHero />
-
-        <div className="relative flex flex-row">
-          {/* <div className="w-1/2">
-            <div className="absolute w-1/2 inset-x-0 bottom-0 text-7xl pt-4 mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
-              <div className="pl-4 pb-8 font-bold text-7xl">Selected</div>
-            </div>
-          </div> */}
-          <div className="">
-            {/* <News exhibitionsPosts={exhibitionsPosts} /> */}
-            
-              <About post={aboutPost} />
-            
           </div>
         </div>
 
+        <About />
         <div className="relative flex flex-col md:flex-row bg-white">
           <div className="flex flex-col w-full md:w-1/2">
             {isMd ? (
@@ -160,8 +131,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
             <></>
           )}
         </div>
-        <WorksCatalogue posts={workPosts} />
-        <div className="relative flex flex-row h-[100vh]">
+
+<WorksCatalogue posts={workPosts} />
+
+        {/* <div className="relative flex flex-row h-[100vh]">
           <div className="pl-4 pt-52 pb-8 flex flex-col w-1/2">
             <div className=" text-7xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
               <div className=" font-bold text-7xl">Photography</div>
@@ -220,7 +193,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

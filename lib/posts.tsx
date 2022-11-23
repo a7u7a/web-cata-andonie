@@ -217,7 +217,7 @@ export const getAbout = (): aboutPost => {
   const contentSpanish = matterResult.content;
   const _ = matter(matterResult.data.body_eng);
   const contentEnglishOut = _.content.split("\n").join("\r\n");
-
+  console.log("matterResult test", matterResult);
   return {
     id,
     title: matterResult.data.title,

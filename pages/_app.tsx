@@ -1,13 +1,23 @@
 import "../styles/globals.css";
+import { GetStaticProps } from "next";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useState, forwardRef, useEffect, CSSProperties } from "react";
 import { useTransition, animated, Transition } from "@react-spring/web";
+import {
+  getAllWorkPosts,
+  getAllExhibitionsPosts,
+  getAbout,
+} from "../lib/posts";
+import About from "../components/new-about";
 import PageBackground from "../components/stacking-effects3/index";
+import VideoHero from "../components/new-video-hero";
+import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
 
 interface AppWrapperProps {
   children: JSX.Element;
 }
+
 
 // const AppWrapper = ({ children }: AppWrapperProps) => {
 //   const router = useRouter();
@@ -39,8 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   ];
   return (
     <div>
-      <div className="fixed">Henlo</div>
-      <div className="fixed w-full h-[110vh]">
+      <div className="fixed w-full h-[110vh] z-0">
         <PageBackground
           progress={0.5}
           scale={0.8}
@@ -50,6 +59,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           speed={-0.02}
         />
       </div>
+      <VideoHero />
+      
 
       <Transition
         items={items}
@@ -57,8 +68,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         keys={(item) => item.id}
         from={{ opacity: 0 }}
         initial={{ opacity: 0 }}
-        enter={{ opacity: 1, position: "relative" }}
-        leave={{ opacity: 0, position: "absolute" }}
+        enter={{ opacity: 1 }}
+        leave={{ opacity: 0 }}
       >
         {(
           // @ts-ignore
@@ -81,8 +92,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           </animated.div>
         )}
       </Transition>
+      
     </div>
   );
 }
 
 export default MyApp;
+
