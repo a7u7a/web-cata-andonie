@@ -17,6 +17,7 @@ import {
 import useMediaQuery from "../lib/media";
 import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/new-works-catalogue";
+import NewNavBar from "../components/new-nav-bar";
 
 interface VideoHeroProps {
   height: number;
@@ -50,8 +51,29 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
 
+  // Update scroll
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e: Event) => {
+      const target = e.target as Document;
+      const scrollTop = target.documentElement.scrollTop;
+      setScrollTop(scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+
+  
+
   return (
     <div>
+      <NewNavBar
+        
+        scrollTop={scrollTop}
+        scrollThreshold={400}
+      />
         {/* <About post={aboutPost} /> */}
       <div>
 
