@@ -68,7 +68,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
       <div
         ref={titleRef}
         className={`fixed hover:text-indigo-600
-        flex flex-col w-screen items-center 
+        flex flex-col w-screen items-center z-0
         text-center text-mainSize font-bold text-black
         transition-opacity duration-1000
         ${scrollTop > 45 ? "opacity-40" : "opacity-100"}`}
@@ -76,7 +76,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         Catalina Andonie
       </div>
 
-      <VideoHero className="pt-36" />
+      <VideoHero className="" />
       <About post={aboutPost} />
     </div>
   );

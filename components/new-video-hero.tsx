@@ -36,20 +36,20 @@ const VideoHero = ({ className }: VideoHeroProps) => {
 
   return (
     <div className="pt-36 relative">
-      <div className="absolute z-0 w-full h-full">
+      <div className="absolute w-full h-full">
         <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
       </div>
       <div>
-        <div className="relative w-screen h-[90vh]">
+        <div className="mt-36 relative w-screen h-[90vh]">
           <div className="absolute inset-x-0 bottom-0 pl-4 pr-4">
-            <div className="flex flex-row justify-between pt-4 pb-4">
+            <div className="flex flex-row items-center justify-between pt-4 pb-4">
 
               <button onClick={videoNext}>
                 <ArrowLeft size={38} weight="bold" color="white" />
               </button>
 
               
-                <div className="text-white">{tituloVideo}</div>
+                <div className="text-white text-center">{tituloVideo}</div>
               
 
               <button onClick={videoPrev}>
