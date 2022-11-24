@@ -58,7 +58,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         <div>
           <div className="pl-4 relative flex flex-col">
             <div className="pt-20 mix-blend-difference  ">
-              <div className="flex flex-col space-y-0 pr-4 text-8xl font-bold text-white mb-20">
+              <div className="flex flex-col space-y-20 items-center pr-4 text-8xl font-bold text-white mb-20">
               <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
                   Works
                 </div>
@@ -77,9 +77,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
           </div>
         </div>
 
-        <About />
+        {/* <About /> */}
         <div className="relative flex flex-col md:flex-row bg-white">
-          <div className="flex flex-col w-full md:w-1/2">
+
+          {/* <div className="flex flex-col w-full md:w-1/2">
             {isMd ? (
               <></>
             ) : (
@@ -94,10 +95,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
                 />
               ))
             )}
-          </div>
+          </div> */}
 
           {/* Columna izquierda */}
-          <div className="flex flex-col w-full md:w-1/2">
+          {/* <div className="flex flex-col w-full md:w-1/2">
             {isMd ? (
               <></>
             ) : (
@@ -129,13 +130,15 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
             </div>
           ) : (
             <></>
-          )}
+          )} */}
+
         </div>
 
-<WorksCatalogue posts={workPosts} />
+{/* <WorksCatalogue posts={workPosts} /> */}
 
-        {/* <div className="relative flex flex-row h-[100vh]">
-          <div className="pl-4 pt-52 pb-8 flex flex-col w-1/2">
+        <div className="relative flex flex-col items-center text-center h-[100vh]">
+
+          {/* <div className="pl-4 pt-52 pb-8 flex flex-col w-1/2">
             <div className=" text-7xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
               <div className=" font-bold text-7xl">Photography</div>
             </div>
@@ -149,9 +152,9 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
                 <li>Paulina Kim Ju</li>
               </ul>
             </div>
-          </div>
+          </div> */}
 
-          <div className="pl-4 pt-8 pb-8 flex flex-col w-1/2">
+          {/* <div className="pl-4 pt-8 pb-8 flex flex-col w-1/2">
             <div className="text-7xl pt-4 mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
               <div className=" font-bold text-7xl">Contact</div>
             </div>
@@ -174,7 +177,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
             </div>
 
             <div className="pt-36 pb-36 pr-4">
-              <div className="text-3xl text-white">
+              <div className="text-3xl text-left text-white">
                 {locale === "es" ? (
                   <p>
                     corporis asperiores incidunt quam, rerum debitis voluptate
@@ -192,8 +195,9 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
                 )}
               </div>
             </div>
-          </div>
-        </div> */}
+          </div> */}
+
+        </div>
       </div>
     </div>
   );
