@@ -20,7 +20,7 @@ const NavBar = ({
   // Using two useEffects so I can avoid updating the check every time scrollTop updates
   useEffect(() => {
     if (scrollThreshold != undefined) {
-      if (scrollTop! >= scrollThreshold - bounds.height) {
+      if (scrollTop! >= scrollThreshold) {
         // update visibility
         setCheck(true);
       } else {
@@ -33,7 +33,7 @@ const NavBar = ({
 
   useEffect(() => {
     // or transition from opacity-0 to opacity-100
-    setClassString(`mix-blend-difference fixed inset-x-0 top-0 flex flex-row justify-between
+    setClassString(`fixed mix-blend-difference inset-x-0 top-0 flex flex-row justify-between
         w-screen text-white z-50 px-5
         transition-all duration-300 ease-out
         ${check ? "opacity-100" : "opacity-0"} `);

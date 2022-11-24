@@ -49,17 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   ];
   return (
     <div>
-      <div className="fixed w-full h-[110vh] z-0">
-        <PageBackground
-          progress={0.5}
-          scale={0.8}
-          src={"/shader-backgrounds2/2.png"}
-          imgAspect={1.77}
-          imgScale={2.0}
-          speed={-0.02}
-        />
-      </div>
-      <VideoHero />
+      
       
 
       <Transition

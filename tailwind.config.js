@@ -12,6 +12,9 @@ module.exports = {
       },
       fontSize: {
         '8xl': '7.052rem',
+      },
+      fontSize: {
+        'mainSize': '6.052rem',
       }
     },
   },

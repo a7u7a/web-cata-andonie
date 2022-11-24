@@ -19,11 +19,6 @@ import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/new-works-catalogue";
 import NewNavBar from "../components/new-nav-bar";
 
-interface VideoHeroProps {
-  height: number;
-  worksHeight?: number;
-}
-
 interface HomeProps {
   workPosts: workPost[];
   exhibitionsPosts: exhibitionsPost[];
@@ -49,7 +44,9 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
     });
   }, []);
 
-  const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
+  const [titleRef, titleBounds] = useMeasure({
+    polyfill: ResizeObserver,
+  });
 
   // Update scroll
   const [scrollTop, setScrollTop] = useState(0);
@@ -64,163 +61,23 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
-  
-
   return (
-    <div>
-      <NewNavBar
-        
-        scrollTop={scrollTop}
-        scrollThreshold={400}
-      />
-        {/* <About post={aboutPost} /> */}
-      <div>
+    <div className="relative"> 
+      <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
 
-        <div>
-          <div className="pl-4 relative flex flex-col">
-            <div className="pt-20 mix-blend-difference  ">
-              <div className="flex flex-col space-y-20 items-center pr-4 text-8xl font-bold text-white mb-20">
-              <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  Works
-                </div>
-                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  <Link href={"/exhibitions"}>Exhibitions</Link>
-                </div>
-                
-                <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  Bio
-                </div>
-                {/* <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-                  Contact
-                </div> */}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* <About /> */}
-        <div className="relative flex flex-col md:flex-row bg-white">
-
-          {/* <div className="flex flex-col w-full md:w-1/2">
-            {isMd ? (
-              <></>
-            ) : (
-              firstCol.map((post, i) => (
-                <IndexImage
-                  key={i}
-                  href={"works/" + post.id}
-                  title={post.title}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  src={post.thumbnail!}
-                />
-              ))
-            )}
-          </div> */}
-
-          {/* Columna izquierda */}
-          {/* <div className="flex flex-col w-full md:w-1/2">
-            {isMd ? (
-              <></>
-            ) : (
-              secondCol.map((post, i) => (
-                <IndexImage
-                  key={i}
-                  href={"works/" + post.id}
-                  title={post.title}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  src={post.thumbnail!}
-                />
-              ))
-            )}
-          </div>
-
-          {isMd ? (
-            <div ref={worksRef} id="works" className="flex flex-col">
-              {frontPagePosts.map((post, i) => (
-                <IndexImage
-                  key={i}
-                  href={"works/" + post.id}
-                  title={post.title}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  src={post.thumbnail!}
-                />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )} */}
-
-        </div>
-
-{/* <WorksCatalogue posts={workPosts} /> */}
-
-        <div className="relative flex flex-col items-center text-center h-[100vh]">
-
-          {/* <div className="pl-4 pt-52 pb-8 flex flex-col w-1/2">
-            <div className=" text-7xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
-              <div className=" font-bold text-7xl">Photography</div>
-            </div>
-            <div className="mt-12 text-white text-3xl">
-              <ul>
-                <li>Paola Velázquez</li>
-                <li>Felipe Ugalde</li>
-                <li>Matthew Neary</li>
-                <li>Jose Noli</li>
-                <li>Andres Lennon</li>
-                <li>Paulina Kim Ju</li>
-              </ul>
-            </div>
-          </div> */}
-
-          {/* <div className="pl-4 pt-8 pb-8 flex flex-col w-1/2">
-            <div className="text-7xl pt-4 mix-blend-difference transition-all duration-75 hover:text-indigo-600 text-white hover:cursor-pointer">
-              <div className=" font-bold text-7xl">Contact</div>
-            </div>
-            <div className="mt-8 text-white text-3xl">
-              <div>
-                <a
-                  className="break-words"
-                  href="mailto:catalinaandonie@gmail.com"
-                >
-                  catalinaandonie@gmail.com
-                </a>
-              </div>
-              <div className="mt-4">
-                <a href="https://www.instagram.com/catalina.andonie/">
-                  Ig: @catalina.andonie
-                </a>
-              </div>
-              <div className="mt-4">Todos los derechos reservados</div>
-              <div className="mt-4">2022</div>
-            </div>
-
-            <div className="pt-36 pb-36 pr-4">
-              <div className="text-3xl text-left text-white">
-                {locale === "es" ? (
-                  <p>
-                    corporis asperiores incidunt quam, rerum debitis voluptate
-                    enim, quia doloremque eius, dicta eos ut. Commodi adipisci
-                    tempore iste, fugit Español lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Laudantium reprehenderit quam.
-                  </p>
-                ) : (
-                  <p>
-                    English lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Laudantium corporis asperiores incidunt quam, rerum
-                    debitis voluptate enim, quia doloremque eius, dicta eos ut.
-                    Commodi adipisci tempore iste, fugit reprehenderit quam.
-                  </p>
-                )}
-              </div>
-            </div>
-          </div> */}
-
-        </div>
+      <div
+        ref={titleRef}
+        className={`fixed hover:text-indigo-600
+        flex flex-col w-screen items-center 
+        text-center text-mainSize font-bold text-black
+        transition-opacity duration-1000
+        ${scrollTop > 45 ? "opacity-40" : "opacity-100"}`}
+      >
+        Catalina Andonie
       </div>
+
+      <VideoHero className="pt-36" />
+      <About post={aboutPost} />
     </div>
   );
 };
