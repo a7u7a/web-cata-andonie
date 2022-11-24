@@ -24,6 +24,7 @@ interface BackgroundWobbleProps {
   imgAspect: number;
   imgScale: number;
   speed: number;
+  brightness?:number
 }
 
 const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
@@ -88,6 +89,7 @@ const PageBackground = ({
   imgAspect,
   imgScale,
   speed,
+  brightness = 0
 }: BackgroundWobbleProps) => {
   // const { noiseScale } = useControls({
   //   noiseScale: {
@@ -119,7 +121,7 @@ const PageBackground = ({
       />
       <EffectComposer>
         {/* <NoiseDistorsion u_scale={0.88} /> */}
-        <BrightnessContrast brightness={-0.2} contrast={0.5} />
+        <BrightnessContrast brightness={brightness} contrast={0.5} />
       </EffectComposer>
     </Canvas>
   );

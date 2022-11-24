@@ -8,7 +8,7 @@ import VideoHero from "../components/new-video-hero";
 import { GetStaticProps } from "next";
 import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
 import About from "../components/new-about";
-import News from "../components/new-news";
+import News from "../components/news";
 import {
   getAllWorkPosts,
   getAllExhibitionsPosts,
@@ -18,6 +18,7 @@ import useMediaQuery from "../lib/media";
 import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/new-works-catalogue";
 import NewNavBar from "../components/new-nav-bar";
+import PageBackground from "../components/stacking-effects3/index";
 
 interface HomeProps {
   workPosts: workPost[];
@@ -62,7 +63,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   }, []);
 
   return (
-    <div className="relative"> 
+    <div className="relative">
       <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
 
       <div
@@ -78,6 +79,24 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
       <VideoHero className="" />
       <About post={aboutPost} />
+
+      <div className="relative">
+        <div className="absolute w-full h-full">
+          <PageBackground
+            progress={0.5}
+            scale={0.8}
+            src={"/shader-backgrounds2/2.png"}
+            imgAspect={1.77}
+            imgScale={2.0}
+            speed={-0.02}
+            brightness={-0.4}
+          />
+        </div>
+
+        <div className="relative w-screen p-6">
+          <News exhibitionsPosts={exhibitionsPosts} />
+        </div>
+      </div>
     </div>
   );
 };

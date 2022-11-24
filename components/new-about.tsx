@@ -19,7 +19,7 @@ const About = ({ post }: AboutProps) => {
   // };
 
   return (
-    <div className="relative bg-white p-6 mb-96 flex flex-row justify-between">
+    <div className="relative bg-white p-6 pt-12 pb-12 flex flex-row justify-between">
       {/* <div className="pl-1 md:pl-4 text-white text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div> */}
@@ -33,14 +33,12 @@ const About = ({ post }: AboutProps) => {
 
       <div className="relative">
         <div className="absolute flex flex-col items-end bottom-0 right-0 w-40">
-          
-          <div className="text-4xl text-right font-bold">
+          <Link href={"/new-bio"}>
+            <div className="hover:underline hover:cursor-pointer">
+              <div className="text-4xl text-right font-bold">Full Bio</div>
 
-          Full Bio
-          </div>
-          
-          <Link href={"/new-bio"} >
-            <ArrowRight size={38} weight="bold" color="black" />
+              <ArrowRight size={38} weight="bold" color="black" />
+            </div>
           </Link>
         </div>
       </div>

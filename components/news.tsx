@@ -20,13 +20,14 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
   )[0];
 
   return (
-    <div className="pt-0 md:pt-8 pb-8">
+    <div className="pt-16 pb-8">
+      
       <div className="flex flex-row justify-between pl-1 md:pl-4 pr-1 md:pr-4">
-        <div className="text-3xl">
+        <div className="text-6xl  font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
           {locale === "es" ? "Exhibiciones" : "Exhibitions"}
         </div>
       </div>
-      <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-8">
+      <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-16">
         <div className="flex flex-row space-x-4">
           <div className="flex flex-col w-1/2 mr-1 space-y-2">
             <NewsSection post={currentSection} />
