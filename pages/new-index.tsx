@@ -54,10 +54,6 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   // Update scroll
   const [scrollTop, setScrollTop] = useState(0);
 
-  // useEffect(() => {
-  //   console.log("scrollTop", scrollTop);
-  // }, [scrollTop]);
-
   useEffect(() => {
     const onScroll = (e: Event) => {
       const target = e.target as Document;

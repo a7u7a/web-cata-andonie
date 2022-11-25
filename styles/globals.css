@@ -33,8 +33,8 @@
 
 .work {
   @apply w-full text-black
-  columns-1 sm:columns-2 text-[0.95rem] text-justify gap-6
-  prose 
+  text-3xl
+  prose leading-snug
   prose-p:my-0;
 }
 

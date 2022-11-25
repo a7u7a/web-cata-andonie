@@ -54,7 +54,7 @@ const NavBar = ({
       </Link>
 
       <Link href={"/"}>
-        <div className="pl-3 md:pl-6 p-3 font-black text-4xl cursor-pointer hover:text-indigo-600">
+        <div className="pl-3 md:pl-6 p-3 font-bold text-4xl cursor-pointer hover:text-indigo-600">
           Catalina Andonie
         </div>
       </Link>

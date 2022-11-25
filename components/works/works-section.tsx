@@ -28,8 +28,8 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
           {locale === "es" ? "Obras seleccionadas" : "Selected works"}
         </div>
 
-        <Link href={"/new-bio"}>
-          <div className="flex flex-col items-end justify-end hover:underline hover:cursor-pointer pb-2 pr-6">
+        <Link href={"/works"}>
+          <div className="flex flex-col items-end justify-end hover:underline hover:cursor-pointer pb-6 pr-6">
             <div className="text-4xl text-right font-bold">See all</div>
             <ArrowRight size={38} weight="bold" color="black" />
           </div>
@@ -44,7 +44,7 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
       <div className="w-full p-4">
         <Link href={"/new-bio"}>
           <div className="flex flex-col items-end hover:underline hover:cursor-pointer">
-            <div className="text-4xl text-right font-bold">All works</div>
+            <div className="text-4xl text-right font-bold">See all</div>
             <ArrowRight size={38} weight="bold" color="black" />
           </div>
         </Link>

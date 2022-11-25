@@ -11,11 +11,9 @@ module.exports = {
         sans: ["Riforma", "sans-serif"],
       },
       fontSize: {
-        '8xl': '7.052rem',
+        "8xl": "4.5rem",
+        mainSize: "6.052rem",
       },
-      fontSize: {
-        'mainSize': '6.052rem',
-      }
     },
   },
   plugins: [require("@tailwindcss/typography")],
