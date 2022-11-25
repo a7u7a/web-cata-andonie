@@ -21,11 +21,11 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
   }, []);
 
   return (
-    <div className="ml-2 mr-2 mb-2">
-      <div className="pl-1 md:pl-4 pt-12 pb-12 text-6xl font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
+    <div >
+      <div className="pt-16 pb-16 pl-4 text-6xl font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
         {locale === "es" ? "Catálogo de obras" : "All works"}
       </div>
-      <div className="grid grid-cols-2 gap-y-2">
+      <div className="ml-1 mr-1 grid grid-cols-2 gap-y-1 gap-x-1">
         {posts.map((post, i) => (
           <WorksImage key={i} post={post} />
         ))}

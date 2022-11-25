@@ -90,18 +90,16 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
           <PageBackground
             progress={0.5}
             scale={0.8}
-            src={"/shader-backgrounds3/1.png"}
+            src={"/shader-backgrounds/1.jpg"}
             imgAspect={1.77}
             imgScale={2.0}
             speed={-0.02}
-            brightness={-0.35}
+            brightness={-0.4}
             scroll={scrollTop}
           />
         </div>
 
-        <div className="relative w-screen p-6">
-          <News exhibitionsPosts={exhibitionsPosts} />
-        </div>
+        <News exhibitionsPosts={exhibitionsPosts} />
       </div>
 
       <WorksSection posts={frontPagePosts} />

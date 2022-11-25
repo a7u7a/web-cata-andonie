@@ -34,7 +34,7 @@ const NavBar = ({
   useEffect(() => {
     // or transition from opacity-0 to opacity-100
     setClassString(`fixed mix-blend-difference inset-x-0 top-0 flex flex-row justify-between
-        w-screen text-white z-50 px-5
+        w-screen text-white z-50 px-4
         transition-all duration-300 ease-out
         ${check ? "opacity-100" : "opacity-0"} `);
   }, [check]);

@@ -63,6 +63,7 @@ const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
       matRef.current.needsUpdate = true;
     }
   });
+  
   useEffect(() => {
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_resolution.value.x = size.width * 2;
