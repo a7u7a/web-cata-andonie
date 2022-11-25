@@ -20,6 +20,7 @@ import WorksCatalogue from "../components/new-works-catalogue";
 import NewNavBar from "../components/new-nav-bar";
 import PageBackground from "../components/stacking-effects3/index";
 import WorksSection from "../components/works/works-section";
+import NewFooter from "../components/new-footer";
 
 interface HomeProps {
   workPosts: workPost[];
@@ -86,8 +87,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
       <About post={aboutPost} />
       <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
       <WorksSection posts={frontPagePosts} />
-
-      
+      <NewFooter />
     </div>
   );
 };

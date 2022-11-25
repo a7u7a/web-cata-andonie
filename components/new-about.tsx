@@ -19,7 +19,7 @@ const About = ({ post }: AboutProps) => {
   // };
 
   return (
-    <div className="relative bg-white p-4 pt-16 pb-16 flex flex-row justify-between">
+    <div className="relative bg-white p-6 pt-16 pb-16 flex flex-row justify-between">
       {/* <div className="pl-1 md:pl-4 text-white text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div> */}

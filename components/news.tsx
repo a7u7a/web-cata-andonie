@@ -35,17 +35,17 @@ const News = ({ exhibitionsPosts, scroll }: NewsProps) => {
           scroll={scroll}
         />
       </div>
-      <div className="relative w-screen p-4 pt-16 pb-8">
-        <div className="text-6xl  font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+      <div className="relative w-screen p-6 pt-16 pb-14">
+        <div className="text-6xl font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
           {locale === "es" ? "Exhibiciones" : "Exhibitions"}
         </div>
-        <div className="pt-16">
+        <div className="flex flex-row pt-16">
           <div className="flex flex-row space-x-4">
-            <div className="flex flex-col w-1/2 mr-1 space-y-12">
+            <div className="flex flex-col w-1/2 space-y-12">
               <NewsSection post={currentSection} />
               <NewsSection post={recentSection} />
             </div>
-            <div className="flex flex-col w-1/2 ml-1">
+            <div className="flex flex-col w-1/2">
               <NewsSection post={upcomingSection} />
             </div>
           </div>

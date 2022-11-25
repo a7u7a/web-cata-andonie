@@ -41,7 +41,7 @@ const VideoHero = ({ className }: VideoHeroProps) => {
       </div>
       <div>
         <div className="mt-36 relative w-screen h-[90vh]">
-          <div className="absolute inset-x-0 bottom-0 pl-4 pr-4">
+          <div className="absolute inset-x-0 bottom-0 px-6">
             <div className="flex flex-row items-center justify-between pt-4 pb-4">
 
               <button onClick={videoNext}>

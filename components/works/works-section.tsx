@@ -23,9 +23,19 @@ const WorksCatalogue = ({ posts }: WorksCatalogueProps) => {
 
   return (
     <div className="relative bg-white">
-      <div className="pt-16 pb-16 pl-4 text-6xl font-bold transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
-        {locale === "es" ? "Obras seleccionadas" : "Selected works"}
+      <div className="flex flex-row justify-between ">
+        <div className="pt-16 pb-16 pl-6 text-6xl font-bold transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
+          {locale === "es" ? "Obras seleccionadas" : "Selected works"}
+        </div>
+
+        <Link href={"/new-bio"}>
+          <div className="flex flex-col items-end justify-end hover:underline hover:cursor-pointer pb-2 pr-6">
+            <div className="text-4xl text-right font-bold">See all</div>
+            <ArrowRight size={38} weight="bold" color="black" />
+          </div>
+        </Link>
       </div>
+
       <div className="ml-1 mr-1 grid grid-cols-2 gap-y-1 gap-x-1">
         {posts.map((post, i) => (
           <WorksImage key={i} post={post} />
