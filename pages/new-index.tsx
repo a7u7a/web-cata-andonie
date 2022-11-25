@@ -84,25 +84,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
       <VideoHero className="" />
       <About post={aboutPost} />
-
-      <div className="relative">
-        <div className="absolute w-full h-full">
-          <PageBackground
-            progress={0.5}
-            scale={0.8}
-            src={"/shader-backgrounds/1.jpg"}
-            imgAspect={1.77}
-            imgScale={2.0}
-            speed={-0.02}
-            brightness={-0.4}
-            scroll={scrollTop}
-          />
-        </div>
-
-        <News exhibitionsPosts={exhibitionsPosts} />
-      </div>
-
+      <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
       <WorksSection posts={frontPagePosts} />
+
+      
     </div>
   );
 };

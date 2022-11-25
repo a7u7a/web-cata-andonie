@@ -18,7 +18,7 @@ const WorksImage = ({ post }: CatalogueImageProps) => {
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative h-44 sm:h-64 md:h-44 lg:h-48 w-full cursor-pointer"
+        className="relative h-96 w-full cursor-pointer"
       >
         <Image
           src={post.thumbnail!}
@@ -26,10 +26,10 @@ const WorksImage = ({ post }: CatalogueImageProps) => {
           layout="fill"
           alt="imagen"
         />
-        <div className="absolute mx-2 my-1 left-0 top-0 inset-0">
+        <div className="absolute mx-3 my-2 left-0 bottom-0">
           <div
-            className={`text-lg md:text-2xl text-white break-words transition-opacity duration-200 ${
-              hovered ? "opacity-100" : "md:opacity-0"
+            className={`text-lg md:text-2xl text-white break-words transition-all duration-200 ${
+              hovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >
             {locale === "es" ? post.title : post.title_eng}

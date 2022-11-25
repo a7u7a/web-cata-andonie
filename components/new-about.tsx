@@ -32,9 +32,9 @@ const About = ({ post }: AboutProps) => {
       </div>
 
       <div className="relative">
-        <div className="absolute flex flex-col items-end bottom-0 right-0 w-40">
+        <div className="absolute bottom-0 right-0 w-40">
           <Link href={"/new-bio"}>
-            <div className="hover:underline hover:cursor-pointer">
+            <div className="flex flex-col items-end hover:underline hover:cursor-pointer">
               <div className="text-4xl text-right font-bold">Full Bio</div>
               <ArrowRight size={38} weight="bold" color="black" />
             </div>
