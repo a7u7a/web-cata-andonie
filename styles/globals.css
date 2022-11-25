@@ -26,7 +26,7 @@
 }
 
 .newAbout {
-  @apply w-full text-black text-5xl space-y-10 
+  @apply w-full text-black text-4xl space-y-10 
   prose 
   prose-p:my-0 leading-snug;
 }

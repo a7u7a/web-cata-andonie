@@ -128,7 +128,7 @@ void main() {
   DF += snoise(pos+vel)*cos(time*u_v2)+0.5;
   
   // Add a random position
-  a = snoise(pos*vec2(cos(time*u_w1),sin((sin(time*u_w2))))*(cos(time)*u_w3))*3.1415;
+  a = snoise(pos*vec2(cos(time*u_w1),sin((sin(time*u_w2))))*(tan(time)*u_w3))*3.1415;
   vel = vec2(cos(-a),sin(a));
   DF += snoise(pos+vel)*(cos(time)*u_v4)+(sin(time)*u_v5);
   //DF += snoise(pos+vel)*(cos(time)*u_v4)+(sin(time)*u_v5);

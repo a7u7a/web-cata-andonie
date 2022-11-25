@@ -16,6 +16,7 @@ import baseFragment from "./base.frag";
 import Controls from "./controls";
 // import NoiseDistorsion from "./noise-distorsion";
 import { useControls } from "leva";
+import { linearMap, getRandomArbitrary } from "../../lib/utils";
 
 interface BackgroundWobbleProps {
   progress: number;
@@ -24,37 +25,46 @@ interface BackgroundWobbleProps {
   imgAspect: number;
   imgScale: number;
   speed: number;
-  brightness?:number
+  brightness?: number;
+  scroll: number;
 }
 
-const QuadLayer = ({ src, imgAspect }: BackgroundWobbleProps) => {
-  console.log("PageBackground render");
+const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
+  
   const matRef = useRef<ShaderMaterial>(null!);
   const [textureA] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
-  Controls(matRef);
+  // Controls(matRef);
   const uniforms = useMemo(
     () => ({
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_imgAspect: { value: imgAspect },
-      u_imgScale: { value: 2.5 },
+      u_imgScale: { value: 1.85 },
       u_time: { value: 0.0 },
       u_progress: { value: 0.0 },
       u_speed: { value: 0.01 },
-      u_scale: { value: 0.88 },
+      u_scale: { value: getRandomArbitrary(0.2, 0.6) },
       u_p: { value: 0.01 },
       u_w1: { value: 1.0 },
       u_w2: { value: 1.0 },
       u_w3: { value: 1.0 },
-      u_v2: { value: 1.0 },
-      u_v4: { value: 0.9 },
-      u_v5: { value: 0.4 },
-      u_v6: { value: 0.4 },
-      u_v7: { value: 0.4 },
+      u_v2: { value: getRandomArbitrary(0.1, 0.12) },
+      u_v4: { value: getRandomArbitrary(0.2, 0.6) },
+      // u_v5: { value: 0.4 },
+      u_v5: { value: 0 },
+      u_v6: { value: 0.0 },
+      u_v7: { value: 0.35 },
     }),
     [textureA]
   );
+
+  useEffect(() => {
+    if (matRef.current.uniforms) {
+      matRef.current.uniforms.u_v5.value = linearMap(scroll, 1035, 2000, 0, 1);
+      matRef.current.needsUpdate = true;
+    }
+  }, [scroll]);
 
   useFrame((state) => {
     // console.log("time", state.clock.elapsedTime);
@@ -89,7 +99,8 @@ const PageBackground = ({
   imgAspect,
   imgScale,
   speed,
-  brightness = 0
+  brightness = 0,
+  scroll,
 }: BackgroundWobbleProps) => {
   // const { noiseScale } = useControls({
   //   noiseScale: {
@@ -118,6 +129,7 @@ const PageBackground = ({
         imgAspect={1.77}
         imgScale={2.0}
         speed={-0.02}
+        scroll={scroll}
       />
       <EffectComposer>
         {/* <NoiseDistorsion u_scale={0.88} /> */}

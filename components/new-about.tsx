@@ -36,7 +36,6 @@ const About = ({ post }: AboutProps) => {
           <Link href={"/new-bio"}>
             <div className="hover:underline hover:cursor-pointer">
               <div className="text-4xl text-right font-bold">Full Bio</div>
-
               <ArrowRight size={38} weight="bold" color="black" />
             </div>
           </Link>

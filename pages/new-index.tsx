@@ -19,6 +19,7 @@ import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/new-works-catalogue";
 import NewNavBar from "../components/new-nav-bar";
 import PageBackground from "../components/stacking-effects3/index";
+import WorksSection from "../components/works/works-section";
 
 interface HomeProps {
   workPosts: workPost[];
@@ -34,10 +35,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   const { locale } = useRouter();
   const isMd = useMediaQuery("(max-width: 768px)");
   const frontPagePosts = workPosts.filter((post) => post.front_page);
-  const [firstCol, secondCol] = split(
-    frontPagePosts,
-    Math.floor(frontPagePosts.length / 2)
-  );
+  // const [firstCol, secondCol] = split(
+  //   frontPagePosts,
+  //   Math.floor(frontPagePosts.length / 2)
+  // );
 
   useEffect(() => {
     frontPagePosts.sort((a, b) => {
@@ -51,6 +52,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   // Update scroll
   const [scrollTop, setScrollTop] = useState(0);
+
+  // useEffect(() => {
+  //   console.log("scrollTop", scrollTop);
+  // }, [scrollTop]);
 
   useEffect(() => {
     const onScroll = (e: Event) => {
@@ -85,11 +90,12 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
           <PageBackground
             progress={0.5}
             scale={0.8}
-            src={"/shader-backgrounds2/2.png"}
+            src={"/shader-backgrounds3/1.png"}
             imgAspect={1.77}
             imgScale={2.0}
             speed={-0.02}
-            brightness={-0.4}
+            brightness={-0.35}
+            scroll={scrollTop}
           />
         </div>
 
@@ -97,6 +103,8 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
           <News exhibitionsPosts={exhibitionsPosts} />
         </div>
       </div>
+
+      <WorksSection posts={frontPagePosts} />
     </div>
   );
 };
