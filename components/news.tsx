@@ -29,7 +29,7 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
       </div>
       <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-16">
         <div className="flex flex-row space-x-4">
-          <div className="flex flex-col w-1/2 mr-1 space-y-2">
+          <div className="flex flex-col w-1/2 mr-1 space-y-12">
             <NewsSection post={currentSection} />
             <NewsSection post={recentSection} />
             {/* <div className="font-bold text-xl">Current</div>

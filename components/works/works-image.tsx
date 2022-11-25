@@ -20,7 +20,7 @@ const CatalogueImage = ({ post }: CatalogueImageProps) => {
         onMouseLeave={() => setHovered(false)}
         className="relative h-44 sm:h-64 md:h-44 lg:h-48 w-full cursor-pointer"
       >
-        <ImageWithParallelRefraction
+        {/* <ImageWithParallelRefraction
           progress={0.5}
           scale={0.8}
           src={post.thumbnail!}
@@ -28,7 +28,7 @@ const CatalogueImage = ({ post }: CatalogueImageProps) => {
           imgScale={2.0}
           speed={-0.02}
           brightness={-0.35}
-        />
+        /> */}
 
         {/* <Image
           src={post.thumbnail!}

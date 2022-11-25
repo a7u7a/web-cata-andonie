@@ -115,7 +115,7 @@ const PageBackground = ({
       style={{ background: "#000000" }}
       gl={{
         powerPreference: "high-performance",
-        toneMapping: LinearToneMapping,
+        // toneMapping: LinearToneMapping,
         alpha: false,
         antialias: false,
         stencil: false,
