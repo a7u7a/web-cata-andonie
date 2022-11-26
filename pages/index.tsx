@@ -111,7 +111,7 @@ export default function Home({
 
           {/* Columna izquierda */}
           <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
-            <News exhibitionsPosts={exhibitionsPosts} />
+            {/* <News exhibitionsPosts={exhibitionsPosts} /> */}
             {isMd ? (
               <></>
             ) : (
