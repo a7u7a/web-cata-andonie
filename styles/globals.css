@@ -9,7 +9,7 @@
 }
 
 .news {
-  @apply w-full text-white text-4xl
+  @apply w-full text-white text-3xl
   prose 
   prose-ul:list-none prose-ul:list-outside prose-ul:pl-0 prose-ul:mt-0 prose-ul:mb-0
   prose-li:pl-0
@@ -26,15 +26,15 @@
 }
 
 .newAbout {
-  @apply w-full text-black text-5xl space-y-10 
+  @apply w-full text-black text-4xl space-y-10 
   prose 
   prose-p:my-0 leading-snug;
 }
 
 .work {
   @apply w-full text-black
-  columns-1 sm:columns-2 text-[0.95rem] text-justify gap-6
-  prose 
+  text-3xl
+  prose leading-snug
   prose-p:my-0;
 }
 

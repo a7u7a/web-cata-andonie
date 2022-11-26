@@ -6,11 +6,10 @@ import { VideoNavProps } from "../interfaces/interfaces";
 import { ArrowLeft, ArrowRight } from "phosphor-react";
 
 interface VideoHeroProps {
-  height: number;
-  worksHeight?: number;
+  className: string;
 }
 
-const VideoHero = () => {
+const VideoHero = ({ className }: VideoHeroProps) => {
   const [tituloVideo, setTituloVideo] = useState("");
   const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
@@ -21,13 +20,6 @@ const VideoHero = () => {
 
   const isMd = useMediaQuery("(max-width: 768px)");
 
-  // const clickHandler = () => {
-  //   window.scrollTo({ left: 0, top: height - 40, behavior: "smooth" });
-  // };
-
-  // const clickHandlerSmall = () => {
-  //   window.scrollTo({ left: 0, top: worksHeight! - 40, behavior: "smooth" });
-  // };
   const { locale } = useRouter();
 
   const videoNext = () => {
@@ -43,25 +35,26 @@ const VideoHero = () => {
   };
 
   return (
-    <div>
-      <div className="relative">
-        <div className="absolute z-0 w-full h-full">
-          <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
-        </div>
-        <div>
-          <div className="w-screen h-[90vh]">
-            <div className="sticky pl-4 pr-4 inset-x-0 top-0 text-gray-200 mix-blend-plus-lighter">
-              <div className="flex flex-row justify-between pt-4 pb-4">
-                <button onClick={videoNext}>
-                  <ArrowLeft size={38} weight="bold" color="white" />
-                </button>
-                <button onClick={videoPrev}>
-                  <ArrowRight size={38} weight="bold" color="white" />
-                </button>
-              </div>
-            </div>
-            <div className="absolute bottom-0 left-0 ml-4 mb-4">
-              <div className="text-white">{tituloVideo}</div>
+    <div className="pt-36 relative">
+      <div className="absolute w-full h-full">
+        <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
+      </div>
+      <div>
+        <div className="mt-36 relative w-screen h-[90vh]">
+          <div className="absolute inset-x-0 bottom-0 px-6">
+            <div className="flex flex-row items-center justify-between pt-4 pb-4">
+
+              <button onClick={videoNext}>
+                <ArrowLeft size={38} weight="bold" color="white" />
+              </button>
+
+              
+                <div className="text-white text-center">{tituloVideo}</div>
+              
+
+              <button onClick={videoPrev}>
+                <ArrowRight size={38} weight="bold" color="white" />
+              </button>
             </div>
           </div>
         </div>

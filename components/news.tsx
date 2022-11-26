@@ -1,12 +1,14 @@
 import { useRouter } from "next/router";
 import { exhibitionsPost } from "../interfaces/interfaces";
 import NewsSection from "../components/news/news-section";
+import PageBackground from "../components/stacking-effects3/index";
 
 interface NewsProps {
   exhibitionsPosts: exhibitionsPost[];
+  scroll: number;
 }
 
-const News = ({ exhibitionsPosts }: NewsProps) => {
+const News = ({ exhibitionsPosts, scroll }: NewsProps) => {
   const { locale } = useRouter();
   // assumes only one per section
   const currentSection = exhibitionsPosts.filter(
@@ -20,30 +22,32 @@ const News = ({ exhibitionsPosts }: NewsProps) => {
   )[0];
 
   return (
-    <div className="pt-0 md:pt-8 pb-8">
-      <div className="flex flex-row justify-between pl-1 md:pl-4 pr-1 md:pr-4">
-        <div className="text-3xl">
+    <div className="relative">
+      <div className="absolute w-full h-full">
+        <PageBackground
+          progress={0.5}
+          scale={0.8}
+          src={"/shader-backgrounds/1.jpg"}
+          imgAspect={1.77}
+          imgScale={2.0}
+          speed={-0.02}
+          brightness={-0.4}
+          scroll={scroll}
+        />
+      </div>
+      <div className="relative w-screen p-6 pt-16 pb-14">
+        <div className="text-6xl font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
           {locale === "es" ? "Exhibiciones" : "Exhibitions"}
         </div>
-      </div>
-      <div className="pl-1 md:pl-4 pr-1 md:pr-4 pt-8">
-        <div className="flex flex-row space-x-4">
-          <div className="flex flex-col w-1/2 mr-1 space-y-2">
-            <NewsSection post={currentSection} />
-            <NewsSection post={recentSection} />
-            {/* <div className="font-bold text-xl">Current</div>
-            <ul className="space-y-1">
-              <li>Group Show, The name of a current show, more info.</li>
-            </ul>
-            <div className="font-bold text-xl mt-2">Recent</div>
-            <ul className="space-y-1">
-              <li>Group Show, The name of a current show, more info.</li>
-              <li>Group Show, The name of a current show, more info.</li>
-            </ul> */}
-          </div>
-
-          <div className="flex flex-col w-1/2 ml-1">
-            <NewsSection post={upcomingSection} />
+        <div className="flex flex-row pt-16">
+          <div className="flex flex-row space-x-4">
+            <div className="flex flex-col w-1/2 space-y-12">
+              <NewsSection post={currentSection} />
+              <NewsSection post={recentSection} />
+            </div>
+            <div className="flex flex-col w-1/2">
+              <NewsSection post={upcomingSection} />
+            </div>
           </div>
         </div>
       </div>

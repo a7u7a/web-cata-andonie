@@ -2,6 +2,11 @@ import { useControls } from "leva";
 import { MutableRefObject } from "react";
 import { ShaderMaterial, TextureLoader, Vector2 } from "three";
 
+function getRandomArbitrary(min:number, max:number) {
+  return Math.random() * (max - min) + min;
+}
+
+
 const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
   const { w1 } = useControls("Noise shader", {
     progress: {
@@ -71,7 +76,8 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     v2: {
       label: "v2",
-      value: 1.0,
+      // value: 1.0,
+      value: getRandomArbitrary(0.1,0.12),
       min: 0,
       max: 1.5,
       step: 0.00001,
@@ -84,7 +90,8 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     v4: {
       label: "v4",
-      value: 0.9,
+      // value: 0.33,
+      value: getRandomArbitrary(0.2,0.6),
       min: 0,
       max: 1.5,
       step: 0.00001,
@@ -97,7 +104,8 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     v5: {
       label: "v5",
-      value: 0.4,
+      // value: 0.11,
+      value: getRandomArbitrary(0.09,0.2),
       min: 0,
       max: 1.5,
       step: 0.00001,
@@ -123,7 +131,7 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     v7: {
       label: "v7",
-      value: 0.4,
+      value: 0.35,
       min: 0,
       max: 1.5,
       step: 0.00001,
@@ -136,7 +144,8 @@ const BackgroundControls = (matRef: MutableRefObject<ShaderMaterial>) => {
     },
     scale: {
       label: "scale",
-      value: 0.13,
+      // value: 0.40,
+      value: getRandomArbitrary(0.2,0.6),
       min: 0,
       max: 20,
       step: 0.00001,

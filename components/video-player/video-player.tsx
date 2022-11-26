@@ -80,7 +80,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
 
   useEffect(() => {
     const videoIndex = Math.abs(currentTexture) % playlist.length;
-    console.log("videoIndex", videoIndex);
+    // console.log("videoIndex", videoIndex);
 
     setName(shuffledVideoPaths[videoIndex].name);
   }, [currentTexture]);

@@ -44,7 +44,7 @@ const getImagesPathsAndDimensions = async (id: string) => {
     const fileNames = fs.readdirSync(fullPath);
 
     const pathsAndDims = async (fileName: string) => {
-      console.log("processing file", fileName);
+      // console.log("processing file", fileName);
       const img = fs.createReadStream(
         path.join(process.cwd(), fullPath, fileName)
       );
@@ -217,7 +217,7 @@ export const getAbout = (): aboutPost => {
   const contentSpanish = matterResult.content;
   const _ = matter(matterResult.data.body_eng);
   const contentEnglishOut = _.content.split("\n").join("\r\n");
-
+  // console.log("matterResult test", matterResult);
   return {
     id,
     title: matterResult.data.title,
