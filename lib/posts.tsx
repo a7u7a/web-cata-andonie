@@ -36,7 +36,6 @@ export const getAllPostIds = (locales: string[] | undefined) => {
   return [...p[0], ...p[1]];
 };
 
-
 const getImagesPathsAndDimensions = async (id: string) => {
   const fullPath = path.join(imagesDirectory, `${id}`);
   const fullPath2 = path.join(imagesDirectory2, `${id}`);
@@ -45,6 +44,7 @@ const getImagesPathsAndDimensions = async (id: string) => {
     const fileNames = fs.readdirSync(fullPath);
 
     const pathsAndDims = async (fileName: string) => {
+      // console.log("processing file", fileName);
       const img = fs.createReadStream(
         path.join(process.cwd(), fullPath, fileName)
       );
@@ -83,6 +83,8 @@ export const getWorkPost = (id: string): Promise<workPost> => {
       title_eng: matterResult.data.title_eng,
       year: matterResult.data.year,
       // optional
+      yt_url:
+        matterResult.data.yt_url != "none" ? matterResult.data.yt_url : "",
       hero_img:
         matterResult.data.hero_img != "none" ? matterResult.data.hero_img : "",
       medidas:
@@ -145,6 +147,7 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
 
     return {
       date: matterResult.data.date,
+      yt_url: matterResult.data.yt_url,
       thumbnail: matterResult.data.thumbnail,
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,
@@ -214,7 +217,7 @@ export const getAbout = (): aboutPost => {
   const contentSpanish = matterResult.content;
   const _ = matter(matterResult.data.body_eng);
   const contentEnglishOut = _.content.split("\n").join("\r\n");
-
+  // console.log("matterResult test", matterResult);
   return {
     id,
     title: matterResult.data.title,

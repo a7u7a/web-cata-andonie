@@ -2,6 +2,7 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Llámame por mi Nombre
 title_eng: Call me by my Name
 hero_img: /imgs/none.jpg

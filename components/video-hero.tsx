@@ -1,7 +1,7 @@
 import { useState, forwardRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import useMediaQuery from "../lib/media";
-import VideoPlayer from "../components/video-player";
+import VideoPlayer from "./video-player/video-player";
 import { VideoNavProps } from "../interfaces/interfaces";
 import { CaretRight, CaretLeft } from "phosphor-react";
 
@@ -13,6 +13,7 @@ interface VideoHeroProps {
 const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
   ({ height, worksHeight }: VideoHeroProps, ref) => {
     VideoHero.displayName = "VideoHero";
+    const [tituloVideo, setTituloVideo] = useState("");
     const [isPlay, setIsPlay] = useState(true);
     const [clicked, setClicked] = useState(false);
     const [videoNav, setVideoNav] = useState<VideoNavProps>({
@@ -39,25 +40,17 @@ const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
       setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
     };
 
+    const setName = (titulo: string) => {
+      setTituloVideo(titulo);
+    };
+
     return (
-      <div ref={ref}>
-        <div className="absolute z-0 w-full h-[135vh]">
-          <VideoPlayer isPlay={isPlay} videoNav={videoNav} />
+      <div ref={ref} className="relative">
+        <div className="absolute z-0 w-full h-full">
+          <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
         </div>
-        {/* <div>
-          <div className="h-[135vh] absolute inset-y-0 left-0 flex items-center pl-4 sm:pl-8">
-            <button onClick={videoNext}>
-              <CaretLeft size={40} weight="bold" color="white" />
-            </button>
-          </div>
-          <div className="h-[135vh] absolute inset-y-0 right-0 flex items-center pr-4 sm:pr-8">
-            <button onClick={videoPrev}>
-              <CaretRight size={40} weight="bold" color="white" />
-            </button>
-          </div>
-        </div> */}
         <div>
-          <div className="h-[135vh] w-screen max-w-screen-2xl">
+          <div className="w-screen max-w-screen-2xl h-[135vh]">
             <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
               <div className="w-full text-4xl md:text-6xl font-black">
                 Catalina Andonie

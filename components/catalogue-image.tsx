@@ -25,9 +25,9 @@ const CatalogueImage = ({ post }: CatalogueImageProps) => {
           layout="fill"
           alt="imagen"
         />
-        <div className="absolute mx-2 my-1 left-0 top-0 inset-0 font-bold">
+        <div className="absolute mx-2 my-1 left-0 top-0 inset-0">
           <div
-            className={`text-base md:text-lg text-white break-words transition-opacity duration-200 ${
+            className={`text-lg md:text-2xl text-white break-words transition-opacity duration-200 ${
               hovered ? "opacity-100" : "md:opacity-0"
             }`}
           >

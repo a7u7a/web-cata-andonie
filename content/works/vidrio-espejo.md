@@ -2,6 +2,7 @@
 date: October 13, 2022 6:13 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Vidrio Espejo
 title_eng: Mirror Glass
 hero_img: /imgs/none.jpg

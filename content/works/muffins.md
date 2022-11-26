@@ -2,6 +2,7 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Muffins
 title_eng: Outdoors Project
 hero_img: /imgs/none.jpg

@@ -3,6 +3,7 @@ date: October 1, 2022 10:03 PM
 thumbnail: /uploads/works/alta-tension-ii/1.jpg
 hero_img: /imgs/none.jpg
 front_page: true
+yt_url: https://www.youtube.com/embed/n48pzSbs0lA
 title: Alta Tensión II
 title_eng: High Voltage II
 medidas: 400 x 3000 x 2300 cm

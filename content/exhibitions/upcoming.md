@@ -1,6 +1,6 @@
 ---
 title: Próximas
-title_eng: Upcoming
+title_eng: UPCOMING
 body_eng: |-
   2021
   * Group Show, Galeria de Arte de Mexico, Mexico DF, Mexico. 

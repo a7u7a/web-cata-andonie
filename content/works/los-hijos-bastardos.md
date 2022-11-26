@@ -2,6 +2,7 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Los Hijos Bastardos
 title_eng: The Illegitimate Sons
 hero_img: /imgs/none.jpg

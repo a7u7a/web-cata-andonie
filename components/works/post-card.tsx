@@ -21,12 +21,12 @@ const PostCard = ({ post }: PostCardProps) => {
   const tableData = _.filter((field) => field);
 
   return (
-    <div className="flex flex-col p-2 md:pl-4">
-      <div className="mt-8 md:mt-14 text-3xl font-bold">
+    <div className="relative flex flex-col bg-white p-6">
+      <div className="mt-8 text-6xl font-bold">
         {locale === "es" ? post.title! : post.title_eng!}
       </div>
-      <div className="text-sm font-bold text-gray-600">
-        <ul className="mt-12 md:mt-20 space-y-[0.4rem] w-full md:w-1/2">
+      <div className="text-xl font-bold text-gray-600">
+        <ul className="mt-12 space-y-[0.4rem] w-1/2">
           {tableData.map((row, i) => (
             <li
               key={i}
@@ -40,7 +40,7 @@ const PostCard = ({ post }: PostCardProps) => {
         </ul>
       </div>
 
-      <div className="mt-10 md:mt-20 pr-0 md:pr-2 pb-10 md:pb-20">
+      <div className="mt-10 pb-10 w-4/5">
         <ReactMarkdown
           // eslint-disable-next-line
           children={

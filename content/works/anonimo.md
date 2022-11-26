@@ -3,6 +3,7 @@ date: October 3, 2022 10:04 PM
 thumbnail: /uploads/works/anonimo/1.jpg
 hero_img: /imgs/none.jpg
 front_page: true
+yt_url: none
 title: Anónimo
 title_eng: Anonymous
 medidas: 150 x 290 x 223 cm

@@ -3,6 +3,7 @@ date: October 4, 2022 10:04 PM
 thumbnail: /uploads/works/ceguera/1.jpeg
 hero_img: /imgs/none.jpg
 front_page: true
+yt_url: none
 title: Ceguera
 title_eng: Blindness
 medidas: 350 x 712 x 1145 cm

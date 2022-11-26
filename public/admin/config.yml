@@ -60,9 +60,14 @@ collections:
           time_format: "HH:mm",
           format: "LLL",
         }
+
       - { label: "Imagen de portada", name: "thumbnail", widget: "image" }
+      - {
+          label: "Link de YouTube",
+          name: "yt_url",
+          widget: "string",
+        }
       - { label: "Hero Image", name: "hero_img", widget: "image" }
-      - { label: "Imágenes", name: "imagenes", widget: "list" }
       - {
           label: "Mostrar en selección",
           name: "front_page",

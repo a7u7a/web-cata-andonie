@@ -2,6 +2,7 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /imgs/none.jpg
 front_page: false
+yt_url: none
 title: Lucas Samaras
 title_eng: Lucas Samaras
 hero_img: /imgs/none.jpg

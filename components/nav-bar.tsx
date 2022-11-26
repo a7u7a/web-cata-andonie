@@ -37,13 +37,13 @@ const NavBar = ({
     if (transparent) {
       // either transition from bg-transparent to bg-black
       setClassString(`fixed inset-x-0 top-0 flex flex-row justify-between
-        w-screen text-white z-50 
+        w-screen text-white z-50 px-20
         transition-all duration-300 ease-out
         ${check ? "bg-black" : " bg-transparent"} `);
     } else {
       // or transition from opacity-0 to opacity-100
       setClassString(`fixed inset-x-0 top-0 flex flex-row justify-between
-        w-screen text-white z-50 
+        w-screen text-white z-50 px-20
         transition-all duration-300 ease-out bg-black
         ${check ? "opacity-100" : "opacity-0"} `);
     }

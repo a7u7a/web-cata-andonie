@@ -10,6 +10,10 @@ module.exports = {
         riforma: ["Riforma"],
         sans: ["Riforma", "sans-serif"],
       },
+      fontSize: {
+        "8xl": "4.5rem",
+        mainSize: "6.052rem",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

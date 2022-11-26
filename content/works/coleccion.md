@@ -3,6 +3,7 @@ date: October 5, 2022 10:04 PM
 thumbnail: /uploads/works/coleccion/1.jpg
 hero_img: /imgs/none.jpg
 front_page: true
+yt_url: none
 title: Colección
 title_eng: Collection
 medidas: medidas variables

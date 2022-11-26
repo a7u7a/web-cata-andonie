@@ -2,7 +2,8 @@
 date: October 7, 2022 10:05 PM
 thumbnail: /imgs/none.jpg
 hero_img: /imgs/none.jpg
-front_page: false
+front_page: true
+yt_url: none
 title: Combarbalita de Combarbalá
 title_eng: Combarbalita from Combarbalá
 medidas: medidas variables

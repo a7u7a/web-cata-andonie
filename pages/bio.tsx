@@ -9,6 +9,7 @@ import { getAllBioPosts, getBioStatement } from "../lib/posts";
 import { bioPost, bioStatementPost } from "../interfaces/interfaces";
 import BioIndex from "../components/bio/bio-index";
 import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";
+import BioHeader from "../components/bio-header";
 
 import MyFooter from "../components/my-footer";
 import NavBar from "../components/nav-bar";
@@ -61,44 +62,37 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
         scrollThreshold={bounds.height}
         scrollTop={scrollTop}
       />
-      <div ref={ref} className="w-screen bg-gray-200">
-        <div className="pt-28 pb-28 pl-3 md:pl-6 pr-3 md:pr-6 text-3xl font-bold w-full md:w-2/3 text-white">
-          {locale === "es"
-            ? bioStatement.contentSpanish
-            : bioStatement.contentEnglish}
-        </div>
-      </div>
-
+      <BioHeader bioStatement={bioStatement} ref={ref} />
       {isMd ? (
         <div className="flex flex-row space-x-4 mb-6">
           <div className="flex flex-col w-1/2 pl-3 md:pl-6">
-            <BioIndex />
+            
             <BioColumnFromMarkdown post={bioPosts[0]} />
             <BioColumnFromMarkdown post={bioPosts[2]} />
           </div>
           <div className="flex flex-col w-1/2 pr-3 md:pr-6">
+          <BioIndex />
             <BioColumnFromMarkdown post={bioPosts[1]} />
           </div>
         </div>
       ) : (
         <div className="flex justify-between">
-          <div className="sticky top-0 w-1/4 self-start pl-3 md:pl-6">
-            <BioIndex />
-          </div>
-
           {/* main content */}
           <div className="w-3/4">
-            <div className="flex flex-col mb-20">
+            <div className="flex flex-col mb-20 pl-3 md:pl-6 pr-3 md:pr-6">
               <div className="flex items-center h-28">
                 <div className="text-3xl ">Artist Bio</div>
               </div>
 
-              <div className="flex flex-row space-x-6 pr-3 md:pr-6">
+              <div className="flex flex-row space-x-6 ">
                 <BioColumnFromMarkdown post={bioPosts[0]} />
                 <BioColumnFromMarkdown post={bioPosts[1]} />
                 <BioColumnFromMarkdown post={bioPosts[2]} />
               </div>
             </div>
+          </div>
+          <div className="sticky top-0 self-start text-right">
+            <BioIndex />
           </div>
         </div>
       )}

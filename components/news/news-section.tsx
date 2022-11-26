@@ -10,7 +10,7 @@ const NewsSection = ({ post }: NewsSectionProps) => {
   const { locale } = useRouter();
   return (
     <div>
-      <div className="font-bold text-xl">
+      <div className="font-bold text-3xl text-white">
         {locale === "es" ? post.title : post.title_eng}
       </div>
       <ReactMarkdown
