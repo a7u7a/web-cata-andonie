@@ -66,7 +66,6 @@ const Bio = ({ bioPosts, bioStatement }: BioProps) => {
       {isMd ? (
         <div className="flex flex-row space-x-4 mb-6">
           <div className="flex flex-col w-1/2 pl-3 md:pl-6">
-            
             <BioColumnFromMarkdown post={bioPosts[0]} />
             <BioColumnFromMarkdown post={bioPosts[2]} />
           </div>

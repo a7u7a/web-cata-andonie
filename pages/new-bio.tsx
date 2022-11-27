@@ -22,6 +22,7 @@ import NewNavBar from "../components/new-nav-bar";
 import WorksSection from "../components/works/works-section";
 import NewFooter from "../components/new-footer";
 import { bioPost, bioStatementPost } from "../interfaces/interfaces";
+import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";
 import { getAllBioPosts, getBioStatement } from "../lib/posts";
 import PageBackground from "../components/stacking-effects3/index";
 
@@ -89,7 +90,14 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         <div className="pt-16 pb-16 pl-6 text-6xl font-bold transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
           Bio
         </div>
+        <div className="pl-6 pr-6 flex flex-row space-x-4">
+        <BioColumnFromMarkdown post={bioPosts[1]} />
+        <BioColumnFromMarkdown post={bioPosts[0]} />
+        <BioColumnFromMarkdown post={bioPosts[2]} />
+        <BioColumnFromMarkdown post={bioPosts[3]} />
+        </div>
       </div>
+      <NewFooter />
     </div>
   );
 };
