@@ -47,13 +47,13 @@ const NavBar = ({
 
   return (
     <div ref={ref} className={classString}>
-      <Link href={"/bio"}>
+      <Link href={"/menu"}>
         <div className="flex items-center text-center text-xl hover:underline cursor-pointer">
           Menu
         </div>
       </Link>
 
-      <Link href={"/"}>
+      <Link href={"/new-index"}>
         <div className="pl-3 md:pl-6 p-3 font-bold text-4xl cursor-pointer hover:text-indigo-600">
           Catalina Andonie
         </div>

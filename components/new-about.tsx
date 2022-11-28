@@ -23,7 +23,7 @@ const About = ({ post }: AboutProps) => {
       {/* <div className="pl-1 md:pl-4 text-white text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div> */}
-      <div className="max-w-max w-2/3">
+      <div className="max-w-max w-6/12">
         <ReactMarkdown
           // eslint-disable-next-line
           children={locale === "es" ? post.contentSpanish : post.contentEnglish}
