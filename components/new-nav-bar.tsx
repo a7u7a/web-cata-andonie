@@ -47,7 +47,7 @@ const NavBar = ({
 
   return (
     <div ref={ref} className={classString}>
-      <Link href={"/bio"}>
+      <Link href={"/menu"}>
         <div className="flex items-center text-center text-xl hover:underline cursor-pointer">
           Menu
         </div>

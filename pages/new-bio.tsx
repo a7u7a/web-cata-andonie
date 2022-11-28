@@ -50,7 +50,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative bg-white">
       <Head>
         <title>Bio Catalina Andonie</title>
         <meta name="description" content="Catalina Andonie, Artista" />
@@ -65,7 +65,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           <PageBackground
             progress={0.5}
             scale={0.8}
-            src={"/shader-backgrounds/3.jpg"}
+            src={"/shader-backgrounds/3.jpeg"}
             imgAspect={1.77}
             imgScale={2.0}
             speed={-0.02}

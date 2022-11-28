@@ -18,7 +18,6 @@ interface AppWrapperProps {
   children: JSX.Element;
 }
 
-
 // const AppWrapper = ({ children }: AppWrapperProps) => {
 //   const router = useRouter();
 //   const transitions = useTransition(router, {
@@ -47,11 +46,21 @@ function MyApp({ Component, pageProps }: AppProps) {
       pageProps,
     },
   ];
+
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const onScroll = (e: Event) => {
+      const target = e.target as Document;
+      const scrollTop = target.documentElement.scrollTop;
+      setScrollTop(scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div>
-      
-      
-
       <Transition
         items={items}
         // @ts-ignore
@@ -82,10 +91,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           </animated.div>
         )}
       </Transition>
-      
     </div>
   );
 }
 
 export default MyApp;
-
