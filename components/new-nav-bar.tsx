@@ -53,7 +53,7 @@ const NavBar = ({
         </div>
       </Link>
 
-      <Link href={"/"}>
+      <Link href={"/new-index"}>
         <div className="pl-3 md:pl-6 p-3 font-bold text-4xl cursor-pointer hover:text-indigo-600">
           Catalina Andonie
         </div>

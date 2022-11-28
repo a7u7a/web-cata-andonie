@@ -5,7 +5,7 @@
 .bio {
   @apply w-full text-black text-[0.95rem]
   prose prose-sm
-  prose-h1:text-xl prose-h1:font-bold prose-h1:pt-8;
+  prose-h1:text-2xl prose-h1:font-bold prose-h1:pt-8;
 }
 
 .news {

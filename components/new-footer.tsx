@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const NewFooter = () => {
   const { locale } = useRouter();
   return (
-    <div className="relative flex flex-row space-x-4 bg-white p-4 pt-16 pb-40">
+    <div className="relative flex flex-row space-x-4 bg-white p-4 pt-24 pb-40">
       <div className="flex flex-col w-1/2 text-black">
         <div>
           <div className="text-6xl font-bold transition-all duration-75 hover:text-indigo-600 hover:cursor-pointer">

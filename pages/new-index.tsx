@@ -82,7 +82,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
       <VideoHero className="" />
       <About post={aboutPost} />
       <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
-      <WorksSection posts={frontPagePosts} />
+      <WorksSection posts={frontPagePosts} nextButton title />
       <NewFooter />
     </div>
   );
