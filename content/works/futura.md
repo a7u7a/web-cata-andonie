@@ -1,6 +1,6 @@
 ---
 date: October 8, 2022 10:05 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/futura/futura_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
 yt_url: none

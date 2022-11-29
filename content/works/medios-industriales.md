@@ -1,6 +1,6 @@
 ---
 date: October 13, 2022 6:12 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/medios-industriales/medios-industriales_1.webp
 front_page: false
 yt_url: none
 title: Medios Industriales

@@ -1,6 +1,6 @@
 ---
 date: October 10, 2022 10:05 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/lente-de-fresnel/lente-de-fresnel_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
 yt_url: none

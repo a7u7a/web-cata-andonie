@@ -1,6 +1,6 @@
 ---
 date: October 7, 2022 10:05 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/combarbalita-de-combarbala/combarbalita-de-combarbala_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
 yt_url: none

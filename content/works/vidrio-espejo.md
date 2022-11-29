@@ -1,6 +1,6 @@
 ---
 date: October 13, 2022 6:13 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/vidrio-espejo/vidrio-espejo_1.webp
 front_page: false
 yt_url: none
 title: Vidrio Espejo

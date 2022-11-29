@@ -1,6 +1,6 @@
 ---
 date: October 5, 2022 10:04 PM
-thumbnail: /uploads/works/coleccion/1.jpg
+thumbnail: /uploads/works/coleccion/coleccion_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
 yt_url: none

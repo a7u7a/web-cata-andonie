@@ -79,7 +79,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         Catalina Andonie
       </div>
 
-      <VideoHero className="" />
+      <VideoHero />
       <About post={aboutPost} />
       <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
       <WorksSection posts={frontPagePosts} nextButton title />

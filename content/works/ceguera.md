@@ -1,6 +1,6 @@
 ---
 date: October 4, 2022 10:04 PM
-thumbnail: /uploads/works/ceguera/1.jpeg
+thumbnail: /uploads/works/ceguera/ceguera_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
 yt_url: none

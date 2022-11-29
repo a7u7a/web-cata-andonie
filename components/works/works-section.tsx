@@ -61,7 +61,7 @@ const WorksCatalogue = ({
         {backButton ? (
           <div className="w-full p-4">
             <button onClick={() => router.back()}>
-              <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
+              <div className="flex flex-col items-start hover:underline hover:cursor-pointer pr-6">
                 <div className="text-4xl text-left font-bold">Back</div>
                 <ArrowLeft size={38} weight="bold" color="black" />
               </div>
@@ -72,9 +72,9 @@ const WorksCatalogue = ({
         )}
       </div>
       {nextButton ? (
-        <div className="w-full pt-6 p-4">
+        <div className="w-full pt-6">
           <Link href={"/new-bio"}>
-            <div className="flex flex-col items-end hover:underline hover:cursor-pointer">
+            <div className="flex flex-col items-end hover:underline hover:cursor-pointer pr-6">
               <div className="text-4xl text-right font-bold">
                 {locale === "es" ? "Todas las obras" : "All works"}
               </div>

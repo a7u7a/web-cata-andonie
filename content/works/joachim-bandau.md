@@ -1,6 +1,6 @@
 ---
 date: October 9, 2022 10:05 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/joachim-bandau/joachim-bandau_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
 yt_url: none

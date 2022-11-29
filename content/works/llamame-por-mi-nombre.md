@@ -1,6 +1,6 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/llamame-por-mi-nombre/llamame-por-mi-nombre_1.webp
 front_page: false
 yt_url: none
 title: Llámame por mi Nombre

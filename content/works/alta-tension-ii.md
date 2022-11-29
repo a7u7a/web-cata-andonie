@@ -1,6 +1,6 @@
 ---
 date: October 1, 2022 10:03 PM
-thumbnail: /uploads/works/alta-tension-ii/1.jpg
+thumbnail: /uploads/works/alta-tension-ii/alta-tension-ii_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
 yt_url: https://www.youtube.com/embed/n48pzSbs0lA

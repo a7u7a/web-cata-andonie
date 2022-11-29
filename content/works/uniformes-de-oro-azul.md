@@ -1,6 +1,6 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/uniformes-de-oro-azul/uniformes-de-oro-azul_1.webp
 front_page: false
 yt_url: none
 title: Uniformes de Oro Azul

@@ -35,26 +35,25 @@ const MenuPage = () => {
 
       <div className="pt-28  flex flex-col space-y-32 items-center text-center text-9xl font-bold overflow-auto">
         {/* Menu */}
-<Link href={"/works"}>
-        <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-          Works
-        </div>
-</Link>
-<Link href="/new-index#exhibitions">
-
-        <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-          Exhibitions
-        </div>
-</Link>
-<Link href={"/new-bio"}>
-        <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-          Bio
-        </div>
-</Link>
+        <Link href={"/works"}>
+          <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+            Works
+          </div>
+        </Link>
+        <Link href="/new-index#exhibitions">
+          <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+            Exhibitions
+          </div>
+        </Link>
+        <Link href={"/new-bio"}>
+          <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+            Bio
+          </div>
+        </Link>
 
         {/* Contact */}
         <div className="relative text-white text-center flex flex-col items-center pb-40">
-          <div className="text-6xl font-bold mix-blend-difference transition-all duration-75 hover:text-indigo-600 hover:cursor-pointer">
+          <div className="text-6xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 hover:cursor-pointer">
             Contact
           </div>
           <div className="mt-16 text-4xl flex flex-col items-center">

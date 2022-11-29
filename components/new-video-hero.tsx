@@ -9,10 +9,12 @@ interface VideoHeroProps {
   className: string;
 }
 
-const VideoHero = ({ className }: VideoHeroProps) => {
+const VideoHero = () => {
   const [tituloVideo, setTituloVideo] = useState("");
   const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
+  const [leftHover, setLeftHover] = useState(false);
+  const [rightHover, setRightHover] = useState(false);
   const [videoNav, setVideoNav] = useState<VideoNavProps>({
     toggle: false,
     direction: 0,
@@ -40,20 +42,35 @@ const VideoHero = ({ className }: VideoHeroProps) => {
         <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
       </div>
       <div>
-        <div className="mt-36 relative w-screen h-[90vh]">
+        <div className="relative w-screen h-screen">
           <div className="absolute inset-x-0 bottom-0 px-6">
-            <div className="flex flex-row items-center justify-between pt-4 pb-4">
-
-              <button onClick={videoNext}>
-                <ArrowLeft size={38} weight="bold" color="white" />
+            <div className="mix-blend-difference flex flex-row items-center justify-between pt-4 pb-4">
+              <button
+                onMouseEnter={() => setLeftHover(true)}
+                onMouseLeave={() => setLeftHover(false)}
+                onClick={videoPrev}
+              >
+                <ArrowLeft
+                  size={38}
+                  weight="bold"
+                  color={`${leftHover ? "#4f46e5" : "white"}`}
+                />
               </button>
 
-              
-                <div className="text-white text-center">{tituloVideo}</div>
-              
+              <div className="text-white text-center text-xl">
+                {tituloVideo}
+              </div>
 
-              <button onClick={videoPrev}>
-                <ArrowRight size={38} weight="bold" color="white" />
+              <button
+                onMouseEnter={() => setRightHover(true)}
+                onMouseLeave={() => setRightHover(false)}
+                onClick={videoPrev}
+              >
+                <ArrowRight
+                  size={38}
+                  weight="bold"
+                  color={`${rightHover ? "#4f46e5" : "white"}`}
+                />
               </button>
             </div>
           </div>

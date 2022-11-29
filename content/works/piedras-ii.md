@@ -1,6 +1,6 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /imgs/none.jpg
+thumbnail: /uploads/works/piedras-ii/piedras-ii_1.webp
 front_page: false
 yt_url: none
 title: Piedras II
