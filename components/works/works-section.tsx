@@ -73,7 +73,7 @@ const WorksCatalogue = ({
       </div>
       {nextButton ? (
         <div className="w-full pt-6">
-          <Link href={"/new-bio"}>
+          <Link href={"/works"}>
             <div className="flex flex-col items-end hover:underline hover:cursor-pointer pr-6">
               <div className="text-4xl text-right font-bold">
                 {locale === "es" ? "Todas las obras" : "All works"}
