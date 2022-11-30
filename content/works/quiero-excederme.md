@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Quiero excederme
 title_eng: Quiero excederme
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: Medidas variables
 medidas_eng: Variable measurements

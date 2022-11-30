@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Piedras II
 title_eng: Stones II
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: none
 medidas_eng: none

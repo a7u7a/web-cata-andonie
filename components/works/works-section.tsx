@@ -6,19 +6,19 @@ import { workPost } from "../../interfaces/interfaces";
 import WorksImage from "./../works/works-image";
 import { ArrowLeft, ArrowRight } from "phosphor-react";
 
-interface WorksCatalogueProps {
+interface WorksSectionProps {
   posts: workPost[];
   title?: boolean;
   nextButton?: boolean;
   backButton?: boolean;
 }
 
-const WorksCatalogue = ({
+const WorksSection = ({
   posts,
   title = false,
   nextButton = false,
   backButton = false,
-}: WorksCatalogueProps) => {
+}: WorksSectionProps) => {
   // const filenames = getImages();
   const { locale } = useRouter();
   const router = useRouter();
@@ -88,4 +88,4 @@ const WorksCatalogue = ({
     </div>
   );
 };
-export default WorksCatalogue;
+export default WorksSection;

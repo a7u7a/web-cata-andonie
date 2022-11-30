@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Llámame por mi Nombre
 title_eng: Call me by my Name
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: none
 medidas_eng: none

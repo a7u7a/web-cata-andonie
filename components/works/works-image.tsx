@@ -18,7 +18,7 @@ const WorksImage = ({ post }: CatalogueImageProps) => {
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative h-96 w-full cursor-pointer"
+        className="relative h-96 w-full cursor-pointer "
       >
         <Image
           src={post.thumbnail!}

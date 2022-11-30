@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Polímero
 title_eng: Polymer
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: 60 x 150 x 137 cm
 medidas_eng: 60 x 150 x 137 cm

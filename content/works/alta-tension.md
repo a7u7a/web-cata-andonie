@@ -6,6 +6,7 @@ front_page: true
 yt_url: https://www.youtube.com/embed/n48pzSbs0lA
 title: Alta Tensión
 title_eng: High Voltage
+title_color: black
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2019

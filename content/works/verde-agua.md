@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Verde Agua
 title_eng: Light Green
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: 295 x 385 x 330 cm
 medidas_eng: 295 x 385 x 330 cm

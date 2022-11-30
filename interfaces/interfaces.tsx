@@ -26,6 +26,7 @@ export interface workPost {
   locacion_eng?: string;
   tecnica?: string;
   tecnica_eng?: string;
+  title_color: string; // white/black according to background color
   // computed
   id: string; // postP filename
   // computed optional

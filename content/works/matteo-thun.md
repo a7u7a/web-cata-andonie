@@ -6,6 +6,7 @@ yt_url: none
 title: Matteo Thun
 title_eng: Matteo Thun
 hero_img: /imgs/none.jpg
+title_color: white
 medidas: 164 x 114 x 23 cm
 medidas_eng: 164 x 114 x 23 cm
 year: 2017

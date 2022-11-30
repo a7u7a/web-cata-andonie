@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Medios Industriales
 title_eng: Industrial Resources
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: variables
 medidas_eng: variables

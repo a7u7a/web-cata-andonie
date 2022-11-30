@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Vidrio Espejo
 title_eng: Mirror Glass
+title_color: black
 hero_img: /imgs/none.jpg
 medidas: 250 x 114 x 17 cm
 medidas_eng: 250 x 114 x 17 cm

@@ -6,6 +6,7 @@ front_page: true
 yt_url: https://www.youtube.com/embed/n48pzSbs0lA
 title: Alta Tensión II
 title_eng: High Voltage II
+title_color: white
 medidas: 400 x 3000 x 2300 cm
 medidas_eng: 400 x 3000 x 2300 cm
 year: 2020

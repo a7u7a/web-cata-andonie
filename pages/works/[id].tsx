@@ -107,7 +107,6 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           </div>
         </div>
       </div>
-
       <NewFooter />
     </div>
   );

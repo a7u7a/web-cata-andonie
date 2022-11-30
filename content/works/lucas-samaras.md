@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Lucas Samaras
 title_eng: Lucas Samaras
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: 138 x 120 x 32 cm
 medidas_eng: 138 x 120 x 32 cm

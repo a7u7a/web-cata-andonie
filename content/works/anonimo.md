@@ -6,6 +6,7 @@ front_page: true
 yt_url: none
 title: Anónimo
 title_eng: Anonymous
+title_color: white
 medidas: 150 x 290 x 223 cm
 medidas_eng: 150 x 290 x 223 cm
 year: 2017

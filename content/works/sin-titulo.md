@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Sin Título
 title_eng: Untitled
+title_color: black
 hero_img: /imgs/none.jpg
 medidas: Medidas variables
 medidas_eng: Variable measurements

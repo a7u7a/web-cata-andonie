@@ -4,7 +4,8 @@ thumbnail: /uploads/works/muffins/muffins_1.webp
 front_page: false
 yt_url: none
 title: Muffins
-title_eng: Outdoors Project
+title_eng: Muffins
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: medidas variables
 medidas_eng: variable measurements

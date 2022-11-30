@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Proyecto Intemperie
 title_eng: Outdoors Project
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: 370 x 580 x 480 cm
 medidas_eng: 370 x 580 x 480 cm

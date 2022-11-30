@@ -6,6 +6,7 @@ front_page: false
 yt_url: none
 title: Joachim Bandau y Duo de Chaise Longues
 title_eng: Joachim Bandau and Chaise Longues
+title_color: white
 medidas: 350 x 120 x 120 cm
 medidas_eng: 350 x 120 x 120 cm
 year: 2014

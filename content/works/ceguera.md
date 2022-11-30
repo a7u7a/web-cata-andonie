@@ -6,6 +6,7 @@ front_page: true
 yt_url: none
 title: Ceguera
 title_eng: Blindness
+title_color: white
 medidas: 350 x 712 x 1145 cm
 medidas_eng: 350 x 712 x 1145 cm
 year: 2014

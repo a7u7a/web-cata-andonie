@@ -81,6 +81,7 @@ export const getWorkPost = (id: string): Promise<workPost> => {
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,
       title_eng: matterResult.data.title_eng,
+      title_color: matterResult.data.title_color,
       year: matterResult.data.year,
       // optional
       yt_url:
@@ -152,6 +153,7 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,
       title_eng: matterResult.data.title_eng,
+      title_color: matterResult.data.title_color,
       year: matterResult.data.year,
       // optional
       hero_img: matterResult.data.hero_img,

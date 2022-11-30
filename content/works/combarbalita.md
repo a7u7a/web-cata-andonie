@@ -6,6 +6,7 @@ front_page: true
 yt_url: none
 title: Combarbalita de Combarbalá
 title_eng: Combarbalita from Combarbalá
+title_color: black
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2018

@@ -6,6 +6,7 @@ front_page: false
 yt_url: none
 title: Futura
 title_eng: Futura
+title_color: white
 medidas: 600 x 372 x 372 cm
 medidas_eng: 600 x 372 x 372 cm
 year: 2021

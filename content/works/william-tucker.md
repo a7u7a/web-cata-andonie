@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: William Tucker
 title_eng: William Tucker
+title_color: white
 hero_img: /imgs/none.jpg
 medidas: 141 x 193 x 47 cm
 medidas_eng: 141 x 193 x 47 cm

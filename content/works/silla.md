@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Silla
 title_eng: Chair
+title_color: black
 hero_img: /imgs/none.jpg
 medidas: 80 x 220 x 55 cm
 medidas_eng: 80 x 220 x 55 cm

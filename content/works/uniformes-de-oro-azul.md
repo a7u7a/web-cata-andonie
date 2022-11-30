@@ -5,6 +5,7 @@ front_page: false
 yt_url: none
 title: Uniformes de Oro Azul
 title_eng: Uniforms of Blue Gold
+title_color: black
 hero_img: /imgs/none.jpg
 medidas: Medidas variables
 medidas_eng: Variable measurements

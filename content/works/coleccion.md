@@ -6,6 +6,7 @@ front_page: true
 yt_url: none
 title: Colección
 title_eng: Collection
+title_color: white
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2021
