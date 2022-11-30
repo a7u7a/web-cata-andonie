@@ -77,10 +77,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         <div className="relative w-screen p-6 pt-40 pb-14">
           <div className="w-4/5 mt-20">
             <div className="text-6xl text-white leading-snug">
-              B. 1989, Santiago de Chile. Lives and works in Santiago de Chile.
-              Ut sodales felis et lectus ullamcorper, eget rhoncus massa
-              viverra. Aenean volutpat mauris at ultricies porta. Nullam nec
-              tincidunt sem.
+              {locale === "es" ? bioStatement.contentSpanish : bioStatement.contentEnglish}
             </div>
           </div>
         </div>

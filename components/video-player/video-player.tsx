@@ -29,14 +29,24 @@ import { VideoNavProps } from "../../interfaces/interfaces";
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
   isPlay: boolean;
-  setName: (titulo: string) => void;
+  setName: ({ name, path, url }: videoSourceProps) => void;
+}
+
+interface videoSourceProps {
+  name: string;
+  path: string;
+  url: string;
 }
 
 const shuffledVideoPaths = [
-  { name: "Faro", path: "/videos/faro.mp4" },
-  { name: "Pasillo", path: "/videos/pasillo.mp4" },
-  { name: "Sagrada", path: "/videos/sagrada.mp4" },
-  { name: "Agua", path: "/videos/agua.mp4" },
+  { name: "Futura - 2021", path: "/videos/faro.mp4", url: "/futura" },
+  {
+    name: "Alto Voltaje II - 2020",
+    path: "/videos/pasillo.mp4",
+    url: "/alta-tension-ii",
+  },
+  { name: "Ceguera - 2014", path: "/videos/sagrada.mp4", url: "/ceguera" },
+  { name: "Colección - 2021", path: "/videos/agua.mp4", url: "/coleccion" },
 ].sort((a, b) => 0.5 - Math.random());
 
 const paths = shuffledVideoPaths.map((item) => {
@@ -81,8 +91,8 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   useEffect(() => {
     const videoIndex = Math.abs(currentTexture) % playlist.length;
     // console.log("videoIndex", videoIndex);
-
-    setName(shuffledVideoPaths[videoIndex].name);
+    
+    setName(shuffledVideoPaths[videoIndex]);
   }, [currentTexture]);
 
   /**

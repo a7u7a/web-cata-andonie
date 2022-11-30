@@ -41,8 +41,6 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
 
   const [firstCol, secondCol] = splitIntercalated(workPosts);
 
-  console.log("firstCol", firstCol, "secondCol", secondCol);
-
   useEffect(() => {
     const onScroll = (e: Event) => {
       const target = e.target as Document;
@@ -58,16 +56,16 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
   });
 
   return (
-    <div>
+    <div className="bg-white">
       <Head>
         <title>{locale === "es" ? "Obras" : "Works"}</title>
         <meta name="description" content="Catalina Andonie" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
+      <NewNavBar scrollTop={10} scrollThreshold={0} />
 
-      <div
+      {/* <div
         ref={titleRef}
         className={`fixed hover:text-indigo-600
   flex flex-col w-screen items-center z-0
@@ -76,7 +74,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
   ${scrollTop > 40 ? "opacity-40" : "opacity-100"}`}
       >
         {locale === "es" ? "Obras" : "Works"}
-      </div>
+      </div> */}
       {/* <div className="pt-28">
         <WorksSection posts={workPosts} backButton />
       </div> */}
@@ -88,7 +86,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
        * Dont fix image size, make image be either vertical or horizontal
        */}
 
-      <div className="pt-28">
+      <div className="pt-20">
         <div className="relative bg-white flex flex-col">
           <div className="flex flex-col md:flex-row m-1">
             <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-0.5 space-y-1">

@@ -1,5 +1,6 @@
 import { useState, forwardRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import useMediaQuery from "../lib/media";
 import VideoPlayer from "./video-player/video-player";
 import { VideoNavProps } from "../interfaces/interfaces";
@@ -10,7 +11,11 @@ interface VideoHeroProps {
 }
 
 const VideoHero = () => {
-  const [tituloVideo, setTituloVideo] = useState("");
+  const [tituloVideo, setTituloVideo] = useState<videoSourceProps>({
+    name: " ",
+    url: " ",
+    path: " ",
+  });
   const [isPlay, setIsPlay] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [leftHover, setLeftHover] = useState(false);
@@ -19,6 +24,12 @@ const VideoHero = () => {
     toggle: false,
     direction: 0,
   });
+
+  interface videoSourceProps {
+    name: string;
+    path: string;
+    url: string;
+  }
 
   const isMd = useMediaQuery("(max-width: 768px)");
 
@@ -32,8 +43,8 @@ const VideoHero = () => {
     setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
   };
 
-  const setName = (titulo: string) => {
-    setTituloVideo(titulo);
+  const setName = ({ name, path, url }: videoSourceProps) => {
+    setTituloVideo({ name, path, url });
   };
 
   return (
@@ -57,9 +68,11 @@ const VideoHero = () => {
                 />
               </button>
 
-              <div className="text-white text-center text-xl">
-                {tituloVideo}
-              </div>
+              <Link href={tituloVideo.url}>
+                <div className="text-white text-center text-xl cursor-pointer hover:underline">
+                  {tituloVideo.name}
+                </div>
+              </Link>
 
               <button
                 onMouseEnter={() => setRightHover(true)}
