@@ -3,7 +3,8 @@ date: October 3, 2022 10:04 PM
 thumbnail: /uploads/works/anonimo/anonimo_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Anónimo
 title_eng: Anonymous
 title_color: white

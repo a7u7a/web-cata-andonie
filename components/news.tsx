@@ -31,22 +31,38 @@ const News = ({ exhibitionsPosts, scroll }: NewsProps) => {
           imgAspect={1.77}
           imgScale={2.0}
           speed={-0.02}
-          brightness={-0.4}
+          brightness={-0.5}
           scroll={scroll}
         />
       </div>
       <div className="relative w-screen p-6 pt-16 pb-14">
         <div className="text-6xl font-bold mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
-          {locale === "es" ? "Exhibiciones" : "Exhibitions"}
+          {locale === "es" ? "Exhibiciones" : "Shows"}
         </div>
         <div className="flex flex-row pt-16">
           <div className="flex flex-row space-x-4">
             <div className="flex flex-col w-1/2 space-y-12">
-              <NewsSection post={currentSection} />
-              <NewsSection post={recentSection} />
+              {currentSection.show ? (
+                // only show when selector is true
+                <NewsSection post={currentSection} />
+              ) : (
+                <></>
+              )}
+
+              {recentSection.show ? (
+                // only show when selector is true
+                <NewsSection post={recentSection} />
+              ) : (
+                <></>
+              )}
             </div>
             <div className="flex flex-col w-1/2">
-              <NewsSection post={upcomingSection} />
+              {upcomingSection.show ? (
+                // only show when selector is true
+                <NewsSection post={upcomingSection} />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>

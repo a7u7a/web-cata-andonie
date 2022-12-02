@@ -2,7 +2,8 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /uploads/works/uniformes-de-oro-azul/uniformes-de-oro-azul_1.webp
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Uniformes de Oro Azul
 title_eng: Uniforms of Blue Gold
 title_color: black

@@ -2,7 +2,8 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /uploads/works/llamame-por-mi-nombre/llamame-por-mi-nombre_1.webp
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Llámame por mi Nombre
 title_eng: Call me by my Name
 title_color: white

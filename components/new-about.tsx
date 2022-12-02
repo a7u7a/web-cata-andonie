@@ -23,7 +23,7 @@ const About = ({ post }: AboutProps) => {
       {/* <div className="pl-1 md:pl-4 text-white text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div> */}
-      <div className="w-full px-20">
+      <div className="w-full">
         <ReactMarkdown
           // eslint-disable-next-line
           children={locale === "es" ? post.contentSpanish : post.contentEnglish}
@@ -32,8 +32,8 @@ const About = ({ post }: AboutProps) => {
       </div>
       <div className="pt-12">
         <Link href={"/new-bio"}>
-          <div className="flex flex-col items-end hover:underline hover:cursor-pointer">
-            <div className="text-4xl text-right font-bold">Full Bio</div>
+          <div className="flex flex-col items-end">
+            <div className="text-4xl text-right font-bold hover:underline hover:cursor-pointer">Full Bio</div>
             <ArrowRight size={38} weight="bold" color="black" />
           </div>
         </Link>

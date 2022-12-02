@@ -3,7 +3,10 @@ date: October 8, 2022 10:05 PM
 thumbnail: /uploads/works/futura/futura_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery:
+  - https://vimeo.com/777160311
+  - https://vimeo.com/777160311
 title: Futura
 title_eng: Futura
 title_color: white

@@ -2,7 +2,8 @@
 date: October 13, 2022 6:12 PM
 thumbnail: /uploads/works/medios-industriales/medios-industriales_1.webp
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Medios Industriales
 title_eng: Industrial Resources
 title_color: white

@@ -13,6 +13,7 @@ import PostCard from "../../components/works/post-card";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
 import YouTubeEmbed from "../../components/youtube-embed";
+import VimeoPlayer from "../../components/vimeo-player";
 import NewNavBar from "../../components/new-nav-bar";
 import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "phosphor-react";
@@ -73,8 +74,9 @@ export default function Post({ post, workPosts }: WorkPostProps) {
       {/* <NavBar /> */}
 
       <div className="relative pt-28">
-        {post.yt_url.length > 0 ? (
-          <YouTubeEmbed url="https://www.youtube.com/embed/n48pzSbs0lA" />
+        {post.vimeo_front_url.length > 0 ? (
+          // <YouTubeEmbed url="https://www.youtube.com/embed/n48pzSbs0lA" />
+          <VimeoPlayer url={post.vimeo_front_url} className="w-screen aspect-video" />
         ) : (
           <ImageHero src={post.hero_img!} />
         )}
@@ -92,6 +94,17 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           </div>
 
           <div className="flex flex-col w-full md:w-1/2 pl-0 md:pl-0.5 space-y-1 ">
+            {post.vimeo_video_gallery.length > 1 ? (
+              post.vimeo_video_gallery.map((url, i) => (
+                <VimeoPlayer
+                  key={i}
+                  url={url}
+                  className="w-full aspect-video"
+                />
+              ))
+            ) : (
+              <></>
+            )}
             {secondCol.map((img, i) => (
               <IdImage key={i} src={img.path} h={img.h} w={img.w} />
             ))}

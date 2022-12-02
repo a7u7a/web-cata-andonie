@@ -2,7 +2,8 @@
 date: October 13, 2022 6:13 PM
 thumbnail: /uploads/works/vidrio-espejo/vidrio-espejo_1.webp
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Vidrio Espejo
 title_eng: Mirror Glass
 title_color: black

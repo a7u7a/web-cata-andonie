@@ -84,8 +84,15 @@ export const getWorkPost = (id: string): Promise<workPost> => {
       title_color: matterResult.data.title_color,
       year: matterResult.data.year,
       // optional
-      yt_url:
-        matterResult.data.yt_url != "none" ? matterResult.data.yt_url : "",
+      vimeo_video_gallery:
+        matterResult.data.vimeo_video_gallery != "none"
+          ? matterResult.data.vimeo_video_gallery
+          : "",
+
+      vimeo_front_url:
+        matterResult.data.vimeo_front_url != "none"
+          ? matterResult.data.vimeo_front_url
+          : "",
       hero_img:
         matterResult.data.hero_img != "none" ? matterResult.data.hero_img : "",
       medidas:
@@ -148,7 +155,11 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
 
     return {
       date: matterResult.data.date,
-      yt_url: matterResult.data.yt_url,
+      vimeo_video_gallery:
+        matterResult.data.vimeo_video_gallery != "none"
+          ? matterResult.data.vimeo_video_gallery
+          : "",
+      vimeo_front_url: matterResult.data.vimeo_front_url,
       thumbnail: matterResult.data.thumbnail,
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,
@@ -246,6 +257,7 @@ export const getAllExhibitionsPosts = () => {
       title_eng: matterResult.data.title_eng,
       contentSpanish,
       contentEnglish: contentEnglishOut,
+      show: matterResult.data.show,
     };
   });
   return allPostsData;

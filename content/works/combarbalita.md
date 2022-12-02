@@ -3,7 +3,8 @@ date: October 7, 2022 10:05 PM
 thumbnail: /uploads/works/combarbalita/combarbalita_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Combarbalita de Combarbalá
 title_eng: Combarbalita from Combarbalá
 title_color: black

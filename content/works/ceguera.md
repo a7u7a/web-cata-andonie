@@ -3,7 +3,8 @@ date: October 4, 2022 10:04 PM
 thumbnail: /uploads/works/ceguera/ceguera_1.webp
 hero_img: /imgs/none.jpg
 front_page: true
-yt_url: none
+vimeo_front_url: https://vimeo.com/777160731
+vimeo_video_gallery: none
 title: Ceguera
 title_eng: Blindness
 title_color: white

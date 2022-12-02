@@ -66,9 +66,10 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   return (
     <div className="relative">
-      <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
+      {/* <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} /> */}
+      <NewNavBar scrollTop={10} scrollThreshold={0} />
 
-      <div
+      {/* <div
         ref={titleRef}
         className={`fixed hover:text-indigo-600
         flex flex-col w-screen items-center z-0
@@ -77,7 +78,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         ${scrollTop > 45 ? "opacity-40" : "opacity-100"}`}
       >
         Catalina Andonie
-      </div>
+      </div> */}
 
       <VideoHero />
       <About post={aboutPost} />

@@ -34,7 +34,7 @@ const WorksSection = ({
     <div className="relative bg-white">
       <div className="flex flex-row justify-between">
         {title ? (
-          <div className="pt-16 pb-16 pl-6 text-6xl font-bold transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
+          <div className="pt-16 pb-10 pl-6 text-6xl font-bold transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
             {locale === "es" ? "Obras seleccionadas" : "Selected Works"}
           </div>
         ) : (

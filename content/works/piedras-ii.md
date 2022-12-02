@@ -2,7 +2,8 @@
 date: May 27, 2022 11:39 PM
 thumbnail: /uploads/works/piedras-ii/piedras-ii_1.webp
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Piedras II
 title_eng: Stones II
 title_color: white

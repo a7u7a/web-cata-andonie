@@ -48,7 +48,7 @@ const VideoHero = () => {
   };
 
   return (
-    <div className="pt-36 relative">
+    <div className="relative">
       <div className="absolute w-full h-full">
         <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
       </div>

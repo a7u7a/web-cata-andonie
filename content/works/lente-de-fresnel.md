@@ -3,7 +3,10 @@ date: October 10, 2022 10:05 PM
 thumbnail: /uploads/works/lente-de-fresnel/lente-de-fresnel_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery:
+  - https://vimeo.com/777160311
+  - https://vimeo.com/777160311
 title: Lente de Fresnel
 title_eng: Fresnel Lens
 medidas: 39,8 x 39,8 x 159 cm

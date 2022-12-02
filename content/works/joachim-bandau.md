@@ -3,7 +3,8 @@ date: October 9, 2022 10:05 PM
 thumbnail: /uploads/works/joachim-bandau/joachim-bandau_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
-yt_url: none
+vimeo_front_url: none
+vimeo_video_gallery: none
 title: Joachim Bandau y Duo de Chaise Longues
 title_eng: Joachim Bandau and Chaise Longues
 title_color: white

@@ -33,7 +33,7 @@ const MenuPage = () => {
         />
       </div>
 
-      <div className="pt-28  flex flex-col space-y-32 items-center text-center text-9xl font-bold overflow-auto">
+      <div className="pt-28 pb-40 flex flex-col space-y-24 items-center text-center text-9xl font-bold overflow-auto">
         {/* Menu */}
         <Link href={"/works"}>
           <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
@@ -51,8 +51,14 @@ const MenuPage = () => {
           </div>
         </Link>
 
+        <Link href={"/new-bio"}>
+          <div className="mix-blend-difference transition-all duration-300 hover:text-indigo-600 text-white hover:cursor-pointer">
+            Contact
+          </div>
+        </Link>
+
         {/* Contact */}
-        <div className="relative text-white text-center flex flex-col items-center pb-40">
+        {/* <div className="relative text-white text-center flex flex-col items-center pb-40">
           <div className="text-6xl mix-blend-difference transition-all duration-75 hover:text-indigo-600 hover:cursor-pointer">
             Contact
           </div>
@@ -79,7 +85,7 @@ const MenuPage = () => {
             </div>
             <div className="mt-4">2022</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
 
       {/* Custom header, make component */}
       <div className="relative">
-        <div className="absolute w-full h-full">
+        <div className="fixed w-full h-full">
           <PageBackground
             progress={0.5}
             scale={0.8}
@@ -69,13 +69,13 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
             imgAspect={1.77}
             imgScale={2.0}
             speed={-0.02}
-            brightness={-0.5}
+            brightness={-0.6}
             scroll={scrollTop}
           />
         </div>
 
-        <div className="relative w-screen p-6 pt-40 pb-14">
-          <div className="w-4/5 mt-20">
+        <div className="relative w-screen p-6 pt-32 pb-20">
+          <div className="w-full mt-20 px-20">
             <div className="text-6xl text-white leading-snug">
               {locale === "es" ? bioStatement.contentSpanish : bioStatement.contentEnglish}
             </div>
@@ -84,10 +84,10 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
       </div>
 
       <div className="relative">
-        <div className="pt-16 pb-16 pl-6 text-6xl font-bold transition-all duration-300 hover:text-indigo-600 text-black hover:cursor-pointer">
-          Bio
+        <div className="pt-16 pb-16 pl-6 mx-20 text-white text-6xl font-bold transition-all duration-300 hover:text-indigo-600 hover:cursor-pointer">
+          CV
         </div>
-        <div className="pl-6 pr-6 flex flex-row space-x-4">
+        <div className="pl-6 pr-6 mx-20 flex flex-row space-x-4">
         <BioColumnFromMarkdown post={bioPosts[1]} />
         <BioColumnFromMarkdown post={bioPosts[0]} />
         <BioColumnFromMarkdown post={bioPosts[2]} />

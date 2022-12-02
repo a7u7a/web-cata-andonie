@@ -16,7 +16,7 @@ export interface workPost {
   title_eng: string;
   year: number;
   // optional
-  yt_url: string;
+  vimeo_front_url: string;
   hero_img?: string;
   medidas?: string;
   medidas_eng?: string;
@@ -35,6 +35,7 @@ export interface workPost {
   front_img_w?: number; // optional because only relevant on home page
   front_img_h?: number;
   pathsAndDims?: { w: number; h: number; path: string }[];
+  vimeo_video_gallery: string[];
 }
 
 export interface bioPost {
@@ -57,6 +58,7 @@ export interface exhibitionsPost {
   title_eng: string;
   contentSpanish: string; // post body
   contentEnglish: string; //body_eng
+  show: boolean;
 }
 
 export interface aboutPost {
