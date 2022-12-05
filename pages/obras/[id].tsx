@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import ImageHero from "../../components/obras/image-hero";
 import NavBar from "../../components/nav-bar";
-import WorksCatalogue from "../../components/obras-catalogue";
+import WorksCatalogue from "../../components/works-catalogue";
 import MyFooter from "../../components/my-footer";
 import IdImage from "../../components/obras/id-image";
 import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
@@ -60,7 +60,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
 
       <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
 
-      <div
+      {/* <div
         ref={titleRef}
         className={`fixed hover:text-indigo-600
   flex flex-col w-screen items-center z-0
@@ -69,7 +69,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
   ${scrollTop > 40 ? "opacity-40" : "opacity-100"}`}
       >
         {locale === "es" ? post.title! : post.title_eng!}
-      </div>
+      </div> */}
 
       {/* <NavBar /> */}
 

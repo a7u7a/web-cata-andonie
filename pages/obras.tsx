@@ -4,7 +4,7 @@ import { workPost } from "../interfaces/interfaces";
 import { useState, useEffect } from "react";
 import useMeasure from "react-use-measure";
 import { GetStaticProps } from "next";
-import WorksSection from "../components/obras/obras-section";
+import WorksSection from "../components/obras/works-section";
 import { ResizeObserver } from "@juggle/resize-observer";
 import NewFooter from "../components/new-footer";
 import NewNavBar from "../components/new-nav-bar";

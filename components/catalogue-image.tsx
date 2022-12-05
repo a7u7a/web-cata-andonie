@@ -13,7 +13,7 @@ const CatalogueImage = ({ post }: CatalogueImageProps) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={"works/" + post.id}>
+    <Link href={"obras/" + post.id}>
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}

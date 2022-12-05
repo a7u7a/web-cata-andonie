@@ -19,7 +19,7 @@ import useMediaQuery from "../lib/media";
 import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/new-works-catalogue";
 import NewNavBar from "../components/new-nav-bar";
-import WorksSection from "../components/obras/obras-section";
+import WorksSection from "../components/obras/works-section";
 import NewFooter from "../components/new-footer";
 import { bioPost, bioStatementPost } from "../interfaces/interfaces";
 import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";

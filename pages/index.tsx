@@ -10,7 +10,7 @@ import NavBar from "../components/nav-bar";
 import About from "../components/about";
 import News from "../components/news";
 import IndexImage from "../components/index-image";
-import WorksCatalogue from "../components/obras-catalogue";
+import WorksCatalogue from "../components/works-catalogue";
 import MyFooter from "../components/my-footer";
 import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
 import {
@@ -99,7 +99,7 @@ export default function Home({
               firstCol.map((post, i) => (
                 <IndexImage
                   key={i}
-                  href={"works/" + post.id}
+                  href={"obras/" + post.id}
                   title={post.title}
                   h={post.front_img_h!}
                   w={post.front_img_w!}
@@ -118,7 +118,7 @@ export default function Home({
               secondCol.map((post, i) => (
                 <IndexImage
                   key={i}
-                  href={"works/" + post.id}
+                  href={"obras/" + post.id}
                   title={post.title}
                   h={post.front_img_h!}
                   w={post.front_img_w!}
@@ -133,7 +133,7 @@ export default function Home({
               {frontPagePosts.map((post, i) => (
                 <IndexImage
                   key={i}
-                  href={"works/" + post.id}
+                  href={"obras/" + post.id}
                   title={post.title}
                   h={post.front_img_h!}
                   w={post.front_img_w!}

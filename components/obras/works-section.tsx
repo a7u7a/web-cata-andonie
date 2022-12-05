@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { workPost } from "../../interfaces/interfaces";
-import WorksImage from "./../obras/obras-image";
+import WorksImage from "./../obras/works-image";
 import { ArrowLeft, ArrowRight } from "phosphor-react";
 
 interface WorksSectionProps {

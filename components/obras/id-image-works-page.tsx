@@ -29,7 +29,7 @@ const IdImageWorksPage = ({
   const { locale } = useRouter();
   const [hovered, setHovered] = useState(false);
   return (
-    <Link href={"works/" + id}>
+    <Link href={"obras/" + id}>
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
