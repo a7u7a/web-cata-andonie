@@ -22,10 +22,11 @@ const VimeoPlayer = ({ url, className }: VimeoPlayerProps) => {
     <div className={className}>
       {hasWindow && (
         <ReactPlayer
-          url="https://vimeo.com/777160731"
+          url={url}
           width="100%"
           height="100%"
           className=""
+          controls
         />
       )}
     </div>

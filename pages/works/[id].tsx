@@ -94,7 +94,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           </div>
 
           <div className="flex flex-col w-full md:w-1/2 pl-0 md:pl-0.5 space-y-1 ">
-            {post.vimeo_video_gallery.length > 1 ? (
+            {post.vimeo_video_gallery.length > 0 ? (
               post.vimeo_video_gallery.map((url, i) => (
                 <VimeoPlayer
                   key={i}
