@@ -19,7 +19,7 @@ import IndexImage from "../components/index-image";
 import WorksCatalogue from "../components/new-works-catalogue";
 import NewNavBar from "../components/new-nav-bar";
 import PageBackground from "../components/stacking-effects3/index";
-import WorksSection from "../components/works/works-section";
+import WorksSection from "../components/obras/obras-section";
 import NewFooter from "../components/new-footer";
 
 interface HomeProps {

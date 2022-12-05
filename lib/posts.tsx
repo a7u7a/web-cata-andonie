@@ -10,13 +10,13 @@ import {
 } from "../interfaces/interfaces";
 import probe from "probe-image-size";
 
-const worksDirectory = path.join(process.cwd(), "content/works");
+const worksDirectory = path.join(process.cwd(), "content/obras");
 const bioDirectory = path.join(process.cwd(), "content/bio");
 const bioStatementDirectory = path.join(process.cwd(), "content/bio_statement");
 const exhibitionsDirectory = path.join(process.cwd(), "content/exhibitions");
 const aboutDirectory = path.join(process.cwd(), "content/about");
-const imagesDirectory = "public/uploads/works";
-const imagesDirectory2 = "/uploads/works";
+const imagesDirectory = "public/uploads/obras";
+const imagesDirectory2 = "/uploads/obras";
 
 export const getAllPostIds = (locales: string[] | undefined) => {
   // modified to return paths for each locale

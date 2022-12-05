@@ -39,14 +39,14 @@ interface videoSourceProps {
 }
 
 const shuffledVideoPaths = [
-  { name: "Futura", path: "/videos/faro.mp4", url: "/futura" },
+  { name: "Futura", path: "/videos/faro.mp4", url: "/obras/futura" },
   {
     name: "Alto Voltaje II",
-    path: "/videos/pasillo.mp4",
-    url: "/alta-tension-ii",
+    path: "/videos/vidrio.mp4",
+    url: "/obras/alta-tension-ii",
   },
-  { name: "Ceguera", path: "/videos/sagrada.mp4", url: "/ceguera" },
-  { name: "Colección", path: "/videos/agua.mp4", url: "/coleccion" },
+  { name: "Ceguera", path: "/videos/sagrada.mp4", url: "/obras/ceguera" },
+  { name: "Colección", path: "/videos/agua.mp4", url: "/obras/coleccion" },
 ].sort((a, b) => 0.5 - Math.random());
 
 const paths = shuffledVideoPaths.map((item) => {

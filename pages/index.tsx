@@ -10,7 +10,7 @@ import NavBar from "../components/nav-bar";
 import About from "../components/about";
 import News from "../components/news";
 import IndexImage from "../components/index-image";
-import WorksCatalogue from "../components/works-catalogue";
+import WorksCatalogue from "../components/obras-catalogue";
 import MyFooter from "../components/my-footer";
 import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
 import {

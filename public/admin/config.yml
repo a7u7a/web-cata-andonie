@@ -49,7 +49,7 @@ collections:
       - { label: "Cuerpo (English)", name: "body_eng", widget: "markdown" }
   - name: "works" # Used in routes, e.g., /admin/collections/blog
     label: "Works" # Used in the UI
-    folder: "content/works" # The path to the folder where the documents are stored
+    folder: "content/obras" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter

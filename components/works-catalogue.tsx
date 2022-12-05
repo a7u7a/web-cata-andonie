@@ -12,7 +12,7 @@ interface WorksCatalogueProps {
 // const getImages = () => {
 //   const filenames = [];
 //   for (let i = 0; i < 19; i++) {
-//     const name = `/imgs/works/${i + 1}.jpg`;
+//     const name = `/imgs/obras/${i + 1}.jpg`;
 
 //     filenames.push(name);
 //   }
