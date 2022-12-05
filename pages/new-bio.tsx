@@ -74,27 +74,26 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           />
         </div>
 
-        <div className="relative w-screen p-6 pt-32 pb-20">
-          <div className="w-full mt-20 px-20">
-            <div className="text-6xl text-white leading-snug">
-              {locale === "es" ? bioStatement.contentSpanish : bioStatement.contentEnglish}
+        <div className="relative w-screen p-6 pt-36 pb-20">
+          <div className="w-2/3 pt-36">
+            <div className="text-6xl text-white leading-snug mix-blend-difference">
+              {locale === "es"
+                ? bioStatement.contentSpanish
+                : bioStatement.contentEnglish}
             </div>
           </div>
         </div>
       </div>
 
       <div className="relative">
-        <div className="pt-16 pb-16 pl-6 mx-20 text-white text-6xl font-bold transition-all duration-300 hover:text-indigo-600 hover:cursor-pointer">
-          CV
-        </div>
-        <div className="pl-6 pr-6 mx-20 flex flex-row space-x-4">
-        <BioColumnFromMarkdown post={bioPosts[1]} />
-        <BioColumnFromMarkdown post={bioPosts[0]} />
-        <BioColumnFromMarkdown post={bioPosts[2]} />
-        <BioColumnFromMarkdown post={bioPosts[3]} />
+        <div className="mx-6 mt-10 flex flex-row space-x-4">
+          <BioColumnFromMarkdown post={bioPosts[1]} />
+          <BioColumnFromMarkdown post={bioPosts[0]} />
+          <BioColumnFromMarkdown post={bioPosts[2]} />
+          <BioColumnFromMarkdown post={bioPosts[3]} />
         </div>
       </div>
-      <NewFooter />
+      <NewFooter background={false} />
     </div>
   );
 };

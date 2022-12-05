@@ -73,10 +73,13 @@ export default function Post({ post, workPosts }: WorkPostProps) {
 
       {/* <NavBar /> */}
 
-      <div className="relative pt-28">
+      <div className="relative">
         {post.vimeo_front_url.length > 0 ? (
           // <YouTubeEmbed url="https://www.youtube.com/embed/n48pzSbs0lA" />
-          <VimeoPlayer url={post.vimeo_front_url} className="w-screen aspect-video" />
+          <VimeoPlayer
+            url={post.vimeo_front_url}
+            className="w-screen aspect-video"
+          />
         ) : (
           <ImageHero src={post.hero_img!} />
         )}

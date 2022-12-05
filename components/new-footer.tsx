@@ -1,15 +1,25 @@
 import { useRouter } from "next/router";
 
-const NewFooter = () => {
+interface NewFooterProps {
+  background?: boolean;
+}
+
+const NewFooter = ({ background=true }: NewFooterProps) => {
   const { locale } = useRouter();
   return (
-    <div className="relative flex flex-row space-x-4 bg-white p-4 pt-24 pb-40">
-      <div className="flex flex-col w-1/2 text-black">
+    <div
+      className={`relative flex flex-row space-x-4 p-4 pt-24 pb-40 ${
+        background ? "bg-white" : "bg-transparent"
+      }`}
+    >
+      <div className="flex flex-col w-1/2 mix-blend-difference text-white">
         <div>
-          <div className="text-6xl font-bold transition-all duration-75 hover:text-indigo-600 hover:cursor-pointer">
-            <div>Contact</div>
+          <div className="text-4xl font-bold ">
+            <div>{locale === "es"
+              ? "Contacto"
+              : "Contact"}</div>
           </div>
-          <div className="mt-16 text-4xl">
+          <div className="mt-16 text-3xl">
             <div>
               <a
                 className="break-words hover:underline"
@@ -23,24 +33,24 @@ const NewFooter = () => {
                 @catalina.andonie
               </a>
             </div>
-            <div className="mt-4">{locale === "es" ? (
-            <p>
-              Todos los derechos reservados.
-            </p>
-          ) : (
-            <p>
-              All rights reserved.
-            </p>
-          )}</div>
+            <div className="mt-4">
+              {locale === "es" ? (
+                <p>Todos los derechos reservados.</p>
+              ) : (
+                <p>All rights reserved.</p>
+              )}
+            </div>
             <div className="mt-4">2022</div>
           </div>
         </div>
 
         <div className="flex flex-col mt-16">
-          <div className="text-7xl transition-all duration-75 hover:text-indigo-600  hover:cursor-pointer">
-            <div className="font-bold text-6xl">Photography</div>
+          <div className="mix-blend-difference text-white">
+            <div className="font-bold text-4xl">{locale === "es"
+              ? "Fotografía"
+              : "Photography"}</div>
           </div>
-          <div className="mt-16 text-4xl">
+          <div className="mt-16 text-3xl">
             <ul>
               <li>Paola Velázquez</li>
               <li>Felipe Ugalde</li>
@@ -54,7 +64,7 @@ const NewFooter = () => {
       </div>
 
       <div className="w-1/2">
-        <div className="text-4xl text-left ">
+        <div className="text-3xl text-left mix-blend-difference text-white ">
           {locale === "es" ? (
             <p>
               corporis asperiores incidunt quam, rerum debitis voluptate enim,

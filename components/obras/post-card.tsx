@@ -22,15 +22,15 @@ const PostCard = ({ post }: PostCardProps) => {
 
   return (
     <div className="relative flex flex-col bg-white p-6">
-      <div className="mt-8 text-6xl font-bold">
+      <div className="mt-8 text-6xl font-bold text-gray-700">
         {locale === "es" ? post.title! : post.title_eng!}
       </div>
-      <div className="text-xl font-bold text-gray-600">
+      <div className="text-xl font-bold text-gray-700">
         <ul className="mt-12 space-y-[0.4rem] w-1/2">
           {tableData.map((row, i) => (
             <li
               key={i}
-              className={`border-black pb-1 mr-4 ${
+              className={`border-gray-700 pb-1 mr-4 ${
                 i === tableData.length - 1 ? "border-b-0" : "border-b-2"
               }`}
             >

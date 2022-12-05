@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { workPost } from "../interfaces/interfaces";
 import { useState, useEffect } from "react";
@@ -35,6 +36,7 @@ function splitIntercalated(arr: workPost[]) {
 }
 
 const WorksPage = ({ workPosts }: WorkPostProps) => {
+  const [gridView, setGridView] = useState(true);
   const { locale } = useRouter();
   const [scrollTop, setScrollTop] = useState(0);
   const router = useRouter();
@@ -61,6 +63,10 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
     polyfill: ResizeObserver,
   });
 
+  const handleButtonToggle = () => {
+    setGridView(!gridView);
+  };
+
   return (
     <div className="bg-white">
       <Head>
@@ -71,71 +77,84 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
 
       <NewNavBar scrollTop={10} scrollThreshold={0} />
 
-      {/* <div
-        ref={titleRef}
-        className={`fixed hover:text-indigo-600
-  flex flex-col w-screen items-center z-0
-  text-center text-8xl font-bold text-black
-  transition-opacity duration-1000
-  ${scrollTop > 40 ? "opacity-40" : "opacity-100"}`}
-      >
-        {locale === "es" ? "Obras" : "Works"}
-      </div> */}
-      {/* <div className="pt-28">
-        <WorksSection posts={workPosts} backButton />
-      </div> */}
+      <div className="pt-28 flex flex-col px-6 content-start space-y-4">
+        <div className="text-6xl font-bold mix-blend-difference text-white">
+          {locale === "es" ? "Obras" : "Works"}
+        </div>
 
-      {/* Custom work section :
-       * Split posts in two columns, like in id
-       * Intercalate columns so that projects can be sorted by year
-       * Show year on hover
-       * Dont fix image size, make image be either vertical or horizontal
-       */}
+        <div
+          className="text-3xl underline hover:cursor-pointer"
+          onClick={handleButtonToggle}
+        >
+          {gridView
+            ? locale === "es"
+              ? "Lista"
+              : "List"
+            : locale === "es"
+            ? "Grilla"
+            : "Grid"}
+        </div>
+      </div>
 
-      <div className="pt-20">
-        <div className="relative bg-white flex flex-col">
-          <div className="flex flex-col md:flex-row m-1">
-            <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-0.5 space-y-1">
-              {firstCol.map((post, i) => (
-                <IdImageWorksPage
-                  title={post.title}
-                  title_eng={post.title_eng}
-                  year={post.year}
-                  key={i}
-                  src={post.thumbnail}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  title_color={post.title_color}
-                  id={post.id}
-                />
-              ))}
-            </div>
-            <div className="flex flex-col w-full md:w-1/2 pl-0 md:pl-0.5 space-y-1 ">
-              {secondCol.map((post, i) => (
-                <IdImageWorksPage
-                  title={post.title}
-                  title_eng={post.title_eng}
-                  year={post.year}
-                  key={i}
-                  src={post.thumbnail}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  title_color={post.title_color}
-                  id={post.id}
-                />
-              ))}
-              <div className="w-full p-4">
-                <button onClick={() => router.back()}>
-                  <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-                    <div className="text-4xl text-left font-bold">Back</div>
-                    <ArrowLeft size={38} weight="bold" color="black" />
-                  </div>
-                </button>
+      {gridView ? (
+        // render grid view
+        <div className="pt-10">
+          <div className="relative bg-white flex flex-col">
+            <div className="flex flex-col md:flex-row m-1">
+              <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-0.5 space-y-1">
+                {firstCol.map((post, i) => (
+                  <IdImageWorksPage
+                    title={post.title}
+                    title_eng={post.title_eng}
+                    year={post.year}
+                    key={i}
+                    src={post.thumbnail}
+                    h={post.front_img_h!}
+                    w={post.front_img_w!}
+                    title_color={post.title_color}
+                    id={post.id}
+                  />
+                ))}
+              </div>
+              <div className="flex flex-col w-full md:w-1/2 pl-0 md:pl-0.5 space-y-1 ">
+                {secondCol.map((post, i) => (
+                  <IdImageWorksPage
+                    title={post.title}
+                    title_eng={post.title_eng}
+                    year={post.year}
+                    key={i}
+                    src={post.thumbnail}
+                    h={post.front_img_h!}
+                    w={post.front_img_w!}
+                    title_color={post.title_color}
+                    id={post.id}
+                  />
+                ))}
+                <div className="w-full p-4">
+                  <button onClick={() => router.back()}>
+                    <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
+                      <div className="text-4xl text-left font-bold">Back</div>
+                      <ArrowLeft size={38} weight="bold" color="black" />
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        // render list view
+        <div className="relative flex flex-col px-6 space-y-4 pt-14">
+          {workPosts.map((post, i) => (
+            <Link key={i} href={"obras/" + post.id}>
+              <div className="flex flex-row justify-between text-4xl hover:underline cursor-pointer">
+                <div>{locale === "es" ? post.title : post.title_eng}</div>
+                <div>{post.year}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
 
       <NewFooter />
     </div>
