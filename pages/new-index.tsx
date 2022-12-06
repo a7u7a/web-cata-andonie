@@ -67,7 +67,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   return (
     <div className="relative">
       {/* <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} /> */}
-      <NewNavBar scrollTop={10} scrollThreshold={0}  />
+      <NewNavBar scrollTop={10} scrollThreshold={0} />
 
       {/* <div
         ref={titleRef}
@@ -93,6 +93,9 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         />
       </div>
 
+      <div className="relative z-50 font-bold text-6xl text-white p-6">
+        Catalina Andonie
+      </div>
       <About post={aboutPost} />
       <WorksSection posts={frontPagePosts} nextButton title />
       <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
