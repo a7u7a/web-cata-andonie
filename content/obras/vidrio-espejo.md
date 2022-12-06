@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Vidrio Espejo
 title_eng: Mirror Glass
 title_color: black
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/vidrio-espejo/vidrio-espejo_1.webp
 medidas: 250 x 114 x 17 cm
 medidas_eng: 250 x 114 x 17 cm
 year: 2014

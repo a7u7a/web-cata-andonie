@@ -6,7 +6,7 @@ vimeo_front_url: none
 vimeo_video_gallery: none
 title: Matteo Thun
 title_eng: Matteo Thun
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/matteo-thun/matteo-thun_1.webp
 title_color: white
 medidas: 164 x 114 x 23 cm
 medidas_eng: 164 x 114 x 23 cm

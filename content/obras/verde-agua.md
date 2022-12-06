@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Verde Agua
 title_eng: Light Green
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/verde-agua/verde-agua_1.webp
 medidas: 295 x 385 x 330 cm
 medidas_eng: 295 x 385 x 330 cm
 year: 2018

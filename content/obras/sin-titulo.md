@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Sin Título
 title_eng: Untitled
 title_color: black
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/sin-titulo/sin-titulo_1.webp
 medidas: Medidas variables
 medidas_eng: Variable measurements
 year: 2016

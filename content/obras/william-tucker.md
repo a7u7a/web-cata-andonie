@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: William Tucker
 title_eng: William Tucker
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/william-tucker/william-tucker_1.webp
 medidas: 141 x 193 x 47 cm
 medidas_eng: 141 x 193 x 47 cm
 year: 2017

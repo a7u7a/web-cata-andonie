@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Uniformes de Oro Azul
 title_eng: Uniforms of Blue Gold
 title_color: black
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/uniformes-de-oro-azul/uniformes-de-oro-azul_1.webp
 medidas: Medidas variables
 medidas_eng: Variable measurements
 year: 2020

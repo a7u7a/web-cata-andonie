@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Medios Industriales
 title_eng: Industrial Resources
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/medios-industriales/medios-industriales_1.webp
 medidas: variables
 medidas_eng: variables
 year: 2014

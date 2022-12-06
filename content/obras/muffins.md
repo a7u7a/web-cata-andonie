@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Muffins
 title_eng: Muffins
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/muffins/muffins_1.webp
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2016

@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Proyecto Intemperie
 title_eng: Outdoors Project
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/proyecto-intemperie/proyecto-intemperie_1.webp
 medidas: 370 x 580 x 480 cm
 medidas_eng: 370 x 580 x 480 cm
 year: 2012

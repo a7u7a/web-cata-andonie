@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Polímero
 title_eng: Polymer
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/polimero/polimero_1.webp
 medidas: 60 x 150 x 137 cm
 medidas_eng: 60 x 150 x 137 cm
 year: 2014

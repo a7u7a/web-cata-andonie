@@ -1,7 +1,7 @@
 ---
 date: October 3, 2022 10:04 PM
 thumbnail: /uploads/obras/anonimo/anonimo_1.webp
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/anonimo/anonimo_1.webp
 front_page: true
 vimeo_front_url: none
 vimeo_video_gallery: none

@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Llámame por mi Nombre
 title_eng: Call me by my Name
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/llamame-por-mi-nombre/llamame-por-mi-nombre_1.webp
 medidas: none
 medidas_eng: none
 year: 2018

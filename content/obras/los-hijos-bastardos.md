@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Los Hijos Bastardos
 title_eng: The Illegitimate Sons
 title_color: black
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/los-hijos-bastardos/los-hijos-bastardos_1.webp
 medidas: none
 medidas_eng: none
 year: 2014

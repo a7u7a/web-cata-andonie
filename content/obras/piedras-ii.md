@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Piedras II
 title_eng: Stones II
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/piedras-ii/piedras-ii_1.webp
 medidas: none
 medidas_eng: none
 year: 2021

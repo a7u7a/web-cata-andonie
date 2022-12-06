@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Silla
 title_eng: Chair
 title_color: black
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/silla/silla_1.webp
 medidas: 80 x 220 x 55 cm
 medidas_eng: 80 x 220 x 55 cm
 year: 2016

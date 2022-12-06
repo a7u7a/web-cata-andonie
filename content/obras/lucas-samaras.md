@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Lucas Samaras
 title_eng: Lucas Samaras
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/lucas-samaras/lucas-samaras_1.webp
 medidas: 138 x 120 x 32 cm
 medidas_eng: 138 x 120 x 32 cm
 year: 2017
