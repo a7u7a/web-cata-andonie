@@ -67,7 +67,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   return (
     <div className="relative">
       {/* <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} /> */}
-      <NewNavBar scrollTop={10} scrollThreshold={0} />
+      <NewNavBar scrollTop={10} scrollThreshold={0}  />
 
       {/* <div
         ref={titleRef}
@@ -80,10 +80,22 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         Catalina Andonie
       </div> */}
 
-      <VideoHero />
+      <div className="fixed w-full h-full">
+        <PageBackground
+          progress={0.5}
+          scale={0.8}
+          src={"/shader-backgrounds/4.jpeg"}
+          imgAspect={1.77}
+          imgScale={2.0}
+          speed={-0.02}
+          brightness={-0.45}
+          scroll={scrollTop}
+        />
+      </div>
+
       <About post={aboutPost} />
-      <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
       <WorksSection posts={frontPagePosts} nextButton title />
+      <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
       <NewFooter />
     </div>
   );

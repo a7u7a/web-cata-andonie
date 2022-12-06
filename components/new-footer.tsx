@@ -14,7 +14,7 @@ const NewFooter = ({ background=true }: NewFooterProps) => {
     >
       <div className="flex flex-col w-1/2 mix-blend-difference text-white">
         <div>
-          <div className="text-4xl font-bold ">
+          <div className="text-6xl ">
             <div>{locale === "es"
               ? "Contacto"
               : "Contact"}</div>
@@ -46,7 +46,7 @@ const NewFooter = ({ background=true }: NewFooterProps) => {
 
         <div className="flex flex-col mt-16">
           <div className="mix-blend-difference text-white">
-            <div className="font-bold text-4xl">{locale === "es"
+            <div className="text-6xl">{locale === "es"
               ? "Fotografía"
               : "Photography"}</div>
           </div>

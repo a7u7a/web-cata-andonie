@@ -60,6 +60,12 @@ export default function Post({ post, workPosts }: WorkPostProps) {
 
       <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
 
+      <div className="fixed mix-blend-difference z-40">
+        <div className="p-6 text-6xl text-white">
+          {locale === "es" ? post.title! : post.title_eng!}
+        </div>
+      </div>
+
       {/* <div
         ref={titleRef}
         className={`fixed hover:text-indigo-600
@@ -85,12 +91,11 @@ export default function Post({ post, workPosts }: WorkPostProps) {
         )}
       </div>
 
-      <PostCard post={post} />
-
       {/* Custom image display, make component */}
       <div className="relative bg-white flex flex-col">
         <div className="flex flex-col md:flex-row m-1">
-          <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-0.5 space-y-1">
+          <div className="flex flex-col w-1/2 pr-0.5 space-y-1">
+            <PostCard post={post} />
             {firstCol.map((img, i) => (
               <IdImage key={i} src={img.path} h={img.h} w={img.w} />
             ))}
@@ -111,17 +116,16 @@ export default function Post({ post, workPosts }: WorkPostProps) {
             {secondCol.map((img, i) => (
               <IdImage key={i} src={img.path} h={img.h} w={img.w} />
             ))}
-
-            <div className="w-full p-4">
-              <button onClick={() => router.back()}>
-                <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-                  <div className="text-4xl text-left font-bold">Back</div>
-                  <ArrowLeft size={38} weight="bold" color="black" />
-                </div>
-              </button>
-            </div>
           </div>
         </div>
+      </div>
+      <div className="w-full p-4">
+        <button onClick={() => router.back()}>
+          <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
+            <div className="text-4xl text-left">Back</div>
+            <ArrowLeft size={38} weight="bold" color="black" />
+          </div>
+        </button>
       </div>
       <NewFooter />
     </div>

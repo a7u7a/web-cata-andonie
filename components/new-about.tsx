@@ -19,25 +19,25 @@ const About = ({ post }: AboutProps) => {
   // };
 
   return (
-    <div className="relative bg-white p-6 pt-16 pb-10 flex flex-col">
+    <div className="relative p-6 pt-48 pb-28 flex flex-col">
       {/* <div className="pl-1 md:pl-4 text-white text-3xl">
         {locale === "es" ? post.title : post.title_eng}
       </div> */}
-      <div className="w-full">
+      <div className="w-2/3">
         <ReactMarkdown
           // eslint-disable-next-line
           children={locale === "es" ? post.contentSpanish : post.contentEnglish}
           className="newAbout"
         />
       </div>
-      <div className="pt-12">
+      {/* <div className="pt-12">
         <Link href={"/new-bio"}>
           <div className="flex flex-col items-end">
-            <div className="text-4xl text-right font-bold hover:underline hover:cursor-pointer">Full Bio</div>
-            <ArrowRight size={38} weight="bold" color="black" />
+            <div className="text-4xl text-right text-white font-bold hover:underline hover:cursor-pointer">Full Bio</div>
+            <ArrowRight size={38} weight="bold" color="white" />
           </div>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

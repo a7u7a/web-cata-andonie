@@ -7,7 +7,7 @@ vimeo_video_gallery: none
 title: Quiero excederme
 title_eng: Quiero excederme
 title_color: white
-hero_img: /imgs/none.jpg
+hero_img: /uploads/obras/quiero-excederme/quiero-excederme_1.webp
 medidas: Medidas variables
 medidas_eng: Variable measurements
 year: 2022

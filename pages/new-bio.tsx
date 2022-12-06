@@ -59,6 +59,8 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
 
       <NewNavBar scrollTop={10} scrollThreshold={0} />
 
+      
+
       {/* Custom header, make component */}
       <div className="relative">
         <div className="fixed w-full h-full">
@@ -74,8 +76,12 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           />
         </div>
 
-        <div className="relative w-screen p-6 pt-36 pb-20">
-          <div className="w-2/3 pt-36">
+        <div className="relative text-6xl mix-blend-difference text-white p-6">
+        Bio
+      </div>
+
+        <div className="relative w-screen p-6 pt-48 pb-20">
+          <div className="w-2/3">
             <div className="text-6xl text-white leading-snug mix-blend-difference">
               {locale === "es"
                 ? bioStatement.contentSpanish
