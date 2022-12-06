@@ -93,7 +93,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         />
       </div>
 
-      <div className="relative z-50 font-bold text-6xl text-white p-6">
+      <div className="relative z-30 font-bold text-6xl text-white p-6 mix-blend-difference">
         Catalina Andonie
       </div>
       <About post={aboutPost} />

@@ -26,7 +26,8 @@ body_eng: |-
 # Premios y reconocimientos
 
 2014
-Honorable Mention, Premio MAVI/Minera Escondida, Museo de Artes Visuales MAVI, Santiago, Chile.
+
+- Honorable Mention, Premio MAVI/Minera Escondida, Museo de Artes Visuales MAVI, Santiago, Chile.
 
 # Colecciones
 

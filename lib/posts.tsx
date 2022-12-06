@@ -177,7 +177,10 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
     };
   };
   const processFileNames = async () => {
-    return await Promise.all(fileNames.map(allPostsData));
+    const data = await Promise.all(fileNames.map(allPostsData));
+    // sort ascending by year
+    data.sort((a, b) => b.year - a.year);
+    return data;
   };
 
   return processFileNames();

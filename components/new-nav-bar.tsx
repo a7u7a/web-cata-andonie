@@ -62,11 +62,9 @@ const NavBar = ({
 
       <div
         onMouseLeave={() => setHoverMenu(false)}
-        className={`absolute z-50 top-0 right-0 mx-6 my-6 items-end flex text-3xl text-white flex-col space-y-3 transition-opacity ${
-          hoverMenu ? "opacity-100" : "opacity-0"
-        }
-        
-        `}
+        className={`absolute top-0 right-0 mx-6 my-6 items-end flex text-3xl text-white flex-col space-y-3 transition-opacity ${
+          hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
+        }`}
       >
         <Link href="/new-index">
           <div className="hover:underline cursor-pointer">HOME</div>
@@ -89,8 +87,8 @@ const NavBar = ({
 
       <div
         onMouseEnter={() => setHoverMenu(true)}
-        className={`absolute top-0 right-0 p-6 flex z-40 items-center text-white text-center text-3xl cursor-pointer transition-opacity ${
-          hoverMenu ? "opacity-0" : "opacity-100"
+        className={`absolute top-0 right-0 p-6 flex items-center text-white text-center text-3xl cursor-pointer transition-opacity ${
+          hoverMenu ? "opacity-0 z-40" : "opacity-100 z-50"
         }`}
       >
         Menu

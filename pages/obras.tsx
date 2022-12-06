@@ -41,11 +41,11 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
   const [scrollTop, setScrollTop] = useState(0);
   const router = useRouter();
 
-  useEffect(() => {
-    // sort posts by year in descending order
-    workPosts.sort((a, b) => b.year - a.year);
-  }),
-    [];
+  // useEffect(() => {
+  //   // sort posts by year in descending order
+  //   workPosts.sort((a, b) => b.year - a.year);
+  // }),
+  //   [];
 
   const [firstCol, secondCol] = splitIntercalated(workPosts);
 
