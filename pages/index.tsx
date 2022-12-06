@@ -5,7 +5,7 @@ import Head from "next/head";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
 import useMediaQuery from "../lib/media";
-import VideoHero from "../components/video-hero";
+
 import NavBar from "../components/nav-bar";
 import About from "../components/about";
 import News from "../components/news";
@@ -75,11 +75,7 @@ export default function Home({
         <meta name="description" content="Catalina Andonie, Artista" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <VideoHero
-        height={videoHeroBounds.height}
-        worksHeight={worksBounds.y}
-        ref={videoHeroRef}
-      />
+      
       <NavBar
         transparent={false}
         scrollTop={scrollTop}
