@@ -1,87 +1,96 @@
 import { useState, forwardRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import useMediaQuery from "../lib/media";
 import VideoPlayer from "./video-player/video-player";
 import { VideoNavProps } from "../interfaces/interfaces";
-import { CaretRight, CaretLeft } from "phosphor-react";
+import { ArrowLeft, ArrowRight } from "phosphor-react";
 
 interface VideoHeroProps {
-  height: number;
-  worksHeight?: number;
+  className: string;
 }
 
-const VideoHero = forwardRef<HTMLDivElement, VideoHeroProps>(
-  ({ height, worksHeight }: VideoHeroProps, ref) => {
-    VideoHero.displayName = "VideoHero";
-    const [tituloVideo, setTituloVideo] = useState("");
-    const [isPlay, setIsPlay] = useState(true);
-    const [clicked, setClicked] = useState(false);
-    const [videoNav, setVideoNav] = useState<VideoNavProps>({
-      toggle: false,
-      direction: 0,
-    });
+const VideoHero = () => {
+  const [tituloVideo, setTituloVideo] = useState<videoSourceProps>({
+    name: " ",
+    url: " ",
+    path: " ",
+  });
+  const [isPlay, setIsPlay] = useState(true);
+  const [clicked, setClicked] = useState(false);
+  const [leftHover, setLeftHover] = useState(false);
+  const [rightHover, setRightHover] = useState(false);
+  const [videoNav, setVideoNav] = useState<VideoNavProps>({
+    toggle: false,
+    direction: 0,
+  });
 
-    const isMd = useMediaQuery("(max-width: 768px)");
+  interface videoSourceProps {
+    name: string;
+    path: string;
+    url: string;
+  }
 
-    const clickHandler = () => {
-      window.scrollTo({ left: 0, top: height - 40, behavior: "smooth" });
-    };
+  const isMd = useMediaQuery("(max-width: 768px)");
 
-    const clickHandlerSmall = () => {
-      window.scrollTo({ left: 0, top: worksHeight! - 40, behavior: "smooth" });
-    };
-    const { locale } = useRouter();
+  const { locale } = useRouter();
 
-    const videoNext = () => {
-      setVideoNav({ toggle: !videoNav.toggle, direction: -1 });
-    };
+  const videoNext = () => {
+    setVideoNav({ toggle: !videoNav.toggle, direction: -1 });
+  };
 
-    const videoPrev = () => {
-      setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
-    };
+  const videoPrev = () => {
+    setVideoNav({ toggle: !videoNav.toggle, direction: 1 });
+  };
 
-    const setName = (titulo: string) => {
-      setTituloVideo(titulo);
-    };
+  const setName = ({ name, path, url }: videoSourceProps) => {
+    setTituloVideo({ name, path, url });
+  };
 
-    return (
-      <div ref={ref} className="relative">
-        <div className="absolute z-0 w-full h-full">
-          <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
-        </div>
-        <div>
-          <div className="w-screen max-w-screen-2xl h-[135vh]">
-            <div className="sticky w-full pt-3 md:pt-6 pl-3 sm:pl-6 left-0 top-0 text-gray-200 mix-blend-plus-lighter">
-              <div className="w-full text-4xl md:text-6xl font-black">
-                Catalina Andonie
-              </div>
-              <div className="flex flex-row justify-between text-2xl md:text-3xl pr-3 sm:pr-6 pt-4 md:pt-8 pb-4">
-                <div
-                  onClick={clickHandler}
-                  className="hover:underline underline-offset-4 hover:cursor-pointer"
-                >
-                  {locale === "es" ? "Info" : "About"}
+  return (
+    <div className="relative">
+      <div className="absolute w-full h-full">
+        <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
+      </div>
+      <div>
+        <div className="relative w-screen h-screen">
+          <div className="absolute inset-x-0 bottom-0 px-6">
+            <div className="mix-blend-difference flex flex-row items-center justify-between pt-4 pb-4">
+              <button
+                onMouseEnter={() => setLeftHover(true)}
+                onMouseLeave={() => setLeftHover(false)}
+                onClick={videoPrev}
+              >
+                <ArrowLeft
+                  size={38}
+                  weight="bold"
+                  color={`${leftHover ? "#4f46e5" : "white"}`}
+                />
+              </button>
+
+              <Link href={tituloVideo.url}>
+                <div className="text-white text-center text-3xl cursor-pointer hover:underline">
+                  {tituloVideo.name}
                 </div>
-                <div
-                  onClick={isMd ? clickHandlerSmall : clickHandler}
-                  className="hover:underline underline-offset-4 hover:cursor-pointer"
-                >
-                  {locale === "es" ? "Obra" : "Works"}
-                </div>
-              </div>
-              <div className="flex flex-row justify-between pr-3 sm:pr-6 pt-4 md:pt-8 pb-4">
-                <button onClick={videoNext}>
-                  <CaretLeft size={38} weight="bold" color="white" />
-                </button>
-                <button onClick={videoPrev}>
-                  <CaretRight size={38} weight="bold" color="white" />
-                </button>
-              </div>
+              </Link>
+
+              <button
+                onMouseEnter={() => setRightHover(true)}
+                onMouseLeave={() => setRightHover(false)}
+                onClick={videoPrev}
+              >
+                <ArrowRight
+                  size={38}
+                  weight="bold"
+                  color={`${rightHover ? "#4f46e5" : "white"}`}
+                />
+              </button>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-);
+    </div>
+  );
+};
+
 export default VideoHero;

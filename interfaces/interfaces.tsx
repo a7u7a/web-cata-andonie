@@ -16,7 +16,7 @@ export interface workPost {
   title_eng: string;
   year: number;
   // optional
-  yt_url: string;
+  vimeo_front_url: string;
   hero_img?: string;
   medidas?: string;
   medidas_eng?: string;
@@ -26,6 +26,7 @@ export interface workPost {
   locacion_eng?: string;
   tecnica?: string;
   tecnica_eng?: string;
+  title_color: string; // white/black according to background color
   // computed
   id: string; // postP filename
   // computed optional
@@ -34,6 +35,7 @@ export interface workPost {
   front_img_w?: number; // optional because only relevant on home page
   front_img_h?: number;
   pathsAndDims?: { w: number; h: number; path: string }[];
+  vimeo_video_gallery: string[];
 }
 
 export interface bioPost {
@@ -56,6 +58,7 @@ export interface exhibitionsPost {
   title_eng: string;
   contentSpanish: string; // post body
   contentEnglish: string; //body_eng
+  show: boolean;
 }
 
 export interface aboutPost {

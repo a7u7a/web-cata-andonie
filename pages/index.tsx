@@ -1,23 +1,22 @@
-import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { GetStaticProps } from "next";
-import Head from "next/head";
-import useMeasure from "react-use-measure";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
-import useMediaQuery from "../lib/media";
-import VideoHero from "../components/video-hero";
+import useMeasure from "react-use-measure";
+import { GetStaticProps } from "next";
+
+import Statement from "../components/statement";
+import Exhibitions from "../components/exhibitions";
 import NavBar from "../components/nav-bar";
-import About from "../components/about";
-import News from "../components/news";
-import IndexImage from "../components/index-image";
-import WorksCatalogue from "../components/works-catalogue";
-import MyFooter from "../components/my-footer";
+import PageBackground from "../components/page-background/index";
+import SelectedWorks from "../components/obras/selected-works";
+import Footer from "../components/footer";
 import { workPost, exhibitionsPost, aboutPost } from "../interfaces/interfaces";
 import {
   getAllWorkPosts,
   getAllExhibitionsPosts,
   getAbout,
 } from "../lib/posts";
+import useMediaQuery from "../lib/media";
 
 interface HomeProps {
   workPosts: workPost[];
@@ -25,22 +24,10 @@ interface HomeProps {
   aboutPost: aboutPost;
 }
 
-function split(arr: workPost[], index: number) {
-  return [arr.slice(0, index), arr.slice(index)];
-}
-
-export default function Home({
-  workPosts,
-  exhibitionsPosts,
-  aboutPost,
-}: HomeProps) {
-  // split front page posts into two lists, one for each column
-
+const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
+  const { locale } = useRouter();
+  const isMd = useMediaQuery("(max-width: 768px)");
   const frontPagePosts = workPosts.filter((post) => post.front_page);
-  const [firstCol, secondCol] = split(
-    frontPagePosts,
-    Math.floor(frontPagePosts.length / 2)
-  );
 
   useEffect(() => {
     frontPagePosts.sort((a, b) => {
@@ -48,8 +35,13 @@ export default function Home({
     });
   }, []);
 
+  const [titleRef, titleBounds] = useMeasure({
+    polyfill: ResizeObserver,
+  });
+
   // Update scroll
   const [scrollTop, setScrollTop] = useState(0);
+
   useEffect(() => {
     const onScroll = (e: Event) => {
       const target = e.target as Document;
@@ -60,98 +52,34 @@ export default function Home({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isMd = useMediaQuery("(max-width: 768px)");
-  // const isSm = useMediaQuery("(max-width: 640px)");
-
-  const [videoHeroRef, videoHeroBounds] = useMeasure({
-    polyfill: ResizeObserver,
-  });
-  const [worksRef, worksBounds] = useMeasure({ polyfill: ResizeObserver });
-
   return (
-    <div>
-      <Head>
-        <title>Catalina Andonie</title>
-        <meta name="description" content="Catalina Andonie, Artista" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <VideoHero
-        height={videoHeroBounds.height}
-        worksHeight={worksBounds.y}
-        ref={videoHeroRef}
-      />
-      <NavBar
-        transparent={false}
-        scrollTop={scrollTop}
-        scrollThreshold={videoHeroBounds.height}
-      />
-      <div className="flex flex-row justify-center">
+    <div className="relative">
+      <NavBar scrollTop={10} scrollThreshold={0} />
 
-      
-      <div className="max-w-screen-2xl">
-        <div className="flex flex-col md:flex-row m-2">
-          <div className="flex flex-col w-full md:w-1/2 pr-1 space-y-2">
-            <About post={aboutPost} />
-
-            {isMd ? (
-              <></>
-            ) : (
-              firstCol.map((post, i) => (
-                <IndexImage
-                  key={i}
-                  href={"works/" + post.id}
-                  title={post.title}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  src={post.thumbnail!}
-                />
-              ))
-            )}
-          </div>
-
-          {/* Columna izquierda */}
-          <div className="flex flex-col w-full md:w-1/2 pl-1 space-y-2">
-            <News exhibitionsPosts={exhibitionsPosts} />
-            {isMd ? (
-              <></>
-            ) : (
-              secondCol.map((post, i) => (
-                <IndexImage
-                  key={i}
-                  href={"works/" + post.id}
-                  title={post.title}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  src={post.thumbnail!}
-                />
-              ))
-            )}
-          </div>
-
-          {isMd ? (
-            <div ref={worksRef} id="works" className="flex flex-col space-y-2">
-              {frontPagePosts.map((post, i) => (
-                <IndexImage
-                  key={i}
-                  href={"works/" + post.id}
-                  title={post.title}
-                  h={post.front_img_h!}
-                  w={post.front_img_w!}
-                  src={post.thumbnail!}
-                />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
-        <WorksCatalogue posts={workPosts} />
-        <MyFooter />
+      <div className="fixed w-full h-full">
+        <PageBackground
+          progress={0.5}
+          scale={0.8}
+          src={"/shader-backgrounds/4.jpeg"}
+          imgAspect={1.77}
+          imgScale={2.0}
+          speed={-0.02}
+          brightness={-0.45}
+          scroll={scrollTop}
+        />
       </div>
+
+      <div className="relative z-30 font-bold text-6xl text-white p-6 mix-blend-difference">
+        Catalina Andonie
       </div>
+      <Statement post={aboutPost} />
+      <SelectedWorks posts={frontPagePosts} nextButton title />
+      <Exhibitions exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
+      <Footer colophon background={false} />
     </div>
   );
-}
+};
+export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const workPosts = await getAllWorkPosts();

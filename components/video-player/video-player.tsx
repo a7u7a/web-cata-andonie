@@ -18,25 +18,32 @@ import {
 } from "three";
 import clipSpaceVert from "./clip-space.vert";
 import linearFadeTransition2 from "./linear-fade-transition2.frag";
-import newTransition from "../shaders/new-transition.frag";
-import patternTransition from "../shaders/pattern-transition.frag";
-import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTextures } from "../../hooks/my-useVideoTextures";
-import { useSpring, a, config, SpringValue } from "@react-spring/three";
+import { useSpring, a } from "@react-spring/three";
 import PatternControls from "./controls";
 import { VideoNavProps } from "../../interfaces/interfaces";
 
 interface VideoPlayerProps {
   videoNav: VideoNavProps;
   isPlay: boolean;
-  setName: (titulo: string) => void;
+  setName: ({ name, path, url }: videoSourceProps) => void;
+}
+
+interface videoSourceProps {
+  name: string;
+  path: string;
+  url: string;
 }
 
 const shuffledVideoPaths = [
-  { name: "Faro", path: "/videos/faro.mp4" },
-  { name: "Pasillo", path: "/videos/pasillo.mp4" },
-  { name: "Sagrada", path: "/videos/sagrada.mp4" },
-  { name: "Agua", path: "/videos/agua.mp4" },
+  { name: "Futura", path: "/videos/faro.mp4", url: "/obras/futura" },
+  {
+    name: "Alto Voltaje II",
+    path: "/videos/vidrio.mp4",
+    url: "/obras/alta-tension-ii",
+  },
+  { name: "Ceguera", path: "/videos/sagrada.mp4", url: "/obras/ceguera" },
+  { name: "Colección", path: "/videos/agua.mp4", url: "/obras/coleccion" },
 ].sort((a, b) => 0.5 - Math.random());
 
 const paths = shuffledVideoPaths.map((item) => {
@@ -81,8 +88,8 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   useEffect(() => {
     const videoIndex = Math.abs(currentTexture) % playlist.length;
     // console.log("videoIndex", videoIndex);
-
-    setName(shuffledVideoPaths[videoIndex].name);
+    
+    setName(shuffledVideoPaths[videoIndex]);
   }, [currentTexture]);
 
   /**

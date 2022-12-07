@@ -10,13 +10,13 @@ import {
 } from "../interfaces/interfaces";
 import probe from "probe-image-size";
 
-const worksDirectory = path.join(process.cwd(), "content/works");
+const worksDirectory = path.join(process.cwd(), "content/obras");
 const bioDirectory = path.join(process.cwd(), "content/bio");
 const bioStatementDirectory = path.join(process.cwd(), "content/bio_statement");
 const exhibitionsDirectory = path.join(process.cwd(), "content/exhibitions");
 const aboutDirectory = path.join(process.cwd(), "content/about");
-const imagesDirectory = "public/uploads/works";
-const imagesDirectory2 = "/uploads/works";
+const imagesDirectory = "public/uploads/obras";
+const imagesDirectory2 = "/uploads/obras";
 
 export const getAllPostIds = (locales: string[] | undefined) => {
   // modified to return paths for each locale
@@ -81,10 +81,18 @@ export const getWorkPost = (id: string): Promise<workPost> => {
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,
       title_eng: matterResult.data.title_eng,
+      title_color: matterResult.data.title_color,
       year: matterResult.data.year,
       // optional
-      yt_url:
-        matterResult.data.yt_url != "none" ? matterResult.data.yt_url : "",
+      vimeo_video_gallery:
+        matterResult.data.vimeo_video_gallery != "none"
+          ? matterResult.data.vimeo_video_gallery
+          : "",
+
+      vimeo_front_url:
+        matterResult.data.vimeo_front_url != "none"
+          ? matterResult.data.vimeo_front_url
+          : "",
       hero_img:
         matterResult.data.hero_img != "none" ? matterResult.data.hero_img : "",
       medidas:
@@ -147,11 +155,16 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
 
     return {
       date: matterResult.data.date,
-      yt_url: matterResult.data.yt_url,
+      vimeo_video_gallery:
+        matterResult.data.vimeo_video_gallery != "none"
+          ? matterResult.data.vimeo_video_gallery
+          : "",
+      vimeo_front_url: matterResult.data.vimeo_front_url,
       thumbnail: matterResult.data.thumbnail,
       front_page: matterResult.data.front_page,
       title: matterResult.data.title,
       title_eng: matterResult.data.title_eng,
+      title_color: matterResult.data.title_color,
       year: matterResult.data.year,
       // optional
       hero_img: matterResult.data.hero_img,
@@ -164,7 +177,10 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
     };
   };
   const processFileNames = async () => {
-    return await Promise.all(fileNames.map(allPostsData));
+    const data = await Promise.all(fileNames.map(allPostsData));
+    // sort ascending by year
+    data.sort((a, b) => b.year - a.year);
+    return data;
   };
 
   return processFileNames();
@@ -244,6 +260,7 @@ export const getAllExhibitionsPosts = () => {
       title_eng: matterResult.data.title_eng,
       contentSpanish,
       contentEnglish: contentEnglishOut,
+      show: matterResult.data.show,
     };
   });
   return allPostsData;
