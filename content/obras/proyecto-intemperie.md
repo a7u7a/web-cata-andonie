@@ -1,6 +1,7 @@
 ---
 date: October 13, 2022 6:13 PM
 thumbnail: /uploads/obras/proyecto-intemperie/proyecto-intemperie_1.webp
+low_res_thumb: /uploads/obras/proyecto-intemperie/low-res/proyecto-intemperie_1.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none

@@ -7,14 +7,13 @@ import { GetStaticProps } from "next";
 import { ResizeObserver } from "@juggle/resize-observer";
 import { ArrowLeft, List, GridFour } from "phosphor-react";
 
+import { useTransition, animated } from "@react-spring/web";
+
 import NewFooter from "../components/footer";
 import NewNavBar from "../components/nav-bar";
 import IdImageWorksPage from "../components/obras/id-image-works-page";
-import {
-  getAllWorkPosts,
-} from "../lib/posts";
+import { getAllWorkPosts } from "../lib/posts";
 import { workPost } from "../interfaces/interfaces";
-
 
 interface WorkPostProps {
   workPosts: workPost[];
@@ -39,7 +38,9 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
   const { locale } = useRouter();
   const [scrollTop, setScrollTop] = useState(0);
   const router = useRouter();
-
+  useEffect(() => {
+    console.log("workPosts", workPosts);
+  }, [workPosts]);
   const [firstCol, secondCol] = splitIntercalated(workPosts);
 
   useEffect(() => {
@@ -112,6 +113,8 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
                   w={post.front_img_w!}
                   title_color={post.title_color}
                   id={post.id}
+                  //@ts-ignore
+                  lowResPath={post.lowResHeroImagePath}
                 />
               ))}
             </div>
@@ -127,12 +130,16 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
                   w={post.front_img_w!}
                   title_color={post.title_color}
                   id={post.id}
+                  //@ts-ignore
+                  lowResPath={post.lowResHeroImagePath}
                 />
               ))}
               <div className="w-full p-4">
                 <button onClick={() => router.back()}>
                   <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-                    <div className="text-4xl text-left">{locale === "es" ? "Atrás" : "Back"}</div>
+                    <div className="text-4xl text-left">
+                      {locale === "es" ? "Atrás" : "Back"}
+                    </div>
                     <ArrowLeft size={38} weight="bold" color="black" />
                   </div>
                 </button>

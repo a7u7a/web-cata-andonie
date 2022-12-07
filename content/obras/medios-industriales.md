@@ -1,6 +1,7 @@
 ---
 date: October 13, 2022 6:12 PM
 thumbnail: /uploads/obras/medios-industriales/medios-industriales_1.webp
+low_res_thumb: /uploads/obras/medios-industriales/low-res/medios-industriales_1.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none

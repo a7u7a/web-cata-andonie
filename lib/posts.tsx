@@ -181,6 +181,7 @@ export const getAllWorkPosts = (): Promise<workPost[]> => {
       // computed optional
       front_img_w: dimensions ? dimensions.width : undefined,
       front_img_h: dimensions ? dimensions.height : undefined,
+      lowResHeroImagePath: matterResult.data.low_res_thumb,
     };
   };
   const processFileNames = async () => {

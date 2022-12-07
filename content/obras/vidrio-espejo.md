@@ -1,6 +1,7 @@
 ---
 date: October 13, 2022 6:13 PM
 thumbnail: /uploads/obras/vidrio-espejo/vidrio-espejo_1.webp
+low_res_thumb: /uploads/obras/vidrio-espejo/low-res/vidrio-espejo_1.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none

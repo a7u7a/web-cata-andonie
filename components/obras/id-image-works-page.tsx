@@ -14,6 +14,7 @@ interface IndexImageProps {
   year: number;
   title_color: string;
   id: string;
+  lowResPath: string;
 }
 
 const IdImageWorksPage = ({
@@ -25,6 +26,7 @@ const IdImageWorksPage = ({
   title_eng,
   title_color,
   id,
+  lowResPath,
 }: IndexImageProps) => {
   const { locale } = useRouter();
   const [hovered, setHovered] = useState(false);
@@ -37,7 +39,14 @@ const IdImageWorksPage = ({
           w > h ? "aspect-[4/3]" : "aspect-[3/4]"
         }`}
       >
-        <Image  src={src} objectFit="cover" layout="fill" alt="imagen" />
+        <Image
+          placeholder="blur"
+          blurDataURL={lowResPath}
+          src={src}
+          objectFit="cover"
+          layout="fill"
+          alt="imagen"
+        />
 
         <div
           className={`absolute w-2/3 mx-4 my-1 left-0 top-0 text-3xl transition-all duration-200 ${

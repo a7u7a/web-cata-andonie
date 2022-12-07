@@ -1,6 +1,7 @@
 ---
 date: October 7, 2022 10:05 PM
 thumbnail: /uploads/obras/combarbalita/combarbalita_1.webp
+low_res_thumb: /uploads/obras/combarbalita/low-res/combarbalita_1.webp
 hero_img: /uploads/obras/combarbalita/combarbalita_1.webp
 front_page: true
 vimeo_front_url: none

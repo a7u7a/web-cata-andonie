@@ -52,7 +52,7 @@ const NavBar = ({
     <div ref={ref} className={classString}>
       <div
         onMouseLeave={() => setHoverMenu(false)}
-        className={`absolute top-0 right-0 mx-6 my-6 items-end flex text-3xl text-white flex-col space-y-3 transition-opacity ${
+        className={`absolute top-0 right-0 p-6 items-end flex text-3xl text-white flex-col space-y-3 transition-opacity ${
           hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
         }`}
       >

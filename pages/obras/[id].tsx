@@ -76,7 +76,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
             className="w-screen aspect-video"
           />
         ) : (
-          <ImageHero src={post.hero_img!} />
+          <ImageHero src={post.thumbnail} />
         )}
       </div>
 

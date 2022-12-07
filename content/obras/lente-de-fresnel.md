@@ -1,6 +1,7 @@
 ---
 date: October 10, 2022 10:05 PM
 thumbnail: /uploads/obras/lente-de-fresnel/lente-de-fresnel_1.webp
+low_res_thumb:  /uploads/obras/lente-de-fresnel/low-res/lente-de-fresnel_1.webp
 hero_img: /imgs/none.jpg
 front_page: false
 vimeo_front_url: https://vimeo.com/777466301

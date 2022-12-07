@@ -1,6 +1,7 @@
 ---
 date: May 27, 2022 11:39 PM
 thumbnail: /uploads/obras/quiero-excederme/quiero-excederme_1.webp
+low_res_thumb: /uploads/obras/quiero-excederme/low-res/quiero-excederme_1.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
