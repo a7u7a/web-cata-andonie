@@ -99,7 +99,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
       <About post={aboutPost} />
       <WorksSection posts={frontPagePosts} nextButton title />
       <News exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
-      <NewFooter />
+      <NewFooter colophon background={false} />
     </div>
   );
 };

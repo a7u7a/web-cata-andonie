@@ -2,9 +2,10 @@ import { useRouter } from "next/router";
 
 interface NewFooterProps {
   background?: boolean;
+  colophon?: boolean;
 }
 
-const NewFooter = ({ background=true }: NewFooterProps) => {
+const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
   const { locale } = useRouter();
   return (
     <div
@@ -15,9 +16,7 @@ const NewFooter = ({ background=true }: NewFooterProps) => {
       <div className="flex flex-col w-1/2 mix-blend-difference text-white">
         <div>
           <div className="text-6xl ">
-            <div>{locale === "es"
-              ? "Contacto"
-              : "Contact"}</div>
+            <div>{locale === "es" ? "CONTACTO" : "CONTACT"}</div>
           </div>
           <div className="mt-16 text-3xl">
             <div>
@@ -46,9 +45,9 @@ const NewFooter = ({ background=true }: NewFooterProps) => {
 
         <div className="flex flex-col mt-16">
           <div className="mix-blend-difference text-white">
-            <div className="text-6xl">{locale === "es"
-              ? "Fotografía"
-              : "Photography"}</div>
+            <div className="text-6xl">
+              {locale === "es" ? "FOTOGRAFÍA" : "PHOTOGRAPHY"}
+            </div>
           </div>
           <div className="mt-16 text-3xl">
             <ul>
@@ -63,25 +62,38 @@ const NewFooter = ({ background=true }: NewFooterProps) => {
         </div>
       </div>
 
-      <div className="w-1/2">
-        <div className="text-3xl text-left mix-blend-difference text-white ">
-          {locale === "es" ? (
-            <p>
-              corporis asperiores incidunt quam, rerum debitis voluptate enim,
-              quia doloremque eius, dicta eos ut. Commodi adipisci tempore iste,
-              fugit Español lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Laudantium reprehenderit quam.
-            </p>
-          ) : (
-            <p>
-              English lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium corporis asperiores incidunt quam, rerum debitis
-              voluptate enim, quia doloremque eius, dicta eos ut. Commodi
-              adipisci tempore iste, fugit reprehenderit quam.
-            </p>
-          )}
+      {colophon ? (
+        <div className="w-1/2">
+          <div className="text-3xl text-left mix-blend-difference text-white leading-snug">
+            {locale === "es" ? (
+              <p>
+                Este sitio fue diseñado y desarrollado el 2022 por <a className="underline" href="http://esrs.co/">
+                  esrs.co
+                </a> usando <a className="underline" href="https://norm.to/ll-riforma/">
+                  LL Riforma
+                </a>. Construído usando Next.js, Typescript, <a className="underline" href="https://github.com/pmndrs/react-three-fiber">
+                  R3F
+                </a> y
+                un poco de GLSL para los fondos generativos. No utiliza ningún
+                tipo de cookies de rastreo.
+              </p>
+            ) : (
+              <p>
+                This site was designed and developed in 2022 by <a className="underline" href="http://esrs.co/">
+                  esrs.co
+                </a>. Set in <a className="underline" href="https://norm.to/ll-riforma/">
+                  LL Riforma
+                </a> and built with Next.js, Typescript, <a className="underline" href="https://github.com/pmndrs/react-three-fiber">
+                  R3F
+                </a> and some GLSL
+                for the generative backgrounds. It does not use any kind of tracking cookies.
+              </p>
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
