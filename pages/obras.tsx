@@ -1,24 +1,23 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { workPost } from "../interfaces/interfaces";
 import { useState, useEffect } from "react";
 import useMeasure from "react-use-measure";
 import { GetStaticProps } from "next";
-import WorksSection from "../components/obras/works-section";
 import { ResizeObserver } from "@juggle/resize-observer";
-import NewFooter from "../components/new-footer";
-import NewNavBar from "../components/new-nav-bar";
+import { ArrowLeft, List, GridFour } from "phosphor-react";
+
+import NewFooter from "../components/footer";
+import NewNavBar from "../components/nav-bar";
 import IdImageWorksPage from "../components/obras/id-image-works-page";
 import {
   getAllWorkPosts,
-  getAllExhibitionsPosts,
-  getAbout,
 } from "../lib/posts";
-import { ArrowLeft, ArrowRight, List, GridFour } from "phosphor-react";
+import { workPost } from "../interfaces/interfaces";
+
+
 interface WorkPostProps {
   workPosts: workPost[];
-  // post: workPost;
 }
 
 function splitIntercalated(arr: workPost[]) {
@@ -40,12 +39,6 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
   const { locale } = useRouter();
   const [scrollTop, setScrollTop] = useState(0);
   const router = useRouter();
-
-  // useEffect(() => {
-  //   // sort posts by year in descending order
-  //   workPosts.sort((a, b) => b.year - a.year);
-  // }),
-  //   [];
 
   const [firstCol, secondCol] = splitIntercalated(workPosts);
 
@@ -105,7 +98,6 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
 
       {gridView ? (
         // render grid view
-
         <div className="relative bg-white flex flex-col">
           <div className="flex flex-col md:flex-row m-1">
             <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-0.5 space-y-1">
@@ -140,7 +132,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
               <div className="w-full p-4">
                 <button onClick={() => router.back()}>
                   <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-                    <div className="text-4xl text-left">Back</div>
+                    <div className="text-4xl text-left">{locale === "es" ? "Atrás" : "Back"}</div>
                     <ArrowLeft size={38} weight="bold" color="black" />
                   </div>
                 </button>

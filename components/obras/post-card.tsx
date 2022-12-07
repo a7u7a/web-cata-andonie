@@ -53,7 +53,7 @@ const PostCard = ({ post }: PostCardProps) => {
       <div className="w-full">
         <button onClick={() => router.back()}>
           <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-            <div className="text-4xl text-left">Back</div>
+            <div className="text-4xl text-left">{locale === "es" ? "Atrás" : "Back"}</div>
             <ArrowLeft size={38} weight="bold" color="black" />
           </div>
         </button>

@@ -18,11 +18,8 @@ import {
 } from "three";
 import clipSpaceVert from "./clip-space.vert";
 import linearFadeTransition2 from "./linear-fade-transition2.frag";
-import newTransition from "../shaders/new-transition.frag";
-import patternTransition from "../shaders/pattern-transition.frag";
-import noiseTransition from "../shaders/noise-transition.frag";
 import { useVideoTextures } from "../../hooks/my-useVideoTextures";
-import { useSpring, a, config, SpringValue } from "@react-spring/three";
+import { useSpring, a } from "@react-spring/three";
 import PatternControls from "./controls";
 import { VideoNavProps } from "../../interfaces/interfaces";
 

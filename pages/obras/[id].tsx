@@ -1,23 +1,19 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import ImageHero from "../../components/obras/image-hero";
-import NavBar from "../../components/nav-bar";
-import WorksCatalogue from "../../components/works-catalogue";
-import MyFooter from "../../components/my-footer";
-import IdImage from "../../components/obras/id-image";
-import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
-import { workPost } from "../../interfaces/interfaces";
-import PostCard from "../../components/obras/post-card";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
-import YouTubeEmbed from "../../components/youtube-embed";
+import { ArrowLeft } from "phosphor-react";
+
+import ImageHero from "../../components/obras/image-hero";
+import IdImage from "../../components/obras/id-image";
+import PostCard from "../../components/obras/post-card";
 import VimeoPlayer from "../../components/vimeo-player";
-import NewNavBar from "../../components/new-nav-bar";
-import { useState, useEffect } from "react";
-import { ArrowLeft, ArrowRight } from "phosphor-react";
-import NewFooter from "../../components/new-footer";
+import NewNavBar from "../../components/nav-bar";
+import NewFooter from "../../components/footer";
+import { workPost } from "../../interfaces/interfaces";
+import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
 
 interface WorkPostProps {
   workPosts: workPost[];
@@ -62,26 +58,14 @@ export default function Post({ post, workPosts }: WorkPostProps) {
 
       <div className="fixed mix-blend-difference z-40">
         <div className="p-6 text-6xl text-white">
-          {locale === "es" ? post.title! : post.title_eng!}
+          {locale === "es"
+            ? post.title!.toUpperCase()
+            : post.title_eng!.toUpperCase()}
         </div>
       </div>
 
-      {/* <div
-        ref={titleRef}
-        className={`fixed hover:text-indigo-600
-  flex flex-col w-screen items-center z-0
-  text-center text-8xl font-bold text-black
-  transition-opacity duration-1000
-  ${scrollTop > 40 ? "opacity-40" : "opacity-100"}`}
-      >
-        {locale === "es" ? post.title! : post.title_eng!}
-      </div> */}
-
-      {/* <NavBar /> */}
-
       <div className="relative">
         {post.vimeo_front_url.length > 0 ? (
-          // <YouTubeEmbed url="https://www.youtube.com/embed/n48pzSbs0lA" />
           <VimeoPlayer
             url={post.vimeo_front_url}
             className="w-screen aspect-video"
@@ -92,15 +76,15 @@ export default function Post({ post, workPosts }: WorkPostProps) {
       </div>
 
       {/* Custom image display, make component */}
-      <div className="relative bg-white flex flex-col">
-        <div className="flex flex-col md:flex-row m-1">
+      <div className="relative flex flex-col bg-white">
+        <div className="flex flex-col md:flex-row p-1">
           <div className="flex flex-col w-1/2 pr-0.5 space-y-1">
             <PostCard post={post} />
             {firstCol.map((img, i) => (
               <IdImage key={i} src={img.path} h={img.h} w={img.w} />
             ))}
           </div>
-
+          {/* Video goes always first on second column */}
           <div className="flex flex-col w-full md:w-1/2 pl-0 md:pl-0.5 space-y-1 ">
             {post.vimeo_video_gallery.length > 0 ? (
               post.vimeo_video_gallery.map((url, i) => (
@@ -119,10 +103,12 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           </div>
         </div>
       </div>
-      <div className="w-full p-4">
+      <div className="relative p-4 bg-white">
         <button onClick={() => router.back()}>
           <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-            <div className="text-4xl text-left">Back</div>
+            <div className="text-4xl text-left">
+              {locale === "es" ? "Atrás" : "Back"}
+            </div>
             <ArrowLeft size={38} weight="bold" color="black" />
           </div>
         </button>

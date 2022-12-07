@@ -1,1 +1,0 @@
-Keeping this file for future reference because in it I managed to use a custom post processing effect and also useFBO to create a series of post processing effects that both use convolution. Which at this moment is not possible when using react postprocessing for r3f.
