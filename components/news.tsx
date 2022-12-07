@@ -37,10 +37,10 @@ const News = ({ exhibitionsPosts, scroll }: NewsProps) => {
       </div> */}
       <div className="relative w-screen p-6 pt-10 pb-10 bg-white">
         <div className="text-6xl text-black">
-          {locale === "es" ? "Exhibiciones" : "Shows"}
+          {locale === "es" ? "EXHIBICIONES" : "SHOWS"}
         </div>
         <div className="pt-10">
-          <div className="flex flex-row space-y-4">
+          <div className="flex flex-row space-x-12">
             <div className="flex flex-col w-1/2 space-y-12">
               {currentSection.show ? (
                 // only show when selector is true

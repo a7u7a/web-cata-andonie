@@ -79,7 +79,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
 
       <div className="p-6 flex flex-col space-y-4">
         <div className="text-6xl pb-28 mix-blend-difference text-white">
-          {locale === "es" ? "Obras" : "Works"}
+          {locale === "es" ? "OBRAS" : "WORKS"}
         </div>
 
         <div

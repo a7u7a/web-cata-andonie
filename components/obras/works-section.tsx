@@ -56,7 +56,7 @@ const WorksSection = ({
       </div> */}
 
       <div className="absolute flex flex-col z-50 p-6 text-6xl mix-blend-difference text-white">
-        {locale === "es" ? "Obras seleccionadas" : "Selected Works"}
+        {locale === "es" ? "OBRAS SELECCIONADAS" : "SELECTED WORKS"}
       </div>
 
       <div className="absolute right-0 top-0 p-6 z-40 mix-blend-difference">

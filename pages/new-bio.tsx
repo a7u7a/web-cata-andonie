@@ -77,7 +77,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         </div>
 
         <div className="relative text-6xl mix-blend-difference text-white p-6">
-        Bio
+        BIO
       </div>
 
         <div className="relative w-screen p-6 pt-48 pb-20">
