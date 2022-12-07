@@ -12,7 +12,7 @@ import PostCard from "../../components/obras/post-card";
 import VimeoPlayer from "../../components/vimeo-player";
 import NewNavBar from "../../components/nav-bar";
 import NewFooter from "../../components/footer";
-import { workPost } from "../../interfaces/interfaces";
+import { workPost, pathsAndDimsProps } from "../../interfaces/interfaces";
 import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
 
 interface WorkPostProps {
@@ -31,6 +31,10 @@ export default function Post({ post, workPosts }: WorkPostProps) {
   const [firstCol, secondCol] = post.pathsAndDims
     ? split(post.pathsAndDims!, Math.floor(post.pathsAndDims!.length / 2))
     : [];
+
+  useEffect(() => {
+    console.log("firstCol, secondCol", firstCol, secondCol);
+  }, [firstCol, secondCol]);
 
   const [scrollTop, setScrollTop] = useState(0);
   useEffect(() => {
@@ -87,6 +91,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
                 src={img.path}
                 h={img.h}
                 w={img.w}
+                // @ts-ignore
                 lowResSrc={img.lowResPath}
               />
             ))}
@@ -110,6 +115,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
                 src={img.path}
                 h={img.h}
                 w={img.w}
+                // @ts-ignore
                 lowResSrc={img.lowResPath}
               />
             ))}
