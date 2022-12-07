@@ -48,10 +48,6 @@ const NavBar = ({
   // Get other locale, assumes only two locales
   const otherLocale = locales!.filter((locale) => locale !== activeLocale)[0];
 
-  useEffect(() => {
-    console.log("hoverMenu", hoverMenu);
-  }, [hoverMenu]);
-
   return (
     <div ref={ref} className={classString}>
       <div

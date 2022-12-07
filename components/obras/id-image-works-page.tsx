@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
+// import {triplet, keyStr, rgbDataURL} from "../../lib/utils"
+
 interface IndexImageProps {
   src: string;
   h: number;
@@ -13,8 +15,6 @@ interface IndexImageProps {
   title_color: string;
   id: string;
 }
-
-// todo: custom shader transition on hover
 
 const IdImageWorksPage = ({
   src,
@@ -37,7 +37,7 @@ const IdImageWorksPage = ({
           w > h ? "aspect-[4/3]" : "aspect-[3/4]"
         }`}
       >
-        <Image src={src} objectFit="cover" layout="fill" alt="imagen" />
+        <Image  src={src} objectFit="cover" layout="fill" alt="imagen" />
 
         <div
           className={`absolute w-2/3 mx-4 my-1 left-0 top-0 text-3xl transition-all duration-200 ${

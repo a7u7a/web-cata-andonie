@@ -8,6 +8,8 @@ export interface VideoNavProps {
   direction: number;
 }
 
+
+
 export interface workPost {
   date: string;
   thumbnail: string;
@@ -34,7 +36,7 @@ export interface workPost {
   contentEnglish?: string; //body_eng
   front_img_w?: number; // optional because only relevant on home page
   front_img_h?: number;
-  pathsAndDims?: { w: number; h: number; path: string }[];
+  pathsAndDims?: { w: number; h: number; path: string; lowResPath: string }[];
   vimeo_video_gallery: string[];
 }
 

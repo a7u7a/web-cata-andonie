@@ -27,6 +27,7 @@ function split(arr: { h: number; w: number; path: string }[], index: number) {
 export default function Post({ post, workPosts }: WorkPostProps) {
   const { locale } = useRouter();
   const router = useRouter();
+
   const [firstCol, secondCol] = post.pathsAndDims
     ? split(post.pathsAndDims!, Math.floor(post.pathsAndDims!.length / 2))
     : [];
@@ -81,7 +82,13 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           <div className="flex flex-col w-1/2 pr-0.5 space-y-1">
             <PostCard post={post} />
             {firstCol.map((img, i) => (
-              <IdImage key={i} src={img.path} h={img.h} w={img.w} />
+              <IdImage
+                key={i}
+                src={img.path}
+                h={img.h}
+                w={img.w}
+                lowResSrc={img.lowResPath}
+              />
             ))}
           </div>
           {/* Video goes always first on second column */}
@@ -98,7 +105,13 @@ export default function Post({ post, workPosts }: WorkPostProps) {
               <></>
             )}
             {secondCol.map((img, i) => (
-              <IdImage key={i} src={img.path} h={img.h} w={img.w} />
+              <IdImage
+                key={i}
+                src={img.path}
+                h={img.h}
+                w={img.w}
+                lowResSrc={img.lowResPath}
+              />
             ))}
           </div>
         </div>

@@ -66,7 +66,6 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
   }, [scroll]);
 
   useFrame((state) => {
-    // console.log("time", state.clock.elapsedTime);
     if (matRef.current.uniforms) {
       matRef.current.uniforms.u_time.value = state.clock.elapsedTime;
       matRef.current.needsUpdate = true;

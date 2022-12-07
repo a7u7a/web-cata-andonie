@@ -1,22 +1,27 @@
 import Image from "next/image";
-import Link from "next/link";
 
 interface IndexImageProps {
   src: string;
   h: number;
   w: number;
+  lowResSrc: string;
 }
 
 // todo: custom shader transition on hover
 
-const IdImage = ({ src, h, w }: IndexImageProps) => {
+const IdImage = ({ src, h, w, lowResSrc }: IndexImageProps) => {
   return (
     <div
-      className={`w-full relative ${
-        w > h ? "aspect-[4/3]" : "aspect-[3/4]"
-      }`}
+      className={`w-full relative ${w > h ? "aspect-[4/3]" : "aspect-[3/4]"}`}
     >
-      <Image src={src} objectFit="cover" layout="fill" alt="imagen" />
+      <Image
+        placeholder="blur"
+        blurDataURL={lowResSrc}
+        src={src}
+        objectFit="cover"
+        layout="fill"
+        alt="imagen"
+      />
     </div>
   );
 };

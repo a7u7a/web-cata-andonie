@@ -35,16 +35,22 @@ export const getAllPostIds = (locales: string[] | undefined) => {
   }
   return [...p[0], ...p[1]];
 };
-
+/**
+ * Used by next/image
+ * @returns Array of objects with image filename, low res filename and dimensions.
+ */
 const getImagesPathsAndDimensions = async (id: string) => {
   const fullPath = path.join(imagesDirectory, `${id}`);
-  const fullPath2 = path.join(imagesDirectory2, `${id}`);
+  const fullPathName = path.join(imagesDirectory2, `${id}`);
   // try catch in case imagesDirectory doesnt exist
   try {
-    const fileNames = fs.readdirSync(fullPath);
+    const dirents = fs.readdirSync(fullPath, { withFileTypes: true });
+    // Only return filenames of actual files. Avoids folders
+    const fileNames = dirents
+      .filter((dirent) => dirent.isFile())
+      .map((dirent) => dirent.name);
 
     const pathsAndDims = async (fileName: string) => {
-      // console.log("processing file", fileName);
       const img = fs.createReadStream(
         path.join(process.cwd(), fullPath, fileName)
       );
@@ -52,7 +58,8 @@ const getImagesPathsAndDimensions = async (id: string) => {
       return {
         w: dims.width,
         h: dims.height,
-        path: path.join(fullPath2, fileName),
+        path: path.join(fullPathName, fileName),
+        lowResPath: path.join(fullPathName + "/low-res/", fileName),
       };
     };
     const processFileNames = async () => {
@@ -233,7 +240,6 @@ export const getAbout = (): aboutPost => {
   const contentSpanish = matterResult.content;
   const _ = matter(matterResult.data.body_eng);
   const contentEnglishOut = _.content.split("\n").join("\r\n");
-  // console.log("matterResult test", matterResult);
   return {
     id,
     title: matterResult.data.title,
