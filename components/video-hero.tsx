@@ -53,8 +53,8 @@ const VideoHero = () => {
         <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
       </div>
       <div>
-        <div className="relative w-screen h-screen">
-          <div className="absolute inset-x-0 bottom-0 px-6">
+        <div className="relative w-screen h-[80vh]">
+          <div className="absolute inset-x-0 bottom-0 px-3 md:px-6">
             <div className="mix-blend-difference flex flex-row items-center justify-between pt-4 pb-4">
               <button
                 onMouseEnter={() => setLeftHover(true)}
@@ -69,7 +69,7 @@ const VideoHero = () => {
               </button>
 
               <Link href={tituloVideo.url}>
-                <div className="text-white text-center text-3xl cursor-pointer hover:underline">
+                <div className="text-white text-center text-2xl md:text-3xl cursor-pointer hover:underline">
                   {tituloVideo.name}
                 </div>
               </Link>

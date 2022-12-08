@@ -17,8 +17,8 @@ const Statement = ({ post }: AboutProps) => {
   // };
 
   return (
-    <div className="relative p-6 pt-48 pb-28 flex flex-col">
-      <div className="w-2/3">
+    <div className="relative p-3 md:p-6 pt-24 md:pt-48 pb-16 md:pb-28 flex flex-col">
+      <div className="w-full md:w-2/3">
         <ReactMarkdown
           // eslint-disable-next-line
           children={locale === "es" ? post.contentSpanish : post.contentEnglish}

@@ -10,17 +10,17 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
   return (
     <div
       id="contact"
-      className={`relative flex flex-row space-x-4 p-6 pt-24 pb-40 ${
+      className={`relative flex flex-col md:flex-row md:space-x-4 space-y-4 p-3 md:p-6 pt-24 pb-40 ${
         background ? "bg-white" : "bg-transparent"
       }`}
     >
-      <div className="flex flex-col w-1/2 mix-blend-difference text-white">
+      <div className="flex flex-col w-full md:w-1/2 mix-blend-difference text-white">
         <div>
-          <div className="text-6xl ">
+          <div className="text-5xl md:text-6xl">
             <div>{locale === "es" ? "CONTACTO" : "CONTACT"}</div>
           </div>
 
-          <div className="mt-16 text-3xl flex flex-col space-y-3">
+          <div className="mt-16 text-2xl md:text-3xl flex flex-col space-y-3">
             <div>
               <a
                 className="break-words hover:underline"
@@ -50,11 +50,11 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
 
         <div className="flex flex-col mt-16">
           <div className="mix-blend-difference text-white">
-            <div className="text-6xl">
+            <div className="text-5xl md:text-6xl">
               {locale === "es" ? "FOTOGRAFÍA" : "PHOTOGRAPHY"}
             </div>
           </div>
-          <div className="mt-16 text-3xl">
+          <div className="mt-16 text-2xl md:text-3xl">
             <ul className="flex flex-col space-y-3">
               <li>
                 <a className="hover:underline" href="https://www.instagram.com/paolavelasquezdiaz">
@@ -85,33 +85,22 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
       </div>
 
       {colophon ? (
-        <div className="w-1/2">
-          <div className="text-3xl text-left mix-blend-difference text-white leading-snug">
+        <div className="w-full md:w-1/2 pt-16">
+          <div className="text-2xl md:text-3xl text-left mix-blend-difference text-white leading-snug">
             {locale === "es" ? (
               <p>
                 Este sitio fue diseñado usando{" "}
                 <a className="underline" href="https://norm.to/ll-riforma/">
                   LL Riforma
                 </a>{" "}
-                y desarrollado con Next.js, Typescript,{" "}
-                <a
-                  className="underline"
-                  href="https://github.com/pmndrs/react-three-fiber"
-                >
-                  R3F
-                </a>{" "}
-                y un poco de{" "}
-                <a
+                y desarrollado en Next.js con un poco de <a
                   className="underline"
                   href="https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language"
                 >
-                  GLSL
-                </a>{" "}
-                para los fondos generativos. Creado por{" "}
-                <a className="underline" href="http://esrs.co/">
+                  GLSL </a>
+                para los fondos generativos. Creado en Noviembre 2022 por <a className="underline" href="http://esrs.co/">
                   esrs.co
-                </a>{" "}
-                en el 2022. No utiliza cookies de rastreo.
+                </a>. No utiliza cookies de rastreo.
               </p>
             ) : (
               <p>

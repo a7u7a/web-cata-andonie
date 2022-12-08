@@ -54,7 +54,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   return (
     <div className="relative">
-      <NavBar scrollTop={10} scrollThreshold={0} />
+      {/* <NavBar scrollTop={10} scrollThreshold={0} /> */}
 
       <div className="fixed w-full h-full">
         <PageBackground
@@ -69,7 +69,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         />
       </div>
 
-      <div className="relative z-30 font-bold text-6xl text-white p-6 mix-blend-difference">
+      <div className="flex items-center text-center w-full relative z-30 font-bold text-4xl md:text-6xl text-white p-3 md:p-6 mix-blend-difference">
         Catalina Andonie
       </div>
       <Statement post={aboutPost} />

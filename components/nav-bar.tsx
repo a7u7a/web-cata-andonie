@@ -69,7 +69,7 @@ const NavBar = ({
           <div className="hover:underline cursor-pointer">CONTACT</div>
         </Link>
         <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
-          <div className="flex items-center text-center text-3xl hover:underline cursor-pointer">
+          <div className="hover:underline cursor-pointer">
             {activeLocale === "es" ? "ENGLISH" : "ESPAÑOL"}
           </div>
         </Link>
