@@ -134,16 +134,6 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
                   lowResPath={post.lowResHeroImagePath}
                 />
               ))}
-              <div className="w-full p-4">
-                <button onClick={() => router.back()}>
-                  <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-                    <div className="text-4xl text-left">
-                      {locale === "es" ? "Atrás" : "Back"}
-                    </div>
-                    <ArrowLeft size={38} weight="bold" color="black" />
-                  </div>
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -160,7 +150,16 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
           ))}
         </div>
       )}
-
+      <div className="w-full mt-12 p-4">
+        <button onClick={() => router.back()}>
+          <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
+            <div className="text-4xl text-left">
+              {locale === "es" ? "Atrás" : "Back"}
+            </div>
+            <ArrowLeft size={38} weight="bold" color="black" />
+          </div>
+        </button>
+      </div>
       <NewFooter />
     </div>
   );

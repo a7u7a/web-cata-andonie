@@ -62,7 +62,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
       <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
 
       <div className="fixed mix-blend-difference z-40">
-        <div className="p-6 text-6xl text-white">
+        <div className="p-6 pl-7 text-6xl text-white">
           {locale === "es"
             ? post.title!.toUpperCase()
             : post.title_eng!.toUpperCase()}

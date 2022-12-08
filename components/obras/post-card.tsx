@@ -27,7 +27,7 @@ const PostCard = ({ post }: PostCardProps) => {
         {locale === "es" ? post.title! : post.title_eng!}
       </div> */}
       <div className="text-xl text-gray-700">
-        <ul className="pt-6 space-y-[0.4rem] w-1/2">
+        <ul className="pt-6 space-y-[0.4rem] w-2/3">
           {tableData.map((row, i) => (
             <li
               key={i}
