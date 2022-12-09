@@ -24,13 +24,13 @@ const SelectedWorks = ({
 
   return (
     <div className="relative bg-black">
-      <div className="absolute top-0 inset-x-0 flex flex-col md:flex-row justify-between z-50 p-3 md:p-6 text-4xl md:text-6xl mix-blend-difference text-white">
+      <div className="absolute top-0 inset-x-0 flex flex-col md:flex-row justify-between z-50 p-3 md:p-6 text-5xl md:text-6xl break-words mix-blend-difference text-white">
         <a>{locale === "es" ? "OBRAS SELECCIONADAS" : "SELECTED WORKS"}</a>
 
         
         <Link href={"/obras"}>
           <div className="flex flex-col items-end justify-end text-white hover:underline hover:cursor-pointer">
-            <div className="text-2xl md:text-3xl text-right">
+            <div className="text-2xl pt-1 md:text-3xl text-right">
               {locale === "es" ? "Ver todas" : "All works"}
             </div>
             <ArrowRight size={38} weight="bold" color="white" />

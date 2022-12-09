@@ -16,7 +16,7 @@ const NewsSection = ({ post }: NewsSectionProps) => {
       <ReactMarkdown
         // eslint-disable-next-line
         children={locale === "es" ? post.contentSpanish : post.contentEnglish}
-        className="news"
+        className="exhibitions"
       />
     </div>
   );

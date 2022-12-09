@@ -50,7 +50,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
 
         <div className="flex flex-col mt-16">
           <div className="mix-blend-difference text-white">
-            <div className="text-5xl md:text-6xl">
+            <div className="text-[2.8rem] md:text-6xl break-words">
               {locale === "es" ? "FOTOGRAFÍA" : "PHOTOGRAPHY"}
             </div>
           </div>

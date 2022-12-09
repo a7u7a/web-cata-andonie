@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface NavBarProps {
   scrollTop?: number;
@@ -15,32 +15,9 @@ const NavBar = ({
   scrollThreshold,
   whiteText = false,
 }: NavBarProps) => {
-  const [check, setCheck] = useState(false);
-  const [classString, setClassString] = useState("");
-  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
   const [hoverMenu, setHoverMenu] = useState(false);
-
-  // Using two useEffects so I can avoid updating the check every time scrollTop updates
-  useEffect(() => {
-    if (scrollThreshold != undefined) {
-      if (scrollTop! >= scrollThreshold) {
-        // update visibility
-        setCheck(true);
-      } else {
-        setCheck(false);
-      }
-    } else {
-      setCheck(true);
-    }
-  }, [scrollTop, scrollThreshold, bounds.height]);
-
-  useEffect(() => {
-    // or transition from opacity-0 to opacity-100
-    setClassString(`fixed mix-blend-difference inset-x-0 top-0 flex flex-row justify-between
-        w-screen z-50 px-6 pt-4
-        transition-all duration-300 ease-out
-        ${check ? "opacity-100" : "opacity-0"}`);
-  }, [check]);
+  const [hidden, setHidden] = useState(false);
+  const wrapperRef = useRef(null);
 
   const router = useRouter();
   const { locales, locale: activeLocale, pathname, asPath, query } = router;
@@ -48,40 +25,77 @@ const NavBar = ({
   // Get other locale, assumes only two locales
   const otherLocale = locales!.filter((locale) => locale !== activeLocale)[0];
 
-  return (
-    <div ref={ref} className={classString}>
-      <div
-        onMouseLeave={() => setHoverMenu(false)}
-        className={`absolute top-0 right-0 p-6 items-end flex text-3xl text-white flex-col space-y-3 transition-opacity ${
-          hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
-        }`}
-      >
-        <Link href="/">
-          <div className="hover:underline cursor-pointer">HOME</div>
-        </Link>
-        <Link href="/obras">
-          <div className="hover:underline cursor-pointer">WORKS</div>
-        </Link>
-        <Link href="/bio">
-          <div className="hover:underline cursor-pointer">BIO</div>
-        </Link>
-        <Link href="/#contact">
-          <div className="hover:underline cursor-pointer">CONTACT</div>
-        </Link>
-        <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
-          <div className="hover:underline cursor-pointer">
-            {activeLocale === "es" ? "ENGLISH" : "ESPAÑOL"}
-          </div>
-        </Link>
-      </div>
+  useEffect(() => {
+    // hide menu after transition is complete
+    // show menu when hover is true
+    if (hoverMenu === false) {
+      setTimeout(() => {
+        setHidden(true);
+      }, 200);
+    } else {
+      setHidden(false);
+    }
+  }, [hoverMenu]);
 
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event: Event) {
+      // @ts-ignore
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setHoverMenu(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef]);
+
+  return (
+    <div className="fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference p-4 md:p-6">
       <div
         onMouseEnter={() => setHoverMenu(true)}
-        className={`absolute top-0 right-0 p-6 flex items-center text-white text-center text-3xl cursor-pointer transition-opacity ${
+        onClick={() => setHoverMenu(true)}
+        className={`absolute pr-4 md:pt-4 md:pr-6 h-14 bottom-0 md:top-0 right-0 text-right text-3xl text-white z-50 transition-opacity duration-200 ${
           hoverMenu ? "opacity-0 z-40" : "opacity-100 z-50"
         }`}
       >
         Menu
+      </div>
+
+      <div
+        ref={wrapperRef}
+        onMouseLeave={() => setHoverMenu(false)}
+        className={`text-3xl text-white z-50 transition-opacity text-right mix-blend-normal duration-200 ${
+          hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
+        }
+        ${hidden ? "hidden" : "block"}
+        `}
+      >
+        <div className="absolute h-64 inset-0 bg-gray-400 w-full z-0 blur-xl "></div>
+        <div className="relative flex flex-col space-y-3">
+          <Link href="/">
+            <div className="hover:underline cursor-pointer z-50">HOME</div>
+          </Link>
+          <Link href="/obras">
+            <div className="hover:underline cursor-pointer z-50">WORKS</div>
+          </Link>
+          <Link href="/bio">
+            <div className="hover:underline cursor-pointer z-50">BIO</div>
+          </Link>
+          <Link href="/#contact">
+            <div className="hover:underline cursor-pointer z-50">CONTACT</div>
+          </Link>
+          <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
+            <div className="hover:underline cursor-pointer z-50">
+              {activeLocale === "es" ? "ENGLISH" : "ESPAÑOL"}
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
