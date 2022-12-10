@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .bio {
-  @apply w-full text-white text-[1.1rem]
+  @apply pl-11 w-full text-white text-xl md:text-3xl
   prose prose-sm
   prose-p:font-bold
   prose-ul:list-none prose-ul:list-outside prose-ul:pl-0 prose-li:pl-0 prose-li:py-3 
-  prose-h1:text-4xl prose-h1:font-bold prose-h1:pt-20 prose-h1:text-gray-300;
+  prose-h5:text-4xl prose-h5:pt-20 ;
 }
 
 .exhibitions {
@@ -24,7 +24,7 @@
 .statement {
   @apply w-full text-white mix-blend-difference text-4xl sm:text-5xl md:text-6xl space-y-10 
   prose
-  prose-p:my-0 sm:leading-snug md:leading-tight;
+  prose-p:my-0 leading-snug md:leading-tight;
 }
 
 .work {

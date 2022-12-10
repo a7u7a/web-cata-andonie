@@ -30,7 +30,7 @@ const SelectedWorks = ({
         
         <Link href={"/obras"}>
           <div className="flex flex-col items-end justify-end text-white hover:underline hover:cursor-pointer">
-            <div className="text-2xl pt-1 md:text-3xl text-right">
+            <div className="pt-1 text-3xl text-right">
               {locale === "es" ? "Ver todas" : "All works"}
             </div>
             <ArrowRight size={38} weight="bold" color="white" />

@@ -207,10 +207,14 @@ export const getAllBioPosts = () => {
     return {
       id,
       title: matterResult.data.title,
+      title_eng: matterResult.data.title_eng,
       contentSpanish,
       contentEnglish: contentEnglishOut,
+      order: matterResult.data.order,
     };
   });
+
+  allPostsData.sort((a, b) => a.order - b.order);
   return allPostsData;
 };
 

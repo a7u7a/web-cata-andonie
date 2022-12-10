@@ -10,7 +10,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
   return (
     <div
       id="contact"
-      className={`relative flex flex-col md:flex-row md:space-x-4 space-y-4 p-3 md:p-6 pt-24 pb-40 ${
+      className={`relative flex flex-col md:flex-row md:space-x-4 space-y-4 p-3 md:p-6 md:pt-10 pb-40 ${
         background ? "bg-white" : "bg-transparent"
       }`}
     >

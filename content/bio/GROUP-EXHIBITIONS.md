@@ -1,8 +1,8 @@
 ---
-title: columna 2
+title: EXHIBICIONES GRUPALES
+title_eng: GROUP EXHIBITIONS
+order: 0
 body_eng: |-
-  # Group Exhibitions
-
   2021
   * Relato Salvaje, Oma Galeria de Arte, Santiago, Chile.
   Sabor y Control, Vantage Art Projects, Toronto, Canada.
@@ -61,8 +61,6 @@ body_eng: |-
   * Sin Titulo II, Centro Icone, Santiago, Chile.
   * Sin Titulo, Galeria Open 5, Santiago, Chile.
 ---
-
-# Exhibiciones grupales
 
 2021
 

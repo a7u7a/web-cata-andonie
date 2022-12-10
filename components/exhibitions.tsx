@@ -34,7 +34,7 @@ const Exhibitions = ({ exhibitionsPosts, scroll }: NewsProps) => {
           scroll={scroll}
         />
       </div> */}
-      <div className="relative w-screen p-3 md:p-6 pt-10 pb-10 bg-white">
+      <div className="relative w-screen p-3 md:p-6 md:pt-10 pb-10 bg-white">
         <div className="text-5xl md:text-6xl text-black">
           {locale === "es" ? "EXHIBICIONES" : "SHOWS"}
         </div>

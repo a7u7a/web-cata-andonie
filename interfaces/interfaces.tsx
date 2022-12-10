@@ -47,9 +47,11 @@ export interface workPost {
 
 export interface bioPost {
   title: string;
+  title_eng: string;
   contentSpanish: string; // post body
   contentEnglish: string;
   id: string; // post filename
+  order:number
 }
 
 export interface bioStatementPost {
