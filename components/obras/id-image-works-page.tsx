@@ -59,7 +59,7 @@ const IdImageWorksPage = ({
 
         <div className="absolute mx-4 my-1 right-0 top-0">
           <div
-            className={`md:text-3xl transition-all duration-200 ${
+            className={`text-3xl transition-all duration-200 ${
               hovered ? "opacity-100 translate-y-2" : "opacity-0 translate-y-0"
             } 
           ${title_color === "white" ? "text-white" : "text-black"}`}

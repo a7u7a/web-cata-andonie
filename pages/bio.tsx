@@ -65,9 +65,9 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           BIO
         </div>
 
-        <div className="relative w-screen p-6 pt-48 pb-20">
-          <div className="w-2/3">
-            <div className="text-6xl text-white leading-snug mix-blend-difference">
+        <div className="relative w-screen p-3 md:p-6 pt-48 pb-20">
+          <div className="w-full lg:w-2/3">
+            <div className="text-4xl sm:text-5xl md:text-6xl text-white sm:leading-snug md:leading-tight mix-blend-difference">
               {locale === "es"
                 ? bioStatement.contentSpanish
                 : bioStatement.contentEnglish}

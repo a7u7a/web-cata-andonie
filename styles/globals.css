@@ -11,14 +11,14 @@
 }
 
 .exhibitions {
-  @apply w-full text-black text-2xl md:text-3xl
+  @apply w-full text-black text-3xl
   prose 
   prose-ul:list-none prose-ul:list-outside prose-ul:pl-0 prose-ul:mt-0 prose-ul:mb-0
   prose-li:pl-0
+  prose-li:pt-3
   prose-p:my-2
-  prose-h1:text-3xl prose-h1:text-black prose-h1:font-bold prose-h1:pt-8
+  prose-h4:text-3xl prose-h4:text-black prose-h4:font-bold prose-h4:pt-0 md:prose-h4:pt-8
   prose-a:text-black;
-
 }
 
 .statement {

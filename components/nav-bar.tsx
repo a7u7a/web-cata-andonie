@@ -56,11 +56,11 @@ const NavBar = ({
   }, [wrapperRef]);
 
   return (
-    <div className="fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference p-4 md:p-6">
+    <div className="fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference p-3 md:p-6">
       <div
         onMouseEnter={() => setHoverMenu(true)}
         onClick={() => setHoverMenu(true)}
-        className={`absolute pr-4 md:pt-4 md:pr-6 h-14 bottom-0 md:top-0 right-0 text-right text-3xl text-white z-50 transition-opacity duration-200 ${
+        className={`absolute pr-4 md:pt-4 md:pr-6 h-14 bottom-0 md:top-0 right-0 text-right text-3xl text-white z-50 transition-opacity duration-100 ${
           hoverMenu ? "opacity-0 z-40" : "opacity-100 z-50"
         }`}
       >
@@ -70,13 +70,13 @@ const NavBar = ({
       <div
         ref={wrapperRef}
         onMouseLeave={() => setHoverMenu(false)}
-        className={`text-3xl text-white z-50 transition-opacity text-right mix-blend-normal duration-200 ${
+        className={`text-3xl text-white z-50 text-right mix-blend-normal duration-200 transition-opacity ${
           hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
         }
         ${hidden ? "hidden" : "block"}
         `}
       >
-        <div className="absolute h-64 inset-0 bg-gray-400 w-full z-0 blur-xl "></div>
+        <div className="absolute h-64 inset-0 bg-gray-400 w-full z-0 blur-xl rounded-3xl"></div>
         <div className="relative flex flex-col space-y-3">
           <Link href="/">
             <div className="hover:underline cursor-pointer z-50">HOME</div>

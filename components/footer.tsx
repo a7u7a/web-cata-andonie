@@ -20,7 +20,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
             <div>{locale === "es" ? "CONTACTO" : "CONTACT"}</div>
           </div>
 
-          <div className="mt-16 text-2xl md:text-3xl flex flex-col space-y-3">
+          <div className="mt-16 text-3xl flex flex-col space-y-3">
             <div>
               <a
                 className="break-words hover:underline"
@@ -54,7 +54,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
               {locale === "es" ? "FOTOGRAFÍA" : "PHOTOGRAPHY"}
             </div>
           </div>
-          <div className="mt-16 text-2xl md:text-3xl">
+          <div className="mt-16 text-3xl">
             <ul className="flex flex-col space-y-3">
               <li>
                 <a className="hover:underline" href="https://www.instagram.com/paolavelasquezdiaz">
@@ -86,7 +86,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
 
       {colophon ? (
         <div className="w-full md:w-1/2 pt-16">
-          <div className="text-2xl md:text-3xl text-left mix-blend-difference text-white leading-snug">
+          <div className="text-3xl text-left mix-blend-difference text-white leading-snug">
             {locale === "es" ? (
               <p>
                 Este sitio fue diseñado usando{" "}

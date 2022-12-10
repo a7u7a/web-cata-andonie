@@ -71,16 +71,16 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
 
       <NewNavBar scrollTop={10} scrollThreshold={0} />
 
-      <div className="p-6 flex flex-col space-y-4">
+      <div className="p-3 md:p-6 flex flex-col space-y-4">
         <div className="text-6xl pb-28 mix-blend-difference text-white">
           {locale === "es" ? "OBRAS" : "WORKS"}
         </div>
 
         <div
-          className="flex flex-row space-x-3 w-32 items-end hover:underline hover:cursor-pointer"
+          className="flex flex-row space-x-3 w-36 items-end hover:underline hover:cursor-pointer"
           onClick={handleButtonToggle}
         >
-          <div className="text-3xl">
+          <div className="text-3xl md:text-4xl">
             {gridView
               ? locale === "es"
                 ? "Lista"
@@ -90,9 +90,9 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
               : "Grid"}
           </div>
           {gridView ? (
-            <List size={36} weight="regular" color="black" />
+            <List size={38} weight="regular" color="black" />
           ) : (
-            <GridFour size={36} weight="regular" color="black" />
+            <GridFour size={38} weight="regular" color="black" />
           )}
         </div>
       </div>
@@ -100,7 +100,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
       {gridView ? (
         // render grid view
         <div className="relative bg-white flex flex-col">
-          <div className="flex flex-col md:flex-row m-1">
+          <div className="flex flex-col md:flex-row m-1 space-y-1 md:space-y-0">
             <div className="flex flex-col w-full md:w-1/2 pr-0 md:pr-0.5 space-y-1">
               {firstCol.map((post, i) => (
                 <IdImageWorksPage
@@ -139,26 +139,26 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
         </div>
       ) : (
         // render list view
-        <div className="relative flex flex-col px-6 space-y-8 pt-4">
+        <div className="relative flex flex-col px-3 md:px-6 space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 pt-4">
           {workPosts.map((post, i) => (
             <Link key={i} href={"obras/" + post.id}>
-              <div className="flex flex-row justify-between text-6xl hover:underline cursor-pointer">
+              <div className="flex flex-row justify-between text-3xl sm:text-4xl  md:text-5xl lg:text-6xl hover:underline cursor-pointer">
                 <div>{locale === "es" ? post.title : post.title_eng}</div>
-                <div>{post.year}</div>
+                <div className="flex items-end">{post.year}</div>
               </div>
             </Link>
           ))}
         </div>
       )}
-      <div className="w-full mt-12 p-4">
-        <button onClick={() => router.back()}>
+      <div className="w-28 mt-12 p-3 md:p-6">
+        <Link href={"/"}>
           <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-            <div className="text-4xl text-left">
+            <div className="text-3xl md:text-4xl text-left">
               {locale === "es" ? "Atrás" : "Back"}
             </div>
             <ArrowLeft size={38} weight="bold" color="black" />
           </div>
-        </button>
+        </Link>
       </div>
       <NewFooter />
     </div>

@@ -69,7 +69,7 @@ const VideoHero = () => {
               </button>
 
               <Link href={tituloVideo.url}>
-                <div className="text-white text-center text-2xl md:text-3xl cursor-pointer hover:underline">
+                <div className="text-white text-center text-3xl cursor-pointer hover:underline">
                   {tituloVideo.name}
                 </div>
               </Link>
