@@ -10,7 +10,7 @@ body_eng: |-
   * Arteba, Galería Aninat, Buenos Aires, Argentina. Group show.
   * Art Basel París, Galería Aninat, Tuileries Garden, Paris, France. Group show
 
-  # 2023
+  #### 2023
   * ZONA MACO, Galería Aninat, México DF, México. Group show.
 ---
 #### 2022
@@ -19,6 +19,7 @@ body_eng: |-
 * Artists Breakfast Institute, Bogotá, Colombia. Exposición colectiva.
 * Arteba, Galería Aninat, Buenos Aires, Argentina. Exposición colectiva.
 * Art Basel París, Galería Aninat, Jardín de Las Tullerías, París, Francia. Exposición colectiva.
+
 
 #### 2023
 * ZONA MACO, Galería Aninat, México DF, México. Exposición colectiva.
