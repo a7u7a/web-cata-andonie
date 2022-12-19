@@ -56,7 +56,7 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
 
   useEffect(() => {
     if (matRef.current.uniforms) {
-      const test = linearMap(scroll, 0, 2000, -0.2, 8.02);
+      const test = linearMap(scroll, 0, 4000, -0.2, 8.02);
       matRef.current.uniforms.u_v2.value = test;
       // matRef.current.needsUpdate = true;
     }
