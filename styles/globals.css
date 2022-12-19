@@ -24,7 +24,7 @@
 .statement {
   @apply w-full text-white mix-blend-difference text-4xl sm:text-5xl md:text-6xl space-y-10 
   prose
-  prose-p:my-0 leading-snug md:leading-tight;
+  prose-p:my-0 prose-p:leading-tight md:leading-tight;
 }
 
 .work {

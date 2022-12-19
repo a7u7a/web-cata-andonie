@@ -97,8 +97,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                   className="underline"
                   href="https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language"
                 >
-                  GLSL </a>
-                para los fondos generativos. Creado en Noviembre 2022 por <a className="underline" href="http://esrs.co/">
+                  GLSL </a> para los fondos generativos. Creado en Noviembre 2022 por <a className="underline" href="http://esrs.co/">
                   esrs.co
                 </a>. No utiliza cookies de rastreo.
               </p>
@@ -121,8 +120,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                   href="https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language"
                 >
                   GLSL
-                </a>
-                for the generative backgrounds. Created by{" "}
+                </a> for the generative backgrounds. Created by{" "}
                 <a className="underline" href="http://esrs.co/">
                   esrs.co
                 </a>{" "}
