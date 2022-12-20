@@ -12,6 +12,7 @@ import Controls from "./controls";
 // import NoiseDistorsion from "./noise-distorsion";
 import { useControls } from "leva";
 import { linearMap, getRandomArbitrary } from "../../lib/utils";
+import useMediaQuery from "../../lib/media";
 
 interface BackgroundWobbleProps {
   progress: number;
@@ -25,13 +26,14 @@ interface BackgroundWobbleProps {
 }
 
 const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
+  const isSm = useMediaQuery("(max-width: 640px)");
   const matRef = useRef<ShaderMaterial>(null!);
-  const [textureA] = useLoader(TextureLoader, [src]);
+  const [texture] = useLoader(TextureLoader, [src]);
   const size = useThree((state) => state.size);
   // Controls(matRef);
   const uniforms = useMemo(
     () => ({
-      u_texture: { value: textureA },
+      u_texture: { value: texture },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_imgAspect: { value: imgAspect },
       u_imgScale: { value: 2.24 },
@@ -45,7 +47,7 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
       u_w2: { value: 1.0 },
       u_w3: { value: 1.0 },
       u_v2: { value: 1.0 },
-      u_v4: { value: 2.03 },
+      u_v4: { value: 20.03 },
       // u_v5: { value: 0.4 },
       u_v5: { value: 0 },
       u_v6: { value: 0.33 },
@@ -53,12 +55,11 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
       u_mouse_x: { value: 0 },
       u_mouse_y: { value: 0 },
     }),
-    [textureA]
+    [texture]
   );
 
-  const [globalCoords, setGlobalCoords] = useState({ x: 0, y: 0 });
-
-  // // update mouse coords
+  // mouse coords
+  // const [globalCoords, setGlobalCoords] = useState({ x: 0, y: 0 });
   // useEffect(() => {
   //   const handleWindowMouseMove = (event: Event) => {
   //     setGlobalCoords({
@@ -75,19 +76,24 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
   //   };
   // }, []);
 
-  useEffect(() => {
-    // console.log("globalCoords", globalCoords);
-    if (matRef.current.uniforms) {
-      matRef.current.uniforms.u_mouse_x.value = globalCoords.x;
-      matRef.current.uniforms.u_mouse_y.value = globalCoords.y;
-      // matRef.current.needsUpdate = true;
-    }
-  }, [globalCoords]);
+  // useEffect(() => {
+  //   // console.log("globalCoords", globalCoords);
+  //   if (matRef.current.uniforms) {
+  //     matRef.current.uniforms.u_mouse_x.value = globalCoords.x;
+  //     matRef.current.uniforms.u_mouse_y.value = globalCoords.y;
+  //     // matRef.current.needsUpdate = true;
+  //   }
+  // }, [globalCoords]);
 
   useEffect(() => {
-    if (matRef.current.uniforms) {
-      const test = linearMap(scroll, 0, 4000, -1.2, 6.02);
-      matRef.current.uniforms.u_v2.value = test;
+    if (matRef.current.uniforms && !isSm) {
+      const pre = linearMap(scroll, 0, 4000, -1, 1);
+      if (pre < 1) {
+        // this parabola gives it start and end transition to scroll
+        const parabola = Math.pow(Math.cos((Math.PI * pre) / 2.0), 2.5);
+        const value = linearMap(parabola, -1, 1, 6.02, -1.2);
+        matRef.current.uniforms.u_v2.value = value;
+      }
       // matRef.current.needsUpdate = true;
     }
   }, [scroll]);
