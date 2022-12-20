@@ -10,7 +10,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
   return (
     <div
       id="contact"
-      className={`relative flex flex-col md:flex-row md:space-x-4 space-y-4 p-3 md:p-6 md:pt-10 pb-40 ${
+      className={`relative flex flex-col md:flex-row md:space-x-4 space-y-4 p-3 md:p-6 md:pt-10 pb-40 md:pb-40 ${
         background ? "bg-white" : "bg-transparent"
       }`}
     >
@@ -107,15 +107,7 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                 <a className="underline" href="https://norm.to/ll-riforma/">
                   LL Riforma
                 </a>{" "}
-                and developed using Next.js, Typescript,{" "}
-                <a
-                  className="underline"
-                  href="https://github.com/pmndrs/react-three-fiber"
-                >
-                  R3F
-                </a>{" "}
-                and some{" "}
-                <a
+                and developed using Next.js, and some <a
                   className="underline"
                   href="https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language"
                 >

@@ -7,7 +7,7 @@ import {
   BrightnessContrast,
 } from "@react-three/postprocessing";
 import clipSpaceVert from "./clip-space.vert";
-import baseFragment from "./base_2.frag";
+import baseFragment from "./base.frag";
 import Controls from "./controls";
 // import NoiseDistorsion from "./noise-distorsion";
 import { useControls } from "leva";
@@ -34,7 +34,7 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
       u_texture: { value: textureA },
       u_resolution: { value: new Vector2(size.width, size.height) },
       u_imgAspect: { value: imgAspect },
-      u_imgScale: { value: 1.24 },
+      u_imgScale: { value: 2.24 },
       u_time: { value: 0.0 },
       // random progress value gets added to time to make noise more random
       u_progress: { value: getRandomArbitrary(0.0, 10.0) },
@@ -50,13 +50,43 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
       u_v5: { value: 0 },
       u_v6: { value: 0.33 },
       u_v7: { value: 0.42 },
+      u_mouse_x: { value: 0 },
+      u_mouse_y: { value: 0 },
     }),
     [textureA]
   );
 
+  const [globalCoords, setGlobalCoords] = useState({ x: 0, y: 0 });
+
+  // // update mouse coords
+  // useEffect(() => {
+  //   const handleWindowMouseMove = (event: Event) => {
+  //     setGlobalCoords({
+  //       // @ts-ignore
+  //       x: event.screenX,
+  //       // @ts-ignore
+  //       y: event.screenY,
+  //     });
+  //   };
+  //   window.addEventListener("mousemove", handleWindowMouseMove);
+
+  //   return () => {
+  //     window.removeEventListener("mousemove", handleWindowMouseMove);
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    // console.log("globalCoords", globalCoords);
+    if (matRef.current.uniforms) {
+      matRef.current.uniforms.u_mouse_x.value = globalCoords.x;
+      matRef.current.uniforms.u_mouse_y.value = globalCoords.y;
+      // matRef.current.needsUpdate = true;
+    }
+  }, [globalCoords]);
+
   useEffect(() => {
     if (matRef.current.uniforms) {
-      const test = linearMap(scroll, 0, 4000, -0.2, 8.02);
+      const test = linearMap(scroll, 0, 4000, -1.2, 6.02);
       matRef.current.uniforms.u_v2.value = test;
       // matRef.current.needsUpdate = true;
     }

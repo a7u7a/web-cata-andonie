@@ -56,7 +56,7 @@ const NavBar = ({
   }, [wrapperRef]);
 
   return (
-    <div className="fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference p-3 md:p-6">
+    <div className="fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference p-3 ">
       <div
         onMouseEnter={() => setHoverMenu(true)}
         onClick={() => setHoverMenu(true)}
@@ -79,19 +79,19 @@ const NavBar = ({
         <div className="absolute h-64 inset-0 bg-gray-400 w-full z-0 blur-xl rounded-3xl"></div>
         <div className="relative flex flex-col space-y-3">
           <Link href="/">
-            <div className="hover:underline cursor-pointer z-50">HOME</div>
+            <div className="hover:text-indigo-800 cursor-pointer z-50">HOME</div>
           </Link>
           <Link href="/obras">
-            <div className="hover:underline cursor-pointer z-50">WORKS</div>
+            <div className="hover:text-indigo-800 cursor-pointer z-50">WORKS</div>
           </Link>
           <Link href="/bio">
-            <div className="hover:underline cursor-pointer z-50">BIO</div>
+            <div className="hover:text-indigo-800 cursor-pointer z-50">BIO</div>
           </Link>
           <Link href="/#contact">
-            <div className="hover:underline cursor-pointer z-50">CONTACT</div>
+            <div className="hover:text-indigo-800 cursor-pointer z-50">CONTACT</div>
           </Link>
           <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
-            <div className="hover:underline cursor-pointer z-50">
+            <div className="hover:text-indigo-800 cursor-pointer z-50">
               {activeLocale === "es" ? "ENGLISH" : "ESPAÑOL"}
             </div>
           </Link>
