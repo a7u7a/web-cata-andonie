@@ -27,7 +27,6 @@ const SelectedWorks = ({
       <div className="absolute top-0 inset-x-0 flex flex-col md:flex-row justify-between z-50 p-3 md:p-6 text-5xl md:text-6xl break-words mix-blend-difference text-white">
         <a>{locale === "es" ? "OBRAS SELECCIONADAS" : "SELECTED WORKS"}</a>
 
-        
         <Link href={"/obras"}>
           <div className="flex flex-col items-end justify-end text-white hover:underline hover:cursor-pointer">
             <div className="pt-1 text-3xl text-right">
@@ -35,11 +34,9 @@ const SelectedWorks = ({
             </div>
             <ArrowRight size={38} weight="bold" color="white" />
           </div>
-        </Link>
-      
+        </Link>      
       </div>
 
-      
       <VideoHero />
     </div>
   );

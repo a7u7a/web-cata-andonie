@@ -61,7 +61,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
         <PageBackground
           progress={0.5}
           scale={0.8}
-          src={"/shader-backgrounds/4test.jpeg"}
+          src={"/shader-backgrounds/4.jpeg"}
           imgAspect={1.77}
           imgScale={2.0}
           speed={-0.02}

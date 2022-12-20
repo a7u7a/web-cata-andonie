@@ -59,7 +59,7 @@ const VideoHero = () => {
               <button
                 onMouseEnter={() => setLeftHover(true)}
                 onMouseLeave={() => setLeftHover(false)}
-                onClick={videoPrev}
+                onClick={videoNext}
               >
                 <ArrowLeft
                   size={38}
@@ -77,7 +77,7 @@ const VideoHero = () => {
               <button
                 onMouseEnter={() => setRightHover(true)}
                 onMouseLeave={() => setRightHover(false)}
-                onClick={videoPrev}
+                onClick={ videoPrev}
               >
                 <ArrowRight
                   size={38}

@@ -88,7 +88,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   useEffect(() => {
     const videoIndex = Math.abs(currentTexture) % playlist.length;
     // console.log("videoIndex", videoIndex);
-    
+
     setName(shuffledVideoPaths[videoIndex]);
   }, [currentTexture]);
 
@@ -99,6 +99,12 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   useEffect(() => {
     const nextVideoIndex =
       Math.abs(currentTexture + videoNav.direction) % playlist.length;
+    console.log(
+      "currentTexture",
+      currentTexture,
+      "nextVideoIndex",
+      nextVideoIndex
+    );
     if (videoNav.toggle) {
       matRef.current.uniforms.u_texture2.value = playlist[nextVideoIndex];
     } else {
