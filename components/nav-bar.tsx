@@ -29,6 +29,7 @@ const NavBar = ({
     // hide menu after transition is complete
     // show menu when hover is true
     if (hoverMenu === false) {
+      // show
       setTimeout(() => {
         setHidden(true);
       }, 200);
@@ -57,6 +58,7 @@ const NavBar = ({
 
   return (
     <div className="fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference p-3 ">
+      
       <div
         onMouseEnter={() => setHoverMenu(true)}
         onClick={() => setHoverMenu(true)}
@@ -70,8 +72,8 @@ const NavBar = ({
       <div
         ref={wrapperRef}
         onMouseLeave={() => setHoverMenu(false)}
-        className={`text-3xl text-white z-50 text-right mix-blend-normal duration-200 transition-opacity ${
-          hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
+        className={`text-3xl text-white z-50 text-right mix-blend-normal transition-opacity duration-200 ${
+          hoverMenu ? "opacity-100" : "opacity-0"
         }
         ${hidden ? "hidden" : "block"}
         `}

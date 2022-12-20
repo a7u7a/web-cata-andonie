@@ -86,6 +86,8 @@ const QuadLayer = ({ src, imgAspect, scroll }: BackgroundWobbleProps) => {
   // }, [globalCoords]);
 
   useEffect(() => {
+    // do not update scroll on mobile
+    // runs really sluggish even on high end iphone
     if (matRef.current.uniforms && !isSm) {
       const pre = linearMap(scroll, 0, 4000, -1, 1);
       if (pre < 1) {

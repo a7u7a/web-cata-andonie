@@ -15,10 +15,12 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
       }`}
     >
       <div className="flex flex-col w-full md:w-1/2 mix-blend-difference text-white">
-        <div>
-          <div className="text-5xl md:text-6xl">
-            <div>{locale === "es" ? "CONTACTO" : "CONTACT"}</div>
-          </div>
+        <div className="">
+          
+            <div className="text-5xl md:text-6xl ">
+              <div>{locale === "es" ? "CONTACTO" : "CONTACT"}</div>
+            </div>
+
 
           <div className="mt-16 text-3xl flex flex-col space-y-3">
             <div>
@@ -57,27 +59,43 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
           <div className="mt-16 text-3xl">
             <ul className="flex flex-col space-y-3">
               <li>
-                <a className="hover:underline" href="https://www.instagram.com/paolavelasquezdiaz">
+                <a
+                  className="hover:underline"
+                  href="https://www.instagram.com/paolavelasquezdiaz"
+                >
                   Paola Velázquez
                 </a>
               </li>
               <li>
-                <a className="hover:underline" href="https://www.felipeugalde.com/">Felipe Ugalde</a>
+                <a
+                  className="hover:underline"
+                  href="https://www.felipeugalde.com/"
+                >
+                  Felipe Ugalde
+                </a>
               </li>
               <li>
                 {" "}
-                <a className="hover:underline" href="https://cargocollective.com/matthewneary">
+                <a
+                  className="hover:underline"
+                  href="https://cargocollective.com/matthewneary"
+                >
                   Matthew Neary
                 </a>
               </li>
               <li>Jose Noli</li>
               <li>
-                <a className="hover:underline" href="https://www.instagram.com/andres.lennon.s/">
+                <a
+                  className="hover:underline"
+                  href="https://www.instagram.com/andres.lennon.s/"
+                >
                   Andres Lennon
                 </a>
               </li>
               <li>
-                <a className="hover:underline" href="https://p-kim-joo.studio/">Paulina Kim Ju</a>
+                <a className="hover:underline" href="https://p-kim-joo.studio/">
+                  Paulina Kim Ju
+                </a>
               </li>
             </ul>
           </div>
@@ -93,13 +111,18 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                 <a className="underline" href="https://norm.to/ll-riforma/">
                   LL Riforma
                 </a>{" "}
-                y desarrollado en Next.js con un poco de <a
+                y desarrollado en Next.js con un poco de{" "}
+                <a
                   className="underline"
                   href="https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language"
                 >
-                  GLSL </a> para los fondos generativos. Creado en Noviembre 2022 por <a className="underline" href="http://esrs.co/">
+                  GLSL{" "}
+                </a>{" "}
+                para los fondos generativos. Creado en Noviembre 2022 por{" "}
+                <a className="underline" href="http://esrs.co/">
                   esrs.co
-                </a>. No utiliza cookies de rastreo.
+                </a>
+                . No utiliza cookies de rastreo.
               </p>
             ) : (
               <p>
@@ -107,12 +130,14 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                 <a className="underline" href="https://norm.to/ll-riforma/">
                   LL Riforma
                 </a>{" "}
-                and developed using Next.js, and some <a
+                and developed using Next.js, and some{" "}
+                <a
                   className="underline"
                   href="https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language"
                 >
                   GLSL
-                </a> for the generative backgrounds. Created by{" "}
+                </a>{" "}
+                for the generative backgrounds. Created by{" "}
                 <a className="underline" href="http://esrs.co/">
                   esrs.co
                 </a>{" "}
