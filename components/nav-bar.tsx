@@ -29,7 +29,7 @@ const NavBar = ({
     if (!hoverMenu) {
       // hide menu
       setTimeout(() => {
-        if (hoverMenu) {
+        if (!hoverMenu) {
           setHidden(true);
         }
       }, 200);
@@ -59,21 +59,25 @@ const NavBar = ({
   }, [wrapperRef]);
 
   return (
-    <div
-      onMouseEnter={() => setHoverMenu(true)}
-      onMouseLeave={() => setHoverMenu(false)}
-      className={`fixed bottom-0 md:top-0 right-0 z-50 p-4 md:p-6 mix-blend-difference`}
+    <div className="relative">
+
+    
+    <div      
+      className={`fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference`}
     >
+
       <div
+      onMouseEnter={() => setHoverMenu(true)}
         onClick={() => setHoverMenu(!hoverMenu)}
-        className={`absolute p-4 cursor-pointer pb-12 md:p-6 md:pt-4 h-14  bottom-0 md:top-0 right-0 text-right text-3xl text-white z-50 transition-opacity duration-100 `}
+        className={`absolute p-4 md:p-6 pb-12 md:pt-4 h-14 bottom-0 md:top-0 right-0 text-right cursor-pointer text-3xl text-white z-50 transition-opacity duration-100 `}
       >
         Menu
       </div>
 
       <div
+      onMouseLeave={() => setHoverMenu(false)}
         ref={wrapperRef}
-        className={`text-3xl text-right transition-all duration-200 ${
+        className={`text-3xl text-right transition-all duration-200 p-4 md:p-6 ${
           !otherHidden
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-2 md:-translate-y-2"
@@ -81,7 +85,7 @@ const NavBar = ({
         ${hidden ? "hidden" : "block"}
         `}
       >
-        <div className="relative flex items-end flex-col space-y-4 pl-6 z-50 pb-12 md:pt-12 ">
+        <div className="relative flex items-end flex-col space-y-4 pl-6 z-50 pb-12 md:pt-12 md:pb-0">
           <MenuItem
             background={background}
             href="/"
@@ -118,6 +122,7 @@ const NavBar = ({
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const Exhibitions = ({ exhibitionsPosts, scroll }: NewsProps) => {
   )[0];
 
   return (
-    <div id="exhibitions" className="relative">
+    <div id="exhibitions" className="relative ">
       {/* <div className="absolute w-full h-full">
         <PageBackground
           progress={0.5}

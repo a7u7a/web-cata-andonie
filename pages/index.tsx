@@ -54,6 +54,9 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
   }, []);
 
   return (
+    <div className="bg-white">
+
+    
     <div className="relative">
       <NavBar background scrollTop={10} scrollThreshold={0} />
 
@@ -84,6 +87,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
       <SelectedWorks posts={frontPagePosts} nextButton title />
       <Exhibitions exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
       <Footer colophon background={false} />
+    </div>
     </div>
   );
 };

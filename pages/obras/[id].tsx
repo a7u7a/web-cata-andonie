@@ -64,21 +64,21 @@ export default function Post({ post, workPosts }: WorkPostProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar scrollTop={10} scrollThreshold={0} />
+      <NavBar background scrollTop={10} scrollThreshold={0} />
 
-      <div ref={titleRef} className="fixed mix-blend-difference z-40">
-        <div className="p-3 md:p-6 text-5xl lg:text-6xl text-white">
+      <div ref={titleRef} className="bg-white z-40">
+        <div className="p-3 md:p-6 text-5xl lg:text-6xl text-black">
           {locale === "es"
             ? post.title!.toUpperCase()
             : post.title_eng!.toUpperCase()}
         </div>
       </div>
 
-      <div className={`bg-white mt-[${titleBounds.height}px]`}>
+      <div className={`relative bg-white`}>
         {post.vimeo_front_url.length > 0 ? (
           <VimeoPlayer
             url={post.vimeo_front_url}
-            className="w-screen aspect-video"
+            className={`w-screen aspect-video`}
           />
         ) : (
           <ImageHero src={post.thumbnail} />
@@ -86,7 +86,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
       </div>
 
       {/* Custom image display, make component */}
-      <div className=" flex flex-col bg-white">
+      <div className="relative flex flex-col bg-white">
         <div className="flex flex-col md:flex-row p-1 space-y-1 md:space-y-0">
           <div className="flex flex-col w-full md:w-1/2 pr-0.5 space-y-1">
             <PostCard post={post} />
