@@ -55,7 +55,7 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   return (
     <div className="relative">
-      <NavBar scrollTop={10} scrollThreshold={0} />
+      <NavBar background scrollTop={10} scrollThreshold={0} />
 
       <div className="fixed w-full h-full">
         <PageBackground

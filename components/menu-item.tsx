@@ -7,9 +7,16 @@ interface MenuItemProps {
   titleEng: string;
   href?: string;
   langBtn?: boolean;
+  background: boolean;
 }
 
-const MenuItem = ({ titleEs, titleEng, langBtn=false, href="" }: MenuItemProps) => {
+const MenuItem = ({
+  titleEs,
+  titleEng,
+  langBtn = false,
+  href = "",
+  background,
+}: MenuItemProps) => {
   const router = useRouter();
   const { locales, locale: activeLocale, pathname, asPath, query } = router;
 
@@ -20,14 +27,20 @@ const MenuItem = ({ titleEs, titleEng, langBtn=false, href="" }: MenuItemProps) 
     <div
       onMouseEnter={() => setHovered(!hovered)}
       onMouseLeave={() => setHovered(!hovered)}
-      className="relative w-auto h-full text-white hover:text-indigo-600 cursor-pointer"
+      className="relative w-auto h-full text-white hover:md:text-indigo-600 cursor-pointer"
     >
-      <div className="z-50">{activeLocale === "es" ? titleEs : titleEng}</div>
-      <div
-        className={`absolute inset-0 w-full z-10 blur-xl rounded-3xl ${
-          hovered ? "bg-white" : "bg-indigo-300"
-        }`}
-      ></div>
+      <div className="relative z-50">
+        {activeLocale === "es" ? titleEs : titleEng}
+      </div>
+      {background ? (
+        <div
+          className={`absolute inset-0 w-full z-10 blur-lg rounded-3xl transition-colors ${
+            hovered ? "bg-white " : "bg-indigo-400 "
+          }`}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
   return (

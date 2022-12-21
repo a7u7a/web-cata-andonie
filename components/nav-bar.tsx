@@ -9,28 +9,37 @@ interface NavBarProps {
   scrollTop?: number;
   scrollThreshold?: number;
   whiteText?: boolean;
+  background?: boolean;
 }
 
 const NavBar = ({
   scrollTop,
   scrollThreshold,
   whiteText = false,
+  background = false,
 }: NavBarProps) => {
   const [hoverMenu, setHoverMenu] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [otherHidden, setOtherHidden] = useState(false);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
     // hide menu after transition is complete
     // show menu when hover is true
-    if (hoverMenu === false) {
-      // hide
+    if (!hoverMenu) {
+      // hide menu
       setTimeout(() => {
-        setHidden(true);
+        if (hoverMenu) {
+          setHidden(true);
+        }
       }, 200);
+      setOtherHidden(true);
     } else {
-      // show
+      // show menu
       setHidden(false);
+      setTimeout(() => {
+        setOtherHidden(false);
+      }, 10);
     }
   }, [hoverMenu]);
 
@@ -50,40 +59,63 @@ const NavBar = ({
   }, [wrapperRef]);
 
   return (
-    <div className="fixed bottom-0 md:top-0 right-0 z-50 pr-4 md:pr-6 md:pt-4 mix-blend-difference">
+    <div
+      onMouseEnter={() => setHoverMenu(true)}
+      onMouseLeave={() => setHoverMenu(false)}
+      className={`fixed bottom-0 md:top-0 right-0 z-50 p-4 md:p-6 mix-blend-difference`}
+    >
       <div
-        onMouseEnter={() => setHoverMenu(true)}
-        onClick={() => setHoverMenu(true)}
-        className={`absolute pr-4 md:pr-6 md:pt-4 h-14 bottom-0 md:top-0 right-0 text-right text-3xl text-white z-50 transition-opacity duration-100 ${
-          hoverMenu ? "opacity-0 z-0" : "opacity-100 z-50"
-        }`}
+        onClick={() => setHoverMenu(!hoverMenu)}
+        className={`absolute p-4 cursor-pointer pb-12 md:p-6 md:pt-4 h-14  bottom-0 md:top-0 right-0 text-right text-3xl text-white z-50 transition-opacity duration-100 `}
       >
         Menu
       </div>
 
       <div
         ref={wrapperRef}
-        onMouseLeave={() => setHoverMenu(false)}
-        className={`text-3xl text-right transition-opacity duration-200 ${
-          hoverMenu ? "opacity-100" : "opacity-0"
+        className={`text-3xl text-right transition-all duration-200 ${
+          !otherHidden
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-2 md:-translate-y-2"
         }
         ${hidden ? "hidden" : "block"}
         `}
       >
-        <div className="relative flex items-end flex-col space-y-4 pl-6 z-50">
-          <MenuItem href="/" titleEs={"INICIO"} titleEng={"HOME"} />
-
-          <MenuItem href="/obras" titleEs={"OBRAS"} titleEng={"WORKS"} />
-
-          <MenuItem href="/bio" titleEs={"BIO"} titleEng={"BIO"} />
+        <div className="relative flex items-end flex-col space-y-4 pl-6 z-50 pb-12 md:pt-12 ">
+          <MenuItem
+            background={background}
+            href="/"
+            titleEs={"INICIO"}
+            titleEng={"HOME"}
+          />
 
           <MenuItem
+            background={background}
+            href="/obras"
+            titleEs={"OBRAS"}
+            titleEng={"WORKS"}
+          />
+
+          <MenuItem
+            background={background}
+            href="/bio"
+            titleEs={"BIO"}
+            titleEng={"BIO"}
+          />
+
+          <MenuItem
+            background={background}
             href="/#contact"
             titleEs={"CONTACTO"}
             titleEng={"CONTACT"}
           />
 
-          <MenuItem titleEs={"ENGLISH"} titleEng={"ESPAÑOL"} langBtn />
+          <MenuItem
+            background={background}
+            titleEs={"ENGLISH"}
+            titleEng={"ESPAÑOL"}
+            langBtn
+          />
         </div>
       </div>
     </div>

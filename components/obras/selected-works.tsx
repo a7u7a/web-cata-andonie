@@ -24,7 +24,7 @@ const SelectedWorks = ({
 
   return (
     <div className="relative bg-black">
-      <div className="absolute top-0 inset-x-0 flex flex-col md:flex-row justify-between z-50 p-3 md:p-6 text-5xl md:text-6xl break-words mix-blend-difference text-white">
+      <div className="absolute top-0 inset-x-0 flex flex-col md:flex-row justify-between z-40 p-3 md:p-6 text-5xl md:text-6xl break-words mix-blend-difference text-white">
         <a>{locale === "es" ? "OBRAS SELECCIONADAS" : "SELECTED WORKS"}</a>
 
         <Link href={"/obras"}>

@@ -12,7 +12,7 @@ import IdImage from "../../components/obras/id-image";
 import PostCard from "../../components/obras/post-card";
 import VimeoPlayer from "../../components/vimeo-player";
 import NavBar from "../../components/nav-bar";
-import NewFooter from "../../components/footer";
+import Footer from "../../components/footer";
 import { workPost, pathsAndDimsProps } from "../../interfaces/interfaces";
 import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
 import useMediaQuery from "../../lib/media";
@@ -57,7 +57,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
   }, [titleBounds]);
 
   return (
-    <div className="relative">
+    <div className="">
       <Head>
         <title>{locale === "es" ? post.title : post.title_eng}</title>
         <meta name="description" content="Catalina Andonie" />
@@ -74,7 +74,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
         </div>
       </div>
 
-      <div className={`relative bg-white pt-[${titleBounds.height}px]`}>
+      <div className={`bg-white mt-[${titleBounds.height}px]`}>
         {post.vimeo_front_url.length > 0 ? (
           <VimeoPlayer
             url={post.vimeo_front_url}
@@ -86,7 +86,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
       </div>
 
       {/* Custom image display, make component */}
-      <div className="relative flex flex-col bg-white">
+      <div className=" flex flex-col bg-white">
         <div className="flex flex-col md:flex-row p-1 space-y-1 md:space-y-0">
           <div className="flex flex-col w-full md:w-1/2 pr-0.5 space-y-1">
             <PostCard post={post} />
@@ -127,7 +127,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           </div>
         </div>
       </div>
-      <div className="relative p-4 bg-white">
+      <div className=" p-4 bg-white">
         <Link href={"/obras"}>
           <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
             <div className="text-3xl md:text-4xl text-left">
@@ -137,7 +137,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
           </div>
         </Link>
       </div>
-      <NewFooter />
+      <Footer />
     </div>
   );
 }

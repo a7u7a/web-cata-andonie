@@ -6,7 +6,7 @@ interface ImageHeroProps {
 
 const ImageHero = ({ src }: ImageHeroProps) => {
   return (
-    <div className="relative w-screen h-[100vh]">
+    <div className="relative w-screen h-[80vh]">
       <Image src={src}   objectFit="cover" layout="fill" alt="imagen" />
     </div>
   );

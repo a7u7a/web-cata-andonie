@@ -5,8 +5,8 @@ import { ResizeObserver } from "@juggle/resize-observer";
 import useMeasure from "react-use-measure";
 import { GetStaticProps } from "next";
 
-import NewNavBar from "../components/nav-bar";
-import NewFooter from "../components/footer";
+import NavBar from "../components/nav-bar";
+import Footer from "../components/footer";
 import BioSectionFromMarkdown from "../components/bio/bio-section-from-md";
 import PageBackground from "../components/page-background/index";
 import { bioPost, bioStatementPost } from "../interfaces/interfaces";
@@ -44,7 +44,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NewNavBar scrollTop={10} scrollThreshold={0} />
+      <NavBar background scrollTop={10} scrollThreshold={0} />
 
       {/* Custom header, make component */}
       <div className="relative">
@@ -83,7 +83,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           ))}
         </div>
       </div>
-      <NewFooter background={false} />
+      <Footer background={false} />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import { ArrowLeft, List, GridFour } from "phosphor-react";
 import { useTransition, animated } from "@react-spring/web";
 
 import NewFooter from "../components/footer";
-import NewNavBar from "../components/nav-bar";
+import NavBar from "../components/nav-bar";
 import IdImageWorksPage from "../components/obras/id-image-works-page";
 import { getAllWorkPosts } from "../lib/posts";
 import { workPost } from "../interfaces/interfaces";
@@ -69,10 +69,10 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NewNavBar scrollTop={10} scrollThreshold={0} />
+      <NavBar scrollTop={10} scrollThreshold={0} />
 
       <div className="p-3 md:p-6 flex flex-col space-y-4">
-        <div className="text-6xl pb-28 mix-blend-difference text-white">
+        <div className="text-6xl pb-40 mix-blend-difference text-white">
           {locale === "es" ? "OBRAS" : "WORKS"}
         </div>
 
