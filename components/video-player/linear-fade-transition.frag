@@ -43,6 +43,42 @@ float parabola( float x, float k ){
   return pow( 0.4*x*(1.0-x), k );
 }
 
+// vec2 fitToAspectRatio(vec2 texCoord, float aspectRatio, float texAspectRatio) {
+//     // float texAspectRatio = textureSize(tex, 0).x / textureSize(tex, 0).y;
+//     if (texAspectRatio > aspectRatio) {
+//         // Fit to width
+//         float scaleFactor = aspectRatio / texAspectRatio;
+//         texCoord.x /= scaleFactor;
+//         texCoord.y /= scaleFactor;
+//         texCoord.x += (1.0 - scaleFactor) / 2.0;
+//     } else {
+//         // Fit to height
+//         float scaleFactor = texAspectRatio / aspectRatio;
+//         texCoord.x /= scaleFactor;
+//         texCoord.y /= scaleFactor;
+//         texCoord.y += (1.0 - scaleFactor) / 2.0;
+//     }
+//     return texCoord ;
+// }
+
+vec2 scaleResponsive(vec2 st, float canvasAspect, float videoAspect,float scale){
+
+float scaleX = 0.0;
+  float scaleY = 0.0;
+  // scale video texture respecting its original aspect
+   if(videoAspect>canvasAspect){
+    scaleX = (scale * videoAspect) / canvasAspect;
+    scaleY =  scale;
+   } else {
+    scaleX = scale;
+    scaleY =  (scale * canvasAspect) / videoAspect;
+   }
+  
+  st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
+  return st;
+}
+
+
 void main() {
 
   vec2 st = gl_FragCoord.xy / u_resolution.xy;
@@ -58,25 +94,14 @@ void main() {
   float freq = 0.2;
   wave += (sinu((sf.x*freq)+progress, amp, 1.0));
 
-  // Scale responsive to fit height
   float scale = u_scale;
   float canvasAspect = u_resolution.x / u_resolution.y;
   float videoAspect = 1.77; // asumes 1280 x 720 texture resolution
-  float scaleX = (scale * videoAspect) / canvasAspect;
-  float scaleY = scale;
-  st = ((st-1.0)/vec2(scaleX, scaleY)) + 0.5;
-
-  // Create scroll distorsion
-  float parabolaScale = -3.40;
-  float parabolaK = 1.264;
-  float y = parabola(st.x,parabolaK) * parabolaScale;
-  float x = parabola(st.y,parabolaK) * parabolaScale;
-  vec2 scrollDistorsion = vec2(0.0, u_scroll*x);
-
+  st = scaleResponsive(st,canvasAspect, videoAspect, scale);
+  
   // Sample textures
-  vec2 disp = st-scrollDistorsion; 
-  vec4 texture1 = texture2D(u_texture1, disp);
-  vec4 texture2 = texture2D(u_texture2, disp);
+  vec4 texture1 = texture2D(u_texture1, st);
+  vec4 texture2 = texture2D(u_texture2, st);
   
   // Blend both textures. Adapted from: https://stackoverflow.com/questions/16984914/cross-fade-between-two-textures-on-a-sphere
   vec4 color = u_light * mix(texture1, texture2, smoothstep(-0.25, 0.25, wave));

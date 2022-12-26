@@ -6,7 +6,7 @@ const PatternControls = (matRef: MutableRefObject<ShaderMaterial>) => {
   const { scale } = useControls("Noise shader", {
     scale: {
       label: "scale",
-      value: 2.27,
+      value: 2.0,
       min: 0,
       max: 6,
       step: 0.00001,

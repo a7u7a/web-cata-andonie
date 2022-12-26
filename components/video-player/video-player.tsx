@@ -17,7 +17,7 @@ import {
   LinearToneMapping,
 } from "three";
 import clipSpaceVert from "./clip-space.vert";
-import linearFadeTransition2 from "./linear-fade-transition2.frag";
+import linearFadeTransition from "./linear-fade-transition.frag";
 import { useVideoTextures } from "../../lib/my-useVideoTextures";
 import { useSpring, a } from "@react-spring/three";
 import PatternControls from "./controls";
@@ -38,7 +38,7 @@ interface videoSourceProps {
 const shuffledVideoPaths = [
   { name: "Futura", path: "/videos/faro.mp4", url: "/obras/futura" },
   {
-    name: "Alto Voltaje II",
+    name: "Alta Tensión II",
     path: "/videos/vidrio.mp4",
     url: "/obras/alta-tension-ii",
   },
@@ -78,6 +78,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   // Update canvas resolution
   useEffect(() => {
     if (matRef.current.uniforms) {
+      console.log("aspect", size.width / size.height);
       matRef.current.uniforms.u_resolution.value.x = size.width;
       matRef.current.uniforms.u_resolution.value.y = size.height;
     }
@@ -87,8 +88,6 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
 
   useEffect(() => {
     const videoIndex = Math.abs(currentTexture) % playlist.length;
-    // console.log("videoIndex", videoIndex);
-
     setName(shuffledVideoPaths[videoIndex]);
   }, [currentTexture]);
 
@@ -130,7 +129,7 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
           ref={matRef}
           uniforms={uniforms}
           // uniforms-u_progress-value={progress}
-          fragmentShader={linearFadeTransition2}
+          fragmentShader={linearFadeTransition}
           vertexShader={clipSpaceVert}
         />
       </Suspense>
