@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useMediaQuery from "../../lib/media";
 
 // import {triplet, keyStr, rgbDataURL} from "../../lib/utils"
@@ -32,6 +32,20 @@ const IdImageWorksPage = ({
   const isSm = useMediaQuery("(max-width: 640px)");
   const { locale } = useRouter();
   const [hovered, setHovered] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+
+  useEffect(() => {
+    if (isSm) {
+      setShowTitle(true);
+    } else {
+      if (hovered) {
+        setShowTitle(true);
+      } else {
+        setShowTitle(false);
+      }
+    }
+  }, [hovered, isSm]);
+
   return (
     <Link href={"obras/" + id}>
       <div
@@ -52,12 +66,10 @@ const IdImageWorksPage = ({
 
         <div
           className={`absolute w-2/3 mx-3 md:mx-4 my-2 md:my-1 left-0 top-0 text-3xl transition-all duration-200 ${
-            hovered ? "opacity-100 translate-y-2" : "opacity-0 translate-y-0"
+            showTitle ? "opacity-100 translate-y-2" : "opacity-0 translate-y-0"
           } 
         ${title_color === "white" ? "text-white" : "text-black"}
-
-        ${isSm ? "opacity-100" : "opacity-0"}
-
+        
         `}
         >
           {locale === "es" ? title : title_eng}
@@ -66,7 +78,7 @@ const IdImageWorksPage = ({
         <div className="absolute mx-4 my-1 right-0 top-0">
           <div
             className={`text-3xl transition-all duration-200 ${
-              hovered ? "opacity-100 translate-y-2" : "opacity-0 translate-y-0"
+              showTitle ? "opacity-100 translate-y-2" : "opacity-0 translate-y-0"
             } 
           ${title_color === "white" ? "text-white" : "text-black"}`}
           >

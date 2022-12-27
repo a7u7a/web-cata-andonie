@@ -9,19 +9,21 @@ interface NavBarProps {
   scrollTop?: number;
   scrollThreshold?: number;
   whiteText?: boolean;
-  background?: boolean;
+  whiteBackground?: boolean;
+  
 }
 
 const NavBar = ({
   scrollTop,
   scrollThreshold,
   whiteText = false,
-  background = false,
+  whiteBackground = false,
 }: NavBarProps) => {
   const [hoverMenu, setHoverMenu] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [otherHidden, setOtherHidden] = useState(false);
   const wrapperRef = useRef(null);
+  const buttonClassName = `absolute p-4 md:p-6 pb-12 md:pt-4 h-14 bottom-0 md:top-0 right-0 text-right cursor-pointer text-3xl text-white z-50 transition-opacity duration-100`;
 
   useEffect(() => {
     // hide menu after transition is complete
@@ -64,16 +66,17 @@ const NavBar = ({
         className={`fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference`}
       >
         <div
+        ref={wrapperRef}
           onMouseEnter={() => setHoverMenu(true)}
           onClick={() => setHoverMenu(!hoverMenu)}
-          className={`absolute p-4 md:p-6 pb-12 md:pt-4 h-14 bottom-0 md:top-0 right-0 text-right cursor-pointer text-3xl text-white z-50 transition-opacity duration-100 `}
+          className={buttonClassName}
         >
           Menu
         </div>
 
         <div
           onMouseLeave={() => setHoverMenu(false)}
-          ref={wrapperRef}
+          
           className={`text-3xl text-right transition-all duration-200 p-4 md:p-6 ${
             !otherHidden
               ? "opacity-100 translate-y-0"
@@ -84,35 +87,35 @@ const NavBar = ({
         >
           <div className="relative flex items-end flex-col space-y-4 pl-6 z-50 pb-12 md:pt-12 md:pb-0">
             <MenuItem
-              background={background}
+              whiteBackground={whiteBackground}
               href="/"
               titleEs={"INICIO"}
               titleEng={"HOME"}
             />
 
             <MenuItem
-              background={background}
+              whiteBackground={whiteBackground}
               href="/obras"
               titleEs={"OBRAS"}
               titleEng={"WORKS"}
             />
 
             <MenuItem
-              background={background}
+              whiteBackground={whiteBackground}
               href="/bio"
               titleEs={"BIO"}
               titleEng={"BIO"}
             />
 
             <MenuItem
-              background={background}
+              whiteBackground={whiteBackground}
               href="/#contact"
               titleEs={"CONTACTO"}
               titleEng={"CONTACT"}
             />
 
             <MenuItem
-              background={background}
+              whiteBackground={whiteBackground}
               titleEs={"ENGLISH"}
               titleEng={"ESPAÑOL"}
               langBtn

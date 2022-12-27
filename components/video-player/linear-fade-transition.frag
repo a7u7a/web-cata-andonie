@@ -1,11 +1,3 @@
-/** 
-  Receives two textures distorts them using tile distorsion
-  Also creates a transition to blend between them
-  Used on ScreenQuad along clip-space.vert shader
-*/
-
-// ToDo:
-// add noise
 
 #ifdef GL_ES
 precision mediump float;
@@ -42,24 +34,6 @@ float sinu(float d,float amplitude, float frequence) {
 float parabola( float x, float k ){
   return pow( 0.4*x*(1.0-x), k );
 }
-
-// vec2 fitToAspectRatio(vec2 texCoord, float aspectRatio, float texAspectRatio) {
-//     // float texAspectRatio = textureSize(tex, 0).x / textureSize(tex, 0).y;
-//     if (texAspectRatio > aspectRatio) {
-//         // Fit to width
-//         float scaleFactor = aspectRatio / texAspectRatio;
-//         texCoord.x /= scaleFactor;
-//         texCoord.y /= scaleFactor;
-//         texCoord.x += (1.0 - scaleFactor) / 2.0;
-//     } else {
-//         // Fit to height
-//         float scaleFactor = texAspectRatio / aspectRatio;
-//         texCoord.x /= scaleFactor;
-//         texCoord.y /= scaleFactor;
-//         texCoord.y += (1.0 - scaleFactor) / 2.0;
-//     }
-//     return texCoord ;
-// }
 
 vec2 scaleResponsive(vec2 st, float canvasAspect, float videoAspect,float scale){
 

@@ -55,39 +55,37 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   return (
     <div className="bg-white">
+      <div className="relative">
+        <NavBar scrollTop={10} scrollThreshold={0} />
 
-    
-    <div className="relative">
-      <NavBar background scrollTop={10} scrollThreshold={0} />
+        <div className="fixed w-full h-full">
+          <PageBackground
+            progress={0.5}
+            scale={0.8}
+            src={"/shader-backgrounds/4.jpeg"}
+            imgAspect={1.77}
+            imgScale={2.0}
+            speed={-0.02}
+            brightness={-0.3}
+            scroll={scrollTop}
+          />
+        </div>
 
-      <div className="fixed w-full h-full">
-        <PageBackground
-          progress={0.5}
-          scale={0.8}
-          src={"/shader-backgrounds/4.jpeg"}
-          imgAspect={1.77}
-          imgScale={2.0}
-          speed={-0.02}
-          brightness={-0.3}
-          scroll={scrollTop}
-        />
+        <div>
+          {isMd ? (
+            <Logo className="relative mix-blend-difference w-screen p-4" />
+          ) : (
+            <div className="flex items-center text-center w-full relative z-30 font-bold text-4xl md:text-6xl text-white p-3 md:p-6 mix-blend-difference">
+              Catalina Andonie
+            </div>
+          )}
+        </div>
+
+        <Statement post={aboutPost} />
+        <SelectedWorks posts={frontPagePosts} nextButton title />
+        <Exhibitions exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
+        <Footer colophon background={false} />
       </div>
-
-      <div>
-        {isMd ? (
-          <Logo className="relative mix-blend-difference w-screen p-4" />
-        ) : (
-          <div className="flex items-center text-center w-full relative z-30 font-bold text-4xl md:text-6xl text-white p-3 md:p-6 mix-blend-difference">
-            Catalina Andonie
-          </div>
-        )}
-      </div>
-
-      <Statement post={aboutPost} />
-      <SelectedWorks posts={frontPagePosts} nextButton title />
-      <Exhibitions exhibitionsPosts={exhibitionsPosts} scroll={scrollTop} />
-      <Footer colophon background={false} />
-    </div>
     </div>
   );
 };

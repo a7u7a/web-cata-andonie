@@ -69,7 +69,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar scrollTop={10} scrollThreshold={0} />
+      <NavBar whiteBackground scrollTop={10} scrollThreshold={0} />
 
       <div className="p-3 md:p-6 flex flex-col space-y-4">
         <div className="text-6xl pb-40 mix-blend-difference text-white">
@@ -80,7 +80,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
           className="flex flex-row space-x-3 w-36 items-end hover:underline hover:cursor-pointer"
           onClick={handleButtonToggle}
         >
-          <div className="text-3xl md:text-4xl">
+          <div className="text-3xl">
             {gridView
               ? locale === "es"
                 ? "Lista"
@@ -153,7 +153,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
       <div className="w-28 mt-12 p-3 md:p-6">
         <Link href={"/"}>
           <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-            <div className="text-3xl md:text-4xl text-left">
+            <div className="text-3xl text-left">
               {locale === "es" ? "Atrás" : "Back"}
             </div>
             <ArrowLeft size={38} weight="bold" color="black" />
