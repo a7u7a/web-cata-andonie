@@ -39,7 +39,7 @@ const Exhibitions = ({ exhibitionsPosts, scroll }: NewsProps) => {
           {locale === "es" ? "EXHIBICIONES" : "SHOWS"}
         </div>
         <div className="pt-10">
-          <div className="flex flex-col md:flex-row space-y-12 md:space-x-12">
+          <div className="flex flex-col md:flex-row space-y-12 space-x-0 md:space-x-12 md:space-y-0">
             <div className="flex flex-col w-full md:w-1/2 space-y-12">
               {currentSection.show ? (
                 // only show when selector is true

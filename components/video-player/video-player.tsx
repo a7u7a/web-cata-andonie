@@ -78,7 +78,6 @@ const VideoLayer = ({ setName, videoNav, isPlay }: VideoPlayerProps) => {
   // Update canvas resolution
   useEffect(() => {
     if (matRef.current.uniforms) {
-      console.log("aspect", size.width / size.height);
       matRef.current.uniforms.u_resolution.value.x = size.width;
       matRef.current.uniforms.u_resolution.value.y = size.height;
     }

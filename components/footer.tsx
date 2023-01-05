@@ -83,13 +83,13 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                   Matthew Neary
                 </a>
               </li>
-              <li>Jose Noli</li>
+              <li>José Noli</li>
               <li>
                 <a
                   className="hover:underline"
                   href="https://www.instagram.com/andres.lennon.s/"
                 >
-                  Andres Lennon
+                  Andrés Lennon
                 </a>
               </li>
               <li>

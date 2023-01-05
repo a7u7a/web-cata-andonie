@@ -24,7 +24,7 @@ const MenuItem = ({
   // Get other locale, assumes only two locales
   const otherLocale = locales!.filter((locale) => locale !== activeLocale)[0];
   const [hovered, setHovered] = useState(false);
-  const [highlightColor, setHighlightColor] = useState("indigo-600");
+  const [highlightColor, setHighlightColor] = useState("indigo-400");
   
 
   useEffect(() => {
@@ -46,8 +46,8 @@ const MenuItem = ({
       </div>
      
         <div
-          className={`absolute inset-0 w-full z-10 blur-xl rounded-3xl transition-colors ${
-            hovered ? "bg-white " : `bg-${highlightColor}`
+          className={`absolute inset-0 w-full z-10 blur-xl rounded-3xl transition-colors bg-${
+            hovered ? "white " : `${highlightColor}`
           }`}
         />
      
