@@ -1,14 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/muffins/muffins_1.webp
-low_res_thumb: /uploads/obras/muffins/low-res/muffins_1.webp
+thumbnail: /uploads/fotos-portada/muffins.webp
+low_res_thumb: /uploads/fotos-portada/low-res/muffins.webp
+hero_img: /uploads/fotos-portada/muffins.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Muffins
 title_eng: Muffins
 title_color: white
-hero_img: /uploads/obras/muffins/muffins_1.webp
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2016

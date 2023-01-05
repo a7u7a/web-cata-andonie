@@ -1,8 +1,8 @@
 ---
 date: October 5, 2022 10:04 PM
-thumbnail: /uploads/obras/coleccion/coleccion_1.webp
-low_res_thumb: /uploads/obras/coleccion/low-res/coleccion_1.webp
-hero_img: /imgs/none.jpg
+thumbnail: /uploads/fotos-portada/coleccion.webp
+low_res_thumb: /uploads/fotos-portada/low-res/coleccion.webp
+hero_img: /uploads/fotos-portada/coleccion.webp
 front_page: true
 vimeo_front_url: https://vimeo.com/777160941
 vimeo_video_gallery: none

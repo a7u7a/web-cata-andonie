@@ -1,13 +1,13 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/matteo-thun/matteo-thun_1.webp
-low_res_thumb:  /uploads/obras/matteo-thun/low-res/matteo-thun_1.webp
+thumbnail: /uploads/fotos-portada/matteo-thun.webp
+low_res_thumb: /uploads/fotos-portada/low-res/matteo-thun.webp
+hero_img: /uploads/fotos-portada/matteo-thun.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Matteo Thun
 title_eng: Matteo Thun
-hero_img: /uploads/obras/matteo-thun/matteo-thun_1.webp
 title_color: white
 medidas: 164 x 114 x 23 cm
 medidas_eng: 164 x 114 x 23 cm

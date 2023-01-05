@@ -1,8 +1,8 @@
 ---
 date: October 4, 2022 10:04 PM
-thumbnail: /uploads/obras/ceguera/ceguera_1.webp
-low_res_thumb: /uploads/obras/ceguera/low-res/ceguera_1.webp
-hero_img: /imgs/none.jpg
+thumbnail: /uploads/fotos-portada/ceguera.webp
+low_res_thumb: /uploads/fotos-portada/low-res/ceguera.webp
+hero_img: /uploads/fotos-portada/ceguera.webp
 front_page: true
 vimeo_front_url: https://vimeo.com/777160731
 vimeo_video_gallery: none

@@ -1,8 +1,8 @@
 ---
 date: October 8, 2022 10:05 PM
-thumbnail: /uploads/obras/futura/futura_1.webp
-low_res_thumb: /uploads/obras/futura/low-res/futura_1.webp
-hero_img: /imgs/none.jpg
+thumbnail: /uploads/fotos-portada/futura.webp
+low_res_thumb: /uploads/fotos-portada/low-res/futura.webp
+hero_img: /uploads/fotos-portada/futura.webp
 front_page: false
 vimeo_front_url: https://vimeo.com/777465164
 vimeo_video_gallery:

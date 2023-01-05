@@ -1,14 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/silla/silla_1.webp
-low_res_thumb: /uploads/obras/silla/low-res/silla_1.webp
+thumbnail: /uploads/fotos-portada/silla.webp
+low_res_thumb: /uploads/fotos-portada/low-res/silla.webp
+hero_img: /uploads/fotos-portada/silla.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Silla
 title_eng: Chair
 title_color: black
-hero_img: /uploads/obras/silla/silla_1.webp
 medidas: 80 x 220 x 55 cm
 medidas_eng: 80 x 220 x 55 cm
 year: 2016

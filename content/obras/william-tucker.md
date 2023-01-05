@@ -1,14 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/william-tucker/william-tucker_1.webp
-low_res_thumb: /uploads/obras/william-tucker/low-res/william-tucker_1.webp
+thumbnail: /uploads/fotos-portada/william-tucker.webp
+low_res_thumb: /uploads/fotos-portada/low-res/william-tucker.webp
+hero_img: /uploads/fotos-portada/william-tucker.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: William Tucker
 title_eng: William Tucker
 title_color: white
-hero_img: /uploads/obras/william-tucker/william-tucker_1.webp
 medidas: 141 x 193 x 47 cm
 medidas_eng: 141 x 193 x 47 cm
 year: 2017

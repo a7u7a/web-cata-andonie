@@ -1,14 +1,14 @@
 ---
 date: October 13, 2022 6:12 PM
-thumbnail: /uploads/obras/medios-industriales/medios-industriales_1.webp
-low_res_thumb: /uploads/obras/medios-industriales/low-res/medios-industriales_1.webp
+thumbnail: /uploads/fotos-portada/medios-industriales.webp
+low_res_thumb: /uploads/fotos-portada/low-res/medios-industriales.webp
+hero_img: /uploads/fotos-portada/medios-industriales.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Medios Industriales
 title_eng: Industrial Resources
 title_color: white
-hero_img: /uploads/obras/medios-industriales/medios-industriales_1.webp
 medidas: variables
 medidas_eng: variables
 year: 2014

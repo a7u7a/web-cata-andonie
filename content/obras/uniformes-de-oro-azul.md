@@ -1,14 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/uniformes-de-oro-azul/uniformes-de-oro-azul_1.webp
-low_res_thumb: /uploads/obras/uniformes-de-oro-azul/low-res/uniformes-de-oro-azul_1.webp
+thumbnail: /uploads/fotos-portada/uniformes-de-oro-azul.webp
+low_res_thumb: /uploads/fotos-portada/low-res/uniformes-de-oro-azul.webp
+hero_img: /uploads/fotos-portada/uniformes-de-oro-azul.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Uniformes de Oro Azul
 title_eng: Uniforms of Blue Gold
 title_color: black
-hero_img: /uploads/obras/uniformes-de-oro-azul/uniformes-de-oro-azul_1.webp
 medidas: Medidas variables
 medidas_eng: Variable measurements
 year: 2020

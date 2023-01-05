@@ -1,8 +1,8 @@
 ---
 date: October 1, 2022 10:03 PM
-thumbnail: /uploads/obras/alta-tension-ii/alta-tension-ii_1.webp
-low_res_thumb: /uploads/obras/alta-tension-ii/low-res/alta-tension-ii_1.webp
-hero_img: /imgs/none.jpg
+thumbnail: /uploads/fotos-portada/alta-tension-ii.webp
+low_res_thumb: /uploads/fotos-portada/low-res/alta-tension-ii.webp
+hero_img: /uploads/fotos-portada/alta-tension-ii.webp
 front_page: true
 vimeo_front_url: https://vimeo.com/777160311
 vimeo_video_gallery: 

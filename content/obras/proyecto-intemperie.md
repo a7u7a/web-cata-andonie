@@ -1,14 +1,14 @@
 ---
 date: October 13, 2022 6:13 PM
-thumbnail: /uploads/obras/proyecto-intemperie/proyecto-intemperie_1.webp
-low_res_thumb: /uploads/obras/proyecto-intemperie/low-res/proyecto-intemperie_1.webp
+thumbnail: /uploads/fotos-portada/proyecto-intemperie.webp
+low_res_thumb: /uploads/fotos-portada/low-res/proyecto-intemperie.webp
+hero_img: /uploads/fotos-portada/proyecto-intemperie.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Proyecto Intemperie
 title_eng: Outdoors Project
 title_color: white
-hero_img: /uploads/obras/proyecto-intemperie/proyecto-intemperie_1.webp
 medidas: 370 x 580 x 480 cm
 medidas_eng: 370 x 580 x 480 cm
 year: 2012
