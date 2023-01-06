@@ -44,7 +44,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar background scrollTop={10} scrollThreshold={0} />
+      <NavBar scrollTop={10} scrollThreshold={0} />
 
       {/* Custom header, make component */}
       <div className="relative">
