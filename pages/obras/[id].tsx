@@ -146,7 +146,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = getAllPostIds(locales);
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
