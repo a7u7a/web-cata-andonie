@@ -6,7 +6,16 @@ hero_img: /uploads/fotos-portada/futura.webp
 front_page: false
 vimeo_front_url: https://vimeo.com/777465164
 vimeo_video_gallery:
+  - https://vimeo.com/786689287
+  - https://vimeo.com/786689445
+  - https://vimeo.com/786689784
+  - https://vimeo.com/786689885
+  - https://vimeo.com/786689971
+  - https://vimeo.com/786690125
+  - https://vimeo.com/786690297
+  - https://vimeo.com/786690406
   - https://vimeo.com/777464491
+  - https://vimeo.com/777465164
 title: Futura
 title_eng: Futura
 title_color: white

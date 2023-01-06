@@ -5,7 +5,8 @@ low_res_thumb: /uploads/fotos-portada/low-res/coleccion.webp
 hero_img: /uploads/fotos-portada/coleccion.webp
 front_page: true
 vimeo_front_url: https://vimeo.com/777160941
-vimeo_video_gallery: none
+vimeo_video_gallery:
+  - https://vimeo.com/777160941
 title: Colección
 title_eng: Collection
 title_color: white

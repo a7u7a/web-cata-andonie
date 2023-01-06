@@ -5,7 +5,20 @@ low_res_thumb: /uploads/fotos-portada/low-res/alta-tension.webp
 hero_img: /uploads/fotos-portada/alta-tension.webp
 front_page: true
 vimeo_front_url: https://vimeo.com/777160140
-vimeo_video_gallery: none
+vimeo_video_gallery: 
+  - https://vimeo.com/779815864
+  - https://vimeo.com/777160140
+  - https://vimeo.com/786684402
+  - https://vimeo.com/786684452
+  - https://vimeo.com/786684521
+  - https://vimeo.com/786684592
+  - https://vimeo.com/786684621
+  - https://vimeo.com/786684452
+  - https://vimeo.com/786684683
+  - https://vimeo.com/786684592
+  - https://vimeo.com/786684772
+  - https://vimeo.com/786685070
+  - https://vimeo.com/786685122
 title: Alta Tensión
 title_eng: High Voltage
 title_color: black

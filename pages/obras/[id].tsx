@@ -64,7 +64,7 @@ export default function Post({ post, workPosts }: WorkPostProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar background scrollTop={10} scrollThreshold={0} />
+      <NavBar scrollTop={10} scrollThreshold={0} />
 
       <div ref={titleRef} className="bg-white z-40">
         <div className="p-3 md:p-6 text-5xl lg:text-6xl text-black">

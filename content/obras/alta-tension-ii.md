@@ -6,7 +6,7 @@ hero_img: /uploads/fotos-portada/alta-tension-ii.webp
 front_page: true
 vimeo_front_url: https://vimeo.com/777160311
 vimeo_video_gallery: 
-  - https://vimeo.com/779815864
+  - https://vimeo.com/777160311
 title: Alta Tensión II
 title_eng: High Voltage II
 title_color: white
