@@ -38,7 +38,7 @@ interface videoSourceProps {
 const shuffledVideoPaths = [
   { name: "Futura", path: "/videos/faro.mp4", url: "/obras/futura" },
   {
-    name: "Alta Tensión II",
+    name: "Alta Tensión",
     path: "/videos/vidrio.mp4",
     url: "/obras/alta-tension-ii",
   },
