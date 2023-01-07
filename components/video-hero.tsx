@@ -64,7 +64,7 @@ const VideoHero = () => {
                 <ArrowLeft
                   size={38}
                   weight="bold"
-                  color={`${leftHover ? "#4f46e5" : "white"}`}
+                  color="white"
                 />
               </button>
 
@@ -82,7 +82,7 @@ const VideoHero = () => {
                 <ArrowRight
                   size={38}
                   weight="bold"
-                  color={`${rightHover ? "#4f46e5" : "white"}`}
+                  color="white"
                 />
               </button>
             </div>
