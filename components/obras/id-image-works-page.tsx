@@ -72,7 +72,7 @@ const IdImageWorksPage = ({
         
         `}
         >
-          {locale === "es" ? title : title_eng}
+          {locale === "es" ? title.toUpperCase() : title_eng.toUpperCase()}
         </div>
 
         <div className="absolute mx-4 my-1 right-0 top-0">

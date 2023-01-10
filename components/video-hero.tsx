@@ -70,7 +70,7 @@ const VideoHero = () => {
 
               <Link href={tituloVideo.url}>
                 <div className="text-white text-center text-3xl cursor-pointer hover:underline">
-                  {tituloVideo.name}
+                  {tituloVideo.name.toUpperCase()}
                 </div>
               </Link>
 

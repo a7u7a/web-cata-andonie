@@ -143,7 +143,7 @@ const WorksPage = ({ workPosts }: WorkPostProps) => {
           {workPosts.map((post, i) => (
             <Link key={i} href={"obras/" + post.id}>
               <div className="flex flex-row justify-between text-3xl sm:text-4xl  md:text-5xl lg:text-6xl hover:underline cursor-pointer">
-                <div>{locale === "es" ? post.title : post.title_eng}</div>
+                <div>{locale === "es" ? post.title.toUpperCase() : post.title_eng.toUpperCase()}</div>
                 <div className="flex items-end">{post.year}</div>
               </div>
             </Link>
