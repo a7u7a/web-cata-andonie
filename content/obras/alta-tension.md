@@ -21,7 +21,7 @@ vimeo_video_gallery:
   - https://vimeo.com/786685122
 title: Alta Tensión
 title_eng: High Voltage
-title_color: black
+title_color: white
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2019

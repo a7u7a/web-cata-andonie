@@ -83,7 +83,14 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
                   Matthew Neary
                 </a>
               </li>
-              <li>José Noli</li>
+              <li>
+                <a
+                  className="hover:underline"
+                  href="https://www.instagram.com/joseluisnoli_/"
+                >
+                  José Noli
+                </a>
+              </li>
               <li>
                 <a
                   className="hover:underline"
@@ -95,6 +102,11 @@ const NewFooter = ({ background = true, colophon = false }: NewFooterProps) => {
               <li>
                 <a className="hover:underline" href="https://p-kim-joo.studio/">
                   Paulina Kim Ju
+                </a>
+              </li>
+              <li>
+                <a className="hover:underline" href="https://www.instagram.com/sebastianmejiaphoto/">
+                Sebastián Mejía
                 </a>
               </li>
             </ul>

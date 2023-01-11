@@ -67,7 +67,7 @@ const NavBar = ({
       >
         <div
         ref={wrapperRef}
-          onMouseEnter={() => setHoverMenu(true)}
+          //onMouseEnter={() => setHoverMenu(true)}
           onClick={() => setHoverMenu(!hoverMenu)}
           className={buttonClassName}
         >
