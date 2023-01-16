@@ -36,7 +36,9 @@ interface videoSourceProps {
 }
 
 const shuffledVideoPaths = [
-  { name: "Futura", path: "/videos/faro.mp4", url: "/obras/futura" },
+  { name: "Futura", path: "/videos/futura-friki.mp4", url: "/obras/futura" },
+  { name: "Futura", path: "/videos/futura-zoom-efecto.mp4", url: "/obras/futura" },
+  // { name: "Futura", path: "/videos/faro.mp4", url: "/obras/futura" },
   {
     name: "Alta Tensión",
     path: "/videos/vidrio.mp4",
