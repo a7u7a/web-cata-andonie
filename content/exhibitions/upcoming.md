@@ -5,7 +5,7 @@ show: true
 body_eng: |-
   #### 2022
   * Galería de Arte de México, México DF, México. Group show.
-  * Solo show, Paiján 3000, Trujillo, Perú.
+  * Paiján 3000, Trujillo, Perú. Solo show.
   * Artists Breakfast Institute, Bogotá, Colombia. Group show.
   * Arteba, Galería Aninat, Buenos Aires, Argentina. Group show.
   * Art Basel París, Galería Aninat, Tuileries Garden, Paris, France. Group show
@@ -15,7 +15,7 @@ body_eng: |-
 ---
 #### 2022
 * Galería de Arte de México, México DF, México. Exposición grupal.
-* Exposición individual, Paiján 3000, Trujillo, Perú.
+* Paiján 3000, Trujillo, Perú. Exposición individual
 * Artists Breakfast Institute, Bogotá, Colombia. Exposición grupal.
 * Arteba, Galería Aninat, Buenos Aires, Argentina. Exposición grupal.
 * Art Basel París, Galería Aninat, Jardín de Las Tullerías, París, Francia. Exposición grupal.

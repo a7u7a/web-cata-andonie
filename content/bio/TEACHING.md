@@ -9,4 +9,4 @@ body_eng: |-
 
 2012
 
-- Teaching assistant for Printmaking I course of study, Pontificia Universidad Catolica de Chile, Santiago, Chile.
+- Ayudante deI curso Grabado I, Pontificia Universidad Católica de Chile, Santiago, Chile.
