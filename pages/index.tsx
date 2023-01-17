@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
@@ -55,6 +56,11 @@ const Home = ({ workPosts, exhibitionsPosts, aboutPost }: HomeProps) => {
 
   return (
     <div className="bg-white">
+      <Head>
+        <title>Catalina Andonie</title>
+        <meta name="description" content="Catalina Andonie, Artista" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="relative">
         <NavBar scrollTop={10} scrollThreshold={0} />
 
