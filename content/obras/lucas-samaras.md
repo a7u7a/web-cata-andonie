@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/lucas-samaras/lucas-samaras_1.webp
+thumbnail: /uploads/fotos-portada/lucas-samaras.webp
+low_res_thumb: /uploads/fotos-portada/low-res/lucas-samaras.webp
+hero_img: /uploads/fotos-portada/lucas-samaras.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Lucas Samaras
 title_eng: Lucas Samaras
 title_color: white
-hero_img: /uploads/obras/lucas-samaras/lucas-samaras_1.webp
 medidas: 138 x 120 x 32 cm
 medidas_eng: 138 x 120 x 32 cm
 year: 2017

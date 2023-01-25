@@ -5,9 +5,9 @@ import { ResizeObserver } from "@juggle/resize-observer";
 import useMeasure from "react-use-measure";
 import { GetStaticProps } from "next";
 
-import NewNavBar from "../components/nav-bar";
-import NewFooter from "../components/footer";
-import BioColumnFromMarkdown from "../components/bio/bio-column-from-md";
+import NavBar from "../components/nav-bar";
+import Footer from "../components/footer";
+import BioSectionFromMarkdown from "../components/bio/bio-section-from-md";
 import PageBackground from "../components/page-background/index";
 import { bioPost, bioStatementPost } from "../interfaces/interfaces";
 import useMediaQuery from "../lib/media";
@@ -44,7 +44,7 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NewNavBar scrollTop={10} scrollThreshold={0} />
+      <NavBar scrollTop={10} scrollThreshold={0} />
 
       {/* Custom header, make component */}
       <div className="relative">
@@ -52,11 +52,11 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           <PageBackground
             progress={0.5}
             scale={0.8}
-            src={"/shader-backgrounds/3.jpeg"}
+            src={"/shader-backgrounds/5.jpeg"}
             imgAspect={1.77}
             imgScale={2.0}
             speed={-0.02}
-            brightness={-0.6}
+            brightness={-0.3}
             scroll={scrollTop}
           />
         </div>
@@ -65,9 +65,9 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
           BIO
         </div>
 
-        <div className="relative w-screen p-6 pt-48 pb-20">
-          <div className="w-2/3">
-            <div className="text-6xl text-white leading-snug mix-blend-difference">
+        <div className="relative p-3 md:p-6 mt-48 pb-16 md:pb-28 mix-blend-difference">
+          <div className="w-full lg:w-2/3 ">
+            <div className="text-4xl sm:text-5xl md:text-6xl text-white leading-snug md:leading-tight mix-blend-difference">
               {locale === "es"
                 ? bioStatement.contentSpanish
                 : bioStatement.contentEnglish}
@@ -76,15 +76,14 @@ const NewBio = ({ bioPosts, bioStatement }: BioProps) => {
         </div>
       </div>
 
-      <div className="relative">
-        <div className="mx-6 mt-10 flex flex-row space-x-4">
-          <BioColumnFromMarkdown post={bioPosts[1]} />
-          <BioColumnFromMarkdown post={bioPosts[0]} />
-          <BioColumnFromMarkdown post={bioPosts[2]} />
-          <BioColumnFromMarkdown post={bioPosts[3]} />
+      <div className="relative max-w-5xl">
+        <div className="mx-3 md:mx-6 mt-10 flex flex-col space-y-6 pb-16">
+          {bioPosts.map((post, i) => (
+            <BioSectionFromMarkdown key={i} post={post} />
+          ))}
         </div>
       </div>
-      <NewFooter background={false} />
+      <Footer background={false} />
     </div>
   );
 };

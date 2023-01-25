@@ -2,90 +2,126 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useMeasure from "react-use-measure";
 import { ResizeObserver } from "@juggle/resize-observer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import MenuItem from "./menu-item";
 
 interface NavBarProps {
   scrollTop?: number;
   scrollThreshold?: number;
   whiteText?: boolean;
+  whiteBackground?: boolean;
+  
 }
 
 const NavBar = ({
   scrollTop,
   scrollThreshold,
   whiteText = false,
+  whiteBackground = false,
 }: NavBarProps) => {
-  const [check, setCheck] = useState(false);
-  const [classString, setClassString] = useState("");
-  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
   const [hoverMenu, setHoverMenu] = useState(false);
+  const [hidden, setHidden] = useState(true);
+  const [otherHidden, setOtherHidden] = useState(false);
+  const wrapperRef = useRef(null);
+  const buttonClassName = `absolute p-4 md:p-6 pb-12 md:pt-4 h-14 bottom-0 md:top-0 right-0 text-right cursor-pointer text-3xl text-white z-50 transition-opacity duration-100`;
 
-  // Using two useEffects so I can avoid updating the check every time scrollTop updates
   useEffect(() => {
-    if (scrollThreshold != undefined) {
-      if (scrollTop! >= scrollThreshold) {
-        // update visibility
-        setCheck(true);
-      } else {
-        setCheck(false);
-      }
+    // hide menu after transition is complete
+    // show menu when hover is true
+    if (!hoverMenu) {
+      // hide menu
+      setTimeout(() => {
+        if (!hoverMenu) {
+          setHidden(true);
+        }
+      }, 200);
+      setOtherHidden(true);
     } else {
-      setCheck(true);
+      // show menu
+      setHidden(false);
+      setTimeout(() => {
+        setOtherHidden(false);
+      }, 10);
     }
-  }, [scrollTop, scrollThreshold, bounds.height]);
-
-  useEffect(() => {
-    // or transition from opacity-0 to opacity-100
-    setClassString(`fixed mix-blend-difference inset-x-0 top-0 flex flex-row justify-between
-        w-screen z-50 px-6 pt-4
-        transition-all duration-300 ease-out
-        ${check ? "opacity-100" : "opacity-0"}`);
-  }, [check]);
-
-  const router = useRouter();
-  const { locales, locale: activeLocale, pathname, asPath, query } = router;
-
-  // Get other locale, assumes only two locales
-  const otherLocale = locales!.filter((locale) => locale !== activeLocale)[0];
-
-  useEffect(() => {
-    console.log("hoverMenu", hoverMenu);
   }, [hoverMenu]);
 
-  return (
-    <div ref={ref} className={classString}>
-      <div
-        onMouseLeave={() => setHoverMenu(false)}
-        className={`absolute top-0 right-0 mx-6 my-6 items-end flex text-3xl text-white flex-col space-y-3 transition-opacity ${
-          hoverMenu ? "opacity-100 z-50" : "opacity-0 z-40"
-        }`}
-      >
-        <Link href="/">
-          <div className="hover:underline cursor-pointer">HOME</div>
-        </Link>
-        <Link href="/obras">
-          <div className="hover:underline cursor-pointer">WORKS</div>
-        </Link>
-        <Link href="/bio">
-          <div className="hover:underline cursor-pointer">BIO</div>
-        </Link>
-        <Link href="/#contact">
-          <div className="hover:underline cursor-pointer">CONTACT</div>
-        </Link>
-        <Link href={{ pathname, query }} as={asPath} locale={otherLocale}>
-          <div className="flex items-center text-center text-3xl hover:underline cursor-pointer">
-            {activeLocale === "es" ? "ENGLISH" : "ESPAÑOL"}
-          </div>
-        </Link>
-      </div>
+  useEffect(() => {
+    // detects click outside
+    function handleClickOutside(event: Event) {
+      // @ts-ignore
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setHoverMenu(false);
+      }
+    }
 
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef]);
+
+  return (
+    <div className="relative">
       <div
-        onMouseEnter={() => setHoverMenu(true)}
-        className={`absolute top-0 right-0 p-6 flex items-center text-white text-center text-3xl cursor-pointer transition-opacity ${
-          hoverMenu ? "opacity-0 z-40" : "opacity-100 z-50"
-        }`}
+        className={`fixed bottom-0 md:top-0 right-0 z-50 mix-blend-difference`}
       >
-        Menu
+        <div
+        ref={wrapperRef}
+          //onMouseEnter={() => setHoverMenu(true)}
+          onClick={() => setHoverMenu(!hoverMenu)}
+          className={buttonClassName}
+        >
+          Menu
+        </div>
+
+        <div
+          onMouseLeave={() => setHoverMenu(false)}
+          
+          className={`text-3xl text-right transition-all duration-200 p-4 md:p-6 ${
+            !otherHidden
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-2 md:-translate-y-2"
+          }
+        ${hidden ? "hidden" : "block"}
+        `}
+        >
+          <div className="relative flex items-end flex-col space-y-4 pl-6 z-50 pb-12 md:pt-12 md:pb-0">
+            <MenuItem
+              whiteBackground={whiteBackground}
+              href="/"
+              titleEs={"INICIO"}
+              titleEng={"HOME"}
+            />
+
+            <MenuItem
+              whiteBackground={whiteBackground}
+              href="/obras"
+              titleEs={"OBRAS"}
+              titleEng={"WORKS"}
+            />
+
+            <MenuItem
+              whiteBackground={whiteBackground}
+              href="/bio"
+              titleEs={"BIO"}
+              titleEng={"BIO"}
+            />
+
+            <MenuItem
+              whiteBackground={whiteBackground}
+              href="/#contact"
+              titleEs={"CONTACTO"}
+              titleEng={"CONTACT"}
+            />
+
+            <MenuItem
+              whiteBackground={whiteBackground}
+              titleEs={"ENGLISH"}
+              titleEng={"ESPAÑOL"}
+              langBtn
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

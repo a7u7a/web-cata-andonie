@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/piedras-ii/piedras-ii_1.webp
+thumbnail: /uploads/fotos-portada/piedras-ii.webp
+low_res_thumb: /uploads/fotos-portada/low-res/piedras-ii.webp
+hero_img: /uploads/fotos-portada/piedras-ii.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Piedras II
 title_eng: Stones II
 title_color: white
-hero_img: /uploads/obras/piedras-ii/piedras-ii_1.webp
 medidas: none
 medidas_eng: none
 year: 2021

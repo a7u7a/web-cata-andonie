@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/polimero/polimero_1.webp
+thumbnail: /uploads/fotos-portada/polimero.webp
+low_res_thumb: /uploads/fotos-portada/low-res/polimero.webp
+hero_img: /uploads/fotos-portada/polimero.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Polímero
 title_eng: Polymer
 title_color: white
-hero_img: /uploads/obras/polimero/polimero_1.webp
 medidas: 60 x 150 x 137 cm
 medidas_eng: 60 x 150 x 137 cm
 year: 2014

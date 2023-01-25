@@ -1,11 +1,22 @@
 ---
 date: October 10, 2022 10:05 PM
-thumbnail: /uploads/obras/lente-de-fresnel/lente-de-fresnel_1.webp
-hero_img: /imgs/none.jpg
+thumbnail: /uploads/fotos-portada/lente-de-fresnel.webp
+low_res_thumb: /uploads/fotos-portada/low-res/lente-de-fresnel.webp
+hero_img: /uploads/fotos-portada/lente-de-fresnel.webp
 front_page: false
 vimeo_front_url: https://vimeo.com/777466301
 vimeo_video_gallery:
-  - https://vimeo.com/777466366
+- https://vimeo.com/786687972
+- https://vimeo.com/786688021
+- https://vimeo.com/786688348
+- https://vimeo.com/786688416
+- https://vimeo.com/786688592
+- https://vimeo.com/786688830
+- https://vimeo.com/786688896
+- https://vimeo.com/786687909
+- https://vimeo.com/786687879
+- https://vimeo.com/777466301
+- https://vimeo.com/777466366
 title: Lente de Fresnel
 title_eng: Fresnel Lens
 medidas: 39,8 x 39,8 x 159 cm

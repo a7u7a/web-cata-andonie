@@ -1,11 +1,21 @@
 ---
 date: October 8, 2022 10:05 PM
-thumbnail: /uploads/obras/futura/futura_1.webp
-hero_img: /imgs/none.jpg
+thumbnail: /uploads/fotos-portada/futura.webp
+low_res_thumb: /uploads/fotos-portada/low-res/futura.webp
+hero_img: /uploads/fotos-portada/futura.webp
 front_page: false
 vimeo_front_url: https://vimeo.com/777465164
 vimeo_video_gallery:
+  - https://vimeo.com/786689287
+  - https://vimeo.com/786689445
+  - https://vimeo.com/786689784
+  - https://vimeo.com/786689885
+  - https://vimeo.com/786689971
+  - https://vimeo.com/786690125
+  - https://vimeo.com/786690297
+  - https://vimeo.com/786690406
   - https://vimeo.com/777464491
+  - https://vimeo.com/777465164
 title: Futura
 title_eng: Futura
 title_color: white

@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/los-hijos-bastardos/los-hijos-bastardos_1.webp
+thumbnail: /uploads/fotos-portada/los-hijos-bastardos.webp
+low_res_thumb: /uploads/fotos-portada/low-res/los-hijos-bastardos.webp
+hero_img: /uploads/fotos-portada/los-hijos-bastardos.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Los Hijos Bastardos
 title_eng: The Illegitimate Sons
 title_color: black
-hero_img: /uploads/obras/los-hijos-bastardos/los-hijos-bastardos_1.webp
 medidas: none
 medidas_eng: none
 year: 2014

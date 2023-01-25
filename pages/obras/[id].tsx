@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import useMeasure from "react-use-measure";
@@ -10,10 +11,11 @@ import ImageHero from "../../components/obras/image-hero";
 import IdImage from "../../components/obras/id-image";
 import PostCard from "../../components/obras/post-card";
 import VimeoPlayer from "../../components/vimeo-player";
-import NewNavBar from "../../components/nav-bar";
-import NewFooter from "../../components/footer";
-import { workPost } from "../../interfaces/interfaces";
+import NavBar from "../../components/nav-bar";
+import Footer from "../../components/footer";
+import { workPost, pathsAndDimsProps } from "../../interfaces/interfaces";
 import { getWorkPost, getAllPostIds, getAllWorkPosts } from "../../lib/posts";
+import useMediaQuery from "../../lib/media";
 
 interface WorkPostProps {
   workPosts: workPost[];
@@ -27,9 +29,17 @@ function split(arr: { h: number; w: number; path: string }[], index: number) {
 export default function Post({ post, workPosts }: WorkPostProps) {
   const { locale } = useRouter();
   const router = useRouter();
+  const [titleRef, titleBounds] = useMeasure({
+    polyfill: ResizeObserver,
+  });
+
   const [firstCol, secondCol] = post.pathsAndDims
     ? split(post.pathsAndDims!, Math.floor(post.pathsAndDims!.length / 2))
     : [];
+
+  useEffect(() => {
+    console.log("firstCol, secondCol", firstCol, secondCol);
+  }, [firstCol, secondCol]);
 
   const [scrollTop, setScrollTop] = useState(0);
   useEffect(() => {
@@ -42,46 +52,53 @@ export default function Post({ post, workPosts }: WorkPostProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const [titleRef, titleBounds] = useMeasure({
-    polyfill: ResizeObserver,
-  });
+  useEffect(() => {
+    console.log("titleBounds", titleBounds);
+  }, [titleBounds]);
 
   return (
-    <div className="relative">
+    <div className="">
       <Head>
         <title>{locale === "es" ? post.title : post.title_eng}</title>
         <meta name="description" content="Catalina Andonie" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NewNavBar scrollTop={scrollTop} scrollThreshold={titleBounds.height} />
+      <NavBar scrollTop={10} scrollThreshold={0} />
 
-      <div className="fixed mix-blend-difference z-40">
-        <div className="p-6 text-6xl text-white">
+      <div ref={titleRef} className="bg-white z-40">
+        <div className="p-3 md:p-6 text-5xl lg:text-6xl text-black">
           {locale === "es"
             ? post.title!.toUpperCase()
             : post.title_eng!.toUpperCase()}
         </div>
       </div>
 
-      <div className="relative">
+      <div className={`relative bg-white`}>
         {post.vimeo_front_url.length > 0 ? (
           <VimeoPlayer
             url={post.vimeo_front_url}
-            className="w-screen aspect-video"
+            className={`w-screen aspect-video`}
           />
         ) : (
-          <ImageHero src={post.hero_img!} />
+          <ImageHero src={post.thumbnail} />
         )}
       </div>
 
       {/* Custom image display, make component */}
       <div className="relative flex flex-col bg-white">
-        <div className="flex flex-col md:flex-row p-1">
-          <div className="flex flex-col w-1/2 pr-0.5 space-y-1">
+        <div className="flex flex-col md:flex-row p-1 space-y-1 md:space-y-0">
+          <div className="flex flex-col w-full md:w-1/2 pr-0.5 space-y-1">
             <PostCard post={post} />
             {firstCol.map((img, i) => (
-              <IdImage key={i} src={img.path} h={img.h} w={img.w} />
+              <IdImage
+                key={i}
+                src={img.path}
+                h={img.h}
+                w={img.w}
+                // @ts-ignore
+                lowResSrc={img.lowResPath}
+              />
             ))}
           </div>
           {/* Video goes always first on second column */}
@@ -98,22 +115,29 @@ export default function Post({ post, workPosts }: WorkPostProps) {
               <></>
             )}
             {secondCol.map((img, i) => (
-              <IdImage key={i} src={img.path} h={img.h} w={img.w} />
+              <IdImage
+                key={i}
+                src={img.path}
+                h={img.h}
+                w={img.w}
+                // @ts-ignore
+                lowResSrc={img.lowResPath}
+              />
             ))}
           </div>
         </div>
       </div>
-      <div className="relative p-4 bg-white">
-        <button onClick={() => router.back()}>
+      <div className=" p-4 bg-white">
+        <Link href={"/obras"}>
           <div className="flex flex-col items-start hover:underline hover:cursor-pointer">
-            <div className="text-4xl text-left">
+            <div className="text-3xl md:text-4xl text-left">
               {locale === "es" ? "Atrás" : "Back"}
             </div>
             <ArrowLeft size={38} weight="bold" color="black" />
           </div>
-        </button>
+        </Link>
       </div>
-      <NewFooter />
+      <Footer />
     </div>
   );
 }
@@ -122,7 +146,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = getAllPostIds(locales);
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 

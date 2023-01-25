@@ -2,7 +2,7 @@
 title: Acerca de
 title_eng: About
 body_eng: |-
-   Ambiguity has a wide-range of associations and, at the same time, a lack of them.  That is what, in a certain sense, makes it resist classification, cancelling it and making it inaccessible and operational as such. 
+   Ambiguity has a wide-range of associations and, at the same time, a lack of them.  That is, in a certain sense, what makes it resist classification, cancelling it and making it inaccessible and operational as such. 
    
    My sculptures and installations refer to preexistent objects or works to elaborate pieces where there is an experimentation towards ambiguity, mostly objects reproduced through archives, found objects, and redesigned objects.
 ---

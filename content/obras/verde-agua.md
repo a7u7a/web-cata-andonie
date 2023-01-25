@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/verde-agua/verde-agua_1.webp
+thumbnail: /uploads/fotos-portada/verde-agua.webp
+low_res_thumb: /uploads/fotos-portada/low-res/verde-agua.webp
+hero_img: /uploads/fotos-portada/verde-agua.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Verde Agua
 title_eng: Light Green
 title_color: white
-hero_img: /uploads/obras/verde-agua/verde-agua_1.webp
 medidas: 295 x 385 x 330 cm
 medidas_eng: 295 x 385 x 330 cm
 year: 2018

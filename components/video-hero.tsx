@@ -53,36 +53,36 @@ const VideoHero = () => {
         <VideoPlayer setName={setName} isPlay={isPlay} videoNav={videoNav} />
       </div>
       <div>
-        <div className="relative w-screen h-screen">
-          <div className="absolute inset-x-0 bottom-0 px-6">
+        <div className="relative w-screen h-[90vh]">
+          <div className="absolute inset-x-0 bottom-0 px-3 md:px-6">
             <div className="mix-blend-difference flex flex-row items-center justify-between pt-4 pb-4">
               <button
                 onMouseEnter={() => setLeftHover(true)}
                 onMouseLeave={() => setLeftHover(false)}
-                onClick={videoPrev}
+                onClick={videoNext}
               >
                 <ArrowLeft
                   size={38}
                   weight="bold"
-                  color={`${leftHover ? "#4f46e5" : "white"}`}
+                  color="white"
                 />
               </button>
 
               <Link href={tituloVideo.url}>
                 <div className="text-white text-center text-3xl cursor-pointer hover:underline">
-                  {tituloVideo.name}
+                  {tituloVideo.name.toUpperCase()}
                 </div>
               </Link>
 
               <button
                 onMouseEnter={() => setRightHover(true)}
                 onMouseLeave={() => setRightHover(false)}
-                onClick={videoPrev}
+                onClick={ videoPrev}
               >
                 <ArrowRight
                   size={38}
                   weight="bold"
-                  color={`${rightHover ? "#4f46e5" : "white"}`}
+                  color="white"
                 />
               </button>
             </div>

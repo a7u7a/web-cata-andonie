@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/quiero-excederme/quiero-excederme_1.webp
+thumbnail: /uploads/fotos-portada/quiero-excederme.webp
+low_res_thumb: /uploads/fotos-portada/low-res/quiero-excederme.webp
+hero_img: /uploads/fotos-portada/quiero-excederme.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Quiero excederme
 title_eng: Quiero excederme
 title_color: white
-hero_img: /uploads/obras/quiero-excederme/quiero-excederme_1.webp
 medidas: Medidas variables
 medidas_eng: Variable measurements
 year: 2022

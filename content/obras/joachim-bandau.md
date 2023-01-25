@@ -1,7 +1,8 @@
 ---
 date: October 9, 2022 10:05 PM
-thumbnail: /uploads/obras/joachim-bandau/joachim-bandau_1.webp
-hero_img: /uploads/obras/joachim-bandau/joachim-bandau_1.webp
+thumbnail: /uploads/fotos-portada/joachim-bandau.webp
+low_res_thumb: /uploads/fotos-portada/low-res/joachim-bandau.webp
+hero_img: /uploads/fotos-portada/joachim-bandau.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none

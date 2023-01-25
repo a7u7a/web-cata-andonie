@@ -1,13 +1,14 @@
 ---
 date: May 27, 2022 11:39 PM
-thumbnail: /uploads/obras/sin-titulo/sin-titulo_1.webp
+thumbnail: /uploads/fotos-portada/sin-titulo.webp
+low_res_thumb: /uploads/fotos-portada/low-res/sin-titulo.webp
+hero_img: /uploads/fotos-portada/sin-titulo.webp
 front_page: false
 vimeo_front_url: none
 vimeo_video_gallery: none
 title: Sin Título
 title_eng: Untitled
 title_color: black
-hero_img: /uploads/obras/sin-titulo/sin-titulo_1.webp
 medidas: Medidas variables
 medidas_eng: Variable measurements
 year: 2016
