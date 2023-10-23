@@ -68,7 +68,7 @@ collections:
           name: "vimeo_front_url",
           widget: "string",
         }
-        - {
+      - {
           label: "Link de Vimeo para video de portada",
           name: "vimeo_video_gallery",
           widget: "list",
