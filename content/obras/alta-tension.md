@@ -1,11 +1,8 @@
 ---
 date: October 2, 2022 10:03 PM
 thumbnail: /uploads/fotos-portada/alta-tension.webp
-low_res_thumb: /uploads/fotos-portada/low-res/alta-tension.webp
-hero_img: /uploads/fotos-portada/alta-tension.webp
-front_page: true
 vimeo_front_url: https://vimeo.com/777160140
-vimeo_video_gallery: 
+vimeo_video_gallery:
   - https://vimeo.com/779815864
   - https://vimeo.com/777160140
   - https://vimeo.com/786684402
@@ -19,9 +16,10 @@ vimeo_video_gallery:
   - https://vimeo.com/786684772
   - https://vimeo.com/786685070
   - https://vimeo.com/786685122
-title: Alta Tensión
+hero_img: /uploads/fotos-portada/alta-tension.webp
+front_page: true
+title: Alta Tensión with Angelo Santa Cruz
 title_eng: High Voltage
-title_color: white
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2019
@@ -46,5 +44,7 @@ body_eng: "For this show, I used several industrial and craft resources and
   exhibition, there was a rug made with hand-tufting technique, custom-made by
   hand with the shape and colors of a collage regarding the industrial theme
   series Untitled. "
+low_res_thumb: /uploads/fotos-portada/low-res/alta-tension.webp
+title_color: white
 ---
 Para esta exposición se utilizaron varios recursos y materiales industriales y artesanales para referirse a la ambigüedad.  En una sala se encontraban 30 aisladores de alta tensión de diferentes tamaños y formas con una composición musical de fondo y luces estroboscópicas con sensores de sonido sincronizados a la música.  En la otra sala se podían ver 9 cajas de luz, una junto a la otra, formando un gran rectángulo diseñado de acuerdo a las dimensiones de la sala.  Sobre estas cajas de luz , que solo se sostenían por un contorno de perfiles de acero y una plancha de vidrio transparente en su cubierta, se hallaban 24 objetos abstractos en vidrio soplado distribuidos sobre sus soportes.  Estas mesas de luz fueron iluminadas con 5 tubos LED transparentes por cada una para que se produjera un efecto caleidoscópico en cada uno de los objetos de vidrio.  En la última sala de la exposición se hallaba una alfombra hecha con la técnica de hand-tufting fabricada a mano con la forma y colores de un collage de contenido industrial que hice para la serie Sin Título. 
