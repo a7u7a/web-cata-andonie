@@ -1,15 +1,13 @@
 ---
 date: October 1, 2022 10:03 PM
 thumbnail: /uploads/fotos-portada/alta-tension-ii.webp
-low_res_thumb: /uploads/fotos-portada/low-res/alta-tension-ii.webp
+vimeo_front_url: https://vimeo.com/777160311
+vimeo_video_gallery:
+  - https://vimeo.com/777160311
 hero_img: /uploads/fotos-portada/alta-tension-ii.webp
 front_page: true
-vimeo_front_url: https://vimeo.com/777160311
-vimeo_video_gallery: 
-  - https://vimeo.com/777160311
-title: Alta Tensión II
-title_eng: High Voltage II
-title_color: white
+title: Alta Tensión II con Angelo Santa Cruz
+title_eng: High Voltage II with Angelo Santa Cruz
 medidas: 400 x 3000 x 2300 cm
 medidas_eng: 400 x 3000 x 2300 cm
 year: 2020
@@ -20,8 +18,25 @@ locacion: Casa de los Carrera
 locacion_eng: Casa de los Carrera
 tecnica: none
 tecnica_eng: none
-body_eng: For this show, I interpreted what was made previously in Galería CIMA. The exhibition was relocated to a 300 year old 500 mt2 cellar that was formerly part of the estate in which the founding fathers of Chile lived.  Dust is a great lead player in this cellar, therefore included in this show, remaining on every surface and building up on it with time. There were 30 high voltage insulators of different shapes and forms arranged in a row till the end of the exhibition space, with a musical composition as a background and stroboscopic lights with sound sensors synchronized to the music.  In the center of the room, there were huge trunks of wood holding the roof structure displayed throughout the center of the entire cellar. Beside them, you could see 9 light boxes in an intermittent row, forming a line according to the cellars dimensions. Over these light boxes, that were only supported by an outline of steel profiles and clear glass sheets on their surfaces, there were 24 abstract blown glass objects distributed throughout their supports. These light boxes were lit with 5 transparent LED light tubes per each box so that each one produced a sort of kaleidoscopic effect in each glass object. The LED lights turned on and off as defined by a light timer.
-
+body_eng: For this show, I interpreted what was made previously in Galería CIMA.
+  The exhibition was relocated to a 300 year old 500 mt2 cellar that was
+  formerly part of the estate in which the founding fathers of Chile
+  lived.  Dust is a great lead player in this cellar, therefore included in this
+  show, remaining on every surface and building up on it with time. There were
+  30 high voltage insulators of different shapes and forms arranged in a row
+  till the end of the exhibition space, with a musical composition as a
+  background and stroboscopic lights with sound sensors synchronized to the
+  music.  In the center of the room, there were huge trunks of wood holding the
+  roof structure displayed throughout the center of the entire cellar. Beside
+  them, you could see 9 light boxes in an intermittent row, forming a line
+  according to the cellars dimensions. Over these light boxes, that were only
+  supported by an outline of steel profiles and clear glass sheets on their
+  surfaces, there were 24 abstract blown glass objects distributed throughout
+  their supports. These light boxes were lit with 5 transparent LED light tubes
+  per each box so that each one produced a sort of kaleidoscopic effect in each
+  glass object. The LED lights turned on and off as defined by a light timer.
+low_res_thumb: /uploads/fotos-portada/low-res/alta-tension-ii.webp
+title_color: white
 ---
 En esta exposición se tradujo lo que se hizo anteriormente en Galería CIMA. Se llevó la muestra a un bodegón de 300 años y 500 mt2 que era antiguamente parte de la finca en la que vivían los fundadores de Chile.  El polvo es un gran protagonista del bodegón, por lo que se incluyó en la exposición, encontrándose en todas las superficies y acumulándose en ellas con el tiempo.  
 Habían 30 aisladores de alta tensión de diferentes tamaños y formas dispuestos en fila hasta el final del espacio, con una composición musical de fondo y luces estroboscópicas con sensores de sonido sincronizados a la música. En el centro de la sala habían troncos enormes de madera que sostenían la estructura del techo desplegados por todo el centro del bodegón.  
