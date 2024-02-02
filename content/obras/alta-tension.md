@@ -18,8 +18,8 @@ vimeo_video_gallery:
   - https://vimeo.com/786685122
 hero_img: /uploads/fotos-portada/alta-tension.webp
 front_page: true
-title: Alta Tensión with Angelo Santa Cruz
-title_eng: High Voltage
+title: Alta Tensión con Angelo Santa Cruz
+title_eng: High Voltage with Angelo Santa Cruz
 medidas: medidas variables
 medidas_eng: variable measurements
 year: 2019
